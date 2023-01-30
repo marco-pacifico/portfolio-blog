@@ -9,8 +9,10 @@ export const LightTheme = css`
     --color-border: hsl(${COLORS.gray[100]});
 `
 export const DarkTheme = css`
-     --color-text-primary: hsl(${COLORS.white});
+     --color-text-primary: rgba(255, 255, 255, 0.81);
+     /* --color-text-primary: hsl(${COLORS.white}); */
      --color-text-secondary: hsl(${COLORS.gray[400]});
-     --color-background: hsl(${COLORS.black});
+     --color-background: #191919;
+     /* --color-background: hsl(${COLORS.black}); */
      --color-border: hsl(${COLORS.gray[500]});
 `
