@@ -47,7 +47,7 @@ export const RestCSS = css`
     }
 
     /* 10. Remove default list styles */
-    ol, ul {
+    ol, ul, li {
         list-style: none;
     }
 

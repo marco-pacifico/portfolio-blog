@@ -20,11 +20,15 @@ export const FONTWEIGHTS = {
     medium: 500,
 };
 
-export const FONTSIZE = {
+export const FONTSIZES = {
 
 };
 
 export const LINEHEIGHTS = {
+
+};
+
+export const LETTERSPACING = {
 
 };
 

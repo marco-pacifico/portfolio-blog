@@ -1,4 +1,5 @@
 import Head from "next/head";
+import MorePosts from "./MorePosts"
 
 export default function BlogPostLayout({ children, meta }){
     return(
@@ -13,7 +14,7 @@ export default function BlogPostLayout({ children, meta }){
             <h3>{meta.description}</h3>
         </section>
         <section>{children}</section>
-        <section>More Posts</section>
+        <MorePosts currentPost={meta.slug}/>
         </>
     )
 };

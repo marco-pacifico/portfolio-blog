@@ -1,0 +1,19 @@
+---
+title: Third Post
+date: '2023-01-30'
+category: Blog Post
+description: This is my third post
+slug: post-three
+---
+
+The content of the post goes here
+
+<Image
+    src={firstimage}
+    alt="mountain at sunrise"
+/>
+
+import Image from 'next/image'
+import firstimage from './image-one.jpg'
+import BlogPostLayout from '../../../components/BlogPostLayout';
+export default ({ children }) => <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
