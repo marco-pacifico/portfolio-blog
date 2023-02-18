@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 import { RestCSS } from '../styles/ResetCSS'
 import { CustomFonts } from '../styles/CustomFonts'
-import { BlogTypographyVariables } from '../styles/BlogTypographyVariables'
-import { LightColors, DarkColors } from '../styles/ColorThemes'
+import { BaseTypographyVariables, BlogTypographyVariables } from '../styles/TypographyVariables'
+import { LightColors, DarkColors } from '../styles/ColorVariables'
 
 
 const GlobalStyles = createGlobalStyle`
@@ -16,14 +16,8 @@ const GlobalStyles = createGlobalStyle`
 	
 	/* TYPOGRAPHY */
 	:root {
-		--font-fallback-sans: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-        --font-fallback-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
-
-        --font-sans: 'Untitled Sans', var(--font-fallback-sans);
-        --font-serif: 'Untitled Serif', var(--font-fallback-serif);
-
+		${BaseTypographyVariables}
 		${BlogTypographyVariables}
-
     }
 	*,
 	*:before,
@@ -33,11 +27,6 @@ const GlobalStyles = createGlobalStyle`
 	h1, h2, h3, h4, h5, h6, strong {
 		font-weight: var(--font-weight-bold);
     }
-	p {
-		font-weight: var(--font-weight-regular);
-	}
-
-
 
 	/* LIGHT AND DARK THEME */
 	html {

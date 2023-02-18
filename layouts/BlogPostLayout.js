@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
 import MorePosts from "../components/MorePosts";
+import { BlogMarkdownStyles } from "../styles/BlogMarkdownStyles";
 
 export default function BlogPostLayout({ children, meta }) {
   return (
@@ -21,5 +22,7 @@ export default function BlogPostLayout({ children, meta }) {
 }
 
 const BlogPostContent = styled.article`
-
+    margin: 0 auto;
+    max-width: 680px;
+  ${BlogMarkdownStyles}
 `;
