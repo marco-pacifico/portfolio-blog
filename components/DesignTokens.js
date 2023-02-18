@@ -10,41 +10,65 @@ export const COLORS = {
     },
 };
 
-export const SPACE = {
+export const SPACE = [
+    2,  // 0
+    4,  // 1
+    8,  // 2
+    16, // 3
+    24, // 4
+    32, // 5
+    40, // 6
+    64, // 7
+    80, // 8
+    128, // 6
+];
+
+export const FONTWEIGHT = [
+    300,    // 0
+    400,    // 1
+    500     // 2
+];
+
+export const FONTSIZE = [
+    12,  // 0
+    14,  // 1
+    16,  // 2
+    20, // 3
+    24, // 4
+    32, // 5
+    40, // 6
+    64, // 7
+    80, // 8
+    128, // 6
+];
+
+export const LINEHEIGHT = [
+    0.9,    // 0
+    1,      // 1
+    1.5,    // 2
+    1.75,   // 3
+];
+
+export const LETTERSPACING = [
+    -0.04,  // 0
+    -0.024, // 1
+    0.024,  // 2
+    0.04,   // 3
+];
+
+export const BREAKPOINT = [
+
+];
+
+export const QUERY = {
 
 };
 
-export const FONTWEIGHTS = {
-    light: 300,
-    regular: 400,
-    medium: 500,
-};
-
-export const FONTSIZES = {
+export const SHADOW = {
 
 };
 
-export const LINEHEIGHTS = {
-
-};
-
-export const LETTERSPACING = {
-
-};
-
-export const BREAKPOINTS = {
-
-};
-
-export const QUERIES = {
-
-};
-
-export const SHADOWS = {
-
-};
-
-export const ANIMATIONS = {
+export const ANIMATION = {
 
 };
 
