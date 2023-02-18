@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
-import { FONTWEIGHT } from '../DesignTokens'
+import { FONTWEIGHT } from '../constants/DesignTokens'
 
-export const Fonts = css`
+export const CustomFonts = css`
 
     /* UNTITLED SANS*/
     @font-face {

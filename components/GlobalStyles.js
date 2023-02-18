@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
-import { RestCSS } from './ResetCSS'
-import { Fonts } from './Fonts'
-import { FONTWEIGHT } from '../DesignTokens'
-import { LightTheme, DarkTheme } from './Themes'
+import { RestCSS } from '../styles/ResetCSS'
+import { CustomFonts } from '../styles/CustomFonts'
+import { BlogTypographyVariables } from '../styles/BlogTypographyVariables'
+import { LightColors, DarkColors } from '../styles/ColorThemes'
 
 
 const GlobalStyles = createGlobalStyle`
@@ -12,9 +12,9 @@ const GlobalStyles = createGlobalStyle`
 
 	/* FONTS */
 	/* @font-face rules for custom, local fonts */
-	${Fonts}
+	${CustomFonts}
 	
-	/* BASELINE TYPOGRAPHY STYLES */
+	/* TYPOGRAPHY */
 	:root {
 		--font-fallback-sans: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         --font-fallback-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
@@ -22,10 +22,7 @@ const GlobalStyles = createGlobalStyle`
         --font-sans: 'Untitled Sans', var(--font-fallback-sans);
         --font-serif: 'Untitled Serif', var(--font-fallback-serif);
 
-		--font-weight-light: ${FONTWEIGHT[0]};
-		--font-weight-regular: ${FONTWEIGHT[1]};
-		--font-weight-medium: ${FONTWEIGHT[2]};
-		--font-weight-bold: var(--font-weight-medium);
+		${BlogTypographyVariables}
 
     }
 	*,
@@ -40,10 +37,12 @@ const GlobalStyles = createGlobalStyle`
 		font-weight: var(--font-weight-regular);
 	}
 
+
+
 	/* LIGHT AND DARK THEME */
 	html {
 		/* Defines CSS variables for colors. Default values are from the light theme. */
-		${LightTheme}
+		${LightColors}
 		/* Set default text and background color */
 		color: var(--color-text-primary);
 		background: var(--color-background);
@@ -52,7 +51,7 @@ const GlobalStyles = createGlobalStyle`
 		@media (prefers-color-scheme: dark) {
 			color-scheme: dark;
 			/* Update CSS variable values for colors to those defined in dark theme. */
-			${DarkTheme}
+			${DarkColors}
 		}
 	}
 
