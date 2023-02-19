@@ -1,9 +1,11 @@
-import { createGlobalStyle } from 'styled-components'
-import { RestCSS } from '../styles/ResetCSS'
-import { CustomFonts } from '../styles/CustomFonts'
-import { BaseTypographyVariables, BlogTypographyVariables } from '../styles/TypographyVariables'
-import { LightColors, DarkColors } from '../styles/ColorVariables'
-
+import { createGlobalStyle } from "styled-components";
+import { RestCSS } from "../styles/ResetCSS";
+import { CustomFonts } from "../styles/CustomFonts";
+import {
+  BaseTypographyVariables,
+  BlogTypographyVariables,
+} from "../styles/TypographyVariables";
+import { LightColors, DarkColors } from "../styles/ColorVariables";
 
 const GlobalStyles = createGlobalStyle`
 	
@@ -27,6 +29,10 @@ const GlobalStyles = createGlobalStyle`
 	h1, h2, h3, h4, h5, h6, strong {
 		font-weight: var(--font-weight-bold);
     }
+	::selection {
+		 background: var(--color-text-selection-background);
+		 color: var(--color-text-selection-text);
+  	}
 
 	/* LIGHT AND DARK THEME */
 	html {
@@ -44,6 +50,6 @@ const GlobalStyles = createGlobalStyle`
 		}
 	}
 
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

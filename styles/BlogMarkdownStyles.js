@@ -3,6 +3,7 @@ import { css } from "styled-components";
 export const BlogMarkdownStyles = css`
   img {
     height: auto;
+    border-radius: 16px;
   }
   h1,
   h2,
@@ -15,6 +16,7 @@ export const BlogMarkdownStyles = css`
     line-height: var(--line-height-heading);
     letter-spacing: var(--letter-spacing-heading);
     margin: var(--margin-heading);
+    color: var(--text-color-strong);
   }
   h1 {
     font-size: var(--font-size-9);
@@ -28,15 +30,19 @@ export const BlogMarkdownStyles = css`
   }
   h3 {
     font-size: var(--font-size-7);
+    line-height: var(--line-height-heading-loose);
   }
   h4 {
     font-size: var(--font-size-6);
+    line-height: var(--line-height-heading-loose);
   }
   h5 {
     font-size: var(--font-size-5);
+    line-height: var(--line-height-paragraph);;
   }
   h6 {
     font-size: var(--font-size-paragraph);
+    line-height: var(--line-height-paragraph);
   }
 
   p,
@@ -53,7 +59,7 @@ export const BlogMarkdownStyles = css`
   }
 
   em {
-    /* TODO: ADD ITALIC FONT DEFINITIONS FOR UNTITLED*/
+    
   }
 
   strong {
@@ -106,6 +112,37 @@ export const BlogMarkdownStyles = css`
   }
 
   blockquote {
+    padding-left: var(--space-6);
+    display: block;
+    position: relative;
+    margin: var(--space-9) 0;
+    /* margin-left: var(--space-3); */
+    
+    & blockquote {
+        margin: var(--space-6) 0;
+    }
+    
+    &:before {
+      content: "";
+      height: 100%;
+      width: 2px;
+      border-radius: 4px;
+      background: var(--color-border);
+      position: absolute;
+      left: 0;
+
+    }
+
+    p {
+      font-family: var(--font-sans);
+      font-size: var(--font-size-6);
+      padding-bottom: var(--space-3);
+    }
+
+    figcaption {
+      font-size: var(--font-size-caption);
+      margin-top: var(--space-6);
+    }
   }
 
   code {
@@ -125,8 +162,8 @@ export const BlogMarkdownStyles = css`
     border-radius: 12px;
 
     & code {
-        background: none;
-        padding: 0;
+      background: none;
+      padding: 0;
     }
   }
 `;

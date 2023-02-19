@@ -40,11 +40,14 @@ export const BaseTypographyVariables = css`
 
 export const BlogTypographyVariables = css`
   /* --font-size-paragraph: var(--font-size-4); */
-  --font-size-paragraph: calc(var(--font-size-4) + var(--font-size-bump));
+  --font-size-paragraph: calc(var(--font-size-4) + 2*var(--font-size-bump));
+  --font-size-caption: var(--font-size-2);
 
   /* LINE HEIGHT */
+  --line-height-heading-tight: ${LINEHEIGHT[0]}em; 
   --line-height-heading: ${LINEHEIGHT[1]}em;
-  --line-height-paragraph: ${LINEHEIGHT[2]}em;
+  --line-height-heading-loose: ${LINEHEIGHT[2]}em; 
+  --line-height-paragraph: ${LINEHEIGHT[3]}em;
 
   /* LETTER SPACING */
   --letter-spacing-display: ${LETTERSPACING[0]}em;
