@@ -38,7 +38,7 @@ export const BlogMarkdownStyles = css`
   }
   h5 {
     font-size: var(--font-size-5);
-    line-height: var(--line-height-paragraph);;
+    line-height: var(--line-height-paragraph);
   }
   h6 {
     font-size: var(--font-size-paragraph);
@@ -46,6 +46,7 @@ export const BlogMarkdownStyles = css`
   }
 
   p,
+  a,
   em,
   strong,
   ul,
@@ -58,8 +59,24 @@ export const BlogMarkdownStyles = css`
     margin: var(--margin-paragraph);
   }
 
+  a {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-link);
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--color-text-secondary);
+    text-decoration: none;
+    background-image: linear-gradient(90deg, var(--color-text-link), var(--color-text-link));
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.2s ease-out;
+
+    &:hover {
+        background-size: 100% 1px;
+    }
+  }
+
   em {
-    
   }
 
   strong {
@@ -117,11 +134,11 @@ export const BlogMarkdownStyles = css`
     position: relative;
     margin: var(--space-9) 0;
     /* margin-left: var(--space-3); */
-    
+
     & blockquote {
-        margin: var(--space-6) 0;
+      margin: var(--space-6) 0;
     }
-    
+
     &:before {
       content: "";
       height: 100%;
@@ -130,7 +147,6 @@ export const BlogMarkdownStyles = css`
       background: var(--color-border);
       position: absolute;
       left: 0;
-
     }
 
     p {

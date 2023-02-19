@@ -5,6 +5,7 @@ export const LightColors = css`
     --color-text-strong: hsl(${COLORS.black});
     --color-text-primary: #1E202F;
     --color-text-secondary: hsl(${COLORS.gray[300]});
+    --color-text-link: #E135C2;
     --color-background: #FEFEF9;
     --color-border: hsl(${COLORS.gray[100]});
     /* --color-text-selection-background: #3C2FF5; */
@@ -18,6 +19,7 @@ export const DarkColors = css`
      --color-text-primary: rgba(255, 255, 255, 0.81);
      /* --color-text-primary: hsl(${COLORS.white}); */
      --color-text-secondary: hsl(${COLORS.gray[400]});
+     --color-text-link: #90BF91;
      --color-background: #191919;
      /* --color-background: hsl(${COLORS.black}); */
      --color-border: hsl(${COLORS.gray[500]});
