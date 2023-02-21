@@ -5,7 +5,7 @@ import {
   FONTWEIGHT,
   LINEHEIGHT,
   LETTERSPACING,
-} from "../constants/DesignTokens";
+} from "./DesignTokens";
 
 export const BaseTypographyVariables = css`
   /* FONT FAMILY FALLBACKS */
@@ -39,6 +39,7 @@ export const BaseTypographyVariables = css`
 `;
 
 export const BlogTypographyVariables = css`
+  /* FONT SIZES */
   /* --font-size-paragraph: var(--font-size-4); */
   --font-size-paragraph: calc(var(--font-size-4) + 2*var(--font-size-bump));
   --font-size-caption: var(--font-size-2);
@@ -74,9 +75,9 @@ export const BlogTypographyVariables = css`
   --list-indent-bullets: var(--space-7);
   --list-indent-level-1: var(--space-3);
   /* --listBulletPadding: var(--space5); */
-  --list-bullet-padding: var(--space-3);
+  --list-bullet-padding: var(--space-2);
   --list-indent-level-2: calc(
-    var(--list-indent-level-1) * 2 + var(--list-bullet-padding)
+    var(--list-indent-level-1) * 3 + var(--list-bullet-padding)
   );
 
   /* COLORS */

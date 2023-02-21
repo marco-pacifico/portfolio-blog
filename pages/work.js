@@ -1,19 +1,18 @@
 import styled from "styled-components";
 import Link from "next/link.js";
-import { NavLink } from "../../components/NavLink.js";
 
 export default function Blog({ allPostsData }) {
   return (
     <>
-      <Name>Blog</Name>
-      <Welcome>This is a list of blog posts</Welcome>
+      <Name>Work</Name>
+      <Welcome>This is a list of case studies</Welcome>
       <ul>
         {allPostsData.map(({ slug, title, description }) => (
           <li key={slug}>
-            <NavLink href={`/blog/${slug}`} >
+            <Link href={`/blog/${slug}`}>
               <h1>{title}</h1>
               <p>{description}</p>
-            </NavLink>
+            </Link>
           </li>
         ))}
       </ul>
@@ -30,7 +29,7 @@ const Welcome = styled.p`
   font-weight: 400;
 `;
 
-import { getSortedPostsData } from "../../lib/getAndSavePosts.js";
+import { getSortedPostsData } from "../lib/getAndSavePosts.js";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();

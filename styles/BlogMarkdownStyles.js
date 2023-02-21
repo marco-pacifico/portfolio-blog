@@ -1,9 +1,11 @@
 import { css } from "styled-components";
+import { LinkStyles } from "./LinkStyles";
 
 export const BlogMarkdownStyles = css`
   img {
     height: auto;
     border-radius: 16px;
+    margin: var(--margin-heading);
   }
   h1,
   h2,
@@ -16,33 +18,39 @@ export const BlogMarkdownStyles = css`
     line-height: var(--line-height-heading);
     letter-spacing: var(--letter-spacing-heading);
     margin: var(--margin-heading);
-    color: var(--text-color-strong);
+    color: var(--color-text-strong);
   }
   h1 {
     font-size: var(--font-size-9);
     letter-spacing: var(--letter-spacing-display);
     margin: var(--margin-display);
+    margin-left: -5px;
   }
   h2 {
     font-size: var(--font-size-8);
     letter-spacing: var(--letter-spacing-display);
     margin: var(--margin-display);
+    margin-left: -4px;
   }
   h3 {
     font-size: var(--font-size-7);
     line-height: var(--line-height-heading-loose);
+    /* margin-left: -1px; */
   }
   h4 {
     font-size: var(--font-size-6);
     line-height: var(--line-height-heading-loose);
+    /* margin-left: -1px; */
   }
   h5 {
     font-size: var(--font-size-5);
     line-height: var(--line-height-paragraph);
+    /* margin-left: -1px; */
   }
   h6 {
     font-size: var(--font-size-paragraph);
     line-height: var(--line-height-paragraph);
+    /* margin-left: -1px; */
   }
 
   p,
@@ -60,20 +68,7 @@ export const BlogMarkdownStyles = css`
   }
 
   a {
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-link);
-    padding-bottom: 2px;
-    border-bottom: 1px solid var(--color-text-secondary);
-    text-decoration: none;
-    background-image: linear-gradient(90deg, var(--color-text-link), var(--color-text-link));
-    background-size: 0% 1px;
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    transition: background-size 0.2s ease-out;
-
-    &:hover {
-        background-size: 100% 1px;
-    }
+    ${LinkStyles}
   }
 
   em {

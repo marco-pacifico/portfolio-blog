@@ -11,17 +11,17 @@ export const COLORS = {
 };
 
 export const SPACE = [
-    2,  // 0
-    4,  // 1
-    8,  // 2
-    12, // 3
-    16, // 4
-    24, // 5
-    32, // 6
-    40, // 7
-    64, // 8
-    80, // 9
-    128, // 10
+    2,      // 0
+    4,      // 1
+    8,      // 2
+    12,     // 3
+    16,     // 4
+    24,     // 5
+    32,     // 6
+    40,     // 7
+    64,     // 8
+    80,     // 9
+    128,    // 10
 ];
 
 export const FONTWEIGHT = [
@@ -31,16 +31,16 @@ export const FONTWEIGHT = [
 ];
 
 export const FONTSIZE = [
-    12,  // 0
-    14,  // 1
-    16,  // 2
-    20, // 3
-    24, // 4
-    32, // 5
-    40, // 6
-    64, // 7
-    80, // 8
-    128, // 6
+    12,     // 0
+    14,     // 1
+    16,     // 2
+    20,     // 3
+    24,     // 4
+    32,     // 5
+    40,     // 6
+    64,     // 7
+    80,     // 8
+    128,    // 9
 ];
 
 export const LINEHEIGHT = [
@@ -58,12 +58,16 @@ export const LETTERSPACING = [
     0.04,   // 3
 ];
 
-export const BREAKPOINT = [
-
-];
+export const BREAKPOINT = {
+    phone: 600,
+    tablet: 950,
+    laptop: 1300,
+};
 
 export const QUERY = {
-
+    phoneAndSmaller: `(max-width: ${BREAKPOINT.phone / 16}rem)`,
+    tabletAndSmaller: `(max-width: ${BREAKPOINT.tablet / 16}rem)`,
+    laptopAndSmaller: `(max-width: ${BREAKPOINT.laptop / 16}rem)`,
 };
 
 export const SHADOW = {

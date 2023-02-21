@@ -1,11 +1,12 @@
 import { createGlobalStyle } from "styled-components";
-import { RestCSS } from "../styles/ResetCSS";
-import { CustomFonts } from "../styles/CustomFonts";
+import { RestCSS } from "./ResetCSS";
+import { CustomFonts } from "./CustomFonts";
 import {
   BaseTypographyVariables,
   BlogTypographyVariables,
-} from "../styles/TypographyVariables";
-import { LightColors, DarkColors } from "../styles/ColorVariables";
+} from "./TypographyVariables";
+import { LightColors, DarkColors } from "./ColorVariables";
+import { LinkStyles } from "./LinkStyles";
 
 const GlobalStyles = createGlobalStyle`
 	
@@ -33,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
 		 background: var(--color-text-selection-background);
 		 color: var(--color-text-selection-text);
   	}
+	
 
 	/* LIGHT AND DARK THEME */
 	html {

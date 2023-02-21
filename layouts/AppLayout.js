@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
+import Header from "../components/Header";
 
 export default function AppLayout({ children }) {
     return(
@@ -10,9 +11,7 @@ export default function AppLayout({ children }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <header>
-
-            </header>
+            <Header />
 
             <Main>
                 {children}
