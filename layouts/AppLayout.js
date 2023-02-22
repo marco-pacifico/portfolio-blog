@@ -10,16 +10,9 @@ export default function AppLayout({ children }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
             <Header />
-
-            <Main>
-                {children}
-            </Main>
-
-            <footer>
-
-            </footer>
+            <Main>{children}</Main>
+            <footer></footer>
         </>
     )
 }
@@ -31,4 +24,5 @@ const Main = styled.main`
   gap: var(--spacing3);
   align-items: center;
   justify-content: center; */
+  /* padding: 0 2rem; // site padding */
 `

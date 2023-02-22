@@ -24,7 +24,7 @@ export default function BlogPostLayout({ children, meta }) {
 const BlogPostContent = styled.article`
     margin: 0 auto;
     padding: 2rem; // site padding
-    max-width: 640px;
+    max-width: 680px; // blog content width
     ${BlogMarkdownStyles}
 `;
 

@@ -16,8 +16,8 @@ export const RestCSS = css`
         padding: 0;
     }
 
-    /* 3. Allow percentage-based heights in the application */
-    html, body, #__next {
+    /* 3. Allow percentage-based heights in the application , #__next  */
+    html, body {
         height: 100%;
     }
 

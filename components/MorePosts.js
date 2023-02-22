@@ -1,6 +1,8 @@
 import POSTS from '../data/POSTS.js'
-import Link from 'next/link.js'
 import styled from 'styled-components';
+import { NavLink } from './NavLink.js';
+import Link from 'next/link.js';
+import { LinkStyles } from '../styles/LinkStyles.js';
 
 const MorePosts = ({currentPost}) => {
     const filteredPOSTS = POSTS.filter((post) => post.slug !== currentPost);
@@ -10,9 +12,9 @@ const MorePosts = ({currentPost}) => {
             <MorePostsList>
                 {filteredPOSTS.map((post) => (
                 <Post key={post.slug}>
-                    <Link href={`/blog/${post.slug}`}>
-                        {post.title}
-                    </Link>
+                    <StyledLink href={`/blog/${post.slug}`}>
+                        {post.title} →
+                    </StyledLink>
                 </Post>
                 ))}
             </MorePostsList>      
@@ -34,18 +36,15 @@ const MorePostsList = styled.ul`
 `
 
 const Post = styled.li`
-    font-size: var(--font-size-5);
-    font-weight: var(--font-weight-medium);
+    
     margin: 1.5rem 0;
-    color: var(--color-text-primary);
     
-    & a {
-        text-decoration: none;
-    
-        &:visited {
-            color: var(--color-text-primary);
-    
-        }
+`
 
-    }
+const StyledLink = styled(Link)`
+    ${LinkStyles}
+    border: none;
+    font-size: var(--font-size-6);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary); 
 `
