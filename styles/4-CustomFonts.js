@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { FONTWEIGHT } from './DesignTokens'
+import { FONTWEIGHT } from './1-DesignTokens'
 
 export const CustomFonts = css`
 

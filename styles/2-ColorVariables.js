@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { COLORS } from "./DesignTokens";
+import { COLORS, QUERY } from "./1-DesignTokens";
 
 export const LightColors = css`
     /* TEXT COLORS */
@@ -40,4 +40,9 @@ export const DarkColors = css`
 
     /* BORDER COLORS */
     --color-border: hsl(${COLORS.gray[500]});
+
+    @media ${QUERY.phoneAndSmaller} {
+        --color-background: #080808;
+  }
+    
 `

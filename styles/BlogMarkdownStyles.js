@@ -1,7 +1,47 @@
 import { css } from "styled-components";
 import { LinkStyles } from "./LinkStyles";
+import {
+    LINEHEIGHT,
+    LETTERSPACING,
+  } from "./1-DesignTokens";
+
+const BlogTypographyVariables = css`
+  /* FONT SIZES */
+  --font-size-paragraph: calc(var(--font-size-4) + 2*var(--font-size-bump));
+  --font-size-caption: var(--font-size-2);
+
+  /* LINE HEIGHT */
+  --line-height-heading-tight: ${LINEHEIGHT[0]}em; 
+  --line-height-heading: ${LINEHEIGHT[1]}em;
+  --line-height-heading-loose: ${LINEHEIGHT[2]}em; 
+  --line-height-paragraph: ${LINEHEIGHT[3]}em;
+
+  /* LETTER SPACING */
+  --letter-spacing-display: ${LETTERSPACING[0]}em;
+  --letter-spacing-heading: ${LETTERSPACING[1]}em;
+
+  /* TYPOGRAPHY MARGIN */
+  --margin-display: var(--space-9) 0 var(--space-7) 0;
+  --margin-heading: var(--space-8) 0 var(--space-6) 0;
+  --margin-paragraph: var(--space-5) 0;
+  --margin-list-items: var(--space-4) 0;
+
+  /* LIST AND BULLET PADDING */
+  --list-indent-bullets: var(--space-7);
+  --list-indent-level-1: var(--space-3);
+  /* --listBulletPadding: var(--space5); */
+  --list-bullet-padding: var(--space-2);
+  --list-indent-level-2: calc(
+    var(--list-indent-level-1) * 3 + var(--list-bullet-padding)
+  );
+
+  /* LIST AND BULLET COLORS */
+  --list-bullet-color: var(--color-text-secondary);
+`;
 
 export const BlogMarkdownStyles = css`
+  ${BlogTypographyVariables}
+
   img {
     height: auto;
     border-radius: 16px;
@@ -146,6 +186,7 @@ export const BlogMarkdownStyles = css`
 
     p {
       font-family: var(--font-sans);
+      font-weight: var(--font-weight-light);
       font-size: var(--font-size-6);
       padding-bottom: var(--space-3);
     }

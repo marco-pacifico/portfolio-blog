@@ -21,8 +21,9 @@ export const SPACE = [
     32,     // 6
     40,     // 7
     64,     // 8
-    80,     // 9
-    128,    // 10
+    72,     // 9
+    80,     // 10
+    128,    // 11
 ];
 
 export const FONTWEIGHT = [

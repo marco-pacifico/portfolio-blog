@@ -1,26 +1,28 @@
 import { createGlobalStyle } from "styled-components";
 import { RestCSS } from "./ResetCSS";
-import { CustomFonts } from "./CustomFonts";
-import {
-  BaseTypographyVariables,
-  BlogTypographyVariables,
-} from "./TypographyVariables";
-import { LightColors, DarkColors } from "./ColorVariables";
-import { LinkStyles } from "./LinkStyles";
+import { CustomFonts } from "./4-CustomFonts";
+import { SiteLayoutVariables } from "./3-SiteLayoutVariables";
+import { BaseTypographyVariables } from "./5-BaseTypographyVariables";
+import { LightColors, DarkColors } from "./2-ColorVariables";
+
 
 const GlobalStyles = createGlobalStyle`
 	
 	/* CSS RESET */
 	${RestCSS}
 
-	/* FONTS */
+	/* SPACING AND SITE GUTTER */
+	:root {
+		${SiteLayoutVariables}
+	}
+
+	/* CUSTOM FONTS */
 	/* @font-face rules for custom, local fonts */
 	${CustomFonts}
 	
-	/* TYPOGRAPHY */
+	/* BASE TYPOGRAPHY */
 	:root {
 		${BaseTypographyVariables}
-		${BlogTypographyVariables}
     }
 	*,
 	*:before,
