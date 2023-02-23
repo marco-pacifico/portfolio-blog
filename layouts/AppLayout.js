@@ -18,11 +18,4 @@ export default function AppLayout({ children }) {
 }
 
 const Main = styled.main`
-  /* height: 100%; */
-  /* display: flex;
-  flex-direction: column;
-  gap: var(--spacing3);
-  align-items: center;
-  justify-content: center; */
-  /* padding: 0 2rem; // site padding */
 `

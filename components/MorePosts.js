@@ -24,22 +24,19 @@ const MorePosts = ({currentPost}) => {
 export default MorePosts
 
 const MorePostsSection = styled.section`
-    padding: 4rem 2rem 8rem 2rem;
-    margin-top: 4rem;
+    padding-inline: var(--site-gutter);
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-12);
+    margin-top: var(--space-9);
     border-top: 1px solid var(--color-border);
 `
-
 const MorePostsList = styled.ul`
-    /* max-width: 640px; */
+    max-width: var(--width-blog-content);
     margin: 0 auto;
 `
-
 const Post = styled.li`
-    
-    margin: 1.5rem 0;
-    
+    margin: var(--space-6) 0;
 `
-
 const StyledLink = styled(Link)`
     ${LinkStyles}
     border: none;

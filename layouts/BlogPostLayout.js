@@ -26,16 +26,15 @@ export default function BlogPostLayout({ children, meta }) {
 
 const BlogPostContent = styled.article`
   margin: 0 auto;
-  padding: 2rem; // site padding
-  max-width: 680px; // blog content width
+  padding: var(--site-gutter); 
+  max-width: var(--width-blog-content);
   ${BlogMarkdownStyles}
 `;
 
 const BlogPostHero = styled.section`
-  padding: 2rem; // site padding
+  padding: var(--site-gutter); 
 `;
 
 const PageBottomSpacing = styled.div`
-    padding: 4rem 2rem 8rem 2rem;
-    margin-top: 4rem;
+    padding: var(--space-12) var(--site-gutter);
 `

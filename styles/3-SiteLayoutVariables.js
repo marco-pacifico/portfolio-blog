@@ -33,8 +33,8 @@ export const SiteLayoutVariables = css`
   }
 
   /* WIDTHS */
-  --site-max-width: calc(2000rem / 16); 
-  --blog-content-max-width: calc(680rem / 16); 
+  --width-site: calc(2000rem / 16); 
+  --width-blog-content: calc(680rem / 16); 
   
   
 `;
