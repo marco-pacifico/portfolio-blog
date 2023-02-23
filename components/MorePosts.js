@@ -1,6 +1,5 @@
 import POSTS from '../data/POSTS.js'
 import styled from 'styled-components';
-import { NavLink } from './NavLink.js';
 import Link from 'next/link.js';
 import { LinkStyles } from '../styles/LinkStyles.js';
 

@@ -24,6 +24,7 @@ const BlogTypographyVariables = css`
   --margin-display: var(--space-9) 0 var(--space-7) 0;
   --margin-heading: var(--space-8) 0 var(--space-6) 0;
   --margin-paragraph: var(--space-5) 0;
+  --margin-list: var(--space-6) 0;
   --margin-list-items: var(--space-4) 0;
 
   /* LIST AND BULLET PADDING */
@@ -121,7 +122,7 @@ export const BlogMarkdownStyles = css`
   /* LIST PADDING */
   ul,
   ol {
-    /* padding-left: var(--list-indent-level-1); */
+    margin: var(--margin-list);
     padding-left: var(--list-indent-bullets);
   }
   li {

@@ -1,9 +1,12 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 import MorePosts from "../components/MorePosts";
 import { BlogMarkdownStyles } from "../styles/BlogMarkdownStyles";
 
 export default function BlogPostLayout({ children, meta }) {
+  const router = useRouter();
+  const isAboutPage = router.asPath.includes("about")
   return (
     <>
       <Head>
@@ -16,18 +19,23 @@ export default function BlogPostLayout({ children, meta }) {
         <h3>{meta.description}</h3>
       </BlogPostHero>
       <BlogPostContent>{children}</BlogPostContent>
-      <MorePosts currentPost={meta.slug} />
+      {isAboutPage ? <PageBottomSpacing/> : <MorePosts currentPost={meta.slug} />}
     </>
   );
 }
 
 const BlogPostContent = styled.article`
-    margin: 0 auto;
-    padding: 2rem; // site padding
-    max-width: 680px; // blog content width
-    ${BlogMarkdownStyles}
+  margin: 0 auto;
+  padding: 2rem; // site padding
+  max-width: 680px; // blog content width
+  ${BlogMarkdownStyles}
 `;
 
 const BlogPostHero = styled.section`
-    padding: 2rem; // site padding
+  padding: 2rem; // site padding
+`;
+
+const PageBottomSpacing = styled.div`
+    padding: 4rem 2rem 8rem 2rem;
+    margin-top: 4rem;
 `
