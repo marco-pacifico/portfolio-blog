@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import { useRouter } from "next/router";
-import { QUERY } from "../styles/1-DesignTokens";
+import { QUERY } from "../../styles/1-DesignTokens";
 import { NavLink, MobileNavLink } from "./NavLink";
 import MobileMenu from "./MobileMenu";
 
@@ -12,23 +12,23 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <NavLink href="/">Marco Pacifico</NavLink>
+      <NavLink href="/">M</NavLink>
 
       <DesktopNav>
+        <NavLink href="/" route={currentRoute}>
+          Index
+        </NavLink>
         <NavLink href="/about" route={currentRoute}>
           About
         </NavLink>
         <NavLink href="/blog" route={currentRoute}>
           Blog
         </NavLink>
-        <NavLink href="/work" route={currentRoute}>
-          Work
-        </NavLink>
         DarkToggle
       </DesktopNav>
 
       <MobileNav>
-        <MobileNavLink href="/about" route={currentRoute}>
+        {/* <MobileNavLink href="/about" route={currentRoute}>
           About
         </MobileNavLink>
         <MobileNavLink href="/blog" route={currentRoute}>
@@ -36,10 +36,9 @@ const Header = () => {
         </MobileNavLink>
         <MobileNavLink href="/work" route={currentRoute}>
           Work
-        </MobileNavLink>
+        </MobileNavLink> */}
         <MobileMenuButton onClick={() => setShowMobileMenu(true)}>
-          {" "}
-          Menu{" "}
+          Menu
         </MobileMenuButton>
       </MobileNav>
 
@@ -57,8 +56,8 @@ export default Header;
 const HeaderVariables = css`
   /* HEIGHT AND PADDING*/
   --header-height: var(--space-10);
-  --header-padding-top-bottom: var(--space-5);
-  --header-padding: var(--header-padding-top-bottom) var(--site-gutter); 
+  --header-padding-block: var(--space-5);
+  --header-padding: var(--header-padding-block) var(--site-gutter); 
 
   /* POSITION */
   --header-position-mode: sticky;
@@ -101,10 +100,10 @@ const StyledHeader = styled.header`
     /* Apply iOS mobile scroll offset to height and padding */
     --mobile-scroll-offset: env(safe-area-inset-bottom); 
     --header-height: calc(var(--header-height) + (2 * var(--mobile-scroll-offsett)));
-    --header-padding-top-bottom: var(--space-4);
-    --header-padding-bottom-offset: calc(var(--header-padding-top-bottom) + (2 * var(--mobile-scroll-offset)));
+    --header-padding-block: var(--space-4);
+    --header-padding-bottom-offset: calc(var(--header-padding-block) + (2 * var(--mobile-scroll-offset)));
     --header-padding: 
-      var(--space-4) // Top
+      var(--header-padding-block) // Top
       var(--site-gutter) // Right
       var(--header-padding-bottom-offset) // Bottom
       var(--site-gutter); // Left

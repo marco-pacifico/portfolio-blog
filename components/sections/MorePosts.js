@@ -1,7 +1,7 @@
-import POSTS from '../data/POSTS.js'
+import POSTS from '../../data/POSTS.js'
 import styled from 'styled-components';
 import Link from 'next/link.js';
-import { LinkStyles } from '../styles/LinkStyles.js';
+import { LinkStyles } from '../../styles/LinkStyles.js';
 
 const MorePosts = ({currentPost}) => {
     const filteredPOSTS = POSTS.filter((post) => post.slug !== currentPost);

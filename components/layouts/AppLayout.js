@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
-import Header from "../components/Header";
+import Header from "../nav/Header";
+import Footer from "../sections/Footer";
 
 export default function AppLayout({ children }) {
     return(
@@ -12,10 +13,11 @@ export default function AppLayout({ children }) {
             </Head>
             <Header />
             <Main>{children}</Main>
-            <footer></footer>
+            <Footer/>
         </>
     )
 }
 
 const Main = styled.main`
+    /* margin: var(--site-gutter); */
 `

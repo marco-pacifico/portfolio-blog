@@ -44,10 +44,10 @@ const fadein = keyframes`
 `;
 const slidein = keyframes`
   from {
-    transform: translateX(100%);
+    transform: translateY(100%);
   }
   to {
-    transform: translateX(0%);
+    transform: translateY(0%);
   }
 `;
 
@@ -58,7 +58,8 @@ const Overlay = styled(DialogOverlay)`
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-start;
   background: transparent;
 `;
 
@@ -80,7 +81,6 @@ const Content = styled(DialogContent)`
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
-
   animation: ${slidein} 280ms 200ms both cubic-bezier(0, 0.57, 0.37, 0.99);
 `;
 
@@ -88,7 +88,6 @@ const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-
   animation: ${fadein} 500ms 300ms both;
 `;
 const CloseButton = styled.button`

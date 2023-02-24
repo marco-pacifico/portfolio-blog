@@ -1,0 +1,107 @@
+import styled, { css } from "styled-components";
+import { LINEHEIGHT, LETTERSPACING, QUERY } from "../../styles/1-DesignTokens";
+
+// INDEX HERO
+export const H1 = styled.h1`
+  --font-size-min: var(--font-size-6);
+  --font-size-target: var(--font-size-fluid-9);
+  --font-size-max: var(--font-size-fluid-9);
+  font-size: clamp(
+    var(--font-size-min),
+    var(--font-size-target),
+    var(--font-size-max)
+  );
+  font-weight: var(--font-weight-light);
+  line-height: 1.2;
+  /* @media ${QUERY.phoneAndSmaller} {
+    line-height: ${LINEHEIGHT[3]};
+  } */
+  color: var(--color-text-strong);
+`;
+
+export const H1_Overline = styled.span`
+  color: var(--color-text-secondary);
+  line-height: ${LINEHEIGHT[4]};
+  &::selection {
+    color: var(--color-text-secondary);
+  }
+`;
+
+// INDEX SECTION
+export const H2 = styled.h2`
+  --font-size-min: var(--font-size-7);
+  --font-size-target: var(--font-size-fluid-9);
+  --font-size-max: var(--font-size-10);
+  font-size: clamp(
+    var(--font-size-min),
+    var(--font-size-target),
+    var(--font-size-max)
+  );
+  font-weight: var(--font-weight-light);
+  line-height: ${LINEHEIGHT[2]};
+  color: var(--color-text-strong);
+`;
+
+export const H3 = styled.h3`
+  --font-size-min: var(--font-size-6);
+  --font-size-target: var(--font-size-fluid-7);
+  --font-size-max: var(--font-size-8);
+  font-size: clamp(
+    var(--font-size-min),
+    var(--font-size-target),
+    var(--font-size-max)
+  );
+  font-weight: var(--font-weight-light);
+  line-height: ${LINEHEIGHT[3]};
+  color: var(--color-text-strong);
+`;
+
+// CARDS AND LIST ITMES
+export const Overline = styled.h5`
+  --font-size-min: var(--font-size-2);
+  --font-size-target: var(--font-size-fluid-3);
+  --font-size-max: var(--font-size-3);
+  font-size: clamp(
+    var(--font-size-min),
+    var(--font-size-target),
+    var(--font-size-max)
+  );
+  text-transform: uppercase;
+  letter-spacing: ${LETTERSPACING[4]}rem;
+`;
+
+const TitleAndDescription = css`
+  --font-size-min: var(--font-size-5);
+  --font-size-target: var(--font-size-fluid-7);
+  --font-size-max: var(--font-size-7);
+  font-size: clamp(
+    var(--font-size-min),
+    var(--font-size-target),
+    var(--font-size-max)
+  );
+  font-weight: var(--font-weight-regular);
+`;
+export const H4 = styled.h4`
+  ${TitleAndDescription}
+  @media ${QUERY.phoneAndSmaller} {
+    font-weight: var(--font-weight-medium);
+  }
+`;
+
+export const Paragraph = styled.p`
+  ${TitleAndDescription}
+  color: var(--color-text-secondary);
+`;
+
+export const LinkAffordance = styled.span`
+  --font-size-min: var(--font-size-6);
+  --font-size-target: var(--font-size-fluid-8);
+  --font-size-max: var(--font-size-8);
+  font-size: clamp(
+    var(--font-size-min),
+    var(--font-size-target),
+    var(--font-size-max)
+  );
+  font-weight: var(--font-weight-light);
+  line-height: 1em;
+`;

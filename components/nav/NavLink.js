@@ -1,13 +1,14 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { LinkStyles } from "../styles/LinkStyles";
+import { LinkStyles } from "../../styles/LinkStyles";
 
 export const NavLink = styled(Link)`
     ${LinkStyles}
     padding-bottom: 3px;
     /* background-position: left 104%; */
     font-size: var(--font-size-3);
-    font-weight: ${(p) => (p.href === p.route ? 'var(--font-weight-bold)' : 'var(--font-weight-regular)')};
+    /* font-weight: ${(p) => (p.href === p.route ? 'var(--font-weight-bold)' : 'var(--font-weight-regular)')}; */
+    font-weight: var(--font-weight-bold);
     /* font-weight: var(--font-weight-regular); */
     border: none;
     color: ${(p) => (p.href === p.route ? 'var(--color-text-link)' : 'var(--color-text-primary)')};

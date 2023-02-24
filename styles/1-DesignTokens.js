@@ -3,11 +3,14 @@ export const COLORS = {
     black: '0deg 0% 0%',
     gray: {
         100: '185deg 5% 95%',
-        200: '185deg 5% 80%',
+        200: '185deg 5% 90%',
         300: '185deg 5% 60%',
         400: '185deg 5% 40%',
         500: '185deg 5% 20%',
         600: '185deg 5% 17%',
+        700: '185deg 5% 12%',
+        800: '185deg 30% 5%',
+        900: '185deg 70% 3%',
     },
 };
 
@@ -42,7 +45,7 @@ export const FONTSIZE = [
     40,     // 6
     64,     // 7
     80,     // 8
-    128,    // 9
+    104,    // 9
 ];
 
 export const LINEHEIGHT = [
@@ -58,12 +61,15 @@ export const LETTERSPACING = [
     -0.024, // 1
     0.024,  // 2
     0.04,   // 3
+    0.08,   // 4
 ];
 
 export const BREAKPOINT = {
     phone: 600,
-    tablet: 950,
-    laptop: 1300,
+    tablet: 960,
+    laptop: 1200,
+    desktop: 1680,
+    desktoplarge: 1920,
 };
 
 export const QUERY = {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link.js";
-import { NavLink } from "../../components/NavLink.js";
+import { NavLink } from "../../components/nav/NavLink.js";
 
 export default function Blog({ allPostsData }) {
   return (

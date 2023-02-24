@@ -1,8 +1,9 @@
-import Head from "next/head";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import MorePosts from "../components/MorePosts";
-import { BlogMarkdownStyles } from "../styles/BlogMarkdownStyles";
+import Head from "next/head";
+import IndexSection from "../sections/IndexSection"; 
+import MorePosts from "../sections/MorePosts";
+import { BlogMarkdownStyles } from "../../styles/BlogMarkdownStyles";
 
 export default function BlogPostLayout({ children, meta }) {
   const router = useRouter();
@@ -14,10 +15,10 @@ export default function BlogPostLayout({ children, meta }) {
         <meta property="og:title" content={meta.title} key="title" />
         <meta name="description" content={meta.description} />
       </Head>
-      <BlogPostHero>
-        <h1>{meta.title}</h1>
-        <h3>{meta.description}</h3>
-      </BlogPostHero>
+      <BlogPostHero
+        title={meta.title}
+        description={meta.description}
+      />
       <BlogPostContent>{children}</BlogPostContent>
       {isAboutPage ? <PageBottomSpacing/> : <MorePosts currentPost={meta.slug} />}
     </>
@@ -31,8 +32,12 @@ const BlogPostContent = styled.article`
   ${BlogMarkdownStyles}
 `;
 
-const BlogPostHero = styled.section`
-  padding: var(--site-gutter); 
+const BlogPostHero = styled(IndexSection)`
+  /* padding: var(--site-gutter);  */
+  & section {
+      border-top: none;
+      border-bottom: 1px solid var(--color-border);
+  }
 `;
 
 const PageBottomSpacing = styled.div`
