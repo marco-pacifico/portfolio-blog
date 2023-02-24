@@ -20,6 +20,7 @@ export const SiteLayoutVariables = css`
   --viewportBasis: ${BREAKPOINT.desktoplarge};
     @media ${QUERY.laptopAndSmaller} {--viewportBasis: ${BREAKPOINT.desktop};}
     @media ${QUERY.tabletAndSmaller} {--viewportBasis: ${BREAKPOINT.laptop};}
+    
   --space-fluid-1: calc(${SPACE[1]} / var(--viewportBasis) * 100vw);
   --space-fluid-2: calc(${SPACE[2]} / var(--viewportBasis) * 100vw);
   --space-fluid-3: calc(${SPACE[3]} / var(--viewportBasis) * 100vw);
