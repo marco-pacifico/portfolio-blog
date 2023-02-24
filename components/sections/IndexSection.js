@@ -14,15 +14,18 @@ const IndexSection = ({title, description, children}) => {
 export default IndexSection;
 
 const SectionWrapper = styled.section`
-  --section-padding-block-min: var(--space-9);
-  --section-padding-block-target: var(--space-fluid-11);
-  --section-padding-block-max: var(--space-fluid-11);
-  --section-padding-block: clamp(
-    var(--section-padding-block-min),
-    var(--section-padding-block-target),
-    var(--section-padding-block-max)
+  --section-padding-top-min: var(--space-9);
+  --section-padding-top-target: var(--space-fluid-11);
+  --section-padding-top-max: var(--space-fluid-11);
+  --section-padding-top: clamp(
+    var(--section-padding-top-min),
+    var(--section-padding-top-target),
+    var(--section-padding-top-max)
   );
-  padding-block: var(--section-padding-block);
+  --section-padding-bottom: calc(2 * var(--section-padding-top));
+
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
   padding-right: var(--section-offset);
   margin-left: var(--section-offset);
   border-top: 1px solid var(--color-border);
