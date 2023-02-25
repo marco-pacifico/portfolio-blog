@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H4, H2, Paragraph } from "../ui/Typography";
+import { TitleAndDescription, H2, Paragraph } from "../ui/Typography";
 import { NavLink } from "../nav/NavLink";
 import { QUERY } from "../../styles/1-DesignTokens";
 
@@ -9,10 +9,10 @@ const Footer = () => {
       <Title>Say hello</Title>
       {/* <Description>Reach out if you'ld like to meet.</Description> */}
       <FooterLinks>
-        <FooterLink href="mailto:marco.pacifico@gmail.com" target="_blank" rel="noreferrer"><H4>Email</H4></FooterLink>
-        <FooterLink href="https://www.linkedin.com/in/marcopacifico/" target="_blank" rel="noreferrer"><H4>LinkedIn</H4></FooterLink>
-        <FooterLink href="https://twitter.com/marcopacifico" target="_blank" rel="noreferrer"><H4>Twitter</H4></FooterLink>
-        <FooterLink href="https://www.instagram.com/marcopacifico" target="_blank" rel="noreferrer"><H4>Instagram</H4></FooterLink>
+        <FooterLink href="mailto:marco.pacifico@gmail.com" target="_blank" rel="noreferrer">Email</FooterLink>
+        <FooterLink href="https://www.linkedin.com/in/marcopacifico/" target="_blank" rel="noreferrer">LinkedIn</FooterLink>
+        <FooterLink href="https://twitter.com/marcopacifico" target="_blank" rel="noreferrer">Twitter</FooterLink>
+        <FooterLink href="https://www.instagram.com/marcopacifico" target="_blank" rel="noreferrer">Instagram</FooterLink>
       </FooterLinks>
     </SectionWrapper>
   );
@@ -33,7 +33,7 @@ const SectionWrapper = styled.footer`
   --padding-left: var(--section-offset);
   padding: var(--padding-top) 0 var(--padding-bottom) var(--padding-left);
   border-top: 1px solid var(--color-border);
-  background-color: var(--color-background-dark);
+  background-color: var(--color-background-darker);
 `;
 
 const Title = styled(H2)`
@@ -64,7 +64,5 @@ const FooterLinks = styled.ol`
   }
 `
 const FooterLink = styled(NavLink)`
-  font-size: var(--font-size-6);
- 
-
+  ${TitleAndDescription}
 `

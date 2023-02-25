@@ -20,10 +20,10 @@ export const H1 = styled.h1`
 `;
 
 export const H1_Overline = styled.span`
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
   line-height: ${LINEHEIGHT[4]};
   &::selection {
-    color: var(--color-text-secondary);
+    color: var(--color-text-tertiary);
   }
 `;
 
@@ -70,9 +70,9 @@ export const Overline = styled.h5`
   letter-spacing: ${LETTERSPACING[4]}rem;
 `;
 
-const TitleAndDescription = css`
-  --font-size-min: var(--font-size-5);
-  --font-size-target: var(--font-size-fluid-7);
+export const TitleAndDescription = css`
+  --font-size-min: var(--font-size-4);
+  --font-size-target: var(--font-size-fluid-6);
   --font-size-max: var(--font-size-7);
   font-size: clamp(
     var(--font-size-min),
@@ -80,10 +80,11 @@ const TitleAndDescription = css`
     var(--font-size-max)
   );
   font-weight: var(--font-weight-regular);
+  color: var(--color-text-strong);
 `;
 export const H4 = styled.h4`
   ${TitleAndDescription}
-  @media ${QUERY.phoneAndSmaller} {
+  @media ${QUERY.desktopAndSmaller} {
     font-weight: var(--font-weight-medium);
   }
 `;
@@ -94,9 +95,9 @@ export const Paragraph = styled.p`
 `;
 
 export const LinkAffordance = styled.span`
-  --font-size-min: var(--font-size-6);
-  --font-size-target: var(--font-size-fluid-8);
-  --font-size-max: var(--font-size-8);
+  --font-size-min: var(--font-size-5);
+  --font-size-target: var(--font-size-fluid-7);
+  --font-size-max: var(--font-size-7);
   font-size: clamp(
     var(--font-size-min),
     var(--font-size-target),

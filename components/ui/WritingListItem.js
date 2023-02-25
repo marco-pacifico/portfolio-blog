@@ -41,10 +41,11 @@ const Wrapper = styled.li`
   margin-right: calc(-1 * var(--section-offset));
   border-bottom: 1px solid var(--color-border);
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-5);
   align-items: center;
   padding-right: var(--space-6);
   @media ${QUERY.phoneAndSmaller} {
+    gap: var(--space-3);
     align-items: flex-start;
   }
 `;

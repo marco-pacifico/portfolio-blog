@@ -1,16 +1,38 @@
 export const COLORS = {
-    white: '0deg 0% 100%',
-    black: '0deg 0% 0%',
+    white: {
+        700: '0deg 0% 100% / 78%',
+        800: '0deg 0% 100% / 85%',
+        900: '0deg 0% 100%',
+    },
     gray: {
-        100: '185deg 5% 95%',
-        200: '185deg 5% 90%',
-        300: '185deg 5% 60%',
-        400: '185deg 5% 40%',
-        500: '185deg 5% 20%',
-        600: '185deg 5% 17%',
-        700: '185deg 5% 12%',
-        800: '185deg 30% 5%',
-        900: '185deg 70% 3%',
+        100: '216deg 5% 95%',
+        200: '216deg 5% 90%',
+        300: '216deg 5% 60%',
+        400: '216deg 5% 40%',
+        500: '216deg 5% 20%',
+        600: '216deg 5% 17%',
+        700: '216deg 5% 11%',
+        800: '216deg 30% 5%',
+        900: '216deg 70% 3%',
+    },
+    sidewalk: {
+        50: '216deg 13% 97%',
+        100: '216deg 13% 95%',
+        200: '216deg 13% 90%',
+        300: '216deg 13% 85%',
+        400: '216deg 13% 70%',
+        500: '216deg 13% 57%',
+        600: '216deg 13% 52%',
+        700: '216deg 13% 32%',
+        800: '216deg 23% 25%',
+        900: '216deg 33% 13%',
+    },
+    sky: {
+        500: '200deg 92% 58%',
+        600: '203deg 58% 40%',
+    },
+    moss: {
+        500: '121deg 27% 66%',
     },
 };
 
@@ -76,6 +98,7 @@ export const QUERY = {
     phoneAndSmaller: `(max-width: ${BREAKPOINT.phone / 16}rem)`,
     tabletAndSmaller: `(max-width: ${BREAKPOINT.tablet / 16}rem)`,
     laptopAndSmaller: `(max-width: ${BREAKPOINT.laptop / 16}rem)`,
+    desktopAndSmaller: `(max-width: ${BREAKPOINT.desktop / 16}rem)`,
 };
 
 export const SHADOW = {
