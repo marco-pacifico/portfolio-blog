@@ -29,7 +29,7 @@ export const H1_Overline = styled.span`
 
 // INDEX SECTION
 export const H2 = styled.h2`
-  --font-size-min: var(--font-size-7);
+  --font-size-min: calc(var(--font-size-7) + 10*var(--font-size-bump));
   --font-size-target: var(--font-size-fluid-9);
   --font-size-max: var(--font-size-10);
   font-size: clamp(

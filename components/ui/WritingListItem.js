@@ -50,9 +50,17 @@ const Wrapper = styled.li`
 `;
 
 const InfoWrapper = styled.div`
+  --info-gap-min: var(--space-2);
+  --info-gap-target: var(--space-fluid-4);
+  --info-gap-max: var(--space-4);
+  --info-gap: clamp(
+    var(--info-gap-min),
+    var(--info-gap-target),
+    var(--info-gap-max)
+  );
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--info-gap);
   flex-grow: 1;
 `;
 
