@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H2, H3 } from "../ui/Typography";
+import { H4, H3 } from "../ui/Typography";
 
 const BlogPostHero = ({title, description}) => {
   return (
@@ -41,7 +41,7 @@ const SectionWrapper = styled.section`
   ); */
 `;
 
-const Title = styled(H2)`
+const Title = styled(H3)`
   --title-margin-min: var(--space-5);
   --title-margin-target: var(--space-fluid-7);
   --title-margin-max: var(--space-fluid-7);
@@ -53,7 +53,7 @@ const Title = styled(H2)`
   margin-bottom: var(--title-margin);
 `;
 
-const Description = styled(H3)`
+const Description = styled(H4)`
   --description-margin-min: var(--space-9);
   --description-margin-target: var(--space-fluid-11);
   --description-margin-max: var(--space-fluid-11);

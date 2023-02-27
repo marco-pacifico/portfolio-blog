@@ -17,8 +17,8 @@ const IndexHero = () => {
 export default IndexHero;
 
 const SectionWrapper = styled.section`
-  height: 80vh;
-  /* border-bottom: 1px solid var(--color-border); */
+  --hero-section-height: 80vh;
+  height: var(--hero-section-height);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

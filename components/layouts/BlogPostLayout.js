@@ -15,10 +15,10 @@ export default function BlogPostLayout({ children, meta }) {
         <meta property="og:title" content={meta.title} key="title" />
         <meta name="description" content={meta.description} />
       </Head>
-      <BlogPostHero
+      {/* <BlogPostHero
         title={meta.title}
         description={meta.description}
-      />
+      /> */}
       <Wrapper>
         <BlogPostContent>{children}</BlogPostContent> 
       </Wrapper>

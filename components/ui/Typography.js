@@ -17,6 +17,7 @@ export const H1 = styled.h1`
     line-height: ${LINEHEIGHT[3]};
   } */
   color: var(--color-text-strong);
+  letter-spacing: ${LETTERSPACING[2]}em;
 `;
 
 export const H1_Overline = styled.span`
@@ -40,6 +41,7 @@ export const H2 = styled.h2`
   font-weight: var(--font-weight-light);
   line-height: ${LINEHEIGHT[2]};
   color: var(--color-text-strong);
+  letter-spacing: ${LETTERSPACING[2]}em;
 `;
 
 export const H3 = styled.h3`
@@ -54,6 +56,7 @@ export const H3 = styled.h3`
   font-weight: var(--font-weight-light);
   line-height: ${LINEHEIGHT[3]};
   color: var(--color-text-strong);
+  letter-spacing: ${LETTERSPACING[2]}em;
 `;
 
 // CARDS AND LIST ITMES
@@ -81,7 +84,9 @@ export const TitleAndDescription = css`
   );
   font-weight: var(--font-weight-regular);
   color: var(--color-text-strong);
+  letter-spacing: ${LETTERSPACING[2]}em;
 `;
+
 export const H4 = styled.h4`
   ${TitleAndDescription}
   @media ${QUERY.desktopAndSmaller} {

@@ -1,30 +1,25 @@
 import styled from "styled-components";
-import Link from "next/link";
+import { UnstyledLink } from "./UnstyledLink";
 import { H4, Paragraph, LinkAffordance } from "./Typography";
 import { QUERY } from "../../styles/1-DesignTokens";
 
 const ListItem = ({ title, description }) => {
   return (
-    <StyledLink href="/blog/post-one">
+    <UnstyledLink href="/blog/post-one">
       <Wrapper>
         <InfoWrapper>
           <Title>{title}</Title>
-          <Description>{description}</Description>
+          {description && 
+          <Description>{description}</Description>}
         </InfoWrapper>
         <Arrow>→</Arrow>
       </Wrapper>
-    </StyledLink>
+    </UnstyledLink>
   );
 };
 
 export default ListItem;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  &:visited {
-    color: inherit;
-  }
-`;
 
 const Wrapper = styled.li`
   --list-item-space-min: var(--space-8);

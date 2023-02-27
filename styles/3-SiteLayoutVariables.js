@@ -58,6 +58,6 @@ export const SiteLayoutVariables = css`
   --width-blog-content: calc(680rem / 16); 
 
   /* HEADER */
-  --header-height: var(--space-10);
+  /* --header-height: var(--space-10);  */
 `;
 

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { QUERY } from "../../styles/1-DesignTokens";
 import { NavLink, MobileNavLink } from "./NavLink";
 import MobileMenu from "./MobileMenu";
+import Logo from "./Logo";
 
 const Header = () => {
   const router = useRouter();
@@ -12,7 +13,8 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <NavLink href="/">M</NavLink>
+      <Logo/>
+      {/* <NavLink href="/">M</NavLink> */}
 
       <DesktopNav>
         <NavLink href="/" route={currentRoute}>
@@ -92,10 +94,12 @@ const StyledHeader = styled.header`
 
   height: var(--header-height);
   padding: var(--header-padding);
-  background-color: var(--color-background);
-  border-bottom: var(--header-border);
+  /* background-color: var(--color-background); */
+  background-color: transparent;
+  /* border-bottom: var(--header-border); */
 
   @media ${QUERY.phoneAndSmaller} {
+    background-color: transparent;
     /* HEIGHT AND PADDING */
     /* Apply iOS mobile scroll offset to height and padding */
     --mobile-scroll-offset: env(safe-area-inset-bottom); 
