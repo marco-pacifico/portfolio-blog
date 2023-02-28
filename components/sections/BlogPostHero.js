@@ -6,7 +6,7 @@ const BlogPostHero = ({ category, title, description }) => {
   return (
     <SectionWrapper>
       <Category>{category}</Category>
-      <Title>{title}</Title>
+      <Title as="h1">{title}</Title>
       <Description as="p">{description}</Description>
     </SectionWrapper>
   );

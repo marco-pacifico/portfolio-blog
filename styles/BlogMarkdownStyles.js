@@ -3,6 +3,7 @@ import { LinkStyles } from "./LinkStyles";
 import {
     LINEHEIGHT,
     LETTERSPACING,
+    QUERY,
   } from "./1-DesignTokens";
 
 const BlogTypographyVariables = css`
@@ -22,11 +23,17 @@ const BlogTypographyVariables = css`
 
   /* TYPOGRAPHY MARGIN */
   --margin-image: var(--space-8) 0;
-  --margin-display: var(--space-9) 0 var(--space-7) 0;
-  --margin-heading: var(--space-8) 0 var(--space-4) 0;
-  --margin-paragraph: var(--space-4) 0;
-  --margin-list: var(--space-6) 0;
+  /* --margin-display: var(--space-9) 0 var(--space-7) 0; */
+  --margin-display: var(--space-9) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
+  /* --margin-heading: var(--space-8) 0 var(--space-4) 0; */
+  --margin-heading: var(--space-8) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
+  /* --margin-paragraph: var(--space-5) 0; */
+  --margin-paragraph: var(--space-5) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
+  /* --margin-list: var(--space-5) 0; */
+  --margin-list: 0; // Removing margin because blog layout is using css grid which prevents margin collapse
   --margin-list-items: var(--space-4) 0;
+  --margin-blockquote-level-1: var(--space-8) 0;
+  --margin-blockquote-level-2: var(--space-6) 0;
 
   /* LIST AND BULLET PADDING */
   --list-indent-bullets: var(--space-7);
@@ -174,11 +181,11 @@ export const BlogMarkdownStyles = css`
     padding-left: var(--space-6);
     display: block;
     position: relative;
-    margin: var(--space-9) 0;
+    margin: var(--margin-blockquote-level-1);
     /* margin-left: var(--space-3); */
 
     & blockquote {
-      margin: var(--space-6) 0;
+      margin: var(--margin-blockquote-level-2);
     }
 
     &:before {
@@ -216,6 +223,7 @@ export const BlogMarkdownStyles = css`
   }
 
   pre {
+    margin: var(--margin-paragraph);
     padding: var(--space-6) var(--space-7);
     background: rgba(135, 131, 120, 0.15);
     border-radius: 12px;

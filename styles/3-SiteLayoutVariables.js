@@ -55,7 +55,8 @@ export const SiteLayoutVariables = css`
 
   /* WIDTHS */
   --width-site-max: calc(var(--viewportBasis)rem / 16); 
-  --width-blog-content: calc(680rem / 16); 
+  /* --width-blog-content: calc(680rem / 16);  */
+  --width-blog-content: 56ch; 
 
   /* HEADER */
   /* --header-height: var(--space-10);  */
