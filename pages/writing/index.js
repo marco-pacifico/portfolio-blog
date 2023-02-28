@@ -13,7 +13,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Blog({ allPostsData }) {
+export default function Writing({ allPostsData }) {
   return (
     <>
       <PageHero title="Writing" />

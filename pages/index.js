@@ -1,7 +1,7 @@
 import IndexHero from '../components/sections/IndexHero'
 import IndexSection from '../components/sections/IndexSection'
 import Card from '../components/ui/WorkCard'
-import firstimage from '../pages/blog/post-one/image-one.jpg'
+import firstimage from './writing/post-one/image-one.jpg'
 import ListItem from '../components/ui/WritingListItem'
 
 export default function Home() {

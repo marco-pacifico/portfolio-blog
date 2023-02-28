@@ -5,7 +5,7 @@ import { QUERY } from "../../styles/1-DesignTokens";
 
 const ListItem = ({ slug, title, description }) => {
   return (
-    <UnstyledLink href={`/blog/${slug}`}>
+    <UnstyledLink href={`/writing/${slug}`}>
       <Wrapper key={slug}>
         <InfoWrapper>
           <Title>{title}</Title>

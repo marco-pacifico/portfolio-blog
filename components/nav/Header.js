@@ -23,8 +23,8 @@ const Header = () => {
         <NavLink href="/about" route={currentRoute}>
           About
         </NavLink>
-        <NavLink href="/blog" route={currentRoute}>
-          Blog
+        <NavLink href="/writing" route={currentRoute}>
+          Writing
         </NavLink>
         DarkToggle
       </DesktopNav>
