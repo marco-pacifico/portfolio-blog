@@ -3,10 +3,10 @@ import { UnstyledLink } from "./UnstyledLink";
 import { H4, Paragraph, LinkAffordance } from "./Typography";
 import { QUERY } from "../../styles/1-DesignTokens";
 
-const ListItem = ({ title, description }) => {
+const ListItem = ({ slug, title, description }) => {
   return (
-    <UnstyledLink href="/blog/post-one">
-      <Wrapper>
+    <UnstyledLink href={`/blog/${slug}`}>
+      <Wrapper key={slug}>
         <InfoWrapper>
           <Title>{title}</Title>
           {description && 
