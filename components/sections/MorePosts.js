@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ListItem from "../ui/WritingListItem.js";
+import ListItem from "../ui/ListItem.js";
 import POSTS from "../../data/POSTS.js";
 import { Overline } from "../ui/Typography.js";
 import { BREAKPOINT } from "../../styles/1-DesignTokens.js";
@@ -34,7 +34,7 @@ const MorePostsSection = styled.section`
   padding-right: var(--site-gutter);
   padding-bottom: var(--space-12);
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
-  margin: 0 auto;
+  margin-inline: auto;
 `;
 const MorePostsList = styled.ul`
 `;
