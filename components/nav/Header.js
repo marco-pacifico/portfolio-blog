@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { QUERY } from "../../styles/1-DesignTokens";
 import { NavLink, MobileNavLink } from "./NavLink";
 import MobileMenu from "./MobileMenu";
-import Logo from "./Logo";
+import NavLinkButton from "./Logo";
 
 const Header = () => {
   const router = useRouter();
@@ -13,20 +13,20 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <Logo/>
+      <NavLinkButton href="/" route={currentRoute}>M</NavLinkButton>
       {/* <NavLink href="/">M</NavLink> */}
 
       <DesktopNav>
-        <NavLink href="/" route={currentRoute}>
+        <NavLinkButton href="/" route={currentRoute}>
           Index
-        </NavLink>
-        <NavLink href="/about" route={currentRoute}>
+        </NavLinkButton>
+        <NavLinkButton href="/about" route={currentRoute}>
           About
-        </NavLink>
-        <NavLink href="/writing" route={currentRoute}>
+        </NavLinkButton>
+        <NavLinkButton href="/writing" route={currentRoute}>
           Writing
-        </NavLink>
-        DarkToggle
+        </NavLinkButton>
+        <NavLinkButton href="/">🌗</NavLinkButton>
       </DesktopNav>
 
       <MobileNav>
@@ -72,7 +72,7 @@ const HeaderVariables = css`
   --header-border: 1px solid var(--color-border);
 
   /* NAV ITEM SPACING*/
-  --nav-item-gap: var(--space-6);
+  --nav-item-gap: var(--space-5);
   @media ${QUERY.phoneAndSmaller} {
     /* Tighten nav item spacing on mobile */
     --nav-item-gap: var(--space-5);

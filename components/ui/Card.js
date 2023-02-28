@@ -39,7 +39,7 @@ const Wrapper = styled.li`
   display: flex;
   flex-direction: column;
   gap: var(--card-gap);
-  max-width: var(--width-blog-content);
+  /* max-width: var(--width-blog-content); */
   @media ${QUERY.tabletAndSmaller} {
     max-width: 100%;
   }
