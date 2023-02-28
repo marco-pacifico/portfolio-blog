@@ -5,7 +5,8 @@ import { H2, H3, Overline } from "../ui/Typography";
 const BlogPostHero = ({ category, title, description }) => {
   return (
     <SectionWrapper>
-      <Category>{category}</Category>
+      {category && 
+      <Category>{category}</Category>}
       <Title as="h1">{title}</Title>
       <Description as="p">{description}</Description>
     </SectionWrapper>
