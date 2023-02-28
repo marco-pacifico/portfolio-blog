@@ -44,9 +44,13 @@ export const BlogMarkdownStyles = css`
   ${BlogTypographyVariables}
 
   img {
+    grid-column: 1 / -1;
+    width: 100%;
     height: auto;
     border-radius: 16px;
     margin: var(--margin-heading);
+    /* max-height: 800px;
+    object-fit: cover; */
   }
   h1,
   h2,

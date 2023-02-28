@@ -30,7 +30,7 @@ export const H1_Overline = styled.span`
 
 // INDEX SECTION
 export const H2 = styled.h2`
-  --font-size-min: calc(var(--font-size-7) + 10*var(--font-size-bump));
+  --font-size-min: calc(var(--font-size-7) + 10 * var(--font-size-bump));
   --font-size-target: var(--font-size-fluid-9);
   --font-size-max: var(--font-size-10);
   font-size: clamp(
@@ -110,4 +110,9 @@ export const LinkAffordance = styled.span`
   );
   font-weight: var(--font-weight-light);
   line-height: 1em;
+`;
+
+export const NavText = styled.p`
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-bold);
 `;

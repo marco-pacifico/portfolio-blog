@@ -94,9 +94,9 @@ const StyledHeader = styled.header`
 
   height: var(--header-height);
   padding: var(--header-padding);
-  /* background-color: var(--color-background); */
-  background-color: transparent;
-  /* border-bottom: var(--header-border); */
+  background-color: var(--color-background);
+  /* background-color: transparent; */
+  border-bottom: var(--header-border);
 
   @media ${QUERY.phoneAndSmaller} {
     background-color: transparent;

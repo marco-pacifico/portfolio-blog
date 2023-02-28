@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { UnstyledLink } from "../ui/UnstyledLink";
+import { NavText } from "../ui/Typography";
 
 const Logo = () => {
     return (
@@ -26,9 +27,7 @@ const Wrapper = styled.div`
     }
 `
 
-const LogoMark = styled.p`
-    font-size: var(--font-size-4);
-    font-weight: var(--font-weight-bold);
+const LogoMark = styled(NavText)`
     color: var(--color-logo-text);
 
     ${UnstyledLink}:hover & {

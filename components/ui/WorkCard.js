@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import { Overline, H4, Paragraph } from "./Typography";
+import { QUERY } from "../../styles/1-DesignTokens";
 
 const Card = ({ title, description, image, category = "", slug }) => {
   return (
@@ -39,7 +40,10 @@ const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   gap: var(--card-gap);
-  max-width: 640px;
+  max-width: var(--width-blog-content);
+    @media ${QUERY.tabletAndSmaller} {
+      max-width: 100%; 
+    }
 `;
 
 const CardImage = styled(Image)`
