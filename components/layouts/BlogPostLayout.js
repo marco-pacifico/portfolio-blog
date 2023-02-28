@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import BlogPostHero from "../sections/BlogPostHero";
+import PageHero from "../sections/PageHero";
 import MorePosts from "../sections/MorePosts";
 import { BlogMarkdownStyles } from "../../styles/BlogMarkdownStyles";
 import { BREAKPOINT } from "../../styles/1-DesignTokens";
@@ -16,7 +16,7 @@ export default function BlogPostLayout({ children, meta }) {
         <meta property="og:title" content={meta.title} key="title" />
         <meta name="description" content={meta.description} />
       </Head>
-      <BlogPostHero category={meta.category} title={meta.title} description={meta.description} />
+      <PageHero category={meta.category} title={meta.title} description={meta.description} />
       <BlogPostContent>{children}</BlogPostContent>
       {isAboutPage ? (
         <PageBottomSpacing />

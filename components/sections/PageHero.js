@@ -2,18 +2,17 @@ import styled from "styled-components";
 import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
 import { H2, H3, Overline } from "../ui/Typography";
 
-const BlogPostHero = ({ category, title, description }) => {
+const PageHero = ({ category, title, description }) => {
   return (
     <SectionWrapper>
-      {category && 
-      <Category>{category}</Category>}
+      {category && <Category>{category}</Category>}
       <Title as="h1">{title}</Title>
-      <Description as="p">{description}</Description>
+      {description && <Description as="p">{description}</Description>}
     </SectionWrapper>
   );
 };
 
-export default BlogPostHero;
+export default PageHero;
 
 const SectionWrapper = styled.section`
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
@@ -26,19 +25,28 @@ const SectionWrapper = styled.section`
     var(--section-padding-top-target),
     var(--section-padding-top-max)
   );
+  --section-padding-bottom-min: var(--space-5);
+  --section-padding-bottom-target: var(--space-fluid-7);
+  --section-padding-bottom-max: var(--space-fluid-7);
+  --section-padding-bottom: clamp(
+    var(--section-padding-bottom-min),
+    var(--section-padding-bottom-target),
+    var(--section-padding-bottom-max)
+  );
   padding-top: var(--section-padding-top);
-  padding-bottom: 0;
+  padding-bottom: var(--section-padding-bottom);
   padding-right: var(--section-offset);
   padding-left: var(--section-offset);
 
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 60vh;
+  justify-content: flex-start;
+  height: 50vh; */
 
   @media ${QUERY.phoneAndSmaller} {
-    display: revert;
-    height: revert;
+    /* display: revert;
+    height: revert; */
+    /* padding-bottom: 0; */
   }
   /* border-bottom: 1px solid var(--color-border); */
   /* background: linear-gradient(
