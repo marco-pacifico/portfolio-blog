@@ -45,7 +45,7 @@ export const DarkColors = css`
     --color-background-darker: hsl(${COLORS.night[800]});
 
     /* BORDER COLORS */
-    --color-border: hsl(${COLORS.night[600]});
+    --color-border: hsl(${COLORS.night[700]});
 
     /* LOGO COLORS */
     --color-logo-text: var(--color-text-primary);

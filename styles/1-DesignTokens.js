@@ -73,7 +73,7 @@ export const FONTSIZE = [
 export const LINEHEIGHT = [
     0.9,    // 0
     1.0,    // 1
-    1.1,    // 2
+    1.2,    // 2
     1.4,    // 3
     1.75,   // 4
 ];

@@ -16,12 +16,7 @@ export default function BlogPostLayout({ children, meta }) {
         <meta property="og:title" content={meta.title} key="title" />
         <meta name="description" content={meta.description} />
       </Head>
-      {/* <BlogPostHero
-        title={meta.title}
-        description={meta.description}
-      /> */}
-      {/* <Wrapper>
-      </Wrapper> */}
+      <BlogPostHero category={meta.category} title={meta.title} description={meta.description} />
       <BlogPostContent>{children}</BlogPostContent>
       {isAboutPage ? (
         <PageBottomSpacing />
@@ -32,15 +27,12 @@ export default function BlogPostLayout({ children, meta }) {
   );
 }
 
-const Wrapper = styled.div`
-  /* background-color: var(--color-background-lighter); */
-`;
+// const Wrapper = styled.div`
+// `;
+
 const BlogPostContent = styled.article`
-  /* margin: 0 auto;
-  padding: var(--site-gutter); 
-  max-width: var(--width-blog-content); */
   ${BlogMarkdownStyles}
-  max-width: ${BREAKPOINT.desktoplarge/16}rem;
+  max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns:

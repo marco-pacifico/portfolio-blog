@@ -21,9 +21,10 @@ const BlogTypographyVariables = css`
   --letter-spacing-heading: ${LETTERSPACING[1]}em;
 
   /* TYPOGRAPHY MARGIN */
+  --margin-image: var(--space-8) 0;
   --margin-display: var(--space-9) 0 var(--space-7) 0;
-  --margin-heading: var(--space-8) 0 var(--space-6) 0;
-  --margin-paragraph: var(--space-5) 0;
+  --margin-heading: var(--space-8) 0 var(--space-4) 0;
+  --margin-paragraph: var(--space-4) 0;
   --margin-list: var(--space-6) 0;
   --margin-list-items: var(--space-4) 0;
 
@@ -41,6 +42,7 @@ const BlogTypographyVariables = css`
 `;
 
 export const BlogMarkdownStyles = css`
+
   ${BlogTypographyVariables}
 
   img {
@@ -48,7 +50,7 @@ export const BlogMarkdownStyles = css`
     width: 100%;
     height: auto;
     border-radius: 16px;
-    margin: var(--margin-heading);
+    margin: var(--margin-image);
     /* max-height: 800px;
     object-fit: cover; */
   }
@@ -65,34 +67,34 @@ export const BlogMarkdownStyles = css`
     margin: var(--margin-heading);
     color: var(--color-text-strong);
   }
-  h1 {
+  /* h1 {
     font-size: var(--font-size-9);
     letter-spacing: var(--letter-spacing-display);
     margin: var(--margin-display);
     margin-left: -5px;
-  }
-  h2 {
+  } */
+  /* h1 {
     font-size: var(--font-size-8);
     letter-spacing: var(--letter-spacing-display);
     margin: var(--margin-display);
     margin-left: -4px;
-  }
-  h3 {
+  }  */
+  h1 {
     font-size: var(--font-size-7);
     line-height: var(--line-height-heading-loose);
     /* margin-left: -1px; */
   }
-  h4 {
+  h2 {
     font-size: var(--font-size-6);
     line-height: var(--line-height-heading-loose);
     /* margin-left: -1px; */
   }
-  h5 {
+  h3 {
     font-size: var(--font-size-5);
     line-height: var(--line-height-paragraph);
     /* margin-left: -1px; */
   }
-  h6 {
+  h4, h5, h6 {
     font-size: var(--font-size-paragraph);
     line-height: var(--line-height-paragraph);
     /* margin-left: -1px; */
