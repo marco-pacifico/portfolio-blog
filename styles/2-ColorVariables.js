@@ -21,10 +21,19 @@ export const LightColors = css`
 
     /* BORDER COLORS */
     --color-border: hsl(${COLORS.sidewalk[300]});
-    
-    /* LOGO COLORS */
-    --color-logo-text: hsl(${COLORS.sidewalk[800]});
-    --color-logo-background: hsl(${COLORS.sidewalk[300]});
+
+    /* NAV LINK COLORS */
+    --color-nav-text: hsl(${COLORS.sidewalk[600]});
+    --color-nav-background:  hsl(${COLORS.sidewalk[200]});
+    /* NAV LINK COLORS (HOVER) */
+    --color-nav-text-hover:  var(--color-text-link);
+    --color-nav-background-hover: hsl(${COLORS.sidewalk[300]});
+    /* NAV LINK COLORS (ACTIVE) */
+    --color-nav-text-active: hsl(${COLORS.sidewalk[800]});
+    --color-nav-background-active:  hsl(${COLORS.sidewalk[300]});
+    /* NAV LINK COLORS (ACTIVE, HOVER) */
+    --color-nav-text-active-hover: var(--color-text-link);
+    --color-nav-background-active-hover: hsl(${COLORS.sidewalk[300]});
 `
 export const DarkColors = css`
     /* TEXT COLORS */
