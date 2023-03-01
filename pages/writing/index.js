@@ -19,7 +19,7 @@ export default function Writing({ allPostsData }) {
       <PageHero title="Writing" />
       <List>
         {allPostsData.map(({ slug, title, description }) => (
-          <ListItem slug={slug} title={title} description={description} />
+          <ListItem key={slug} slug={slug} title={title} description={description} />
         ))}
       </List>
     </>
@@ -27,7 +27,7 @@ export default function Writing({ allPostsData }) {
 }
 
 
-const List = styled.ul`
+const List = styled.ol`
   padding-left: var(--section-offset);
   padding-right: var(--section-offset);
   padding-bottom: var(--space-12);

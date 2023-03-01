@@ -12,7 +12,7 @@ const MorePosts = ({ currentPost }) => {
       <Overline>More Posts</Overline>
       <ol>
         {filteredPOSTS.map(({ slug, title, description }) => (
-          <ListItem slug={slug} title={title} description={description} />
+          <ListItem key={slug} slug={slug} title={title} description={description} />
         ))}
       </ol>
     </MorePostsSection>

@@ -5,6 +5,11 @@ category: Blog Post
 description: A look back on a year that was pretty ok
 slug: post-one
 ---
+import Image from 'next/image'
+import firstimage from './image-one.jpg'
+import BlogPostLayout from '../../../components/layouts/BlogPostLayout';
+export default ({ children }) => <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+
 <Image
     src={firstimage}
     alt="mountain at sunrise"
@@ -104,8 +109,3 @@ Paragraph The content of the post goes here
     <h3>Bla</h3>
 </section>
 ```
-
-import Image from 'next/image'
-import firstimage from './image-one.jpg'
-import BlogPostLayout from '../../../components/layouts/BlogPostLayout';
-export default ({ children }) => <BlogPostLayout meta={meta}>{children}</BlogPostLayout>

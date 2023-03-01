@@ -7,7 +7,7 @@ const ListItem = ({ slug, title, description }) => {
   return (
     <UnstyledLink key={slug} href={`/writing/${slug}`}>
       <Wrapper>
-        <InfoWrapper>
+        <InfoWrapper >
           <Title>{title}</Title>
           {description && 
           <Description>{description}</Description>}

@@ -3,7 +3,6 @@ import { LinkStyles } from "./LinkStyles";
 import {
     LINEHEIGHT,
     LETTERSPACING,
-    QUERY,
   } from "./1-DesignTokens";
 
 const BlogTypographyVariables = css`
@@ -34,6 +33,7 @@ const BlogTypographyVariables = css`
   --margin-list-items: var(--space-4) 0;
   --margin-blockquote-level-1: var(--space-8) 0;
   --margin-blockquote-level-2: var(--space-6) 0;
+  --margin-divider: var(--space-8) auto;
 
   /* LIST AND BULLET PADDING */
   --list-indent-bullets: var(--space-7);
@@ -51,7 +51,14 @@ const BlogTypographyVariables = css`
 export const BlogMarkdownStyles = css`
 
   ${BlogTypographyVariables}
-
+  /* Images will span full width of page layout */
+  hr {
+    margin: var(--margin-divider);
+    height: 1px;
+    background-color: var(--color-text-tertiary);
+    border: none;
+    width: 75%;
+  }
   img {
     grid-column: 1 / -1;
     width: 100%;
@@ -60,6 +67,10 @@ export const BlogMarkdownStyles = css`
     margin: var(--margin-image);
     /* max-height: 800px;
     object-fit: cover; */
+  }
+  /* Surround images with em tag set image with same as content width */
+  em > img {
+    grid-column: 2
   }
   h1,
   h2,
@@ -130,6 +141,7 @@ export const BlogMarkdownStyles = css`
 
   strong {
     font-weight: var(--font-weight-bold);
+    color: var(--color-text-strong);
   }
 
   /* LIST PADDING */

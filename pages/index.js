@@ -27,6 +27,7 @@ export default function Home({ allPostsData }) {
         <Grid>
           {allPostsData.map(({ slug, title, description, category }) => (
               <Card
+                key={slug}
                 slug={slug}
                 category={category}
                 image={firstimage}
@@ -42,7 +43,7 @@ export default function Home({ allPostsData }) {
       >
         <ol>
           {allPostsData.map(({ slug, title, description }) => (
-            <ListItem slug={slug} title={title} description={description} />
+            <ListItem key={slug} slug={slug} title={title} description={description} />
           ))}
         </ol>
       </IndexSection>
