@@ -37,24 +37,6 @@ const SectionWrapper = styled.section`
   padding-bottom: var(--section-padding-bottom);
   padding-right: var(--section-offset);
   padding-left: var(--section-offset);
-
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 50vh; */
-
-  @media ${QUERY.phoneAndSmaller} {
-    /* display: revert;
-    height: revert; */
-    /* padding-bottom: 0; */
-  }
-  /* border-bottom: 1px solid var(--color-border); */
-  /* background: linear-gradient(
-    0deg,
-    var(--color-background),
-    10%,
-    var(--color-background-lighter),
-  ); */
 `;
 
 const Category = styled(Overline)`
@@ -67,7 +49,6 @@ const Category = styled(Overline)`
     var(--title-margin-max)
   );
   margin-bottom: var(--title-margin);
-  /* margin-left: var(--space-2); */
 `;
 const Title = styled(H2)`
   --title-margin-min: var(--space-4);
@@ -96,7 +77,4 @@ const Description = styled(H3)`
   @media ${QUERY.phoneAndSmaller} {
     margin-bottom: 0;
   }
-
-  /* max-width: 38ch;
-  /* margin: 0; */
 `;

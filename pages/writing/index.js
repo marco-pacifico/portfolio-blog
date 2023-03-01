@@ -29,7 +29,7 @@ export default function Writing({ allPostsData }) {
 
 const List = styled.ul`
   padding-left: var(--section-offset);
-  padding-right: var(--site-gutter);
+  padding-right: var(--section-offset);
   padding-bottom: var(--space-12);
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
