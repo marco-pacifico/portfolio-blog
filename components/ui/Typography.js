@@ -77,7 +77,7 @@ export const Overline = styled.h5`
 export const TitleAndDescription = css`
   --font-size-min: var(--font-size-4);
   --font-size-target: var(--font-size-fluid-6);
-  --font-size-max: var(--font-size-7);
+  --font-size-max: var(--font-size-6);
   font-size: clamp(
     var(--font-size-min),
     var(--font-size-target),
