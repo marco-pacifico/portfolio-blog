@@ -5,23 +5,23 @@ import { QUERY } from "../../styles/1-DesignTokens";
 
 const ListItem = ({ slug, title, description }) => {
   return (
-    <UnstyledLink key={slug} href={`/writing/${slug}`}>
-      <Wrapper>
-        <InfoWrapper >
-          <Title>{title}</Title>
-          {description && 
-          <Description>{description}</Description>}
-        </InfoWrapper>
-        <Arrow>→</Arrow>
-      </Wrapper>
-    </UnstyledLink>
+    <li key={slug}>
+      <UnstyledLink key={slug} href={`/writing/${slug}`}>
+        <Wrapper>
+          <InfoWrapper>
+            <Title>{title}</Title>
+            {description && <Description>{description}</Description>}
+          </InfoWrapper>
+          <Arrow>→</Arrow>
+        </Wrapper>
+      </UnstyledLink>
+    </li>
   );
 };
 
 export default ListItem;
 
-
-const Wrapper = styled.li`
+const Wrapper = styled.div`
   --list-item-space-min: var(--space-7);
   --list-item-space-target: var(--space-fluid-8);
   --list-item-space-max: var(--space-fluid-8);
@@ -30,7 +30,7 @@ const Wrapper = styled.li`
     var(--list-item-space-target),
     var(--list-item-space-max)
   );
-  
+
   padding-bottom: var(--list-item-space);
   margin-top: var(--list-item-space);
   margin-right: calc(-1 * var(--section-offset));

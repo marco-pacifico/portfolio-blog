@@ -4,7 +4,7 @@ import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
 const Grid = ({ children }) => {
   return <CardGrid>{children}</CardGrid>;
 };
-const CardGrid = styled.div`
+const CardGrid = styled.ol`
   --cards-per-row: 3;
   --grid-gap-min: var(--space-8);
   --grid-gap-target: var(--space-fluid-7);

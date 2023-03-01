@@ -7,16 +7,18 @@ import { QUERY } from "../../styles/1-DesignTokens";
 
 const Card = ({ title, description, image, category = "", slug }) => {
   return (
-    <CardLink key={slug} href={`/writing/${slug}`}>
-      <Wrapper>
-        <CardImage src={image} />
-        <InfoWrapper>
-          <Category>{category}</Category>
-          <Title>{title}</Title>
-          <Description>{description}</Description>
-        </InfoWrapper>
-      </Wrapper>
-    </CardLink>
+    <li key={slug}>
+      <CardLink href={`/writing/${slug}`}>
+        <Wrapper>
+          <CardImage src={image} />
+          <InfoWrapper>
+            <Category>{category}</Category>
+            <Title>{title}</Title>
+            <Description>{description}</Description>
+          </InfoWrapper>
+        </Wrapper>
+      </CardLink>
+    </li>
   );
 };
 
@@ -27,7 +29,7 @@ const CardLink = styled(UnstyledLink)`
   min-width: 320px;
 `;
 
-const Wrapper = styled.li`
+const Wrapper = styled.div`
   --card-gap-min: var(--space-6);
   --card-gap-target: var(--space-fluid-7);
   --card-gap-max: var(--space-7);
