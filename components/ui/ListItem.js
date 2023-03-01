@@ -47,8 +47,8 @@ const Wrapper = styled.li`
 
 const InfoWrapper = styled.div`
   --info-gap-min: var(--space-2);
-  --info-gap-target: var(--space-fluid-4);
-  --info-gap-max: var(--space-4);
+  --info-gap-target: var(--space-fluid-2);
+  --info-gap-max: var(--space-fluid-2);
   --info-gap: clamp(
     var(--info-gap-min),
     var(--info-gap-target),

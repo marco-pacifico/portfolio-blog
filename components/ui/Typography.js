@@ -61,9 +61,9 @@ export const H3 = styled.h3`
 
 // CARDS AND LIST ITMES
 export const Overline = styled.h5`
-  --font-size-min: var(--font-size-2);
-  --font-size-target: var(--font-size-fluid-3);
-  --font-size-max: var(--font-size-3);
+  --font-size-min: var(--font-size-1);
+  --font-size-target: var(--font-size-fluid-2);
+  --font-size-max: var(--font-size-2);
   font-size: clamp(
     var(--font-size-min),
     var(--font-size-target),

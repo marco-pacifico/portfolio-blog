@@ -33,11 +33,13 @@ export const DarkColors = css`
     --color-text-secondary: hsl(${COLORS.night[400]});
     --color-text-tertiary: hsl(${COLORS.night[400]});
 
-    /* LINK COLORS */
-    --color-text-link: hsl(${COLORS.moss[500]});
-    --color-text-link-underline: hsl(${COLORS.night[400]});
+    /* TEXT SELECTION COLRS */
     --color-text-selection-background: var(--color-text-link);
     --color-text-selection-text: var(--color-text-strong);
+
+    /* HYPERLINK COLORS */
+    --color-text-link: hsl(${COLORS.moss[500]});
+    --color-text-link-underline: hsl(${COLORS.night[400]});
 
     /* BACKGROUND COLORS */
     --color-background: hsl(${COLORS.night[900]});
@@ -47,7 +49,17 @@ export const DarkColors = css`
     /* BORDER COLORS */
     --color-border: hsl(${COLORS.night[700]});
 
-    /* LOGO COLORS */
-    --color-logo-text: var(--color-text-primary);
-    --color-logo-background:  var(--color-background-lighter);
+    /* NAV LINK COLORS */
+    --color-nav-text: hsl(${COLORS.night[100]});
+    --color-nav-background:  hsl(${COLORS.night[600]});
+    /* NAV LINK COLORS (HOVER) */
+    --color-nav-text-hover:  var(--color-text-link);
+    --color-nav-background-hover: hsl(${COLORS.night[700]});
+    /* NAV LINK COLORS (ACTIVE) */
+    --color-nav-text-active: hsl(${COLORS.night[600]});
+    --color-nav-background-active:  hsl(${COLORS.night[300]});
+    /* NAV LINK COLORS (ACTIVE, HOVER) */
+    /* --color-nav-text-active-hover: var(--color-text-link); */
+    --color-nav-text-active-hover: blue;
+    --color-nav-background-active-hover: hsl(${COLORS.night[200]});
 `

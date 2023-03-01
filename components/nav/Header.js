@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { QUERY } from "../../styles/1-DesignTokens";
 import { NavLink, MobileNavLink } from "./NavLink";
 import MobileMenu from "./MobileMenu";
-import NavLinkButton from "./Logo";
+import NavLinkButton from "./NavLinkButton";
 
 const Header = () => {
   const router = useRouter();
@@ -13,20 +13,20 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <NavLinkButton href="/" route={currentRoute}>M</NavLinkButton>
+      <NavLinkButton size="large" href="/" route={currentRoute}>M</NavLinkButton>
       {/* <NavLink href="/">M</NavLink> */}
 
       <DesktopNav>
-        <NavLinkButton href="/" route={currentRoute}>
+        {/* <NavLinkButton href="/" route={currentRoute}>
           Index
-        </NavLinkButton>
-        <NavLinkButton href="/about" route={currentRoute}>
+        </NavLinkButton> */}
+        <NavLinkButton size="small" href="/about" route={currentRoute}>
           About
         </NavLinkButton>
-        <NavLinkButton href="/writing" route={currentRoute}>
+        <NavLinkButton size="small" href="/writing" route={currentRoute}>
           Writing
         </NavLinkButton>
-        <NavLinkButton href="/">🌗</NavLinkButton>
+        <NavLinkButton size="small" href="/">🌗</NavLinkButton>
       </DesktopNav>
 
       <MobileNav>
@@ -94,9 +94,9 @@ const StyledHeader = styled.header`
 
   height: var(--header-height);
   padding: var(--header-padding);
-  background-color: var(--color-background);
-  /* background-color: transparent; */
-  border-bottom: var(--header-border);
+  /* background-color: var(--color-background); */
+  background-color: transparent;
+  /* border-bottom: var(--header-border); */
 
   @media ${QUERY.phoneAndSmaller} {
     background-color: transparent;

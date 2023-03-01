@@ -7,8 +7,8 @@ import { QUERY } from "../../styles/1-DesignTokens";
 
 const Card = ({ title, description, image, category = "", slug }) => {
   return (
-    <CardLink href={`/writing/${slug}`}>
-      <Wrapper key={slug}>
+    <CardLink key={slug} href={`/writing/${slug}`}>
+      <Wrapper>
         <CardImage src={image} />
         <InfoWrapper>
           <Category>{category}</Category>
@@ -46,7 +46,7 @@ const Wrapper = styled.li`
 `;
 
 const CardImage = styled(Image)`
-  --radius-min: var(--space-5);
+  --radius-min: var(--space-4);
   --radius-target: var(--space-fluid-8);
   --radius-max: var(--space-8);
   --radius: clamp(var(--radius-min), var(--radius-target), var(--radius-max));
@@ -65,8 +65,8 @@ const CardImage = styled(Image)`
 
 const InfoWrapper = styled.div`
   --info-gap-min: var(--space-2);
-  --info-gap-target: var(--space-fluid-4);
-  --info-gap-max: var(--space-4);
+  --info-gap-target: var(--space-fluid-2);
+  --info-gap-max: var(--space-fluid-2);
   --info-gap: clamp(
     var(--info-gap-min),
     var(--info-gap-target),
