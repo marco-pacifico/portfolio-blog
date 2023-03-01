@@ -50,16 +50,15 @@ export const DarkColors = css`
     --color-border: hsl(${COLORS.night[700]});
 
     /* NAV LINK COLORS */
-    --color-nav-text: hsl(${COLORS.night[100]});
-    --color-nav-background:  hsl(${COLORS.night[600]});
+    --color-nav-text: hsl(${COLORS.night[300]});
+    --color-nav-background:  hsl(${COLORS.night[700]});
     /* NAV LINK COLORS (HOVER) */
     --color-nav-text-hover:  var(--color-text-link);
-    --color-nav-background-hover: hsl(${COLORS.night[700]});
+    --color-nav-background-hover: hsl(${COLORS.night[600]});
     /* NAV LINK COLORS (ACTIVE) */
-    --color-nav-text-active: hsl(${COLORS.night[600]});
-    --color-nav-background-active:  hsl(${COLORS.night[300]});
+    --color-nav-text-active: hsl(${COLORS.night[100]});
+    --color-nav-background-active:  hsl(${COLORS.night[500]});
     /* NAV LINK COLORS (ACTIVE, HOVER) */
-    /* --color-nav-text-active-hover: var(--color-text-link); */
-    --color-nav-text-active-hover: blue;
-    --color-nav-background-active-hover: hsl(${COLORS.night[200]});
+    --color-nav-text-active-hover: var(--color-text-link);
+    --color-nav-background-active-hover: hsl(${COLORS.night[600]});
 `
