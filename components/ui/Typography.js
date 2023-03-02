@@ -69,7 +69,6 @@ export const Overline = styled.h5`
     var(--font-size-target),
     var(--font-size-max)
   );
-  margin-left: var(--space-2);
   text-transform: uppercase;
   letter-spacing: ${LETTERSPACING[4]}rem;
 `;

@@ -3,11 +3,15 @@ import { LinkStyles } from "./LinkStyles";
 import {
     LINEHEIGHT,
     LETTERSPACING,
+    QUERY,
   } from "./1-DesignTokens";
 
 const BlogTypographyVariables = css`
   /* FONT SIZES */
-  --font-size-paragraph: calc(var(--font-size-4) + 2*var(--font-size-bump));
+  --font-size-paragraph: var(--font-size-5);
+    @media ${QUERY.tabletAndSmaller} {
+      --font-size-paragraph: calc(var(--font-size-4) + 2*var(--font-size-bump));
+    }
   --font-size-caption: var(--font-size-2);
 
   /* LINE HEIGHT */

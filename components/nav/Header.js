@@ -13,20 +13,19 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <NavLinkButton size="large" href="/" route={currentRoute}>M</NavLinkButton>
-      {/* <NavLink href="/">M</NavLink> */}
-
+      <NavLinkButton size="large" href="/" route={currentRoute}>
+        M
+      </NavLinkButton>
       <DesktopNav>
-        {/* <NavLinkButton href="/" route={currentRoute}>
-          Index
-        </NavLinkButton> */}
         <NavLinkButton size="small" href="/about" route={currentRoute}>
           About
         </NavLinkButton>
         <NavLinkButton size="small" href="/writing" route={currentRoute}>
           Writing
         </NavLinkButton>
-        <NavLinkButton size="small" href="/">🌗</NavLinkButton>
+        <NavLinkButton size="small" href="/">
+          🌗
+        </NavLinkButton>
       </DesktopNav>
 
       <MobileNav>
@@ -59,7 +58,7 @@ const HeaderVariables = css`
   /* HEIGHT AND PADDING*/
   --header-height: var(--space-10);
   --header-padding-block: var(--space-5);
-  --header-padding: var(--header-padding-block) var(--site-gutter); 
+  --header-padding: var(--header-padding-block) var(--site-gutter);
 
   /* POSITION */
   --header-position-mode: sticky;
@@ -102,12 +101,15 @@ const StyledHeader = styled.header`
     background-color: transparent;
     /* HEIGHT AND PADDING */
     /* Apply iOS mobile scroll offset to height and padding */
-    --mobile-scroll-offset: env(safe-area-inset-bottom); 
-    --header-height: calc(var(--header-height) + (2 * var(--mobile-scroll-offsett)));
+    --mobile-scroll-offset: env(safe-area-inset-bottom);
+    --header-height: calc(
+      var(--header-height) + (2 * var(--mobile-scroll-offsett))
+    );
     --header-padding-block: var(--space-4);
-    --header-padding-bottom-offset: calc(var(--header-padding-block) + (2 * var(--mobile-scroll-offset)));
-    --header-padding: 
-      var(--header-padding-block) // Top
+    --header-padding-bottom-offset: calc(
+      var(--header-padding-block) + (2 * var(--mobile-scroll-offset))
+    );
+    --header-padding: var(--header-padding-block) // Top
       var(--site-gutter) // Right
       var(--header-padding-bottom-offset) // Bottom
       var(--site-gutter); // Left

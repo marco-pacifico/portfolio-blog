@@ -48,6 +48,7 @@ const Category = styled(Overline)`
     var(--title-margin-target),
     var(--title-margin-max)
   );
+  margin-left: var(--space-fluid-2);
   margin-bottom: var(--title-margin);
 `;
 const Title = styled(H2)`

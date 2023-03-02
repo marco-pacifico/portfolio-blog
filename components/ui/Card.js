@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { UnstyledLink } from "./UnstyledLink";
-import Link from "next/link";
 import { Overline, H4, Paragraph } from "./Typography";
-import { QUERY } from "../../styles/1-DesignTokens";
+import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
 
 const Card = ({ title, description, image, category = "", slug }) => {
   return (
@@ -79,7 +78,16 @@ const InfoWrapper = styled.div`
   gap: var(--info-gap);
 `;
 
-const Category = styled(Overline)``;
+const Category = styled(Overline)`
+  margin-left: var(--space-1);
+  @media ${QUERY.laptopAndSmaller} {
+    margin-left: calc(var(--space-1) / 2 );
+  }
+  @media ${QUERY.phoneAndSmaller} {
+    margin-left: 0;
+  }
+`;
+
 const Title = styled(H4)`
   transition: all 200ms ease-in-out;
   ${Wrapper}:hover & {

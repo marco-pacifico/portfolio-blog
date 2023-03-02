@@ -92,7 +92,8 @@ export const BREAKPOINT = {
     laptop: 1200,
     desktop: 1680,
     desktoplarge: 1920,
-};
+    // Breakpoints affect site basis which affects fluid spacing and fluid font sizes
+}; 
 
 export const QUERY = {
     phoneAndSmaller: `(max-width: ${BREAKPOINT.phone / 16}rem)`,
