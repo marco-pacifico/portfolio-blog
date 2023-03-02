@@ -2,33 +2,33 @@ import styled from "styled-components";
 import Card from "../../components/ui/Card.js";
 import Grid from "../../components/ui/Grid.js";
 import PageHero from "../../components/sections/PageHero.js";
-import { getSortedPostsData } from "../../lib/getAndSavePosts.js";
+import { getSortedProjectsData } from "../../lib/getAndSaveProjects.js";
 import { BREAKPOINT } from "../../styles/1-DesignTokens.js";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allProjectsData = getSortedProjectsData();
   return {
     props: {
-      allPostsData,
+      allProjectsData,
     },
   };
 }
 
-export default function Work({ allPostsData }) {
+export default function Work({ allProjectsData }) {
   return (
     <>
-      <PageHero title="Writing" />
-      <Grid>
-        {allPostsData.map(({ slug, title, description }) => (
+      <PageHero title="Work" />
+      <List>
+        {allProjectsData.map(({ slug, title, description }) => (
           <Card slug={slug} title={title} description={description} />
         ))}
-      </Grid>
+      </List>
     </>
   );
 }
 
 
-const List = styled.ol`
+const List = styled(Grid)`
   padding-left: var(--section-offset);
   padding-right: var(--section-offset);
   padding-bottom: var(--space-12);
