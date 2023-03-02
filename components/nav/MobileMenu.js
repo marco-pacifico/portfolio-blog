@@ -1,7 +1,8 @@
 import { DialogOverlay, DialogContent } from "@reach/dialog"; // https://reach.tech/dialog/
 import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
-import { NavLink } from "./NavLinkFooter";
+import NavLink from "./NavLink";
+import NavButton from "./NavButton";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   const router = useRouter();
@@ -11,20 +12,20 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
       <Backdrop />
       <Content aria-label="Menu">
         <InnerWrapper>
-          <CloseButton onClick={onDismiss}>Close</CloseButton>
           <Nav>
             <NavLink href="/" route={currentRoute} onClick={onDismiss}>
               Home
             </NavLink>
-            <NavLink href="/about" route={currentRoute} onClick={onDismiss}>
-              About
-            </NavLink>
-            <NavLink href="/blog" route={currentRoute} onClick={onDismiss}>
-              Blog
-            </NavLink>
             <NavLink href="/work" route={currentRoute} onClick={onDismiss}>
               Work
             </NavLink>
+            <NavLink href="/writing" route={currentRoute} onClick={onDismiss}>
+              Writing
+            </NavLink>
+            <NavLink href="/about" route={currentRoute} onClick={onDismiss}>
+              About
+            </NavLink>
+            <CloseButton onClick={onDismiss}>Close</CloseButton>
           </Nav>
         </InnerWrapper>
       </Content>
@@ -48,6 +49,12 @@ const slidein = keyframes`
   }
   to {
     transform: translateY(0%);
+  }
+`;
+
+const CloseButton = styled(NavButton)`
+  & > p {
+    color: var(--color-nav-text);
   }
 `;
 
@@ -76,9 +83,9 @@ const Backdrop = styled.div`
 const Content = styled(DialogContent)`
   position: absolute;
   background: var(--color-background);
-  width: 300px;
-  height: 100%;
-  padding: 24px 32px;
+  width: 100%;
+  height: auto;
+  padding: var(--site-gutter);
   display: flex;
   flex-direction: column;
   animation: ${slidein} 280ms 200ms both cubic-bezier(0, 0.57, 0.37, 0.99);
@@ -90,15 +97,9 @@ const InnerWrapper = styled.div`
   height: 100%;
   animation: ${fadein} 500ms 300ms both;
 `;
-const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 0;
-  padding: 16px;
-`;
 
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-6);
 `;

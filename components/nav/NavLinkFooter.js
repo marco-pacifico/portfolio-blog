@@ -16,13 +16,3 @@ export const NavLink = styled(Link)`
     /* --color-link-background-image: ${(p) => (p.href === p.route ? 'var(--color-text-link)' : 'var(--color-text-secondary)')}; */
     --color-link-background-image: var(--color-text-secondary);
 `
-
-export const MobileNavLink = styled(Link)`
-    padding: 8px 16px;
-    border-radius: 10000px;
-    color: ${(p) => (p.href === p.route ? 'var(--color-background)' : 'var(--color-text-primary)')};
-    background-color: ${(p) => (p.href === p.route ? 'var(--color-text-link)' : 'var(--color-background-light)')};
-    text-decoration: none;
-    font-size: var(--font-size-3);
-    font-weight: var(--font-weight-bold);
-`

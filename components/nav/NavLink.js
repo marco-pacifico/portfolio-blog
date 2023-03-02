@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import { UnstyledLink } from "../ui/UnstyledLink";
 import { NavText } from "../ui/Typography";
 
-const NavLink = ({ href, route, size, children }) => {
+const NavLink = ({ onClick, href, route, size, children }) => {
   return (
-    <StyledLink href={href} route={route}>
+    <StyledLink onClick={onClick} href={href} route={route}>
       <Wrapper href={href} route={route}>
         <NavText size={size} href={href} route={route}>{children}</NavText>
       </Wrapper>
