@@ -1,1 +1,1 @@
-const PROJECTS = [{"title":"Second Funnel CMS","date":"2017-10-22","category":"Case Study","description":"A CMS for configuring eCommerce landing pages","slug":"ecommerce-cms"}]; export default PROJECTS;
+const PROJECTS = [{"title":"Avie Medical","date":"2017-10-24","category":"Case Study","description":"A web-based CRM tool for medical clinics","slug":"medical-crm"},{"title":"Second Funnel CMS","date":"2017-10-22","category":"Case Study","description":"A CMS for configuring eCommerce landing pages","slug":"ecommerce-cms"}]; export default PROJECTS;

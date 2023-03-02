@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import { useRouter } from "next/router";
 import { QUERY } from "../../styles/1-DesignTokens";
-import { NavLink, MobileNavLink } from "./NavLink";
 import MobileMenu from "./MobileMenu";
-import NavLinkButton from "./NavLinkButton";
+import NavLink from "./NavLink";
+import NavButton from "./NavButton";
 
 const Header = () => {
   const router = useRouter();
@@ -13,19 +13,19 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <NavLinkButton size="large" href="/" route={currentRoute}>
+      <NavLink href="/" route={currentRoute}>
         M
-      </NavLinkButton>
+      </NavLink>
       <DesktopNav>
-        <NavLinkButton size="small" href="/about" route={currentRoute}>
+        <NavLink size="small" href="/about" route={currentRoute}>
           About
-        </NavLinkButton>
-        <NavLinkButton size="small" href="/writing" route={currentRoute}>
+        </NavLink>
+        <NavLink size="small" href="/writing" route={currentRoute}>
           Writing
-        </NavLinkButton>
-        <NavLinkButton size="small" href="/">
+        </NavLink>
+        <NavButton onClick={() => setShowMobileMenu(true)}>
           🌗
-        </NavLinkButton>
+        </NavButton>
       </DesktopNav>
 
       <MobileNav>
@@ -38,9 +38,9 @@ const Header = () => {
         <MobileNavLink href="/work" route={currentRoute}>
           Work
         </MobileNavLink> */}
-        <MobileMenuButton onClick={() => setShowMobileMenu(true)}>
+        <NavButton onClick={() => setShowMobileMenu(true)}>
           Menu
-        </MobileMenuButton>
+        </NavButton>
       </MobileNav>
 
       <MobileMenu

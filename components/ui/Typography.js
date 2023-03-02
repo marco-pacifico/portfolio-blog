@@ -112,7 +112,29 @@ export const LinkAffordance = styled.span`
   line-height: 1em;
 `;
 
+// export const Nav = styled.p`
+//   font-size: var(--font-size-4);
+//   font-weight: var(--font-weight-bold);
+// `;
+
+// export const NavSmall = styled(Nav)`
+//   font-size: var(--font-size-3);
+// `
+
 export const NavText = styled.p`
-  font-size: var(--font-size-4);
   font-weight: var(--font-weight-bold);
+
+  /* Use smaller font size for small variant */
+  font-size: ${(p) =>
+    p.size === "small" ? "var(--font-size-3)" : "var(--font-size-5)"};
+
+  /* If href is current route, then apply active text color */
+  color: ${(p) =>
+    p.href === p.route
+      ? "var(--color-nav-text-active)"
+      : "var(--color-nav-text)"};
+
+  transition: all 200ms ease-in;
 `;
+
+export const FooterItem = styled.p``

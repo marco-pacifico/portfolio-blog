@@ -1,7 +1,7 @@
 import { DialogOverlay, DialogContent } from "@reach/dialog"; // https://reach.tech/dialog/
 import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
-import { NavLink } from "./NavLink";
+import { NavLink } from "./NavLinkFooter";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TitleAndDescription, H2, Paragraph } from "../ui/Typography";
-import { NavLink } from "../nav/NavLink";
+import { NavLink } from "../nav/NavLinkFooter";
 import { QUERY } from "../../styles/1-DesignTokens";
 
 const Footer = () => {
