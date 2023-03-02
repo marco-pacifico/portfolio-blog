@@ -5,17 +5,20 @@ import Grid from "../components/ui/Grid";
 import firstimage from "./writing/post-one/image-one.jpg";
 import ListItem from "../components/ui/ListItem";
 import { getSortedPostsData } from "../lib/getAndSavePosts";
+import { getSortedProjectsData } from "../lib/getAndSaveProjects";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  const allProjectsData = getSortedProjectsData();
   return {
     props: {
       allPostsData,
+      allProjectsData
     },
   };
-}
+} 
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData, allProjectsData }) {
   return (
     <>
       <IndexHero />
@@ -25,7 +28,7 @@ export default function Home({ allPostsData }) {
         prototype, build design systems, and ship product."
       >
         <Grid>
-          {allPostsData.map(({ slug, title, description, category }) => (
+          {allProjectsData.map(({ slug, title, description, category }) => (
               <Card
                 key={slug}
                 slug={slug}

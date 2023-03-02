@@ -1,0 +1,114 @@
+---
+title: Second Funnel CMS
+date: '2017-10-22'
+category: Case Study
+description: A CMS for configuring eCommerce landing pages
+slug: ecommerce-cms
+---
+import BlogPostLayout from '../../../components/layouts/BlogPostLayout';
+export default ({ children }) => <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+import Image from 'next/image'
+import usertypes from './second-funnel-cms-user-types.png'
+import featureset from './second-funnel-cms-feature-set.png'
+import prototype from './second-funnel-cms-prototype.png'
+import wireframes from './second-funnel-cms-wireframes.png'
+import styleguide from './second-funnel-cms-style-guide.png'
+import dashboard from './second-funnel-cms-dashboard-design.png'
+import tilecontrols from './second-funnel-cms-tile-interaction.gif'
+import controlstates from './second-funnel-cms-tile-controls-states.png'
+import framerprototype from './second-funnel-cms-framer-prototype.png'
+import sitemapuserflows from './second-funnel-cms-sitemap-user-flows.png'
+
+As part of my work with Second Funnel, I helped design a web-based CMS that provided a way for marketers to configure and deploy custom eCommerce pages without having to change the code on their site.
+
+The landing page UX Second Funnel provided was already increasing conversion rates by up to 5x over conventional eCommerce pages. The CMS would help scale that success by automating and streamlining our page deployment workflow.  
+
+## Role and team
+As the designer on our team, I interviewed customers, produced user flows and a sitemap, wireframes, and high-fidelity designs
+
+## Customer interviews
+I met with our customers to understand how they worked within their organizations and how our product would fit into their workflow
+Our primary user type was a Digital Marketing Manager. This person was responsible for configuring and launching the landing page.
+
+
+*<Image
+    src={usertypes}
+    alt="diagram of different roles in an ecommerce organization"
+/>*
+
+## Workflows and tasks
+I mapped out a workflow and defined tasks and subtasks
+We translated them into feature requirements, and tracked everything in a Google spreadsheet.
+
+To configure a landing page, the user would have to perform three major tasks:
+
+1. Import Content
+2. Tag Content
+3. Arrange Content
+
+*<Image
+    src={featureset}
+    alt="diagram of different roles in an ecommerce organization"
+/>*
+
+## Sketches and prototypes
+With the tasks and requirements in hand, I started sketching ideas for the UI
+From these early sketches we prototyped some key features. For example, we built a very basic interface for importing product data into our database that we used and tested internally.
+
+*<Image
+    src={prototype}
+    alt="mock up of bare bones interface"
+/>*
+
+## Sitemap and user flows
+I defined the information architecture of the app and showed how a user would move through the application to complete tasks
+The sitemap shows the top-level navigation and the three flows that make up page configuration: importing, tagging, and arranging content.
+
+<Image
+    src={sitemapuserflows}
+    alt="diagram showing all pages in the app and how they are connected"
+/>
+
+## Wireframes
+I created wireframes for the major tasks of selecting templates, and importing, tagging, and arranging content
+
+<Image
+    src={wireframes}
+    alt="grayscale mockups of different pages in the app"
+/>
+
+## Styles and components
+I put together a style guide and component library which I used to design the rest of the screens in high-fidelity
+The wireframes helped me define a set of UI elements. From here, I created symbols in Sketch and applied a basic set of shared styles to get me started. To come up with the visual styling, I referenced our product objectives and our visual identity.
+
+<Image
+    src={styleguide}
+    alt="mock up of styles and ui elements making up the app"
+/>
+
+## Dashboard
+<Image
+    src={dashboard}
+    alt="mock up of the app's dashbaord"
+/>
+
+## Tile arrangement
+
+## Interactions
+I experimented with different interactions and discovered a way to streamline content management
+By showing controls on hover instead of in a side menu, users could edit and arrange content faster, with less friction.
+
+*<Image
+    src={tilecontrols}
+    alt="gif showing the hover state of controls in the app"
+/>*
+
+*<Image
+    src={controlstates}
+    alt="gif showing the hover state of controls in the app"
+/>*
+
+*<Image
+    src={framerprototype}
+    alt="screenshot of the code written to make the interactive prototype"
+/>*

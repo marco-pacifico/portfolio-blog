@@ -8,7 +8,7 @@ import { QUERY } from "../../styles/1-DesignTokens";
 const Card = ({ title, description, image, category = "", slug }) => {
   return (
     <li key={slug}>
-      <CardLink href={`/writing/${slug}`}>
+      <CardLink href={`/work/${slug}`}>
         <Wrapper>
           <CardImage src={image} />
           <InfoWrapper>

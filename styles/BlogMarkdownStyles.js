@@ -65,6 +65,7 @@ export const BlogMarkdownStyles = css`
     height: auto;
     border-radius: 16px;
     margin: var(--margin-image);
+    background-color: white;
     /* max-height: 800px;
     object-fit: cover; */
   }
