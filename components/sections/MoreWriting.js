@@ -25,7 +25,7 @@ const MoreWriting = ({ currentPost }) => {
       <ol>
         {postsToShow.map(({ slug, title, description }) => (
           <ListItem
-            key={slug}
+            id={slug}
             href={`/writing/${slug}`}
             title={title}
             description={description}

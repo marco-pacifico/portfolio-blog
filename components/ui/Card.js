@@ -4,9 +4,9 @@ import { UnstyledLink } from "./UnstyledLink";
 import { Overline, H4, Paragraph } from "./Typography";
 import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
 
-const Card = ({ key, href, title, description, image, category = "" }) => {
+const Card = ({ id, href, title, description, image, category = "" }) => {
   return (
-    <li key={key}>
+    <li key={id}>
       <CardLink href={href}>
         <Wrapper>
           <CardImage src={image} />

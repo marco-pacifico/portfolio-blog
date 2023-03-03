@@ -13,7 +13,7 @@ const MoreWork = ({ currentPost }) => {
       <Overline>More Work</Overline>
       <Grid>
         {filteredPROJECTS.map(({ slug, title, description }) => (
-          <Card key={slug} href={`/work/${slug}`} title={title} description={description} image={firstimage}/>
+          <Card id={slug} href={`/work/${slug}`} title={title} description={description} image={firstimage}/>
         ))}
       </Grid>
     </MorePostsSection>

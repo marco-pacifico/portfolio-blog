@@ -3,9 +3,9 @@ import { UnstyledLink } from "./UnstyledLink";
 import { H4, Paragraph, LinkAffordance } from "./Typography";
 import { QUERY } from "../../styles/1-DesignTokens";
 
-const ListItem = ({ slug, href, title, description }) => {
+const ListItem = ({ id, href, title, description }) => {
   return (
-    <li key={slug}>
+    <li key={id}>
       <UnstyledLink href={href}>
         <Wrapper>
           <InfoWrapper>
@@ -74,6 +74,7 @@ const Arrow = styled(LinkAffordance)`
     margin-right: 0;
   }
   transition: all 200ms ease-in-out;
+  
   ${Wrapper}:hover & {
     color: var(--color-text-link);
     transform: translateX(var(--space-4));

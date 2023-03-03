@@ -32,7 +32,7 @@ export default function Home({ allPostsData, allProjectsData }) {
         <Grid>
           {allProjectsData.map(({ slug, title, description, category }) => (
               <Card
-                key={slug}
+                id={slug}
                 href={`/work/${slug}`}
                 category={category}
                 image={firstimage}
@@ -49,7 +49,7 @@ export default function Home({ allPostsData, allProjectsData }) {
       >
         <ol>
           {postsToShow.map(({ slug, title, description }) => (
-            <ListItem key={slug} href={`/writing/${slug}`} title={title} description={description} />
+            <ListItem id={slug} href={`/writing/${slug}`} title={title} description={description} />
           ))}
           <ListItem title="See all writing" href="/writing" />
         </ol>

@@ -23,7 +23,7 @@ export default function Work({ allProjectsData }) {
         <Grid>
           {allProjectsData.map(({ slug, title, description }) => (
             <Card
-              key={slug}
+              id={slug}
               href={`/work/${slug}`}
               image={firstimage}
               title={title}

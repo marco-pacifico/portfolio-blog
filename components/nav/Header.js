@@ -46,6 +46,7 @@ const Header = () => {
 
       <MobileNav>
         <NavButton onClick={() => setShowMobileMenu(true)}>Menu</NavButton>
+        <DarkToggle/>
       </MobileNav>
 
       <MobileMenu
