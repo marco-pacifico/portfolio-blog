@@ -1,18 +1,19 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { QUERY } from "../../styles/1-DesignTokens";
 import { LinkStyles } from "../../styles/LinkStyles";
+import { TitleAndDescription } from "../ui/Typography";
 
-export const NavLink = styled(Link)`
+export const NavLinkFooter = styled(Link)`
     ${LinkStyles}
+    ${TitleAndDescription}
+    &:hover{
+        color: var(--color-text-link);
+    }
     padding-bottom: 3px;
-    /* background-position: left 104%; */
-    font-size: var(--font-size-3);
-    /* font-weight: ${(p) => (p.href === p.route ? 'var(--font-weight-bold)' : 'var(--font-weight-regular)')}; */
-    font-weight: var(--font-weight-bold);
-    /* font-weight: var(--font-weight-regular); */
-    border: none;
-    color: ${(p) => (p.href === p.route ? 'var(--color-text-link)' : 'var(--color-text-primary)')};
-    /* color: var(--color-text-primary); */
-    /* --color-link-background-image: ${(p) => (p.href === p.route ? 'var(--color-text-link)' : 'var(--color-text-secondary)')}; */
-    --color-link-background-image: var(--color-text-secondary);
+    border-bottom: none;
+    @media ${QUERY.phoneAndSmaller} {
+        border-bottom: 1px solid var(--color-text-link-underline);
+    }
+    /* --color-link-background-image: var(--color-text-secondary); */
 `

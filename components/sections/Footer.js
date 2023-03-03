@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TitleAndDescription, H2, Paragraph } from "../ui/Typography";
-import { NavLink } from "../nav/NavLinkFooter";
+import { NavLinkFooter } from "../nav/NavLinkFooter";
 import { QUERY } from "../../styles/1-DesignTokens";
 
 const Footer = () => {
@@ -8,10 +8,10 @@ const Footer = () => {
     <SectionWrapper>
       <Title>Say hello</Title>
       <FooterLinks>
-        <FooterLink href="mailto:marco.pacifico@gmail.com" target="_blank" rel="noreferrer">Email</FooterLink>
-        <FooterLink href="https://www.linkedin.com/in/marcopacifico/" target="_blank" rel="noreferrer">LinkedIn</FooterLink>
-        <FooterLink href="https://twitter.com/marcopacifico" target="_blank" rel="noreferrer">Twitter</FooterLink>
-        <FooterLink href="https://www.instagram.com/marcopacifico" target="_blank" rel="noreferrer">Instagram</FooterLink>
+        <NavLinkFooter href="mailto:marco.pacifico@gmail.com" target="_blank" rel="noreferrer">Email</NavLinkFooter>
+        <NavLinkFooter href="https://www.linkedin.com/in/marcopacifico/" target="_blank" rel="noreferrer">LinkedIn</NavLinkFooter>
+        <NavLinkFooter href="https://twitter.com/marcopacifico" target="_blank" rel="noreferrer">Twitter</NavLinkFooter>
+        <NavLinkFooter href="https://www.instagram.com/marcopacifico" target="_blank" rel="noreferrer">Instagram</NavLinkFooter>
       </FooterLinks>
     </SectionWrapper>
   );
@@ -36,9 +36,9 @@ const SectionWrapper = styled.footer`
 `;
 
 const Title = styled(H2)`
-  --title-margin-min: var(--space-5);
-  --title-margin-target: var(--space-fluid-10);
-  --title-margin-max: var(--space-fluid-10);
+  --title-margin-min: var(--space-7);
+  --title-margin-target: var(--space-fluid-8);
+  --title-margin-max: var(--space-fluid-8);
   --title-margin: clamp(
     var(--title-margin-min),
     var(--title-margin-target),
@@ -49,7 +49,7 @@ const Title = styled(H2)`
 
 
 const FooterLinks = styled.ol`
-  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -57,9 +57,6 @@ const FooterLinks = styled.ol`
   gap: var(--space-8);
   @media ${QUERY.phoneAndSmaller} {
     flex-direction: column;
-    gap: var(--space-5);
+    gap: var(--space-6);
   }
-`
-const FooterLink = styled(NavLink)`
-  ${TitleAndDescription}
 `
