@@ -4,10 +4,10 @@ import { UnstyledLink } from "./UnstyledLink";
 import { Overline, H4, Paragraph } from "./Typography";
 import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
 
-const Card = ({ title, description, image, category = "", slug }) => {
+const Card = ({ key, href, title, description, image, category = "" }) => {
   return (
-    <li key={slug}>
-      <CardLink href={`/work/${slug}`}>
+    <li key={key}>
+      <CardLink href={href}>
         <Wrapper>
           <CardImage src={image} />
           <InfoWrapper>
@@ -47,8 +47,8 @@ const Wrapper = styled.div`
 `;
 
 const CardImage = styled(Image)`
-  --radius-min: var(--space-4);
-  --radius-target: var(--space-fluid-8);
+  --radius-min: var(--space-6);
+  --radius-target: var(--space-fluid-7);
   --radius-max: var(--space-8);
   --radius: clamp(var(--radius-min), var(--radius-target), var(--radius-max));
   width: 100%;
