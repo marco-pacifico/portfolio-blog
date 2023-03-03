@@ -2,10 +2,10 @@ import IndexHero from "../components/sections/IndexHero";
 import IndexSection from "../components/sections/IndexSection";
 import Card from "../components/ui/Card";
 import Grid from "../components/ui/Grid";
-import firstimage from "./writing/post-one/image-one.jpg";
 import ListItem from "../components/ui/ListItem";
 import { getSortedPostsData } from "../lib/getAndSavePosts";
 import { getSortedProjectsData } from "../lib/getAndSaveProjects";
+import image0 from "./work/ecommerce-cms/second-funnel-cms-tile-interaction.gif"
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -17,6 +17,7 @@ export async function getStaticProps() {
     },
   };
 } 
+
 
 export default function Home({ allPostsData, allProjectsData }) {
   const postsLimit = 3
@@ -30,12 +31,12 @@ export default function Home({ allPostsData, allProjectsData }) {
         prototype, build design systems, and ship product."
       >
         <Grid>
-          {allProjectsData.map(({ slug, title, description, category }) => (
+          {allProjectsData.map(({ slug, thumbnail, title, description, category }) => (
               <Card
                 id={slug}
                 href={`/work/${slug}`}
+                thumbnail={`/thumbnails/${thumbnail}`}
                 category={category}
-                image={firstimage}
                 title={title}
                 description={description}
               />

@@ -65,7 +65,6 @@ export default function DarkToggle() {
             />
             🌗
         </StyledLabel>
-        // <NavButton onClick={toggleTheme}>🌗</NavButton>
     );
 };
 

@@ -2,14 +2,14 @@ import styled from "styled-components";
 import Image from "next/image";
 import { UnstyledLink } from "./UnstyledLink";
 import { Overline, H4, Paragraph } from "./Typography";
-import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
+import { QUERY } from "../../styles/1-DesignTokens";
 
-const Card = ({ id, href, title, description, image, category = "" }) => {
+const Card = ({ id, href, thumbnail, title, description, category = "" }) => {
   return (
     <li key={id}>
       <CardLink href={href}>
         <Wrapper>
-          <CardImage src={image} />
+          <CardImage src={thumbnail} width="800" height="600"/>
           <InfoWrapper>
             <Category>{category}</Category>
             <Title>{title}</Title>

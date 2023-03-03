@@ -4,7 +4,6 @@ import Grid from "../../components/ui/Grid.js";
 import PageHero from "../../components/sections/PageHero.js";
 import { getSortedProjectsData } from "../../lib/getAndSaveProjects.js";
 import { BREAKPOINT } from "../../styles/1-DesignTokens.js";
-import firstimage from "../writing/post-one/image-one.jpg";
 
 export async function getStaticProps() {
   const allProjectsData = getSortedProjectsData();
@@ -21,11 +20,12 @@ export default function Work({ allProjectsData }) {
       <PageHero title="Work" />
       <Section>
         <Grid>
-          {allProjectsData.map(({ slug, title, description }) => (
+          {allProjectsData.map(({ slug, thumbnail, title, description, category }) => (
             <Card
               id={slug}
               href={`/work/${slug}`}
-              image={firstimage}
+              thumbnail={`/thumbnails/${thumbnail}`}
+              category={category}
               title={title}
               description={description}
             />

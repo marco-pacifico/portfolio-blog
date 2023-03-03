@@ -4,17 +4,27 @@ import Grid from "../ui/Grid";
 import PROJECTS from "../../data/PROJECTS";
 import { Overline } from "../ui/Typography.js";
 import { BREAKPOINT } from "../../styles/1-DesignTokens.js";
-import firstimage from "../../pages/writing/post-one/image-one.jpg";
 
 const MoreWork = ({ currentPost }) => {
-  const filteredPROJECTS = PROJECTS.filter((project) => project.slug !== currentPost);
+  const filteredPROJECTS = PROJECTS.filter(
+    (project) => project.slug !== currentPost
+  );
   return (
     <MorePostsSection>
       <Overline>More Work</Overline>
       <Grid>
-        {filteredPROJECTS.map(({ slug, title, description }) => (
-          <Card id={slug} href={`/work/${slug}`} title={title} description={description} image={firstimage}/>
-        ))}
+        {filteredPROJECTS.map(
+          ({ slug, thumbnail, title, description, category }) => (
+            <Card
+              id={slug}
+              href={`/work/${slug}`}
+              thumbnail={`/thumbnails/${thumbnail}`}
+              category={category}
+              title={title}
+              description={description}
+            />
+          )
+        )}
       </Grid>
     </MorePostsSection>
   );
@@ -35,7 +45,7 @@ const MorePostsSection = styled.section`
   flex-direction: column;
   gap: var(--list-item-space);
 
-  margin-top: var(--space-9); 
+  margin-top: var(--space-9);
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-9);
   padding-inline: var(--section-offset);
@@ -45,4 +55,3 @@ const MorePostsSection = styled.section`
   margin-inline: auto;
   /* margin-left: var(--section-offset); */
 `;
-
