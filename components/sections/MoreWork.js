@@ -16,7 +16,7 @@ const MoreWork = ({ currentPost }) => {
         {filteredPROJECTS.map(
           ({ slug, thumbnail, title, description, category }) => (
             <Card
-              id={slug}
+              key={slug}
               href={`/work/${slug}`}
               thumbnail={`/thumbnails/${thumbnail}`}
               category={category}
