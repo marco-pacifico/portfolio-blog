@@ -1,10 +1,11 @@
-import { useState } from "react";
 import styled, { css } from "styled-components";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import { QUERY } from "../../styles/1-DesignTokens";
 import MobileMenu from "./MobileMenu";
 import NavLink from "./NavLink";
 import NavButton from "./NavButton";
+import DarkToggle from "../DarkToggle";
+import { QUERY } from "../../styles/1-DesignTokens";
 
 const Header = () => {
   const router = useRouter();
@@ -40,7 +41,7 @@ const Header = () => {
         <NavLink size="small" href="/work" route={currentRoute}>
           Work
         </NavLink>
-        <NavButton onClick={() => setShowMobileMenu(true)}>🌗</NavButton>
+        <DarkToggle/>
       </DesktopNav>
 
       <MobileNav>

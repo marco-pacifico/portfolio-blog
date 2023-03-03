@@ -55,6 +55,18 @@ const GlobalStyles = createGlobalStyle`
 			/* Update CSS variable values for colors to those defined in dark theme. */
 			${DarkColors}
 		}
+
+		&[data-theme="light"]{
+            color-scheme: light;
+            ${LightColors}
+			transition: all 200ms ease-in;
+        }
+
+        &[data-theme="dark"]{
+            color-scheme: dark;
+            ${DarkColors}
+			transition: all 200ms ease-in;
+        }
 	}
 
 `;
