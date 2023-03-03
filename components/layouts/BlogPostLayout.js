@@ -2,13 +2,17 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import PageHero from "../sections/PageHero";
-import MorePosts from "../sections/MorePosts";
+import MoreWriting from "../sections/MoreWriting";
+import MoreWork from "../sections/MoreWork";
 import { BlogMarkdownStyles } from "../../styles/BlogMarkdownStyles";
 import { BREAKPOINT } from "../../styles/1-DesignTokens";
 
 export default function BlogPostLayout({ children, meta }) {
   const router = useRouter();
   const isAboutPage = router.asPath.includes("about");
+  const isWorkPage = router.asPath.includes("work");
+  const isWritingPage = router.asPath.includes("writing");
+
   return (
     <>
       <Head>
@@ -18,11 +22,14 @@ export default function BlogPostLayout({ children, meta }) {
       </Head>
       <PageHero category={meta.category} title={meta.title} description={meta.description} />
       <BlogPostContent>{children}</BlogPostContent>
-      {isAboutPage ? (
+      {isAboutPage && <PageBottomSpacing/>}
+      {isWritingPage && <MoreWriting currentPost={meta.slug} />}
+      {isWorkPage && <MoreWork currentPost={meta.slug} />}
+      {/* {isAboutPage ? (
         <PageBottomSpacing />
       ) : (
-        <MorePosts currentPost={meta.slug} />
-      )}
+        <MoreWriting currentPost={meta.slug} />
+      )} */}
     </>
   );
 }

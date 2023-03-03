@@ -5,11 +5,11 @@ import { Overline } from "../ui/Typography.js";
 import { BREAKPOINT } from "../../styles/1-DesignTokens.js";
 
 
-const MorePosts = ({ currentPost }) => {
+const MoreWork = ({ currentPost }) => {
   const filteredPOSTS = POSTS.filter((post) => post.slug !== currentPost);
   return (
     <MorePostsSection>
-      <Overline>More Posts</Overline>
+      <Overline>More Work</Overline>
       <ol>
         {filteredPOSTS.map(({ slug, title, description }) => (
           <ListItem key={slug} href={`/writing/${slug}`} title={title} description={description} />
@@ -19,7 +19,7 @@ const MorePosts = ({ currentPost }) => {
   );
 };
 
-export default MorePosts;
+export default MoreWork;
 
 const MorePostsSection = styled.section`
   margin-top: var(--space-9); 

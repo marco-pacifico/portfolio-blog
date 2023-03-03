@@ -16,6 +16,9 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
             <NavLink href="/" route={currentRoute} onClick={onDismiss}>
               Home
             </NavLink>
+            <NavLink href="/work" route={currentRoute} onClick={onDismiss}>
+              Work
+            </NavLink>
             <NavLink href="/writing" route={currentRoute} onClick={onDismiss}>
               Writing
             </NavLink>

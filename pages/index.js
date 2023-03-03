@@ -4,7 +4,6 @@ import Card from "../components/ui/Card";
 import Grid from "../components/ui/Grid";
 import firstimage from "./writing/post-one/image-one.jpg";
 import ListItem from "../components/ui/ListItem";
-import NavLink from "../components/nav/NavLink";
 import { getSortedPostsData } from "../lib/getAndSavePosts";
 import { getSortedProjectsData } from "../lib/getAndSaveProjects";
 

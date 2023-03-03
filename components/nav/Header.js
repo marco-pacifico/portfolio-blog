@@ -11,6 +11,7 @@ const Header = () => {
   const currentRoute = router.pathname;
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const showBackToWriting = currentRoute.includes("writing") && currentRoute !== "/writing";
+  const showBackToWork = currentRoute.includes("work") && currentRoute !== "/work";
 
   return (
     <StyledHeader>
@@ -23,6 +24,11 @@ const Header = () => {
             ←  Writing
           </NavLink>
         )}
+        {showBackToWork && (
+          <NavLink size="small" href="/work">
+            ←  Work
+          </NavLink>
+        )}
       </LeftSide>
       <DesktopNav>
         <NavLink size="small" href="/about" route={currentRoute}>
@@ -30,6 +36,9 @@ const Header = () => {
         </NavLink>
         <NavLink size="small" href="/writing" route={currentRoute}>
           Writing
+        </NavLink>
+        <NavLink size="small" href="/work" route={currentRoute}>
+          Work
         </NavLink>
         <NavButton onClick={() => setShowMobileMenu(true)}>🌗</NavButton>
       </DesktopNav>

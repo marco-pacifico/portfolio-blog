@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { NavWrapperStyles} from "./NavLink";
 import { NavText } from "../ui/Typography";
 
-const NavButton = ({ onClick, size, children }) =>{
+const NavButton = ({ onClick, size="small", children }) =>{
     return(
-        <StyledButton onClick={onClick}>
-            <NavText size="small">{children}</NavText>
+        <StyledButton size={size} onClick={onClick}>
+            <NavText size={size}>{children}</NavText>
         </StyledButton>
     );
 };
@@ -14,6 +14,9 @@ export default NavButton;
 
 const StyledButton = styled.button`
     ${NavWrapperStyles}
+    height: ${(p) => p.size === "large" && "auto"};
+    padding: ${(p) => p.size === "large" && "var(--space-4) var(--space-5)"};
+    border-radius: ${(p) => p.size === "large" && "16px"};
 
     background-color: var(--color-nav-background);
     
