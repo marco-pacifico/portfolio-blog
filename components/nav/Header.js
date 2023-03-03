@@ -10,12 +10,20 @@ const Header = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const showBackToWriting = currentRoute.includes("writing") && currentRoute !== "/writing";
 
   return (
     <StyledHeader>
-      <NavLink href="/" route={currentRoute}>
-        M
-      </NavLink>
+      <LeftSide>
+        <NavLink href="/" route={currentRoute}>
+          M
+        </NavLink>
+        {showBackToWriting && (
+          <NavLink size="small" href="/writing">
+            ←  Writing
+          </NavLink>
+        )}
+      </LeftSide>
       <DesktopNav>
         <NavLink size="small" href="/about" route={currentRoute}>
           About
@@ -23,24 +31,11 @@ const Header = () => {
         <NavLink size="small" href="/writing" route={currentRoute}>
           Writing
         </NavLink>
-        <NavButton onClick={() => setShowMobileMenu(true)}>
-          🌗
-        </NavButton>
+        <NavButton onClick={() => setShowMobileMenu(true)}>🌗</NavButton>
       </DesktopNav>
 
       <MobileNav>
-        {/* <MobileNavLink href="/about" route={currentRoute}>
-          About
-        </MobileNavLink>
-        <MobileNavLink href="/blog" route={currentRoute}>
-          Blog
-        </MobileNavLink>
-        <MobileNavLink href="/work" route={currentRoute}>
-          Work
-        </MobileNavLink> */}
-        <NavButton onClick={() => setShowMobileMenu(true)}>
-          Menu
-        </NavButton>
+        <NavButton onClick={() => setShowMobileMenu(true)}>Menu</NavButton>
       </MobileNav>
 
       <MobileMenu
@@ -71,10 +66,10 @@ const HeaderVariables = css`
   --header-border: 1px solid var(--color-border);
 
   /* NAV ITEM SPACING*/
-  --nav-item-gap: var(--space-5);
+  --nav-item-gap: var(--space-4);
   @media ${QUERY.phoneAndSmaller} {
     /* Tighten nav item spacing on mobile */
-    --nav-item-gap: var(--space-5);
+    --nav-item-gap: var(--space-3);
   }
 `;
 
@@ -125,6 +120,11 @@ const StyledHeader = styled.header`
     --header-border: none;
   }
 `;
+
+const LeftSide = styled.div`
+  display: flex;
+  gap: var(--nav-item-gap);
+`
 
 const DesktopNav = styled.nav`
   display: flex;

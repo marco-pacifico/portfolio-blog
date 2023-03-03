@@ -16,6 +16,10 @@ const StyledButton = styled.button`
     ${NavWrapperStyles}
 
     background-color: var(--color-nav-background);
+    
+    & ${NavText} {
+        color: var(--color-nav-text);
+    }
 
     &:hover {
         background-color: var(--color-nav-background-hover);
