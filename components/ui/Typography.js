@@ -61,6 +61,7 @@ export const H3 = styled.h3`
 
 // CARDS AND LIST ITMES
 export const Overline = styled.h5`
+  color: var(--color-text-primary);
   --font-size-min: var(--font-size-1);
   --font-size-target: var(--font-size-fluid-2);
   --font-size-max: var(--font-size-2);
@@ -100,6 +101,7 @@ export const Paragraph = styled.p`
 `;
 
 export const LinkAffordance = styled.span`
+  color: var(--color-text-primary);
   --font-size-min: var(--font-size-5);
   --font-size-target: var(--font-size-fluid-7);
   --font-size-max: var(--font-size-7);
@@ -111,15 +113,6 @@ export const LinkAffordance = styled.span`
   font-weight: var(--font-weight-light);
   line-height: 1em;
 `;
-
-// export const Nav = styled.p`
-//   font-size: var(--font-size-4);
-//   font-weight: var(--font-weight-bold);
-// `;
-
-// export const NavSmall = styled(Nav)`
-//   font-size: var(--font-size-3);
-// `
 
 export const NavText = styled.p`
   font-weight: var(--font-weight-bold);
@@ -137,4 +130,4 @@ export const NavText = styled.p`
   transition: all 200ms ease-in;
 `;
 
-export const FooterItem = styled.p``
+export const FooterItem = styled.p``;
