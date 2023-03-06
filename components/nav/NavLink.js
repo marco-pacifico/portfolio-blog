@@ -26,9 +26,8 @@ export const NavWrapperStyles = css`
     p.href === p.route
       ? "var(--color-nav-background-active)"
       : "var(--color-nav-background)"};
-
-  transition: background-color 200ms ease-in;
-  transition: color 200ms ease-in;
+      
+  transition: all 200ms ease-in;
 `;
 
 const Wrapper = styled.div`

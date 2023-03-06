@@ -36,9 +36,6 @@ const GlobalStyles = createGlobalStyle`
 		 background: var(--color-text-selection-background);
 		 color: var(--color-text-selection-text);
   	}
-	/* a:visited {
-		color: inherit;
-	} */
 	
 
 	/* LIGHT AND DARK THEME */
