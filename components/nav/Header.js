@@ -51,15 +51,15 @@ const Header = () => {
       </DesktopNav>
 
       <MobileNav>
-        {/* <NavButton onClick={() => setShowMobileMenu(true)}>Menu</NavButton> */}
+        <NavButton onClick={() => setShowMobileMenu(true)}>Menu</NavButton>
         <DarkToggle />
       </MobileNav>
 
-      {/* <MobileMenu
+      <MobileMenu
         isOpen={showMobileMenu}
         onDismiss={() => setShowMobileMenu(false)}
         route={currentRoute}
-      /> */}
+      />
     </StyledHeader>
   );
 };

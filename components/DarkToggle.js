@@ -71,7 +71,9 @@ export default function DarkToggle() {
 const StyledLabel = styled.label`
     ${NavWrapperStyles}
     /* background-color: ${(p) => p.theme === "dark" ? "var(--color-text-strong)" : "var(--color-nav-background)"}; */
+    background-color: var(--color-nav-background);
     cursor: pointer;
+    transition: all 200ms ease-in;
     & #checkbox {
         display: none;
     }

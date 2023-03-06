@@ -12,6 +12,7 @@
     "@mdx-js/loader": "^2.2.1",
     "@mdx-js/react": "^2.2.1",
     "@next/mdx": "^13.1.6",
+    "@radix-ui/react-dialog": "^1.0.2",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "gray-matter": "^4.0.3",
