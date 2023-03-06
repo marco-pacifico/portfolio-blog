@@ -11,8 +11,10 @@ const Header = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const showBackToWriting = currentRoute.includes("writing") && currentRoute !== "/writing";
-  const showBackToWork = currentRoute.includes("work") && currentRoute !== "/work";
+  const showBackToWriting =
+    currentRoute.includes("writing") && currentRoute !== "/writing";
+  const showBackToWork =
+    currentRoute.includes("work") && currentRoute !== "/work";
 
   return (
     <StyledHeader>
@@ -22,12 +24,12 @@ const Header = () => {
         </NavLink>
         {showBackToWriting && (
           <NavLink size="small" href="/writing">
-            ←  Writing
+            ← Writing
           </NavLink>
         )}
         {showBackToWork && (
           <NavLink size="small" href="/work">
-            ←  Work
+            ← Work
           </NavLink>
         )}
       </LeftSide>
@@ -35,18 +37,22 @@ const Header = () => {
         <NavLink size="small" href="/about" route={currentRoute}>
           About
         </NavLink>
-        <NavLink size="small" href="/writing" route={currentRoute}>
-          Writing
-        </NavLink>
-        <NavLink size="small" href="/work" route={currentRoute}>
-          Work
-        </NavLink>
-        <DarkToggle/>
+        {!showBackToWriting && (
+          <NavLink size="small" href="/writing" route={currentRoute}>
+            Writing
+          </NavLink>
+        )}
+        {!showBackToWork && (
+          <NavLink size="small" href="/work" route={currentRoute}>
+            Work
+          </NavLink>
+        )}
+        <DarkToggle />
       </DesktopNav>
 
       <MobileNav>
         <NavButton onClick={() => setShowMobileMenu(true)}>Menu</NavButton>
-        <DarkToggle/>
+        <DarkToggle />
       </MobileNav>
 
       <MobileMenu
@@ -135,7 +141,7 @@ const StyledHeader = styled.header`
 const LeftSide = styled.div`
   display: flex;
   gap: var(--nav-item-gap);
-`
+`;
 
 const DesktopNav = styled.nav`
   display: flex;
