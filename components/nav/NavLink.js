@@ -27,28 +27,14 @@ export const NavWrapperStyles = css`
       ? "var(--color-nav-background-active)"
       : "var(--color-nav-background)"};
 
-  transition: all 200ms ease-in;
+  transition: background-color 200ms ease-in;
+  transition: color 200ms ease-in;
 `;
 
 const Wrapper = styled.div`
   ${NavWrapperStyles}
 `;
 
-// const NavText = styled.p`
-//   font-weight: var(--font-weight-bold);
-
-//   /* Use smaller font size for small variant */
-//   font-size: ${(p) =>
-//     p.size === "small" ? "var(--font-size-3)" : "var(--font-size-5)"};
-
-//   /* If href is current route, then apply active text color */
-//   color: ${(p) =>
-//     p.href === p.route
-//       ? "var(--color-nav-text-active)"
-//       : "var(--color-nav-text)"};
-
-//   transition: all 200ms ease-in;
-// `;
 
 const StyledLink = styled(UnstyledLink)`
   /* If href is current route, then apply active,hover backround color */
