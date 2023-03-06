@@ -12,7 +12,6 @@
     "@mdx-js/loader": "^2.2.1",
     "@mdx-js/react": "^2.2.1",
     "@next/mdx": "^13.1.6",
-    "@reach/dialog": "^0.18.0",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "gray-matter": "^4.0.3",
