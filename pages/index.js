@@ -17,7 +17,6 @@ export async function getStaticProps() {
   };
 } 
 
-
 export default function Home({ allPostsData, allProjectsData }) {
   const postsLimit = 3
   const postsToShow = allPostsData.slice(0,postsLimit)
@@ -41,7 +40,6 @@ export default function Home({ allPostsData, allProjectsData }) {
               />
           ))}
         </Grid>
-        {/* <ListItem title="See all work" slug="" /> */}
       </IndexSection>
       <IndexSection
         title="Writing"
