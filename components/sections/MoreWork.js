@@ -53,5 +53,4 @@ const MorePostsSection = styled.section`
 
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin-inline: auto;
-  /* margin-left: var(--section-offset); */
 `;

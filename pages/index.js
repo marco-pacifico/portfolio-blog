@@ -5,7 +5,6 @@ import Grid from "../components/ui/Grid";
 import ListItem from "../components/ui/ListItem";
 import { getSortedPostsData } from "../lib/getAndSavePosts";
 import { getSortedProjectsData } from "../lib/getAndSaveProjects";
-import image0 from "./work/ecommerce-cms/second-funnel-cms-tile-interaction.gif"
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -17,7 +16,6 @@ export async function getStaticProps() {
     },
   };
 } 
-
 
 export default function Home({ allPostsData, allProjectsData }) {
   const postsLimit = 3
@@ -42,7 +40,6 @@ export default function Home({ allPostsData, allProjectsData }) {
               />
           ))}
         </Grid>
-        {/* <ListItem title="See all work" slug="" /> */}
       </IndexSection>
       <IndexSection
         title="Writing"
