@@ -1,23 +1,19 @@
 import { css } from "styled-components";
 import { LinkStyles } from "./LinkStyles";
-import {
-    LINEHEIGHT,
-    LETTERSPACING,
-    QUERY,
-  } from "./1-DesignTokens";
+import { LINEHEIGHT, LETTERSPACING, QUERY } from "./1-DesignTokens";
 
 const BlogTypographyVariables = css`
   /* FONT SIZES */
   --font-size-paragraph: var(--font-size-5);
-    @media ${QUERY.tabletAndSmaller} {
-      --font-size-paragraph: calc(var(--font-size-4) + 2*var(--font-size-bump));
-    }
+  @media ${QUERY.tabletAndSmaller} {
+    --font-size-paragraph: calc(var(--font-size-4) + 2 * var(--font-size-bump));
+  }
   --font-size-caption: var(--font-size-2);
 
   /* LINE HEIGHT */
-  --line-height-heading-tight: ${LINEHEIGHT[0]}em; 
+  --line-height-heading-tight: ${LINEHEIGHT[0]}em;
   --line-height-heading: ${LINEHEIGHT[1]}em;
-  --line-height-heading-loose: ${LINEHEIGHT[2]}em; 
+  --line-height-heading-loose: ${LINEHEIGHT[2]}em;
   --line-height-paragraph: ${LINEHEIGHT[3]}em;
 
   /* LETTER SPACING */
@@ -53,7 +49,6 @@ const BlogTypographyVariables = css`
 `;
 
 export const BlogMarkdownStyles = css`
-
   ${BlogTypographyVariables}
   /* Images will span full width of page layout */
   hr {
@@ -75,7 +70,7 @@ export const BlogMarkdownStyles = css`
   }
   /* Surround images with em tag set image with same as content width */
   em > img {
-    grid-column: 2
+    grid-column: 2;
   }
   h1,
   h2,
@@ -104,20 +99,31 @@ export const BlogMarkdownStyles = css`
   }  */
   h1 {
     font-size: var(--font-size-7);
+      @media ${QUERY.tabletAndSmaller} {
+        font-size: var(--font-size-6);
+      }
     line-height: var(--line-height-heading-loose);
     /* margin-left: -1px; */
   }
   h2 {
     font-size: var(--font-size-6);
+    @media ${QUERY.tabletAndSmaller} {
+        font-size: var(--font-size-5);
+      }
     line-height: var(--line-height-heading-loose);
     /* margin-left: -1px; */
   }
   h3 {
     font-size: var(--font-size-5);
+    @media ${QUERY.tabletAndSmaller} {
+        font-size: var(--font-size-4);
+      }
     line-height: var(--line-height-paragraph);
     /* margin-left: -1px; */
   }
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-size: var(--font-size-paragraph);
     line-height: var(--line-height-paragraph);
     /* margin-left: -1px; */

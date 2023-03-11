@@ -29,9 +29,9 @@ const CardLink = styled(UnstyledLink)`
 `;
 
 const Wrapper = styled.div`
-  --card-gap-min: var(--space-6);
-  --card-gap-target: var(--space-fluid-7);
-  --card-gap-max: var(--space-7);
+  --card-gap-min: var(--space-5);
+  --card-gap-target: var(--space-fluid-6);
+  --card-gap-max: var(--space-6);
   --card-gap: clamp(
     var(--card-gap-min),
     var(--card-gap-target),
@@ -66,8 +66,8 @@ const CardImage = styled(Image)`
 
 const InfoWrapper = styled.div`
   --info-gap-min: var(--space-2);
-  --info-gap-target: var(--space-fluid-2);
-  --info-gap-max: var(--space-fluid-2);
+  --info-gap-target: var(--space-fluid-1);
+  --info-gap-max: var(--space-fluid-1);
   --info-gap: clamp(
     var(--info-gap-min),
     var(--info-gap-target),
