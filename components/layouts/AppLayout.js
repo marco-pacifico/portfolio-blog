@@ -12,6 +12,11 @@ const UntitledSans = localFont({
       style: "normal",
     },
     {
+      path: "../../fonts/untitled-sans-web-light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
       path: "../../fonts/untitled-sans-web-regular.woff2",
       weight: "400",
       style: "normal",
@@ -30,7 +35,7 @@ export default function AppLayout({ children }) {
       <Head>
         <title>Marco Pacifico | Portfolio and Blog</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <Wrapper className={UntitledSans.variable}>
         <Header/>
