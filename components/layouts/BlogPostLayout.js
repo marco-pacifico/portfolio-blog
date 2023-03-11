@@ -6,6 +6,32 @@ import MoreWriting from "../sections/MoreWriting";
 import MoreWork from "../sections/MoreWork";
 import { BlogMarkdownStyles } from "../../styles/BlogMarkdownStyles";
 import { BREAKPOINT } from "../../styles/1-DesignTokens";
+import localFont from "@next/font/local";
+const UntitledSerif = localFont({
+  variable: "--font-serif",
+  src: [
+    {
+      path: "../../fonts/untitled-serif-web-medium-italic.woff",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../../fonts/untitled-serif-web-medium.woff2",
+      weight: "500",
+      style: "regular",
+    },
+    {
+      path: "../../fonts/untitled-serif-web-regular-italic.woff",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../fonts/untitled-serif-web-regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
 
 export default function BlogPostLayout({ children, meta }) {
   const router = useRouter();
@@ -21,7 +47,7 @@ export default function BlogPostLayout({ children, meta }) {
         <meta name="description" content={meta.description} />
       </Head>
       <PageHero category={meta.category} title={meta.title} description={meta.description} />
-      <BlogPostContent>{children}</BlogPostContent>
+      <BlogPostContent className={UntitledSerif.variable}>{children}</BlogPostContent>
       {isAboutPage && <PageBottomSpacing/>}
       {isWritingPage && <MoreWriting currentPost={meta.slug} />}
       {isWorkPage && <MoreWork currentPost={meta.slug} />}

@@ -18,15 +18,16 @@ const GlobalStyles = createGlobalStyle`
 
 	/* CUSTOM FONTS */
 	/* @font-face rules for custom, local fonts */
-	${CustomFonts}
+	/* ${CustomFonts} */
 	
 	/* BASE TYPOGRAPHY */
 	:root {
-		${BaseTypographyVariables}
+		/* ${BaseTypographyVariables} */
     }
 	*,
 	*:before,
 	*:after {
+		${BaseTypographyVariables}
 		font-family: var(--font-sans);
     }
 	h1, h2, h3, h4, h5, h6, strong {
