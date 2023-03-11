@@ -27,7 +27,13 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head/>
+        <Head>
+          <script>
+            // Render blocking JS: if (localStorage.theme)
+            document.documentElement.setAttribute("data-theme",
+            localStorage.theme);
+          </script>
+        </Head>
         <body>
           <Main />
           <NextScript />
