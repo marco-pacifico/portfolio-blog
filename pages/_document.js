@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <script>
-            // Render blocking JS: if (localStorage.theme)
+            if (localStorage.theme)
             document.documentElement.setAttribute("data-theme",
             localStorage.theme);
           </script>
