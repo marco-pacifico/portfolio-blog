@@ -3,8 +3,8 @@ import AppLayout from "../components/layouts/AppLayout"
 
 export default function App({ Component, pageProps }) {
   return (
-    <AppLayout>
-      <GlobalStyles/>
+    <AppLayout >
+      <GlobalStyles />
       <Component {...pageProps} />
     </AppLayout>
   )

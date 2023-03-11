@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
 
 	/* CUSTOM FONTS */
 	/* @font-face rules for custom, local fonts */
-	${CustomFonts}
+	/* ${CustomFonts} */
 	
 	/* BASE TYPOGRAPHY */
 	:root {

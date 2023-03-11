@@ -8,8 +8,8 @@ export const BaseTypographyVariables = css`
   --font-fallback-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 
   /* FONT FAMILIES */
-  --font-sans: "Untitled Sans", var(--font-fallback-sans);
-  --font-serif: "Untitled Serif", var(--font-fallback-serif);
+  /* --font-sans: "Untitled Sans", var(--font-fallback-sans);
+  --font-serif: "Untitled Serif", var(--font-fallback-serif); */
 
   --font-family-paragraph: var(--font-serif);
 
