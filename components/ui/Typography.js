@@ -92,12 +92,12 @@ export const TitleAndDescription = css`
   font-weight: var(--font-weight-regular);
   color: var(--color-text-strong);
   letter-spacing: ${LETTERSPACING[2]}em;
-  transition: color 300ms ease-in;
+  
 `;
 
 export const H4 = styled.h4`
   ${TitleAndDescription}
-  
+  transition: color 300ms ease-in;
   @media ${QUERY.desktopAndSmaller} {
     font-weight: var(--font-weight-medium);
   }
@@ -106,6 +106,7 @@ export const H4 = styled.h4`
 export const Paragraph = styled.p`
   ${TitleAndDescription}
   color: var(--color-text-secondary);
+  transition: color 300ms ease-in;
 `;
 
 export const LinkAffordance = styled.span`

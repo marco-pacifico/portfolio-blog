@@ -8,10 +8,10 @@ const Footer = () => {
     <SectionWrapper>
       <Title>Say hello</Title>
       <FooterLinks>
-        <NavLinkFooter href="mailto:marco.pacifico@gmail.com" target="_blank" rel="noreferrer">Email</NavLinkFooter>
-        <NavLinkFooter href="https://www.linkedin.com/in/marcopacifico/" target="_blank" rel="noreferrer">LinkedIn</NavLinkFooter>
-        <NavLinkFooter href="https://twitter.com/marcopacifico" target="_blank" rel="noreferrer">Twitter</NavLinkFooter>
-        <NavLinkFooter href="https://www.instagram.com/marcopacifico" target="_blank" rel="noreferrer">Instagram</NavLinkFooter>
+        <li><NavLinkFooter href="mailto:marco.pacifico@gmail.com" target="_blank" rel="noreferrer">Email</NavLinkFooter></li>
+        <li><NavLinkFooter href="https://www.linkedin.com/in/marcopacifico/" target="_blank" rel="noreferrer">LinkedIn</NavLinkFooter></li>
+        <li><NavLinkFooter href="https://twitter.com/marcopacifico" target="_blank" rel="noreferrer">Twitter</NavLinkFooter></li>
+        <li><NavLinkFooter href="https://www.instagram.com/marcopacifico" target="_blank" rel="noreferrer">Instagram</NavLinkFooter></li>
       </FooterLinks>
     </SectionWrapper>
   );

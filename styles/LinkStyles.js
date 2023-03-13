@@ -18,7 +18,7 @@ export const LinkStyles = css`
   background-repeat: no-repeat;
   background-position: left 104%;
   transition: 
-    background-size 0.2s ease-out, 
+    background-size 200ms ease-out, 
     border-color 300ms ease-in,
     color 300ms ease-in;
 
