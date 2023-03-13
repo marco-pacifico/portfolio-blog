@@ -28,6 +28,9 @@ const BlogTypographyVariables = css`
   --margin-heading: var(--space-8) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
   /* --margin-paragraph: var(--space-5) 0; */
   --margin-paragraph: var(--space-5) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
+  @media ${QUERY.tabletAndSmaller} {
+    --margin-paragraph: var(--space-4) 0 0 0;
+      }
   /* --margin-list: var(--space-5) 0; */
   --margin-list: 0; // Removing margin because blog layout is using css grid which prevents margin collapse
   --margin-list-items: var(--space-4) 0;
@@ -151,6 +154,9 @@ export const BlogMarkdownStyles = css`
   ol {
     margin: var(--margin-list);
     padding-left: var(--list-indent-bullets);
+  }
+  ol {
+    padding-left: var(--space-7);
   }
   li {
     margin: var(--margin-list-items);
