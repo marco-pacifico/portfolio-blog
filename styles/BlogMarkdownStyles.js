@@ -36,7 +36,7 @@ const BlogTypographyVariables = css`
   --margin-divider: var(--space-8) auto;
 
   /* LIST AND BULLET PADDING */
-  --list-indent-bullets: var(--space-7);
+  --list-indent-bullets: var(--space-6);
   --list-indent-level-1: var(--space-3);
   /* --listBulletPadding: var(--space5); */
   --list-bullet-padding: var(--space-2);
@@ -85,40 +85,31 @@ export const BlogMarkdownStyles = css`
     margin: var(--margin-heading);
     color: var(--color-text-strong);
   }
-  /* h1 {
-    font-size: var(--font-size-9);
-    letter-spacing: var(--letter-spacing-display);
-    margin: var(--margin-display);
-    margin-left: -5px;
-  } */
-  /* h1 {
-    font-size: var(--font-size-8);
-    letter-spacing: var(--letter-spacing-display);
-    margin: var(--margin-display);
-    margin-left: -4px;
-  }  */
   h1 {
     font-size: var(--font-size-7);
-      @media ${QUERY.tabletAndSmaller} {
-        font-size: var(--font-size-6);
-      }
     line-height: var(--line-height-heading-loose);
+      @media ${QUERY.tabletAndSmaller} {
+        font-size: calc(var(--font-size-7) -4 * var(--font-size-bump));
+        line-height: var(--line-height-heading);
+      }
     /* margin-left: -1px; */
   }
   h2 {
     font-size: var(--font-size-6);
-    @media ${QUERY.tabletAndSmaller} {
-        font-size: var(--font-size-5);
-      }
     line-height: var(--line-height-heading-loose);
+    @media ${QUERY.tabletAndSmaller} {
+      font-size: calc(var(--font-size-6) - 4 * var(--font-size-bump));
+      line-height: var(--line-height-heading);
+    }
     /* margin-left: -1px; */
   }
   h3 {
-    font-size: var(--font-size-5);
-    @media ${QUERY.tabletAndSmaller} {
-        font-size: var(--font-size-4);
-      }
+    font-size: calc(var(--font-size-5) + 2 * var(--font-size-bump));
     line-height: var(--line-height-paragraph);
+    @media ${QUERY.tabletAndSmaller} {
+        font-size: var(--font-size-paragraph);
+        line-height: var(--line-height-paragraph);
+      }
     /* margin-left: -1px; */
   }
   h4,
