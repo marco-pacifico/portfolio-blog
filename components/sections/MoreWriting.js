@@ -51,6 +51,7 @@ const MorePostsSection = styled.section`
   margin-top: var(--space-9);
   padding-top: var(--space-9);
   border-top: 1px solid var(--color-border);
+  transition: border-color 300ms ease-in;
   padding-left: var(--section-offset);
   padding-right: var(--section-offset);
 

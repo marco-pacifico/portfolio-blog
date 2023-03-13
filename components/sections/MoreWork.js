@@ -46,11 +46,12 @@ const MorePostsSection = styled.section`
   gap: var(--list-item-space);
 
   margin-top: var(--space-9);
-  border-top: 1px solid var(--color-border);
   padding-top: var(--space-9);
   padding-inline: var(--section-offset);
   padding-bottom: var(--space-12);
-
+  
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin-inline: auto;
+  border-top: 1px solid var(--color-border);
+  transition: border-color 300ms ease-in;
 `;

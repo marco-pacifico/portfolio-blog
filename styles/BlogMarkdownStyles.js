@@ -60,6 +60,7 @@ export const BlogMarkdownStyles = css`
     background-color: var(--color-text-tertiary);
     border: none;
     width: 75%;
+    transition: background-color 300ms ease-in;
   }
   img {
     grid-column: 1 / -1;
@@ -87,6 +88,7 @@ export const BlogMarkdownStyles = css`
     letter-spacing: var(--letter-spacing-heading);
     margin: var(--margin-heading);
     color: var(--color-text-strong);
+    transition: color 300ms ease-in;
   }
   h1 {
     font-size: var(--font-size-7);
@@ -147,6 +149,7 @@ export const BlogMarkdownStyles = css`
   strong {
     font-weight: var(--font-weight-bold);
     color: var(--color-text-strong);
+    transition: color 300ms ease-in;
   }
 
   /* LIST PADDING */
@@ -216,6 +219,7 @@ export const BlogMarkdownStyles = css`
       background: var(--color-border);
       position: absolute;
       left: 0;
+      transition: background 300ms ease-in;
     }
 
     p {

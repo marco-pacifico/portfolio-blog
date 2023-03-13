@@ -18,9 +18,11 @@ export const H1 = styled.h1`
   } */
   color: var(--color-text-strong);
   letter-spacing: ${LETTERSPACING[2]}em;
+  transition: color 300ms ease-in;
 `;
 
 export const H1_Overline = styled.span`
+  transition: color 300ms ease-in;
   color: var(--color-text-tertiary);
   line-height: ${LINEHEIGHT[4]};
   &::selection {
@@ -42,6 +44,7 @@ export const H2 = styled.h2`
   line-height: ${LINEHEIGHT[2]};
   color: var(--color-text-strong);
   letter-spacing: ${LETTERSPACING[2]}em;
+  transition: color 300ms ease-in;
 `;
 
 export const H3 = styled.h3`
@@ -57,6 +60,7 @@ export const H3 = styled.h3`
   line-height: ${LINEHEIGHT[3]};
   color: var(--color-text-strong);
   letter-spacing: ${LETTERSPACING[2]}em;
+  transition: color 300ms ease-in;
 `;
 
 // CARDS AND LIST ITMES
@@ -72,6 +76,7 @@ export const Overline = styled.h5`
   );
   text-transform: uppercase;
   letter-spacing: ${LETTERSPACING[4]}rem;
+  transition: color 300ms ease-in;
 `;
 
 export const TitleAndDescription = css`
@@ -87,10 +92,12 @@ export const TitleAndDescription = css`
   font-weight: var(--font-weight-regular);
   color: var(--color-text-strong);
   letter-spacing: ${LETTERSPACING[2]}em;
+  transition: color 300ms ease-in;
 `;
 
 export const H4 = styled.h4`
   ${TitleAndDescription}
+  
   @media ${QUERY.desktopAndSmaller} {
     font-weight: var(--font-weight-medium);
   }

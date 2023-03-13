@@ -4,9 +4,11 @@ export const LinkStyles = css`
   --color-link-background-image: var(--color-text-link);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-link);
+
   padding-bottom: 1px;
   border-bottom: 1px solid var(--color-text-link-underline);
   text-decoration: none;
+
   background-image: linear-gradient(
     90deg,
     var(--color-link-background-image),
@@ -15,7 +17,10 @@ export const LinkStyles = css`
   background-size: 0% 2px;
   background-repeat: no-repeat;
   background-position: left 104%;
-  transition: background-size 0.2s ease-out;
+  transition: 
+    background-size 0.2s ease-out, 
+    border-color 300ms ease-in,
+    color 300ms ease-in;
 
   &:hover {
     /* border-bottom: 1px solid transparent; */

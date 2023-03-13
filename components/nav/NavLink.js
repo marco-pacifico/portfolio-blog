@@ -6,7 +6,9 @@ const NavLink = ({ onClick, href, route, size, children }) => {
   return (
     <StyledLink onClick={onClick} href={href} route={route}>
       <Wrapper href={href} route={route}>
-        <NavText size={size} href={href} route={route}>{children}</NavText>
+        <NavText size={size} href={href} route={route}>
+          {children}
+        </NavText>
       </Wrapper>
     </StyledLink>
   );
@@ -20,20 +22,17 @@ export const NavWrapperStyles = css`
   border-radius: 12px;
   display: grid;
   place-items: center;
-
+  transition: color, background-color 300ms ease-in;
   /* If href is current route, then apply active background color */
   background-color: ${(p) =>
     p.href === p.route
       ? "var(--color-nav-background-active)"
       : "var(--color-nav-background)"};
-      
-  transition: all 200ms ease-in;
 `;
 
 const Wrapper = styled.div`
   ${NavWrapperStyles}
 `;
-
 
 const StyledLink = styled(UnstyledLink)`
   /* If href is current route, then apply active,hover backround color */
@@ -43,11 +42,13 @@ const StyledLink = styled(UnstyledLink)`
         ? "var(--color-nav-background-active-hover)"
         : "var(--color-nav-background-hover)"};
   }
+  /* transition: color, background-color 200ms ease-in; */
   /* If href is current route, then apply active,hover text color */
   &:hover ${NavText} {
     color: ${(p) =>
       p.href === p.route
         ? "var(--color-nav-text-active-hover)"
         : "var(--color-nav-text-hover)"};
+  /* transition: color, background-color 200ms ease-in; */
   }
 `;
