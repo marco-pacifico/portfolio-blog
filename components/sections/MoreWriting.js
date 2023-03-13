@@ -17,7 +17,6 @@ const MoreWriting = ({ currentPost }) => {
   const firstPosts = filteredPOSTS.slice(0, firsPostsLimit);
   const morePosts = filteredPOSTS.slice(0, morePostsLimit);
   const postsToShow = showMore ? morePosts : firstPosts;
-  console.log(postsToShow.length);
 
   return (
     <MorePostsSection>

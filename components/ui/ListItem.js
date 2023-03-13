@@ -24,7 +24,7 @@ export default ListItem;
 const Wrapper = styled.div`
   --list-item-space-min: var(--space-7);
   --list-item-space-target: var(--space-fluid-8);
-  --list-item-space-max: var(--space-fluid-8);
+  --list-item-space-max: var(--space-8);
   --list-item-space: clamp(
     var(--list-item-space-min),
     var(--list-item-space-target),
