@@ -24,13 +24,13 @@ export const LightColors = css`
 
     /* NAV LINK COLORS */
     --color-nav-text: hsl(${COLORS.sidewalk[700]});
-    --color-nav-background:  hsl(${COLORS.sidewalk[300]});
+    --color-nav-background:  hsl(${COLORS.sidewalk[400]});
     /* NAV LINK COLORS (HOVER) */
     --color-nav-text-hover:  hsl(${COLORS.sidewalk[800]});
-    --color-nav-background-hover: hsl(${COLORS.sidewalk[400]});
+    --color-nav-background-hover: hsl(${COLORS.sidewalk[500]});
     /* NAV LINK COLORS (ACTIVE) */
     --color-nav-text-active: hsl(${COLORS.sidewalk[100]});
-    --color-nav-background-active:  hsl(${COLORS.sidewalk[700]});
+    --color-nav-background-active:  hsl(${COLORS.sidewalk[900]});
     /* NAV LINK COLORS (ACTIVE, HOVER) */
     --color-nav-text-active-hover: hsl(${COLORS.sidewalk[100]});
     --color-nav-background-active-hover: hsl(${COLORS.sidewalk[800]});

@@ -110,7 +110,7 @@ export const BlogMarkdownStyles = css`
     font-size: calc(var(--font-size-5) + 2 * var(--font-size-bump));
     line-height: var(--line-height-paragraph);
     @media ${QUERY.tabletAndSmaller} {
-        font-size: var(--font-size-paragraph);
+        font-size: var(--font-size-5);
         line-height: var(--line-height-paragraph);
       }
     /* margin-left: -1px; */
