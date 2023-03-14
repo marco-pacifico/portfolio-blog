@@ -23,7 +23,12 @@ export default function DarkToggle() {
         mediaQuery.onchange = () => {setTheme(getPreferredTheme)};
         
     },[]);
-
+    
+    // Function that gets called when the checkbox value changes and passes an event that's either checked or not checked
+    // If the checkbox has changed to checked, update set and store the value of theme to dark; light if changed to unchecked.
+    const toggleTheme = (e) => {
+        setAndStoreTheme(e.target.checked ? "dark" : "light");
+    }
     // Helper function that sets the value of theme and also saves the value to local storage.
     // This way local storage will only be used when checkbox is clicked, not when user changes OS or browser theme preference.
     // https://www.joshwcomeau.com/react/dark-mode/
@@ -38,12 +43,6 @@ export default function DarkToggle() {
         // Change the value of the data attribute "data-theme" on the html tag to be the value of the theme variable
         // This will cause CSS in global styles will be applied html[data-theme:"dark"] or html[data-theme:"light"]
         document.documentElement.setAttribute("data-theme",value);
-    }
-    
-    // Function that gets called when the checkbox value changes and passes an event that's either checked or not checked
-    // If the checkbox has changed to checked, update set and store the value of theme to dark; light if changed to unchecked.
-    const toggleTheme = (e) => {
-        setAndStoreTheme(e.target.checked ? "dark" : "light");
     }
 
     // For slow connection speeds, the checkbox will only display once the value of theme is known.

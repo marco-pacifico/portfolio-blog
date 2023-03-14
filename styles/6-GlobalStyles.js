@@ -57,13 +57,14 @@ const GlobalStyles = createGlobalStyle`
 		&[data-theme="light"]{
             color-scheme: light;
             ${LightColors}
-			/* transition: all 300ms ease-in-out; */
+			transition: all 300ms ease-in;
+			
         }
 
         &[data-theme="dark"]{
             color-scheme: dark;
             ${DarkColors}
-			/* transition: all 300ms ease-in-out; */
+			transition: all 300ms ease-in;
         }
 	}
 

@@ -17,7 +17,6 @@ const MoreWriting = ({ currentPost }) => {
   const firstPosts = filteredPOSTS.slice(0, firsPostsLimit);
   const morePosts = filteredPOSTS.slice(0, morePostsLimit);
   const postsToShow = showMore ? morePosts : firstPosts;
-  console.log(postsToShow.length);
 
   return (
     <MorePostsSection>
@@ -52,6 +51,7 @@ const MorePostsSection = styled.section`
   margin-top: var(--space-9);
   padding-top: var(--space-9);
   border-top: 1px solid var(--color-border);
+  transition: border-color 300ms ease-in;
   padding-left: var(--section-offset);
   padding-right: var(--section-offset);
 

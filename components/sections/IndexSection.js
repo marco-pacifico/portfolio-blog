@@ -29,6 +29,7 @@ const SectionWrapper = styled.section`
   padding-right: var(--section-offset);
   margin-left: var(--section-offset);
   border-top: 1px solid var(--color-border);
+  transition: border-color 300ms ease-in;
 `;
 
 const Title = styled(H2)`
