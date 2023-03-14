@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { H1, H1_Overline } from "../ui/Typography";
 import { QUERY } from "../../styles/1-DesignTokens";
 
@@ -6,7 +6,9 @@ const IndexHero = () => {
   return (
     <SectionWrapper>
       <Intro>
-        <Name>Hello, I’m Marco <br /></Name>
+        <Name>
+          Hello, I’m Marco <br />
+        </Name>
         Product Designer <br />
         based in New&nbsp;York&nbsp;City.
       </Intro>
@@ -16,6 +18,19 @@ const IndexHero = () => {
 
 export default IndexHero;
 
+const slidedown = keyframes`
+  0% {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0%);
+    opacity: 75%;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 const SectionWrapper = styled.section`
   --hero-section-height: 80vh;
   height: var(--hero-section-height);
@@ -30,5 +45,8 @@ const SectionWrapper = styled.section`
   }
 `;
 
-const Intro = styled(H1)``;
-const Name = styled(H1_Overline)``;
+const Intro = styled(H1)`
+  animation: ${slidedown} 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+`;
+const Name = styled(H1_Overline)`
+`;
