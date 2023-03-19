@@ -21,18 +21,16 @@ const BlogTypographyVariables = css`
   --letter-spacing-heading: ${LETTERSPACING[1]}em;
 
   /* TYPOGRAPHY MARGIN */
+  /* No margin collapse because using CSS Grid on blog layout */
   --margin-image: var(--space-8) 0;
-  /* --margin-display: var(--space-9) 0 var(--space-7) 0; */
-  --margin-display: var(--space-9) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
-  /* --margin-heading: var(--space-8) 0 var(--space-4) 0; */
-  --margin-heading: var(--space-8) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
-  /* --margin-paragraph: var(--space-5) 0; */
-  --margin-paragraph: var(--space-5) 0 0 0; // Removing bottom margin because blog layout is using css grid which prevents margin collapse
+  --margin-display: var(--space-9) 0 0 0;
+  --margin-heading: var(--space-8) 0 0 0;
+  --margin-paragraph: var(--space-5) 0 0 0;
   @media ${QUERY.tabletAndSmaller} {
     --margin-paragraph: var(--space-4) 0 0 0;
       }
-  /* --margin-list: var(--space-5) 0; */
-  --margin-list: 0; // Removing margin because blog layout is using css grid which prevents margin collapse
+
+  --margin-list: 0; 
   --margin-list-items: var(--space-4) 0;
   --margin-blockquote-level-1: var(--space-8) 0;
   --margin-blockquote-level-2: var(--space-6) 0;
@@ -41,7 +39,6 @@ const BlogTypographyVariables = css`
   /* LIST AND BULLET PADDING */
   --list-indent-bullets: var(--space-6);
   --list-indent-level-1: var(--space-3);
-  /* --listBulletPadding: var(--space5); */
   --list-bullet-padding: var(--space-2);
   --list-indent-level-2: calc(
     var(--list-indent-level-1) * 3 + var(--list-bullet-padding)
@@ -53,24 +50,21 @@ const BlogTypographyVariables = css`
 
 export const BlogMarkdownStyles = css`
   ${BlogTypographyVariables}
-  /* Images will span full width of page layout */
   hr {
     margin: var(--margin-divider);
     height: 1px;
     background-color: var(--color-text-tertiary);
     border: none;
-    width: 75%;
+    width: 90%;
     transition: background-color 300ms ease-in;
   }
+  /* Images will span full width of page layout */
   img {
     grid-column: 1 / -1;
     width: 100%;
     height: auto;
     border-radius: 16px;
     margin: var(--margin-image);
-    /* background-color: white; */
-    /* max-height: 800px;
-    object-fit: cover; */
   }
   /* Surround images with em tag set image with same as content width */
   em > img {
@@ -95,7 +89,6 @@ export const BlogMarkdownStyles = css`
     line-height: var(--line-height-heading-loose);
       @media ${QUERY.tabletAndSmaller} {
         font-size: calc(var(--font-size-7) -4 * var(--font-size-bump));
-        line-height: var(--line-height-heading);
       }
     /* margin-left: -1px; */
   }
@@ -104,7 +97,6 @@ export const BlogMarkdownStyles = css`
     line-height: var(--line-height-heading-loose);
     @media ${QUERY.tabletAndSmaller} {
       font-size: calc(var(--font-size-6) - 4 * var(--font-size-bump));
-      line-height: var(--line-height-heading);
     }
     /* margin-left: -1px; */
   }
@@ -113,7 +105,6 @@ export const BlogMarkdownStyles = css`
     line-height: var(--line-height-paragraph);
     @media ${QUERY.tabletAndSmaller} {
         font-size: var(--font-size-5);
-        line-height: var(--line-height-paragraph);
       }
     /* margin-left: -1px; */
   }
@@ -174,14 +165,7 @@ export const BlogMarkdownStyles = css`
 
   /* LIST BULLET STYLES */
   ul li {
-    /* display: flex; */
     list-style: square;
-    /* &::before {
-            content: "→";
-            color: var(--list-bullet-color);
-            padding-right: var(--list-bulletadding);
-
-        } */
     // Nested List
     & ul {
       & li {

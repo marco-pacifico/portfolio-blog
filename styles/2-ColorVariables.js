@@ -23,7 +23,7 @@ export const LightColors = css`
     --color-border: hsl(${COLORS.sidewalk[300]});
 
     /* NAV LINK COLORS */
-    --color-nav-text: hsl(${COLORS.sidewalk[700]});
+    --color-nav-text: hsl(${COLORS.sidewalk[800]});
     --color-nav-background:  hsl(${COLORS.sidewalk[400]});
     /* NAV LINK COLORS (HOVER) */
     --color-nav-text-hover:  hsl(${COLORS.sidewalk[800]});
