@@ -20,14 +20,14 @@ export default IndexHero;
 
 const slidedown = keyframes`
   0% {
-    transform: translateY(-30%);
+    transform: translateY(50%);
     opacity: 0;
   }
   50% {
-    transform: translateY(0%);
     opacity: 75%;
   }
   100% {
+    transform: translateY(0%);
     opacity: 1;
   }
 `;
@@ -46,7 +46,7 @@ const SectionWrapper = styled.section`
 `;
 
 const Intro = styled(H1)`
-  animation: ${slidedown} 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: ${slidedown} 600ms ease;
 `;
 const Name = styled(H1_Overline)`
 `;

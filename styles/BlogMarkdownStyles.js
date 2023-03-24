@@ -23,8 +23,8 @@ const BlogTypographyVariables = css`
   /* TYPOGRAPHY MARGIN */
   /* No margin collapse because using CSS Grid on blog layout */
   --margin-image: var(--space-8) 0;
-  --margin-display: var(--space-9) 0 0 0;
-  --margin-heading: var(--space-8) 0 0 0;
+  --margin-display: var(--space-9) 0 var(--space-2) 0;
+  --margin-heading: var(--space-8) 0 var(--space-2) 0;
   --margin-paragraph: var(--space-5) 0 0 0;
   @media ${QUERY.tabletAndSmaller} {
     --margin-paragraph: var(--space-4) 0 0 0;
