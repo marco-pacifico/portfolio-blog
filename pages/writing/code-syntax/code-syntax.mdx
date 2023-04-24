@@ -7,29 +7,13 @@ slug: code-syntax
 ---
 
 import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
-import SyntaxHighlighter from "../../../components/SyntaxHighlighter";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
 This is what a block of code looks like
 
-<SyntaxHighlighter 
-language="jsx"
-code={
-    `class Shape {
-    draw() {
-        console.log("Uhhh maybe override me");
-    }
-    }
-
-    class Circle {
-    draw() {
-    console.log("I'm a circle! :D");
-    }
-    }`
-}
-/>
+`inline code`
 
 ```js
 class Shape {
@@ -44,3 +28,16 @@ class Circle {
   }
 }
 ```
+
+````js
+function App() {
+  const [items, setItems] = React.useState([]);
+return (
+    <div>
+      {items.length > 0 && (
+        <ShoppingList items={items} />
+      )}
+    </div>
+  );
+}```
+````
