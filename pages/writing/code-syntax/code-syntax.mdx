@@ -1,0 +1,46 @@
+---
+title: Code Syntax
+date: "2023-03-10"
+category: Blog Post
+description: Testing what code syntax highlighting
+slug: code-syntax
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+import SyntaxHighlighter from "../../../components/SyntaxHighlighter";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+This is what a block of code looks like
+
+<SyntaxHighlighter 
+language="jsx"
+code={
+    `class Shape {
+    draw() {
+        console.log("Uhhh maybe override me");
+    }
+    }
+
+    class Circle {
+    draw() {
+    console.log("I'm a circle! :D");
+    }
+    }`
+}
+/>
+
+```js
+class Shape {
+  draw() {
+    console.log("Uhhh maybe override me");
+  }
+}
+
+class Circle {
+  draw() {
+    console.log("I'm a circle! :D");
+  }
+}
+```
