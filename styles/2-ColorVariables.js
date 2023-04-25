@@ -1,5 +1,6 @@
 import { css } from "styled-components";
-import { COLORS, QUERY } from "./1-DesignTokens";
+import { COLORS } from "./1-DesignTokens";
+
 
 export const LightColors = css`
   /* TEXT COLORS */
@@ -43,11 +44,11 @@ export const LightColors = css`
   --syntax-prop: #ff39a8;
   --syntax-bool: #ffd600;
   --syntax-val: #718e9c;
-  --syntax-str: rgb(155, 109, 255);
+  --syntax-str: #303030; // keyword
   --syntax-name: #c653ff;
   --syntax-del: #ff5555;
   --syntax-regex: #ffd700;
-  --syntax-fn: rgb(0, 190, 255);
+  --syntax-fn: #652DF2; // function
 `;
 
 export const DarkColors = css`
@@ -87,16 +88,39 @@ export const DarkColors = css`
   --color-nav-background-active-hover: hsl(${COLORS.night[600]});
 
   /* CODE SYNTAX HIGHLIGHTING */
-  --syntax-bg: hsl(210deg, 30%, 12%);
-  --syntax-highlight: hsl(210deg, 30%, 18%);
-  --syntax-txt: #fff;
+  --syntax-inline-bg: hsl(226deg 25% 12%); // dark gray
+  --syntax-inline-txt: #FF5555; //red
+  --syntax-bg: hsl(226deg 25% 8%); // dark gray
+  --syntax-txt: #fff; // white
+  --syntax-keyword: #88DDFF; // cyan
+  --syntax-fn: #00AAFF; // blue
+  --syntax-module: #FFCC33; // yellow
+  --syntax-control-flow: #FFCC33; // yellow
+  --syntax-parameter: #FFCC33; // yellow
+  --syntax-tag: #75A0EA; // light blue 
+  --syntax-punctuation: #00AAFF; // blue
+  --syntax-tag-punctuation: slategray; // slate gray
+  --syntax-css-punctuation: #75A0EA; // light blue
+  --syntax-attr-name: #88DDFF; // cyan
+  --syntax-attr-value: #98EC65; // green
+  --syntax-attr-equals: #FF66BB; //pink
+  --syntax-const: #00AAFF; // blue
+  --syntax-number: #9F80FF; // purple
+  --syntax-string: #98EC65; // green
+  --syntax-selector: #00AAFF; // blue
+  --syntax-rule: #FF66BB; //pink
+  --syntax-property: #fff; // white
+  --syntax-url: #98EC65; // green
+  --syntax-url-punctuation: #FF66BB; //pink
+  --syntax-hexcode-color: #9F80FF; // purple
+
+
+
   --syntax-comment: #6c8998;
   --syntax-prop: #ff39a8;
   --syntax-bool: #ffd600;
   --syntax-val: #718e9c;
-  --syntax-str: rgb(155, 109, 255);
   --syntax-name: #c653ff;
   --syntax-del: #ff5555;
   --syntax-regex: #ffd700;
-  --syntax-fn: rgb(0, 190, 255);
 `;

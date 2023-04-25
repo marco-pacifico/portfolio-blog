@@ -1,4 +1,3 @@
-import SyntaxHighlighter from "../components/SyntaxHighlighter";
 import IndexHero from "../components/sections/IndexHero";
 import IndexSection from "../components/sections/IndexSection";
 import Card from "../components/ui/Card";
