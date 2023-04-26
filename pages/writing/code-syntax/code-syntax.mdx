@@ -11,9 +11,41 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-This is what a block of code looks like
+This is what a block of code looks like `inline code`. What about when it's in a paragraph? Multiple lines that wrap? `inline code` What about when it's in a paragraph? Multiple lines that wrap? What about when it's in a paragraph? Multiple lines that wrap? What about when it's in a paragraph? Multiple lines that wrap? What about when it's in a paragraph? Multiple lines that wrap?
 
-`inline code`
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<script src="index.js"></script>
+  </body>
+</html>
+```
+
+```js
+const password = "MySecurePassword123!";
+
+// Regex pattern to match: 
+// - Minimum 8 characters
+// - At least one uppercase letter
+// - At least one lowercase letter
+// - At least one number
+// - At least one special character (!@#$%^&*)
+const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+if (pattern.test(password)) {
+  console.log("Password is valid.");
+} else {
+  console.log("Password is invalid.");
+}
+```
 
 ```css
 @font-face {
@@ -23,10 +55,27 @@ This is what a block of code looks like
   --syntax-txt: #fff;
   --syntax-comment: #6c8998;
   --syntax-prop: #ff39a8;
+
+  .token.string {
+    color: var(--syntax-string);
+  }
+  code {
+    font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
+      Courier, monospace;
+    line-height: normal;
+    /* background: rgba(135, 131, 120, 0.15);  */
+    background: var(--syntax-inline-bg);
+    color: var(--syntax-inline-txt);
+    border-radius: 6px;
+    /* font-size: var(--font-size-code); */
+
+    padding: 0.2em 0.4em;
+  }
+  
 }
 ```
 
-```js
+```css
 --color-text-strong: hsl(${COLORS.sidewalk[900]});
 --color-text-primary: hsl(${COLORS.sidewalk[800]});
 --color-text-secondary: hsl(${COLORS.sidewalk[600]});
@@ -98,9 +147,15 @@ class Circle {
 }
 ```
 
-```js
+```jsx
 function App() {
   const [items, setItems] = React.useState([]);
-  return <div>{items.length > 0 && <ShoppingList items={items} />}</div>;
+  return (
+    <div>
+        {items.length > 0 && 
+            <ShoppingList items={items} />
+        }
+    </div>
+  );
 }
 ```

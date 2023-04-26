@@ -88,39 +88,36 @@ export const DarkColors = css`
   --color-nav-background-active-hover: hsl(${COLORS.night[600]});
 
   /* CODE SYNTAX HIGHLIGHTING */
-  --syntax-inline-bg: hsl(226deg 25% 12%); // dark gray
-  --syntax-inline-txt: #FF5555; //red
-  --syntax-bg: hsl(226deg 25% 8%); // dark gray
+  --syntax-inline-bg: hsl(226deg 20% 14%); // dark gray
+  --syntax-inline-txt: #FF5555; // red
+  --syntax-bg: hsl(226deg 15% 9%); // dark gray
   --syntax-txt: #fff; // white
   --syntax-keyword: #88DDFF; // cyan
   --syntax-fn: #00AAFF; // blue
+  --syntax-parameter: #fff; // white
   --syntax-module: #FFCC33; // yellow
   --syntax-control-flow: #FFCC33; // yellow
-  --syntax-parameter: #FFCC33; // yellow
   --syntax-tag: #75A0EA; // light blue 
-  --syntax-punctuation: #00AAFF; // blue
-  --syntax-tag-punctuation: slategray; // slate gray
+  --syntax-punctuation: #75A0EA; // light blue 
+  --syntax-parameter-punctuation: #FFCC33; // yellow
+  --syntax-tag-punctuation: hsl(226deg 13% 50%); // gray
+  --syntax-comment: hsl(226deg 13% 55%); // gray
+  --syntax-css-txt: #75A0EA; // light blue
   --syntax-css-punctuation: #75A0EA; // light blue
+  --syntax-css-number: #9F80FF; // purple
+  --syntax-css-unit: #75A0EA; // light blue
+  --syntax-css-variable: #FFCC33; // yellow
+  --syntax-hexcode-color: #9F80FF; // purple
   --syntax-attr-name: #88DDFF; // cyan
-  --syntax-attr-value: #98EC65; // green
-  --syntax-attr-equals: #FF66BB; //pink
+  --syntax-attr-value: #ABEA77; // green
+  --syntax-operator: #FF66BB; //pink
   --syntax-const: #00AAFF; // blue
   --syntax-number: #9F80FF; // purple
-  --syntax-string: #98EC65; // green
+  --syntax-string: #ABEA77; // green
   --syntax-selector: #00AAFF; // blue
   --syntax-rule: #FF66BB; //pink
   --syntax-property: #fff; // white
-  --syntax-url: #98EC65; // green
+  --syntax-url: #ABEA77; // green
   --syntax-url-punctuation: #FF66BB; //pink
-  --syntax-hexcode-color: #9F80FF; // purple
-
-
-
-  --syntax-comment: #6c8998;
-  --syntax-prop: #ff39a8;
-  --syntax-bool: #ffd600;
-  --syntax-val: #718e9c;
-  --syntax-name: #c653ff;
-  --syntax-del: #ff5555;
-  --syntax-regex: #ffd700;
+  --syntax-method-access: #88DDFF; // cyan
 `;
