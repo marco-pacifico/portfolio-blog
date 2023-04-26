@@ -37,18 +37,38 @@ export const LightColors = css`
   --color-nav-background-active-hover: hsl(${COLORS.sidewalk[800]});
 
   /* CODE SYNTAX HIGHLIGHTING */
-  --syntax-bg: hsl(210deg, 30%, 12%);
-  --syntax-highlight: hsl(210deg, 30%, 18%);
-  --syntax-txt: #fff;
-  --syntax-comment: #6c8998;
-  --syntax-prop: #ff39a8;
-  --syntax-bool: #ffd600;
-  --syntax-val: #718e9c;
-  --syntax-str: #303030; // keyword
-  --syntax-name: #c653ff;
-  --syntax-del: #ff5555;
-  --syntax-regex: #ffd700;
-  --syntax-fn: #652DF2; // function
+  --syntax-bg: var(--color-background-darker);
+  --syntax-inline-bg: var(--color-background-darker);
+  --syntax-tag-punctuation: #696969; // light gray
+  --syntax-comment: #696969; // light gray
+  --syntax-inline-txt: #CB0101; // red
+  --syntax-txt: #303030; // dark gray 
+  --syntax-parameter: #303030; // dark gray 
+  --syntax-property: #303030; // dark gray 
+  --syntax-fn: #0062BD; // blue
+  --syntax-selector: #0062BD; // blue
+  --syntax-const: #0062BD; // blue
+  --syntax-tag: #00735E; // moss
+  --syntax-punctuation: #00735E; // moss
+  --syntax-css-txt: #00735E; // moss
+  --syntax-css-punctuation: #00735E; // moss
+  --syntax-css-unit: #00735E; // moss
+  --syntax-keyword: #017189; // cyan
+  --syntax-method-access: #017189; // cyan
+  --syntax-attr-name: #017189; // cyan
+  --syntax-module: #806000; // gold 
+  --syntax-control-flow: #806000; // gold 
+  --syntax-parameter-punctuation: #806000; // gold 
+  --syntax-css-variable: #806000; // gold 
+  --syntax-css-number: #652DF2; // purple
+  --syntax-hexcode-color: #652DF2; // purple
+  --syntax-number: #652DF2; // purple
+  --syntax-operator: #BF006A; // pink
+  --syntax-rule: #BF006A; // pink
+  --syntax-url-punctuation: #BF006A; // pink
+  --syntax-string: #147500; // green
+  --syntax-attr-value: #147500; // green
+  --syntax-url: #147500; // green
 `;
 
 export const DarkColors = css`
@@ -100,7 +120,7 @@ export const DarkColors = css`
   --syntax-tag: #75A0EA; // light blue 
   --syntax-punctuation: #75A0EA; // light blue 
   --syntax-parameter-punctuation: #FFCC33; // yellow
-  --syntax-tag-punctuation: hsl(226deg 13% 50%); // gray
+  --syntax-tag-punctuation: hsl(226deg 13% 55%); // gray
   --syntax-comment: hsl(226deg 13% 55%); // gray
   --syntax-css-txt: #75A0EA; // light blue
   --syntax-css-punctuation: #75A0EA; // light blue
