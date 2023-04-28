@@ -18,7 +18,7 @@ const StyledButton = styled.button`
     padding: ${(p) => p.size === "large" && "var(--space-4) var(--space-5)"};
     border-radius: ${(p) => p.size === "large" && "16px"};
     background-color: var(--color-nav-background);
-    transition: all 200ms ease-in;
+    transition: background-color 200ms ease-in;
     
     & ${NavText} {
         color: var(--color-nav-text);
