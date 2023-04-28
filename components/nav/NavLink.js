@@ -22,7 +22,7 @@ export const NavWrapperStyles = css`
   border-radius: 12px;
   display: grid;
   place-items: center;
-  transition: color, background-color 300ms ease-in;
+  transition: color, background-color 200ms ease-in;
   /* If href is current route, then apply active background color */
   background-color: ${(p) =>
     p.href === p.route
@@ -42,13 +42,12 @@ const StyledLink = styled(UnstyledLink)`
         ? "var(--color-nav-background-active-hover)"
         : "var(--color-nav-background-hover)"};
   }
-  /* transition: color, background-color 200ms ease-in; */
+
   /* If href is current route, then apply active,hover text color */
   &:hover ${NavText} {
     color: ${(p) =>
       p.href === p.route
         ? "var(--color-nav-text-active-hover)"
         : "var(--color-nav-text-hover)"};
-  /* transition: color, background-color 200ms ease-in; */
   }
 `;

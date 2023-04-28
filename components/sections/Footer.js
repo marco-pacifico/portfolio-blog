@@ -33,9 +33,6 @@ const SectionWrapper = styled.footer`
   padding: var(--padding-top) 0 var(--padding-bottom) var(--padding-left);
   border-top: 1px solid var(--color-border);
   background-color: var(--color-background-darker);
-  transition-property: background-color, border-color;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in;
 `;
 
 const Title = styled(H2)`

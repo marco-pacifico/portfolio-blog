@@ -55,11 +55,11 @@ const CardImage = styled(Image)`
   height: auto;
   object-fit: cover;
   border-radius: var(--radius);
-  transition: all 350ms ease-in-out;
+  transition: transform 350ms ease-in-out;
 
   ${Wrapper}:hover & {
     transform: translateY(calc(-1 * var(--space-4)));
-    transition: all 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
     box-shadow: 0 0.24rem 0.4rem rgba(0, 0, 0, 0.04);
   }
 `;
@@ -89,7 +89,7 @@ const Category = styled(Overline)`
 `;
 
 const Title = styled(H4)`
-  transition: all 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
   ${Wrapper}:hover & {
     color: var(--color-text-link);
   }

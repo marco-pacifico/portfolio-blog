@@ -35,7 +35,6 @@ const Wrapper = styled.div`
   margin-top: var(--list-item-space);
   margin-right: calc(-1 * var(--section-offset));
   border-bottom: 1px solid var(--color-border);
-  transition: border-color 300ms ease-in;
   display: flex;
   gap: var(--space-5);
   align-items: center;
@@ -62,7 +61,7 @@ const InfoWrapper = styled.div`
 `;
 
 const Title = styled(H4)`
-  transition: all 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
   ${Wrapper}:hover & {
     color: var(--color-text-link);
   }
@@ -74,7 +73,7 @@ const Arrow = styled(LinkAffordance)`
   @media ${QUERY.phoneAndSmaller} {
     margin-right: 0;
   }
-  transition: all 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
   
   ${Wrapper}:hover & {
     color: var(--color-text-link);
