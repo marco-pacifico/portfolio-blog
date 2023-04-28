@@ -47,7 +47,7 @@ export default function BlogPostLayout({ children, meta }) {
         <meta name="description" content={meta.description} />
       </Head>
       <PageHero category={meta.category} title={meta.title} description={meta.description} />
-      <BlogPostContent className={UntitledSerif.variable}>{children}</BlogPostContent>
+      <BlogPostContent className={`${UntitledSerif.variable} line-numbers`}>{children}</BlogPostContent>
       {isAboutPage && <PageBottomSpacing/>}
       {isWritingPage && <MoreWriting currentPost={meta.slug} />}
       {isWorkPage && <MoreWork currentPost={meta.slug} />}
