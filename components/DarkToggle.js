@@ -20,10 +20,9 @@ export default function DarkToggle() {
     // If a user changes theme after site loads, the checkbox state will update.
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     mediaQuery.onchange = () => {
-      setTheme(getPreferredTheme);
       disableAnimation();
+      setTheme(getPreferredTheme);
     };
-    
   }, []);
 
   // Function that gets called when the checkbox value changes and passes an event that's either checked or not checked
@@ -125,13 +124,8 @@ const disableAnimation = () => {
   );
   document.head.appendChild(css);
 
-  return () => {
-    // Force restyle
-    (() => window.getComputedStyle(document.body))();
-
-    // Wait for next tick before removing
-    setTimeout(() => {
-      document.head.removeChild(css);
-    }, 1);
-  };
+  // Wait for next tick before removing
+  setTimeout(() => {
+    document.head.removeChild(css);
+  }, 1);
 };
