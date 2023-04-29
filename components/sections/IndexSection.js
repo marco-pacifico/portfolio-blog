@@ -8,11 +8,14 @@ const IndexSection = ({ title, description, children }) => {
   React.useEffect(() => {
     const nodeToObserve = wrapperRef.current;
 
-    const observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
 
-      setIsShown(entry.isIntersecting);
-    }, { rootMargin: "-20%"});
+        setIsShown(entry.isIntersecting);
+      },
+      { rootMargin: "-25%" }
+    );
 
     observer.observe(nodeToObserve);
 
@@ -21,11 +24,12 @@ const IndexSection = ({ title, description, children }) => {
     };
   }, []);
 
-  const translateY = isShown ? "0%" : "100%";
+  const translateY = isShown ? "0%" : "200%";
+  const opacity = isShown ? "1" : "0";
 
   return (
     <SectionWrapper ref={wrapperRef}>
-      <ContentWrapper style={{ transform: `translateY(${translateY})` }}>
+      <ContentWrapper style={{ opacity: `${opacity}`, transform: `translateY(${translateY})` }}>
         <Title>{title}</Title>
         <Description>{description}</Description>
       </ContentWrapper>
@@ -56,7 +60,8 @@ const SectionWrapper = styled.section`
 
 // const IntersectionLine = styled.div``;
 const ContentWrapper = styled.div`
-  transition: transform 300ms;
+  transition-property: transform, opacity;
+  transition-duration: 500ms;
 `;
 
 const Title = styled(H2)`
