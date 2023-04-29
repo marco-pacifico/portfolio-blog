@@ -1,11 +1,38 @@
+import React from "react";
 import styled from "styled-components";
 import { H2, H3 } from "../ui/Typography";
 
-const IndexSection = ({title, description, children}) => {
+const IndexSection = ({ title, description, children }) => {
+  const [isShown, setIsShown] = React.useState(false);
+  const wrapperRef = React.useRef();
+  React.useEffect(() => {
+    const nodeToObserve = wrapperRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+
+        setIsShown(entry.isIntersecting);
+      },
+      { rootMargin: "-25%" }
+    );
+
+    observer.observe(nodeToObserve);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const translateY = isShown ? "0%" : "200%";
+  const opacity = isShown ? "1" : "0";
+
   return (
-    <SectionWrapper>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
+    <SectionWrapper ref={wrapperRef}>
+      <ContentWrapper style={{ opacity: `${opacity}`, transform: `translateY(${translateY})` }}>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+      </ContentWrapper>
       {children}
     </SectionWrapper>
   );
@@ -29,6 +56,12 @@ const SectionWrapper = styled.section`
   padding-right: var(--section-offset);
   margin-left: var(--section-offset);
   border-top: 1px solid var(--color-border);
+`;
+
+// const IntersectionLine = styled.div``;
+const ContentWrapper = styled.div`
+  transition-property: transform, opacity;
+  transition-duration: 500ms;
 `;
 
 const Title = styled(H2)`
