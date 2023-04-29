@@ -30,6 +30,7 @@ export default function DarkToggle() {
   const toggleTheme = (e) => {
     setAndStoreTheme(e.target.checked ? "dark" : "light");
   };
+
   // Helper function that sets the value of theme and also saves the value to local storage.
   // This way local storage will only be used when checkbox is clicked, not when user changes OS or browser theme preference.
   // https://www.joshwcomeau.com/react/dark-mode/
@@ -71,13 +72,9 @@ export default function DarkToggle() {
 
 const StyledLabel = styled.label`
   ${NavWrapperStyles}
-  /* background-color: ${(p) =>
-    p.theme === "dark"
-      ? "var(--color-text-strong)"
-      : "var(--color-nav-background)"}; */
-    background-color: var(--color-nav-background);
+  background-color: var(--color-nav-background);
   cursor: pointer;
-  transition: all 200ms ease-in;
+  transition: background-color 200ms ease-in;
   & #checkbox {
     display: none;
   }
