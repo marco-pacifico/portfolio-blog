@@ -1,35 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import useIsOnScreen from "../../hooks/is-on-screen";
 import { H2, H3 } from "../ui/Typography";
 
 const IndexSection = ({ title, description, children }) => {
-  const [isShown, setIsShown] = React.useState(false);
-  const wrapperRef = React.useRef();
-  React.useEffect(() => {
-    const nodeToObserve = wrapperRef.current;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-
-        setIsShown(entry.isIntersecting);
-      },
-      { rootMargin: "-25%" }
-    );
-
-    observer.observe(nodeToObserve);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const translateY = isShown ? "0%" : "200%";
+  // Animate ContentWrapper when SectionWrapper is on screen
+  const [sectionWrapperRef, isShown] = useIsOnScreen({ threshold: 0.1 });
+  const translateY = isShown ? "0%" : "100%";
   const opacity = isShown ? "1" : "0";
+  const animationStyles = {
+    opacity: `${opacity}`,
+    transform: `translateY(${translateY})`,
+  };
 
   return (
-    <SectionWrapper ref={wrapperRef}>
-      <ContentWrapper style={{ opacity: `${opacity}`, transform: `translateY(${translateY})` }}>
+    <SectionWrapper ref={sectionWrapperRef}>
+      <ContentWrapper style={animationStyles}>
         <Title>{title}</Title>
         <Description>{description}</Description>
       </ContentWrapper>
@@ -58,10 +44,8 @@ const SectionWrapper = styled.section`
   border-top: 1px solid var(--color-border);
 `;
 
-// const IntersectionLine = styled.div``;
 const ContentWrapper = styled.div`
-  transition-property: transform, opacity;
-  transition-duration: 500ms;
+  transition: transform 500ms, opacity 800ms 300ms;
 `;
 
 const Title = styled(H2)`
