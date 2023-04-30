@@ -1,7 +1,7 @@
 import IndexHero from "../components/sections/IndexHero";
 import IndexSection from "../components/sections/IndexSection";
 import Card from "../components/ui/Card";
-import Grid from "../components/ui/Grid";
+import HorizontalScroll from "../components/ui/HorizontalScroll";
 import ListItem from "../components/ui/ListItem";
 import { getSortedPostsData } from "../lib/getAndSavePosts";
 import { getSortedProjectsData } from "../lib/getAndSaveProjects";
@@ -28,7 +28,7 @@ export default function Home({ allPostsData, allProjectsData }) {
         description="I make tools and simplify complexity. I’m a designer who can research,
         prototype, build design systems, and ship product."
       >
-        <Grid>
+        <HorizontalScroll>
           {allProjectsData.map(({ slug, thumbnail, title, description, category }) => (
               <Card
                 key={slug}
@@ -39,7 +39,7 @@ export default function Home({ allPostsData, allProjectsData }) {
                 description={description}
               />
           ))}
-        </Grid>
+        </HorizontalScroll>
       </IndexSection>
       <IndexSection
         title="Writing"
