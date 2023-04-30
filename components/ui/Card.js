@@ -9,7 +9,9 @@ const Card = ({ id, href, thumbnail, title, description, category = "" }) => {
     <li key={id}>
       <CardLink href={href}>
         <Wrapper>
-          <CardImage alt={title} src={thumbnail} width="800" height="600"/>
+          <ImageWrapper>
+            <CardImage alt={title} src={thumbnail} width="800" height="600" />
+          </ImageWrapper>
           <InfoWrapper>
             <Category>{category}</Category>
             <Title>{title}</Title>
@@ -46,21 +48,28 @@ const Wrapper = styled.div`
   }
 `;
 
-const CardImage = styled(Image)`
+const ImageWrapper = styled.div`
   --radius-min: var(--space-6);
   --radius-target: var(--space-fluid-7);
   --radius-max: var(--space-8);
   --radius: clamp(var(--radius-min), var(--radius-target), var(--radius-max));
+  overflow: hidden;
+  border-radius: var(--radius);
+`
+
+const CardImage = styled(Image)`
+  
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: var(--radius);
+  
   transition: transform 350ms ease-in-out;
 
   ${Wrapper}:hover & {
-    transform: translateY(calc(-1 * var(--space-4)));
+    /* transform: translateY(calc(-1 * var(--space-4))); */
+    transform: scale(1.05);
     transition: transform 200ms ease-in-out;
-    box-shadow: 0 0.24rem 0.4rem rgba(0, 0, 0, 0.04);
+    /* box-shadow: 0 0.24rem 0.4rem rgba(0, 0, 0, 0.04); */
   }
 `;
 
@@ -81,7 +90,7 @@ const InfoWrapper = styled.div`
 const Category = styled(Overline)`
   margin-left: var(--space-1);
   @media ${QUERY.laptopAndSmaller} {
-    margin-left: calc(var(--space-1) / 2 );
+    margin-left: calc(var(--space-1) / 2);
   }
   @media ${QUERY.phoneAndSmaller} {
     margin-left: 0;
