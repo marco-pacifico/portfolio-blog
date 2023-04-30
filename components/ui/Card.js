@@ -9,7 +9,7 @@ const Card = ({ id, href, thumbnail, title, description, category = "" }) => {
     <li key={id}>
       <CardLink href={href}>
         <Wrapper>
-          <CardImage src={thumbnail} width="800" height="600"/>
+          <CardImage alt={title} src={thumbnail} width="800" height="600"/>
           <InfoWrapper>
             <Category>{category}</Category>
             <Title>{title}</Title>
