@@ -12,9 +12,9 @@ const HorizontalScroll = ({ children }) => {
     // Only update scroll position on non-touch devices
     console.log(window.matchMedia("(pointer: fine)").matches);
     if (window.matchMedia("(pointer: fine)").matches) {
-        // Only update scroll position when EndOfOnScreen div isn't on screen
-        !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
-    } 
+      // Only update scroll position when EndOfOnScreen div isn't on screen
+      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
+    }
     // if (window.matchMedia(("pointer: fine")))
   }, [ratio, endIsShown]);
 
@@ -22,7 +22,7 @@ const HorizontalScroll = ({ children }) => {
     <ScrollWrapper>
       <OnScreenWrapper ref={onScreenRef} />
       <ScrollArea ref={scrollRef}>{children}</ScrollArea>
-      <EndOfOnScreen ref={endOfOnScreenRef}/>
+      <EndOfOnScreen ref={endOfOnScreenRef} />
     </ScrollWrapper>
   );
 };
@@ -45,7 +45,6 @@ const EndOfOnScreen = styled.div`
   bottom: calc(-2 * var(--section-padding-bottom));
 `;
 
-
 const ScrollArea = styled.div`
   --grid-gap-min: var(--space-8);
   --grid-gap-target: var(--space-fluid-7);
@@ -67,8 +66,18 @@ const ScrollArea = styled.div`
     display: none;
   }
 
+  // Snap scroll to center of card on touch devices
+  @media (hover: none) and (pointer: coarse) {
+    scroll-snap-type: x mandatory;
+  }
+
   & li {
     min-width: 360px;
     flex: 1;
+
+    // Snap scroll to center of card on touch devices
+    @media (hover: none) and (pointer: coarse) {
+      scroll-snap-align: center;
+    }
   }
 `;
