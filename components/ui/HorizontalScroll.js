@@ -9,12 +9,11 @@ const HorizontalScroll = ({ children }) => {
   const scrollRef = React.useRef();
 
   React.useEffect(() => {
-    // Don't update scroll position on touch devices
-    if (window.matchMedia("pointer: coarse").matches) {
-    } else {
-      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
-    }
-
+    // Only update scroll position on non-touch devices
+    if (window.matchMedia("pointer: fine").matches) {
+        // Only update scroll position when EndOfOnScreen div isn't on screen
+        !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
+    } 
   }, [ratio, endIsShown]);
 
   return (
