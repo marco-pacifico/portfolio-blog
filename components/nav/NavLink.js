@@ -17,8 +17,6 @@ const NavLink = ({ onClick, href, route, size, children }) => {
 export default NavLink;
 
 export const NavWrapperStyles = css`
-  -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
-  user-select: none; // prevents selecting button text on touch devices
   height: var(--space-8);
   padding: 0 var(--space-4);
   border-radius: 12px;
