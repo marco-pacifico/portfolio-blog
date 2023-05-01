@@ -10,10 +10,12 @@ const HorizontalScroll = ({ children }) => {
 
   React.useEffect(() => {
     // Only update scroll position on non-touch devices
-    if (window.matchMedia("pointer: fine").matches) {
+    console.log(window.matchMedia("(pointer: fine)").matches);
+    if (window.matchMedia("(pointer: fine)").matches) {
         // Only update scroll position when EndOfOnScreen div isn't on screen
         !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
     } 
+    // if (window.matchMedia(("pointer: fine")))
   }, [ratio, endIsShown]);
 
   return (
@@ -40,7 +42,7 @@ const OnScreenWrapper = styled.div`
 `;
 const EndOfOnScreen = styled.div`
   position: absolute;
-  bottom: calc(-2.5 * var(--section-padding-bottom));
+  bottom: calc(-2 * var(--section-padding-bottom));
 `;
 
 
