@@ -5,29 +5,33 @@ import useOnScreenRatio from "../../hooks/on-screen-ratio";
 
 const HorizontalScroll = ({ children }) => {
   const [onScreenRef, ratio] = useOnScreenRatio();
+  const [endOfOnScreenRef, endIsShown] = useIsOnScreen({});
   const scrollRef = React.useRef();
-  const [isPeakRatio, setIsPeakRatio] = React.useState(undefined);
-  
 
   React.useEffect(() => {
-    if (ratio > 0.95) {setIsPeakRatio(true)};
-    if (!isPeakRatio) {
-      scrollRef.current.scrollLeft = ratio * 500 - 200;
-    } else {
-      scrollRef.current.scrollLeft = 0.96 * 500 - 200;
-    };
-  }, [ratio, isPeakRatio]);
+    // Only update scroll position on non-touch devices
+    console.log(window.matchMedia("(pointer: fine)").matches);
+    if (window.matchMedia("(pointer: fine)").matches) {
+      // Only update scroll position when EndOfOnScreen div isn't on screen
+      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
+    }
+    // if (window.matchMedia(("pointer: fine")))
+  }, [ratio, endIsShown]);
 
   return (
     <ScrollWrapper>
       <OnScreenWrapper ref={onScreenRef} />
       <ScrollArea ref={scrollRef}>{children}</ScrollArea>
+      <EndOfOnScreen ref={endOfOnScreenRef} />
     </ScrollWrapper>
   );
 };
 
 export default HorizontalScroll;
 
+const ScrollWrapper = styled.div`
+  position: relative;
+`;
 const OnScreenWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -36,8 +40,9 @@ const OnScreenWrapper = styled.div`
   height: 100vh;
   pointer-events: none;
 `;
-const ScrollWrapper = styled.div`
-  position: relative;
+const EndOfOnScreen = styled.div`
+  position: absolute;
+  bottom: calc(-2 * var(--section-padding-bottom));
 `;
 
 const ScrollArea = styled.div`
@@ -53,7 +58,7 @@ const ScrollArea = styled.div`
   display: flex;
   align-items: start;
   gap: var(--grid-gap);
-  overflow-x: scroll;
+  overflow: scroll;
   margin: 0 calc(-1 * var(--section-offset));
   padding: 0 var(--section-offset);
 
@@ -61,8 +66,18 @@ const ScrollArea = styled.div`
     display: none;
   }
 
+  // Snap scroll to center of card on touch devices
+  @media (hover: none) and (pointer: coarse) {
+    scroll-snap-type: x mandatory;
+  }
+
   & li {
     min-width: 360px;
     flex: 1;
+
+    // Snap scroll to center of card on touch devices
+    @media (hover: none) and (pointer: coarse) {
+      scroll-snap-align: center;
+    }
   }
 `;
