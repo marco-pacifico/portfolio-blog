@@ -3,9 +3,9 @@ import { UnstyledLink } from "./UnstyledLink";
 import { H4, Paragraph, LinkAffordance } from "./Typography";
 import { QUERY } from "../../styles/1-DesignTokens";
 
-const ListItem = ({ id, href, title, description }) => {
+const ListItem = ({ id, href, title, description, delay }) => {
   return (
-    <li key={id}>
+    <li key={id} style={{animationDelay: `${delay}`,}} >
       <UnstyledLink href={href}>
         <Wrapper>
           <InfoWrapper>

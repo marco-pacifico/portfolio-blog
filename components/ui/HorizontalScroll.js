@@ -12,7 +12,7 @@ const HorizontalScroll = ({ children }) => {
     // Only update scroll position on non-touch devices
     if (window.matchMedia("(pointer: fine)").matches) {
       // Only update scroll position when EndOfOnScreen div isn't on screen
-      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
+      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 240);
     }
   }, [ratio, endIsShown]);
 

@@ -46,10 +46,10 @@ export default function Home({ allPostsData, allProjectsData }) {
         description="I write to clarify my thinking on topics that interest me."
       >
         <ol>
-          {postsToShow.map(({ slug, title, description }) => (
-            <ListItem key={slug} href={`/writing/${slug}`} title={title} description={description} />
+          {postsToShow.map(({ slug, title, description }, index) => (
+            <ListItem key={slug} href={`/writing/${slug}`} title={title} description={description} delay={index+1}/>
           ))}
-          <ListItem title="See all writing" href="/writing" />
+          <ListItem title="See all writing" href="/writing" delay={postsToShow.length + 1}/>
         </ol>
         
       </IndexSection>
