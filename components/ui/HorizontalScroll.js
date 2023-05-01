@@ -41,8 +41,6 @@ const OnScreenWrapper = styled.div`
 `;
 const EndOfOnScreenWrapper = styled.div`
   position: absolute;
-  border: 1px solid red;
-  width: 100%;
   bottom: calc(-2.5 * var(--section-padding-bottom));
 `;
 
