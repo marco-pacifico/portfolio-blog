@@ -49,27 +49,23 @@ const Wrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  --radius-min: var(--space-6);
-  --radius-target: var(--space-fluid-7);
-  --radius-max: var(--space-8);
-  --radius: clamp(var(--radius-min), var(--radius-target), var(--radius-max));
-  overflow: hidden;
+  --radius: clamp(var(--space-6), var(--space-fluid-7), var(--space-8));
   border-radius: var(--radius);
-`
+  overflow: hidden;
+  isolation: isolate; // fixes bug on Safari with border radius ignoring overflow: hidden
+`;
 
 const CardImage = styled(Image)`
-  
   width: 100%;
   height: auto;
-  object-fit: cover;
-  
+
   transition: transform 350ms ease-in-out;
 
-  ${Wrapper}:hover & {
-    /* transform: translateY(calc(-1 * var(--space-4))); */
-    transform: scale(1.05);
-    transition: transform 200ms ease-in-out;
-    /* box-shadow: 0 0.24rem 0.4rem rgba(0, 0, 0, 0.04); */
+  @media (hover: hover) and (pointer: fine) {
+    ${Wrapper}:hover & {
+      transform: scale(1.05);
+      transition: transform 200ms ease-in-out;
+    }
   }
 `;
 
@@ -99,8 +95,10 @@ const Category = styled(Overline)`
 
 const Title = styled(H4)`
   transition: color 200ms ease-in-out;
-  ${Wrapper}:hover & {
-    color: var(--color-text-link);
+  @media (hover: hover) and (pointer: fine) {
+    ${Wrapper}:hover & {
+      color: var(--color-text-link);
+    }
   }
 `;
 const Description = styled(Paragraph)``;

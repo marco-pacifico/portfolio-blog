@@ -13,6 +13,8 @@ const NavButton = ({ onClick, size="small", children }) =>{
 export default NavButton;
 
 const StyledButton = styled.button`
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
     ${NavWrapperStyles}
     height: ${(p) => p.size === "large" && "auto"};
     padding: ${(p) => p.size === "large" && "var(--space-4) var(--space-5)"};

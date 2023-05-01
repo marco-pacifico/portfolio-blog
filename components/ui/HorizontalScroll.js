@@ -5,29 +5,32 @@ import useOnScreenRatio from "../../hooks/on-screen-ratio";
 
 const HorizontalScroll = ({ children }) => {
   const [onScreenRef, ratio] = useOnScreenRatio();
+  const [endOnScreenRef, endIsShown] = useIsOnScreen({});
   const scrollRef = React.useRef();
-  const [isPeakRatio, setIsPeakRatio] = React.useState(undefined);
-  
 
   React.useEffect(() => {
-    if (ratio > 0.95) {setIsPeakRatio(true)};
-    if (!isPeakRatio) {
-      scrollRef.current.scrollLeft = ratio * 500 - 200;
+    // Don't update scroll position on touch devices
+    if (window.matchMedia("pointer: coarse").matches) {
     } else {
-      scrollRef.current.scrollLeft = 0.96 * 500 - 200;
-    };
-  }, [ratio, isPeakRatio]);
+      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
+    }
+
+  }, [ratio, endIsShown]);
 
   return (
     <ScrollWrapper>
       <OnScreenWrapper ref={onScreenRef} />
       <ScrollArea ref={scrollRef}>{children}</ScrollArea>
+      <EndOfOnScreenWrapper ref={endOnScreenRef}/>
     </ScrollWrapper>
   );
 };
 
 export default HorizontalScroll;
 
+const ScrollWrapper = styled.div`
+  position: relative;
+`;
 const OnScreenWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -36,9 +39,13 @@ const OnScreenWrapper = styled.div`
   height: 100vh;
   pointer-events: none;
 `;
-const ScrollWrapper = styled.div`
-  position: relative;
+const EndOfOnScreenWrapper = styled.div`
+  position: absolute;
+  border: 1px solid red;
+  width: 100%;
+  bottom: calc(-2.5 * var(--section-padding-bottom));
 `;
+
 
 const ScrollArea = styled.div`
   --grid-gap-min: var(--space-8);
@@ -53,7 +60,7 @@ const ScrollArea = styled.div`
   display: flex;
   align-items: start;
   gap: var(--grid-gap);
-  overflow-x: scroll;
+  overflow: scroll;
   margin: 0 calc(-1 * var(--section-offset));
   padding: 0 var(--section-offset);
 

@@ -62,8 +62,10 @@ const InfoWrapper = styled.div`
 
 const Title = styled(H4)`
   transition: color 200ms ease-in-out;
-  ${Wrapper}:hover & {
-    color: var(--color-text-link);
+  @media (hover: hover) and (pointer: fine) {
+    ${Wrapper}:hover & {
+      color: var(--color-text-link);
+    }
   }
 `;
 const Description = styled(Paragraph)``;
@@ -74,9 +76,10 @@ const Arrow = styled(LinkAffordance)`
     margin-right: 0;
   }
   transition: transform 200ms ease-in-out;
-  
-  ${Wrapper}:hover & {
-    color: var(--color-text-link);
-    transform: translateX(var(--space-4));
+  @media (hover: hover) and (pointer: fine) {
+    ${Wrapper}:hover & {
+      color: var(--color-text-link);
+      transform: translateX(var(--space-4));
+    }
   }
 `;
