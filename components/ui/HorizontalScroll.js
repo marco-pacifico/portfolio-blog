@@ -5,7 +5,7 @@ import useOnScreenRatio from "../../hooks/on-screen-ratio";
 
 const HorizontalScroll = ({ children }) => {
   const [onScreenRef, ratio] = useOnScreenRatio();
-  const [endOnScreenRef, endIsShown] = useIsOnScreen({});
+  const [endOfOnScreenRef, endIsShown] = useIsOnScreen({});
   const scrollRef = React.useRef();
 
   React.useEffect(() => {
@@ -21,7 +21,7 @@ const HorizontalScroll = ({ children }) => {
     <ScrollWrapper>
       <OnScreenWrapper ref={onScreenRef} />
       <ScrollArea ref={scrollRef}>{children}</ScrollArea>
-      <EndOfOnScreenWrapper ref={endOnScreenRef}/>
+      <EndOfOnScreen ref={endOfOnScreenRef}/>
     </ScrollWrapper>
   );
 };
@@ -39,7 +39,7 @@ const OnScreenWrapper = styled.div`
   height: 100vh;
   pointer-events: none;
 `;
-const EndOfOnScreenWrapper = styled.div`
+const EndOfOnScreen = styled.div`
   position: absolute;
   bottom: calc(-2.5 * var(--section-padding-bottom));
 `;
