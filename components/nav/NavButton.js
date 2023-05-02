@@ -14,8 +14,10 @@ export default NavButton;
 
 const StyledButton = styled.button`
   ${NavWrapperStyles}
-  -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
-  user-select: none; // prevents selecting button text on touch devices
+  @media (hover: none) and (pointer: coarse) {
+    -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
+    user-select: none; // prevents selecting button text on touch devices
+  }
   height: ${(p) => p.size === "large" && "auto"};
   padding: ${(p) => p.size === "large" && "var(--space-4) var(--space-5)"};
   border-radius: ${(p) => p.size === "large" && "16px"};

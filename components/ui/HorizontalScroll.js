@@ -75,7 +75,7 @@ const ScrollArea = styled.div`
 
     // Snap scroll to center of card on touch devices
     @media (hover: none) and (pointer: coarse) {
-      scroll-snap-align: center;
+      scroll-snap-align: start;
     }
   }
 `;
