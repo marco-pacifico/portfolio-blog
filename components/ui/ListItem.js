@@ -3,9 +3,16 @@ import { UnstyledLink } from "./UnstyledLink";
 import { H4, Paragraph, LinkAffordance } from "./Typography";
 import { QUERY } from "../../styles/1-DesignTokens";
 
-const ListItem = ({ id, href, title, description }) => {
+const ListItem = ({ id, href, title, description, delay, isShown}) => {
+  const translateY = isShown ? "0%" : "120%";
+  const opacity = isShown ? "1" : "0";
+  const animationStyles = {
+    opacity: `${opacity}`,
+    transform: `translateY(${translateY})`,
+    transition: `transform 500ms ${delay*7}0ms`,
+  };
   return (
-    <li key={id}>
+    <li key={id} style={animationStyles} >
       <UnstyledLink href={href}>
         <Wrapper>
           <InfoWrapper>

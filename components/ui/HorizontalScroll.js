@@ -10,12 +10,10 @@ const HorizontalScroll = ({ children }) => {
 
   React.useEffect(() => {
     // Only update scroll position on non-touch devices
-    console.log(window.matchMedia("(pointer: fine)").matches);
     if (window.matchMedia("(pointer: fine)").matches) {
       // Only update scroll position when EndOfOnScreen div isn't on screen
-      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 200);
+      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 240);
     }
-    // if (window.matchMedia(("pointer: fine")))
   }, [ratio, endIsShown]);
 
   return (
@@ -77,7 +75,8 @@ const ScrollArea = styled.div`
 
     // Snap scroll to center of card on touch devices
     @media (hover: none) and (pointer: coarse) {
-      scroll-snap-align: center;
+      scroll-snap-align: start;
+      scroll-margin-left: var(--section-offset);
     }
   }
 `;

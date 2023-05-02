@@ -5,6 +5,7 @@ import HorizontalScroll from "../components/ui/HorizontalScroll";
 import ListItem from "../components/ui/ListItem";
 import { getSortedPostsData } from "../lib/getAndSavePosts";
 import { getSortedProjectsData } from "../lib/getAndSaveProjects";
+import useIsOnScreen from "../hooks/is-on-screen";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -12,14 +13,18 @@ export async function getStaticProps() {
   return {
     props: {
       allPostsData,
-      allProjectsData
+      allProjectsData,
     },
   };
-} 
+}
 
 export default function Home({ allPostsData, allProjectsData }) {
-  const postsLimit = 3
-  const postsToShow = allPostsData.slice(0,postsLimit)
+  const postsLimit = 3;
+  const postsToShow = allPostsData.slice(0, postsLimit);
+  const [postsListRef, isShown] = useIsOnScreen({});
+
+  console.log({ isShown });
+
   return (
     <>
       <IndexHero />
@@ -29,7 +34,8 @@ export default function Home({ allPostsData, allProjectsData }) {
         prototype, build design systems, and ship product."
       >
         <HorizontalScroll>
-          {allProjectsData.map(({ slug, thumbnail, title, description, category }) => (
+          {allProjectsData.map(
+            ({ slug, thumbnail, title, description, category }) => (
               <Card
                 key={slug}
                 href={`/work/${slug}`}
@@ -38,21 +44,33 @@ export default function Home({ allPostsData, allProjectsData }) {
                 title={title}
                 description={description}
               />
-          ))}
+            )
+          )}
         </HorizontalScroll>
       </IndexSection>
       <IndexSection
         title="Writing"
         description="I write to clarify my thinking on topics that interest me."
       >
-        <ol>
-          {postsToShow.map(({ slug, title, description }) => (
-            <ListItem key={slug} href={`/writing/${slug}`} title={title} description={description} />
+        <ol ref={postsListRef}>
+          {postsToShow.map(({ slug, title, description }, index) => (
+            <ListItem
+              key={slug}
+              href={`/writing/${slug}`}
+              title={title}
+              description={description}
+              delay={index + 1}
+              isShown={isShown}
+            />
           ))}
-          <ListItem title="See all writing" href="/writing" />
+          <ListItem
+            title="See all writing"
+            href="/writing"
+            delay={postsToShow.length + 1}
+            isShown={isShown}
+          />
         </ol>
-        
       </IndexSection>
     </>
   );
-};
+}
