@@ -23,8 +23,6 @@ export default function Home({ allPostsData, allProjectsData }) {
   const postsToShow = allPostsData.slice(0, postsLimit);
   const [postsListRef, isShown] = useIsOnScreen({});
 
-  console.log({ isShown });
-
   return (
     <>
       <IndexHero />

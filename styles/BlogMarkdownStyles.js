@@ -5,9 +5,9 @@ import { CodeSyntax } from "./7-CodeSyntax";
 
 const BlogTypographyVariables = css`
   /* FONT SIZES */
-  --font-size-paragraph: var(--font-size-5);
+  --font-size-paragraph: calc(var(--font-size-4) + 2 * var(--font-size-bump));
   @media ${QUERY.tabletAndSmaller} {
-    --font-size-paragraph: calc(var(--font-size-4) + 2 * var(--font-size-bump));
+    --font-size-paragraph: var(--font-size-4);
   }
   --font-size-code: var(--font-size-3);
   --font-size-caption: var(--font-size-2);

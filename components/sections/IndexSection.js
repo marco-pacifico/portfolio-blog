@@ -51,7 +51,7 @@ const ContentWrapper = styled.div`
 const Title = styled(H2)`
   --title-margin-min: var(--space-5);
   --title-margin-target: var(--space-fluid-7);
-  --title-margin-max: var(--space-fluid-7);
+  --title-margin-max: var(--space-8);
   --title-margin: clamp(
     var(--title-margin-min),
     var(--title-margin-target),
@@ -63,7 +63,7 @@ const Title = styled(H2)`
 const Description = styled(H3)`
   --description-margin-min: var(--space-9);
   --description-margin-target: var(--space-fluid-11);
-  --description-margin-max: var(--space-fluid-11);
+  --description-margin-max: var(--space-11);
   --description-margin: clamp(
     var(--description-margin-min),
     var(--description-margin-target),

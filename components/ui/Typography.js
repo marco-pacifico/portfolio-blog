@@ -5,7 +5,7 @@ import { LINEHEIGHT, LETTERSPACING, QUERY } from "../../styles/1-DesignTokens";
 export const H1 = styled.h1`
   --font-size-min: var(--font-size-6);
   --font-size-target: var(--font-size-fluid-9);
-  --font-size-max: var(--font-size-fluid-9);
+  --font-size-max: var(--font-size-10);
   font-size: clamp(
     var(--font-size-min),
     var(--font-size-target),
@@ -76,9 +76,8 @@ export const Overline = styled.h5`
 
 export const TitleAndDescription = css`
   --font-size-min: var(--font-size-4);
-  --font-size-target: var(--font-size-fluid-6);
-  /* --font-size-max: var(--font-size-5); */
-  --font-size-max: calc(var(--font-size-5) + 4*var(--font-size-bump));
+  --font-size-target: var(--font-size-fluid-5);
+  --font-size-max: var(--font-size-5);
   font-size: clamp(
     var(--font-size-min),
     var(--font-size-target),
@@ -92,9 +91,9 @@ export const TitleAndDescription = css`
 
 export const H4 = styled.h4`
   ${TitleAndDescription}
-  @media ${QUERY.desktopAndSmaller} {
-    font-weight: var(--font-weight-medium);
-  }
+  font-weight: var(--font-weight-medium);
+  /* @media ${QUERY.desktopAndSmaller} {
+  } */
 `;
 
 export const Paragraph = styled.p`
@@ -105,7 +104,7 @@ export const Paragraph = styled.p`
 export const LinkAffordance = styled.span`
   color: var(--color-text-primary);
   --font-size-min: var(--font-size-5);
-  --font-size-target: var(--font-size-fluid-7);
+  --font-size-target: var(--font-size-fluid-6);
   --font-size-max: var(--font-size-7);
   font-size: clamp(
     var(--font-size-min),
