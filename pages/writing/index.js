@@ -19,7 +19,7 @@ export default function Writing({ allPostsData }) {
       <PageHero title="Writing" />
       <List>
         {allPostsData.map(({ slug, title, description }) => (
-          <ListItem key={slug} href={`/writing/${slug}`} title={title} description={description} />
+          <ListItem key={slug} href={`/writing/${slug}`} title={title} description={description} isShown={true}/>
         ))}
       </List>
     </>
