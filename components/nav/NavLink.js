@@ -19,6 +19,7 @@ export default NavLink;
 export const NavWrapperStyles = css`
   height: var(--space-8);
   padding: 0 var(--space-4);
+  border: 1px solid var(--color-nav-border);
   border-radius: 12px;
   display: grid;
   place-items: center;
@@ -27,7 +28,7 @@ export const NavWrapperStyles = css`
   background-color: ${(p) =>
     p.href === p.route
       ? "var(--color-nav-background-active)"
-      : "var(--color-nav-background)"};
+      : "var(--color-background)"};
 `;
 
 const Wrapper = styled.div`

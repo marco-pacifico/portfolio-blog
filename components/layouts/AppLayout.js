@@ -46,7 +46,10 @@ export default function AppLayout({ children }) {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  max-width: var(--width-site-max);
+  margin: auto;
+`;
 const Main = styled.main`
   /* margin: var(--site-gutter); */
 `;

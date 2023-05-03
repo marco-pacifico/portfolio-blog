@@ -20,8 +20,8 @@ export default function DarkToggle() {
     // If a user changes theme after site loads, the checkbox state will update.
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     mediaQuery.onchange = () => {
-      disableAnimation();
       setTheme(getPreferredTheme);
+      disableAnimation();
     };
   }, []);
 
@@ -72,7 +72,7 @@ export default function DarkToggle() {
 
 const StyledLabel = styled.label`
   ${NavWrapperStyles}
-  background-color: var(--color-nav-background);
+  background-color: var(--color-background);
   cursor: pointer;
   transition: background-color 200ms ease-in;
   & #checkbox {

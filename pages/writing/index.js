@@ -31,6 +31,6 @@ const List = styled.ol`
   padding-left: var(--section-offset);
   padding-right: var(--section-offset);
   padding-bottom: var(--space-12);
-  max-width: ${BREAKPOINT.desktoplarge / 16}rem;
+  max-width: var(--width-site-max);
   margin: 0 auto;
 `

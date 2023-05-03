@@ -14,7 +14,7 @@ export const SiteLayoutVariables = css`
   --space-9: ${SPACE[8] / 16}rem;   // 64px
   --space-10: ${SPACE[9] / 16}rem;  // 72px
   --space-11: ${SPACE[10] / 16}rem; // 80px
-  --space-12: ${SPACE[11] / 16}rem; // 128px
+  --space-12: ${SPACE[11] / 16}rem; // 128pxl
 
   /* FLUID SPACING */
   --viewportBasis: ${BREAKPOINT.desktoplarge};
@@ -50,12 +50,11 @@ export const SiteLayoutVariables = css`
     @media ${QUERY.phoneAndSmaller} {
       --site-gutter: var(--space-5);
     }
-  --section-offset: calc(2 * var(--site-gutter));
+  --section-offset: calc(3 * var(--site-gutter));
     @media ${QUERY.tabletAndSmaller} {--section-offset: var(--site-gutter)};
 
   /* WIDTHS */
-  --width-site-max: calc(var(--viewportBasis)rem / 16); 
-  /* --width-blog-content: calc(680rem / 16);  */
+  --width-site-max: calc(${BREAKPOINT.desktoplarge}rem / 16); 
   --width-blog-content: 56ch; 
 
   /* HEADER */
