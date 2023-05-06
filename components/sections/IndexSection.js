@@ -30,7 +30,7 @@ export default IndexSection;
 const SectionWrapper = styled.section`
   --section-padding-top-min: var(--space-9);
   --section-padding-top-target: var(--space-fluid-11);
-  --section-padding-top-max: var(--space-fluid-11);
+  --section-padding-top-max: var(--space-11);
   --section-padding-top: clamp(
     var(--section-padding-top-min),
     var(--section-padding-top-target),
