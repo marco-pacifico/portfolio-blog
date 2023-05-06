@@ -76,7 +76,7 @@ export const DarkColors = css`
   /* TEXT COLORS */
   --color-text-strong: hsl(${COLORS.white[800]});
   --color-text-primary: hsl(${COLORS.white[700]});
-  --color-text-secondary: hsl(${COLORS.night[400]});
+  --color-text-secondary: hsl(${COLORS.night[300]});
   --color-text-tertiary: hsl(${COLORS.night[400]});
 
   /* TEXT SELECTION COLRS */

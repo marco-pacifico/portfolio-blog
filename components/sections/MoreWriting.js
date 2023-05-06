@@ -28,18 +28,19 @@ const MoreWriting = ({ currentPost }) => {
             href={`/writing/${slug}`}
             title={title}
             description={description}
+            isShown={true}
           />
         ))}
       </ol>
       {!showMore && (
         <SeeMoreButtonSection>
-          <NavButton size="large" onClick={() => setShowMore(!showMore)}>
+          <NavButton size="small" onClick={() => setShowMore(!showMore)}>
             Show more posts
           </NavButton>
         </SeeMoreButtonSection>
       )}
       {postsToShow.length === morePostsLimit && (
-        <ListItem title="See all writing" href="/writing" />
+        <ListItem title="See all writing" href="/writing" isShown={true}/>
       )}
     </MorePostsSection>
   );
