@@ -28,7 +28,7 @@ export const NavWrapperStyles = css`
   background-color: ${(p) =>
     p.href === p.route
       ? "var(--color-nav-background-active)"
-      : "var(--color-background)"};
+      : "var(--color-nav-background)"};
 `;
 
 const Wrapper = styled.div`

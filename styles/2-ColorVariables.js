@@ -24,18 +24,18 @@ export const LightColors = css`
   --color-border: hsl(${COLORS.sidewalk[300]});
 
   /* NAV LINK COLORS */
-  --color-nav-text: hsl(${COLORS.sidewalk[800]});
-  --color-nav-background: hsl(${COLORS.sidewalk[400]});
-  --color-nav-border: var(--color-border);
+  --color-nav-text: hsl(${COLORS.sidewalk[700]});
+  --color-nav-background: var(--color-background);
+  --color-nav-border: hsl(${COLORS.sidewalk[200]});
   /* NAV LINK COLORS (HOVER) */
   --color-nav-text-hover: hsl(${COLORS.sidewalk[800]});
-  --color-nav-background-hover: hsl(${COLORS.sidewalk[300]});
+  --color-nav-background-hover: var(--color-background-darker);
   /* NAV LINK COLORS (ACTIVE) */
-  --color-nav-text-active: hsl(${COLORS.sidewalk[100]});
-  --color-nav-background-active: hsl(${COLORS.sidewalk[800]});
+  --color-nav-text-active: hsl(${COLORS.sidewalk[800]});
+  --color-nav-background-active: var(--color-background-darker);
   /* NAV LINK COLORS (ACTIVE, HOVER) */
-  --color-nav-text-active-hover: hsl(${COLORS.sidewalk[100]});
-  --color-nav-background-active-hover: hsl(${COLORS.sidewalk[900]});
+  --color-nav-text-active-hover: hsl(${COLORS.sidewalk[800]});
+  --color-nav-background-active-hover: hsl(${COLORS.sidewalk[300]});
 
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-bg: var(--color-background-darker);
@@ -97,17 +97,17 @@ export const DarkColors = css`
 
   /* NAV LINK COLORS */
   --color-nav-text: hsl(${COLORS.night[300]});
-  --color-nav-background: hsl(${COLORS.night[600]});
-  --color-nav-border: var(--color-border);
+  --color-nav-background: hsl(${COLORS.night[800]});
+  --color-nav-border: hsl(${COLORS.night[600]});
   /* NAV LINK COLORS (HOVER) */
-  --color-nav-text-hover: var(--color-text-link);
-  --color-nav-background-hover: hsl(${COLORS.night[500]});
+  --color-nav-text-hover: hsl(${COLORS.night[100]});
+  --color-nav-background-hover: hsl(${COLORS.night[600]});
   /* NAV LINK COLORS (ACTIVE) */
   --color-nav-text-active: hsl(${COLORS.night[100]});
-  --color-nav-background-active: hsl(${COLORS.night[500]});
+  --color-nav-background-active: hsl(${COLORS.night[600]});
   /* NAV LINK COLORS (ACTIVE, HOVER) */
-  --color-nav-text-active-hover: var(--color-text-link);
-  --color-nav-background-active-hover: hsl(${COLORS.night[600]});
+  --color-nav-text-active-hover: hsl(${COLORS.night[100]});
+  --color-nav-background-active-hover: hsl(${COLORS.night[700]});
 
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-inline-bg: hsl(226deg 20% 14%); // dark gray

@@ -10,6 +10,7 @@ const ListItem = ({ id, href, title, description, delay, isShown}) => {
     opacity: `${opacity}`,
     transform: `translateY(${translateY})`,
     transition: `transform 500ms ${delay*7}0ms`,
+    willChange: 'transform',
   };
   return (
     <li key={id} style={animationStyles} >

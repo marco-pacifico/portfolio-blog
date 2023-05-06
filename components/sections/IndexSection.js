@@ -11,6 +11,7 @@ const IndexSection = ({ title, description, children }) => {
   const animationStyles = {
     opacity: `${opacity}`,
     transform: `translateY(${translateY})`,
+    willChange: 'transform',
   };
 
   return (

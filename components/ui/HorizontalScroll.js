@@ -53,6 +53,7 @@ const ScrollArea = styled.div`
     var(--grid-gap-max)
   );
 
+  will-change: scroll-position;
   display: flex;
   align-items: start;
   gap: var(--grid-gap);
