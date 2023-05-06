@@ -31,7 +31,7 @@ const SectionWrapper = styled.footer`
   --padding-bottom: calc(2 * var(--padding-top));
   --padding-left: var(--section-offset);
   padding: var(--padding-top) 0 var(--padding-bottom) var(--padding-left);
-  border-top: 1px solid var(--color-border);
+  /* border-top: 1px solid var(--color-border); */
   background-color: var(--color-background-darker);
 `;
 

@@ -21,7 +21,7 @@ export const LightColors = css`
   --color-background-darker: hsl(${COLORS.sidewalk[200]});
 
   /* BORDER COLORS */
-  --color-border: hsl(${COLORS.sidewalk[300]});
+  --color-border: hsl(${COLORS.sidewalk[200]});
 
   /* NAV LINK COLORS */
   --color-nav-text: hsl(${COLORS.sidewalk[700]});
