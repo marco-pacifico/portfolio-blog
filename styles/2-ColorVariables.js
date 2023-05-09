@@ -90,10 +90,10 @@ export const DarkColors = css`
   /* BACKGROUND COLORS */
   --color-background: hsl(${COLORS.night[900]});
   --color-background-lighter: hsl(${COLORS.night[600]});
-  --color-background-darker: hsl(${COLORS.night[800]});
+  --color-background-darker: hsl(${COLORS.night[700]});
 
   /* BORDER COLORS */
-  --color-border: hsl(${COLORS.night[700]});
+  --color-border: hsl(${COLORS.night[600]});
 
   /* NAV LINK COLORS */
   --color-nav-text: hsl(${COLORS.night[300]});
