@@ -11,9 +11,11 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
+I recently implemented code syntax highlighting on my blog. I'm using [Prism.js](https://prismjs.com/) to do this. It's a pretty simple setup, but I wanted to document it here for future reference. 
+
 This is what `inline code` looks like in a single line. 
 
-How about when it's sandwidched between two lines within a paragraph? This is what `inline code` looks like when it's within a paragraph. Adding another line here to see what it would look like.
+And this is what a code block looks like:
 
 ```html
 <!DOCTYPE html>
