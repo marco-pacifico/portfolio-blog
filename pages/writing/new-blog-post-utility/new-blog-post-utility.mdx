@@ -1,0 +1,67 @@
+---
+title: New-Blog-Post Utility
+date: "2023-09-27"
+category: Blog Post
+description: I wrote a script that generates the boilerplate for a new blog post  
+slug: new-blog-post-utility
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+Inspired by Josh Comeau's [create-new-component utility](https://www.npmjs.com/package/new-component), I wrote a utility to create the boilderplate folder structure and files for a new blog post. 
+
+## A Directory Per Blog Post 
+My blog posts are written in MDX and they're stored locally in my Next.js app. 
+
+I've orginized my files so that each blog post lives in its own folder. 
+
+Each folder contains an MDX file and any images that are used in the blog post. An index file exports the MDX file so that when someone visits the post's URL, the content in the MDX file is rendered.
+
+```js
+pages/
+└── writing/
+    └── blog-post-slug/
+        ├── blog-post-slug.mdx
+        ├── index.js
+        ├── image1.jpg
+        ...
+        └── imageN.jpg
+```
+
+## This Setup Allows Me to Colocate Images
+I like this setup because I can colocate images with the blog post content, which makes it easier to find and update images if I need to. 
+
+Also, by colocating images, I can statically import images in the MDX file and that provides some advantages when using Next's Image component. 
+
+> Next.js will automatically determine the width and height of your image based on the imported file. These values are used to prevent Cumulative Layout Shift while your image is loading.
+
+
+## Automating the Boilerplate 
+The problem with this setup is that it's a pain to set up manually. I have to create the folder, the mdx file, and the index file, and I have to make sure that everything is named correctly and that slug matches in several places. 
+
+So I wrote a utility to do this for me.
+
+## Usage
+
+The utility is a node script that you can run from the command line. It takes one argument, the slug of the blog post. 
+
+```bash 
+node create-blog-post blog-post-slug
+```
+
+Right now the folder path is hard-coded for this project, but I'd like to make it more flexible in the future.
+
+
+## Pages vs. App Router
+I'm currently using the Pages router setup in Next.js but this folder structure should still work for the App router. I'd have to swap out the index file in each blog post folder with a pages.js file.
+
+```js
+import Post from './blog-post-slug.mdx'
+ 
+export default function Page() {
+  return <Post />
+}
+```
