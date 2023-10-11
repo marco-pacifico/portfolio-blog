@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ListItem from "../../components/ui/ListItem.js";
 import PageHero from "../../components/sections/PageHero.js";
 import { getSortedPostsData } from "../../lib/getAndSavePosts.js";
-import { BREAKPOINT } from "../../styles/1-DesignTokens.js";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -25,7 +24,6 @@ export default function Writing({ allPostsData }) {
     </>
   );
 }
-
 
 const List = styled.ol`
   padding-left: var(--section-offset);
