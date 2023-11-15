@@ -99,7 +99,7 @@ export const BlogMarkdownStyles = css`
   h2 {
     font-size: var(--font-size-6);
     /* font-size: 2.125rem; */
-    line-height: 1.4em;
+    line-height: 1.3em;
     letter-spacing: 0;
     /* @media ${QUERY.tabletAndSmaller} {
       font-size: calc(var(--font-size-6) - 4 * var(--font-size-bump));
