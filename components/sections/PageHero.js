@@ -51,7 +51,7 @@ const Title = styled(H2)`
   font-size: 3.5rem;
   @media ${QUERY.phoneAndSmaller} {
       font-size: 2.75rem;
-      line-height: 1.2em;
+      line-height: 1.3em;
     };
  
   --title-margin-min: var(--space-5);
