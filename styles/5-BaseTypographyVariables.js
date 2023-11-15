@@ -11,7 +11,7 @@ export const BaseTypographyVariables = css`
   /* --font-sans: "Untitled Sans", var(--font-fallback-sans);
   --font-serif: "Untitled Serif", var(--font-fallback-serif); */
 
-  --font-family-paragraph: var(--font-serif);
+  --font-family-paragraph: var(--font-sans);
 
   /* FONT WEIGHTS */
   --font-weight-light: ${FONTWEIGHT[0]};

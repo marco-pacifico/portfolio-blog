@@ -5,33 +5,33 @@ import PageHero from "../sections/PageHero";
 import MoreWriting from "../sections/MoreWriting";
 import MoreWork from "../sections/MoreWork";
 import { BlogMarkdownStyles } from "../../styles/BlogMarkdownStyles";
-import { BREAKPOINT } from "../../styles/1-DesignTokens";
-import localFont from "@next/font/local";
-const UntitledSerif = localFont({
-  variable: "--font-serif",
-  src: [
-    {
-      path: "../../fonts/untitled-serif-web-medium-italic.woff",
-      weight: "500",
-      style: "italic",
-    },
-    {
-      path: "../../fonts/untitled-serif-web-medium.woff2",
-      weight: "500",
-      style: "regular",
-    },
-    {
-      path: "../../fonts/untitled-serif-web-regular-italic.woff",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../../fonts/untitled-serif-web-regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-});
+import { BREAKPOINT, QUERY} from "../../styles/1-DesignTokens";
+// import localFont from "@next/font/local";
+// const UntitledSerif = localFont({
+//   variable: "--font-serif",
+//   src: [
+//     {
+//       path: "../../fonts/untitled-serif-web-medium-italic.woff",
+//       weight: "500",
+//       style: "italic",
+//     },
+//     {
+//       path: "../../fonts/untitled-serif-web-medium.woff2",
+//       weight: "500",
+//       style: "regular",
+//     },
+//     {
+//       path: "../../fonts/untitled-serif-web-regular-italic.woff",
+//       weight: "400",
+//       style: "italic",
+//     },
+//     {
+//       path: "../../fonts/untitled-serif-web-regular.woff2",
+//       weight: "400",
+//       style: "normal",
+//     },
+//   ],
+// });
 
 export default function BlogPostLayout({ children, meta }) {
   const router = useRouter();
@@ -47,7 +47,7 @@ export default function BlogPostLayout({ children, meta }) {
         <meta name="description" content={meta.description} />
       </Head>
       <PageHero category={meta.category} title={meta.title} description={meta.description} />
-      <BlogPostContent className={`${UntitledSerif.variable} line-numbers`}>{children}</BlogPostContent>
+      <BlogPostContent>{children}</BlogPostContent>
       {isAboutPage && <PageBottomSpacing/>}
       {isWritingPage && <MoreWriting currentPost={meta.slug} />}
       {isWorkPage && <MoreWork currentPost={meta.slug} />}
@@ -72,11 +72,19 @@ const BlogPostContent = styled.article`
     1fr
     min(var(--width-blog-content), 100%)
     1fr;
-  padding-left: var(--site-gutter);
-  padding-right: var(--site-gutter);
-  & > * {
+    --page-padding-block-min: var(--space-9);
+    --page-padding-block-target: var(--space-fluid-11);
+    --page-padding-block-max: var(--space-11);
+    --page-padding-block: clamp(
+      var(--page-padding-block-min),
+      var(--page-padding-block-target),
+      var(--page-padding-block-max)
+      );
+    padding: var(--page-padding-block) var(--site-gutter);
+    & > * {
     grid-column: 2;
   }
+  grid-row-gap: var(--space-3);
 `;
 
 const PageBottomSpacing = styled.div`
