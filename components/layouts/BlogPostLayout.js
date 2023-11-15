@@ -5,7 +5,7 @@ import PageHero from "../sections/PageHero";
 import MoreWriting from "../sections/MoreWriting";
 import MoreWork from "../sections/MoreWork";
 import { BlogMarkdownStyles } from "../../styles/BlogMarkdownStyles";
-import { BREAKPOINT } from "../../styles/1-DesignTokens";
+import { BREAKPOINT, QUERY} from "../../styles/1-DesignTokens";
 // import localFont from "@next/font/local";
 // const UntitledSerif = localFont({
 //   variable: "--font-serif",
@@ -85,6 +85,9 @@ const BlogPostContent = styled.article`
     grid-column: 2;
   }
   gap: var(--space-3);
+  @media ${QUERY.phoneAndSmaller} {
+      gap: 0;
+    };
 `;
 
 const PageBottomSpacing = styled.div`

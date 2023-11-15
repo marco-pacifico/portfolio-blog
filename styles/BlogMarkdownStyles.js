@@ -18,7 +18,7 @@ const BlogTypographyVariables = css`
   --line-height-heading: ${LINEHEIGHT[1]}em;
   --line-height-heading-loose: ${LINEHEIGHT[3]}em;
   /* --line-height-paragraph: ${LINEHEIGHT[3]}em; */
-  --line-height-paragraph: 2.25rem;
+  --line-height-paragraph: 2.125rem;
 
   /* LETTER SPACING */
   --letter-spacing-display: ${LETTERSPACING[0]}em;
