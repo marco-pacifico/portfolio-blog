@@ -72,7 +72,7 @@ const Description = styled(H3)`
   line-height: 1.4em;
   @media ${QUERY.phoneAndSmaller} {
       font-size: 1.875rem;
-      line-height: 1.3em;
+      /* line-height: 1.3em; */
     };
   color: var(--color-text-secondary);
   --description-margin-min: var(--space-5);
