@@ -15,31 +15,23 @@ const PageHero = ({ category, title, description }) => {
 export default PageHero;
 
 const SectionWrapper = styled.section`
+  background-color: var(--color-background-darker);
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
-  --section-padding-top-min: var(--space-9);
-  --section-padding-top-target: var(--space-fluid-11);
-  --section-padding-top-max: var(--space-fluid-11);
-  --section-padding-top: clamp(
-    var(--section-padding-top-min),
-    var(--section-padding-top-target),
-    var(--section-padding-top-max)
+  --section-padding-block-min: var(--space-9);
+  --section-padding-block-target: var(--space-fluid-11);
+  --section-padding-block-max: var(--space-fluid-11);
+  --section-padding-block: clamp(
+    var(--section-padding-block-min),
+    var(--section-padding-block-target),
+    var(--section-padding-block-max)
   );
-  --section-padding-bottom-min: var(--space-5);
-  --section-padding-bottom-target: var(--space-fluid-7);
-  --section-padding-bottom-max: var(--space-fluid-7);
-  --section-padding-bottom: clamp(
-    var(--section-padding-bottom-min),
-    var(--section-padding-bottom-target),
-    var(--section-padding-bottom-max)
-  );
-  padding-top: var(--section-padding-top);
-  padding-bottom: var(--section-padding-bottom);
-  padding-right: var(--section-offset);
-  padding-left: var(--section-offset);
+  padding: var(--section-padding-block) var(--section-offset);
+
 `;
 
 const Category = styled(Overline)`
+  /* font-size: var(--font-size-2); */
   --title-margin-min: var(--space-3);
   --title-margin-target: var(--space-fluid-4);
   --title-margin-max: var(--space-fluid-4);
@@ -52,7 +44,13 @@ const Category = styled(Overline)`
   margin-bottom: var(--title-margin);
 `;
 const Title = styled(H2)`
-  --title-margin-min: var(--space-4);
+  font-size: 3.5rem;
+  @media ${QUERY.phoneAndSmaller} {
+      font-size: 2.75rem;
+      line-height: 1.3em;
+    };
+ 
+  --title-margin-min: var(--space-5);
   --title-margin-target: var(--space-fluid-3);
   --title-margin-max: var(--space-fluid-3);
   --title-margin: clamp(
@@ -61,10 +59,16 @@ const Title = styled(H2)`
     var(--title-margin-max)
   );
   margin-bottom: var(--title-margin);
+  /* margin-bottom: 1rem; */
   line-height: 1.1em;
 `;
 
 const Description = styled(H3)`
+  font-size: 2.125rem;
+  @media ${QUERY.phoneAndSmaller} {
+      font-size: 1.875rem;
+      line-height: 1.5em;
+    };
   color: var(--color-text-secondary);
   --description-margin-min: var(--space-5);
   --description-margin-target: var(--space-fluid-6);

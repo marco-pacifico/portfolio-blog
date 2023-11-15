@@ -5,18 +5,20 @@ import { CodeSyntax } from "./7-CodeSyntax";
 
 const BlogTypographyVariables = css`
   /* FONT SIZES */
-  --font-size-paragraph: calc(var(--font-size-4) + 2 * var(--font-size-bump));
-  @media ${QUERY.tabletAndSmaller} {
+  /* --font-size-paragraph: calc(var(--font-size-4) + 2 * var(--font-size-bump)); */
+  --font-size-paragraph: 1.375rem;
+  /* @media ${QUERY.tabletAndSmaller} {
     --font-size-paragraph: var(--font-size-4);
-  }
+  } */
   --font-size-code: var(--font-size-3);
   --font-size-caption: var(--font-size-2);
 
   /* LINE HEIGHT */
   --line-height-heading-tight: ${LINEHEIGHT[0]}em;
   --line-height-heading: ${LINEHEIGHT[1]}em;
-  --line-height-heading-loose: ${LINEHEIGHT[2]}em;
-  --line-height-paragraph: ${LINEHEIGHT[3]}em;
+  --line-height-heading-loose: ${LINEHEIGHT[3]}em;
+  /* --line-height-paragraph: ${LINEHEIGHT[3]}em; */
+  --line-height-paragraph: 2.25rem;
 
   /* LETTER SPACING */
   --letter-spacing-display: ${LETTERSPACING[0]}em;
@@ -26,7 +28,7 @@ const BlogTypographyVariables = css`
   /* No margin collapse because using CSS Grid on blog layout */
   --margin-image: var(--space-8) 0;
   --margin-display: var(--space-9) 0 var(--space-2) 0;
-  --margin-heading: var(--space-8) 0 var(--space-2) 0;
+  --margin-heading: var(--space-8) 0 var(--space-4) 0;
   --margin-paragraph: var(--space-5) 0 0 0;
   @media ${QUERY.tabletAndSmaller} {
     --margin-paragraph: var(--space-4) 0 0 0;
@@ -79,7 +81,7 @@ export const BlogMarkdownStyles = css`
   h5,
   h6 {
     font-family: var(--font-sans);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-regular);
     line-height: var(--line-height-heading);
     letter-spacing: var(--letter-spacing-heading);
     margin: var(--margin-heading);
@@ -96,10 +98,12 @@ export const BlogMarkdownStyles = css`
   }
   h2 {
     font-size: var(--font-size-6);
+    /* font-size: 2.125rem; */
     line-height: var(--line-height-heading-loose);
-    @media ${QUERY.tabletAndSmaller} {
+    letter-spacing: 0;
+    /* @media ${QUERY.tabletAndSmaller} {
       font-size: calc(var(--font-size-6) - 4 * var(--font-size-bump));
-    }
+    } */
     /* margin-left: -1px; */
   }
   h3 {
@@ -130,6 +134,7 @@ export const BlogMarkdownStyles = css`
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-paragraph);
     margin: var(--margin-paragraph);
+    letter-spacing: -0.0125em;
   }
 
   a {

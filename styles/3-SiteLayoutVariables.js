@@ -48,14 +48,14 @@ export const SiteLayoutVariables = css`
   --site-gutter: var(--space-7);
     /* Tighten site gutter on mobile */
     @media ${QUERY.phoneAndSmaller} {
-      --site-gutter: var(--space-5);
+      --site-gutter: 1.25rem
     }
   --section-offset: calc(3 * var(--site-gutter));
     @media ${QUERY.tabletAndSmaller} {--section-offset: var(--site-gutter)};
 
   /* WIDTHS */
   --width-site-max: calc(${BREAKPOINT.desktoplarge}rem / 16); 
-  --width-blog-content: 56ch; 
+  --width-blog-content: 58ch; 
 
   /* HEADER */
   /* --header-height: var(--space-10);  */

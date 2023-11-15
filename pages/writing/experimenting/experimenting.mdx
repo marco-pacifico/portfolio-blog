@@ -1,0 +1,20 @@
+---
+title: Title
+date: "2023-03-10"
+category: Blog Post
+description: Description
+slug: experimenting
+---
+
+import Image from "next/image";
+import image from "./ColorPalette.png";
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+
+<Image 
+  src={image}
+  alt="Color Palette"
+/>
