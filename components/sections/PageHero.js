@@ -16,6 +16,10 @@ export default PageHero;
 
 const SectionWrapper = styled.section`
   background-color: var(--color-background-darker);
+  @media ${QUERY.phoneAndSmaller} {
+      background-color: transparent;
+      padding-bottom: 0;
+    };
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
   --section-padding-block-min: var(--space-9);
@@ -67,7 +71,7 @@ const Description = styled(H3)`
   font-size: 2.125rem;
   @media ${QUERY.phoneAndSmaller} {
       font-size: 1.875rem;
-      line-height: 1.5em;
+      line-height: 1.4em;
     };
   color: var(--color-text-secondary);
   --description-margin-min: var(--space-5);
