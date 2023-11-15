@@ -48,7 +48,7 @@ export const SiteLayoutVariables = css`
   --site-gutter: var(--space-7);
     /* Tighten site gutter on mobile */
     @media ${QUERY.phoneAndSmaller} {
-      --site-gutter: 1.25rem
+      --site-gutter: var(--space-5);
     }
   --section-offset: calc(3 * var(--site-gutter));
     @media ${QUERY.tabletAndSmaller} {--section-offset: var(--site-gutter)};
