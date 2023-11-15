@@ -41,7 +41,7 @@ export const H2 = styled.h2`
   font-weight: var(--font-weight-light);
   line-height: ${LINEHEIGHT[2]};
   color: var(--color-text-strong);
-  letter-spacing: ${LETTERSPACING[2]}em;
+  letter-spacing: ${LETTERSPACING[1]}em;
 `;
 
 export const H3 = styled.h3`
@@ -56,7 +56,7 @@ export const H3 = styled.h3`
   font-weight: var(--font-weight-light);
   line-height: ${LINEHEIGHT[3]};
   color: var(--color-text-strong);
-  letter-spacing: ${LETTERSPACING[2]}em;
+  letter-spacing: -0.016em;
 `;
 
 // CARDS AND LIST ITMES
