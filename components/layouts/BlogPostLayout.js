@@ -84,10 +84,7 @@ const BlogPostContent = styled.article`
     & > * {
     grid-column: 2;
   }
-  gap: var(--space-3);
-  @media ${QUERY.phoneAndSmaller} {
-      gap: 0;
-    };
+  grid-row-gap: var(--space-3);
 `;
 
 const PageBottomSpacing = styled.div`
