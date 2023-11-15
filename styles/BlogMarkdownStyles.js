@@ -15,7 +15,7 @@ const BlogTypographyVariables = css`
 
   /* LINE HEIGHT */
   --line-height-heading-tight: ${LINEHEIGHT[0]}em;
-  --line-height-heading: ${LINEHEIGHT[1]}em;
+  --line-height-heading: ${LINEHEIGHT[2]}em;
   --line-height-heading-loose: ${LINEHEIGHT[3]}em;
   /* --line-height-paragraph: ${LINEHEIGHT[3]}em; */
   --line-height-paragraph: 2.125rem;
@@ -99,7 +99,7 @@ export const BlogMarkdownStyles = css`
   h2 {
     font-size: var(--font-size-6);
     /* font-size: 2.125rem; */
-    line-height: var(--line-height-heading-loose);
+    line-height: 1.4em;
     letter-spacing: 0;
     /* @media ${QUERY.tabletAndSmaller} {
       font-size: calc(var(--font-size-6) - 4 * var(--font-size-bump));
