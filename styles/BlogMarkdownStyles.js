@@ -11,7 +11,7 @@ const BlogTypographyVariables = css`
     --font-size-paragraph: var(--font-size-4);
   } */
   --font-size-code: var(--font-size-3);
-  --font-size-caption: var(--font-size-2);
+  --font-size-caption: var(--font-size-3);
 
   /* LINE HEIGHT */
   --line-height-heading-tight: ${LINEHEIGHT[0]}em;
@@ -219,11 +219,13 @@ export const BlogMarkdownStyles = css`
       font-weight: var(--font-weight-light);
       font-size: var(--font-size-5);
       padding-bottom: var(--space-3);
+      color: var(--color-text-strong);
     }
 
     figcaption {
       font-size: var(--font-size-caption);
       margin-top: var(--space-6);
+      color: var(--color-text-primary);
     }
   }
 
