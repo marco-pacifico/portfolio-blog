@@ -60,6 +60,7 @@ export default function DarkToggle() {
 
     // <NavButton onClick={toggleTheme} size="small">🌗</NavButton>
     <StyledLabel theme={theme}>
+      
       <input
         type="checkbox"
         id="checkbox"
@@ -83,6 +84,7 @@ const StyledLabel = styled.label`
 
   cursor: pointer;
   transition: background-color 200ms ease-in;
+
   & #checkbox {
     display: none;
   }

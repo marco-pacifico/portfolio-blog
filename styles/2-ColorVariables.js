@@ -108,6 +108,9 @@ export const DarkColors = css`
     --color-nav-background: hsl(${COLORS.night[100]});
     --color-nav-border: hsl(${COLORS.night[200]});
 
+    --color-nav-text-hover: var(--color-nav-text);
+    --color-nav-background-hover: var(--color-nav-background);
+
     --color-nav-text-active: var(--color-nav-text);
     --color-nav-background-active: var(--color-nav-background);
 
