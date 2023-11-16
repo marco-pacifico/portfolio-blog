@@ -108,7 +108,7 @@ export const DarkColors = css`
     --color-nav-text: var(--color-text-primary);
     /* --color-nav-background: hsl(${COLORS.night[200]}); */
     --color-nav-background: var(--color-background-darker);
-    --color-nav-border: hsl(${COLORS.night[900]});
+    --color-nav-border: hsl(${COLORS.night[600]});
 
     --color-nav-text-hover: var(--color-nav-text);
     --color-nav-background-hover: var(--color-nav-background);
