@@ -217,7 +217,7 @@ export const BlogMarkdownStyles = css`
     p {
       font-family: var(--font-sans);
       font-weight: var(--font-weight-light);
-      font-size: var(--font-size-6);
+      font-size: var(--font-size-5);
       padding-bottom: var(--space-3);
     }
 
