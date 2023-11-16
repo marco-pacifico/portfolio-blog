@@ -17,8 +17,8 @@ const IndexSection = ({ title, description, children }) => {
   return (
     <SectionWrapper ref={sectionWrapperRef}>
       <ContentWrapper style={animationStyles}>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
+        {title && <Title>{title}</Title>}
+        {description && <Description>{description}</Description>}
       </ContentWrapper>
       {children}
     </SectionWrapper>
@@ -28,14 +28,15 @@ const IndexSection = ({ title, description, children }) => {
 export default IndexSection;
 
 const SectionWrapper = styled.section`
-  --section-padding-top-min: var(--space-9);
+  /* --section-padding-top-min: var(--space-9);
   --section-padding-top-target: var(--space-fluid-11);
   --section-padding-top-max: var(--space-11);
   --section-padding-top: clamp(
     var(--section-padding-top-min),
     var(--section-padding-top-target),
     var(--section-padding-top-max)
-  );
+  ); */
+  --section-padding-top: var(--space-11);
   --section-padding-bottom: calc(2 * var(--section-padding-top));
 
   padding-top: var(--section-padding-top);
@@ -50,15 +51,16 @@ const ContentWrapper = styled.div`
 `;
 
 const Title = styled(H2)`
-  --title-margin-min: var(--space-5);
+  /* --title-margin-min: var(--space-5);
   --title-margin-target: var(--space-fluid-7);
   --title-margin-max: var(--space-8);
   --title-margin: clamp(
     var(--title-margin-min),
     var(--title-margin-target),
     var(--title-margin-max)
-  );
-  margin-bottom: var(--title-margin);
+  ); */
+
+  margin-bottom: var(--space-8);
 `;
 
 const Description = styled(H3)`

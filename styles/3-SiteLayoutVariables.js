@@ -50,7 +50,7 @@ export const SiteLayoutVariables = css`
     @media ${QUERY.phoneAndSmaller} {
       --site-gutter: var(--space-5);
     }
-  --section-offset: calc(3 * var(--site-gutter));
+  --section-offset: calc(6 * var(--site-gutter));
     @media ${QUERY.tabletAndSmaller} {--section-offset: var(--site-gutter)};
 
   /* WIDTHS */

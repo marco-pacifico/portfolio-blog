@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
-import { H2, H3, Overline } from "../ui/Typography";
+import { H1, H3, Overline } from "../ui/Typography";
 
 const PageHero = ({ category, title, description }) => {
   return (
@@ -31,6 +31,7 @@ const SectionWrapper = styled.section`
     var(--section-padding-block-max)
   );
   padding: var(--section-padding-block) var(--section-offset);
+  border-radius: 0 0 40px 40px;
 
 `;
 
@@ -47,8 +48,8 @@ const Category = styled(Overline)`
   margin-left: var(--space-fluid-2);
   margin-bottom: var(--title-margin);
 `;
-const Title = styled(H2)`
-  font-size: 3.5rem;
+const Title = styled(H1)`
+  
   @media ${QUERY.phoneAndSmaller} {
       font-size: 2.75rem;
       line-height: 1.2em;

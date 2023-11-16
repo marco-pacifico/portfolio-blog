@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TitleAndDescription, H2, Paragraph } from "../ui/Typography";
+import { TitleAndDescription, H1, Paragraph } from "../ui/Typography";
 import { NavLinkFooter } from "../nav/NavLinkFooter";
 import { QUERY } from "../../styles/1-DesignTokens";
 
@@ -20,6 +20,7 @@ const Footer = () => {
 export default Footer;
 
 const SectionWrapper = styled.footer`
+  border-radius: 40px 40px 0 0;
   --padding-top-min: var(--space-8);
   --padding-top-target: var(--space-fluid-11);
   --padding-top-max: var(--space-fluid-11);
@@ -35,16 +36,16 @@ const SectionWrapper = styled.footer`
   background-color: var(--color-background-darker);
 `;
 
-const Title = styled(H2)`
-  --title-margin-min: var(--space-7);
+const Title = styled(H1)`
+  /* --title-margin-min: var(--space-7);
   --title-margin-target: var(--space-fluid-8);
   --title-margin-max: var(--space-fluid-8);
   --title-margin: clamp(
     var(--title-margin-min),
     var(--title-margin-target),
     var(--title-margin-max)
-  );
-  margin-bottom: var(--title-margin);
+  ); */
+  margin-bottom: var(--space-8);
 `;
 
 

@@ -4,44 +4,45 @@ import useIsOnScreen from "../../hooks/is-on-screen";
 import useOnScreenRatio from "../../hooks/on-screen-ratio";
 
 const HorizontalScroll = ({ children }) => {
-  const [onScreenRef, ratio] = useOnScreenRatio();
-  const [endOfOnScreenRef, endIsShown] = useIsOnScreen({});
-  const scrollRef = React.useRef();
+  // const [onScreenRef, ratio] = useOnScreenRatio();
+  // const [endOfOnScreenRef, endIsShown] = useIsOnScreen({});
+  // const scrollRef = React.useRef();
 
-  React.useEffect(() => {
-    // Only update scroll position on non-touch devices
-    if (window.matchMedia("(pointer: fine)").matches) {
-      // Only update scroll position when EndOfOnScreen div isn't on screen
-      !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 240);
-    }
-  }, [ratio, endIsShown]);
+  // React.useEffect(() => {
+  //   // Only update scroll position on non-touch devices
+  //   if (window.matchMedia("(pointer: fine)").matches) {
+  //     // Only update scroll position when EndOfOnScreen div isn't on screen
+  //     !endIsShown && (scrollRef.current.scrollLeft = ratio * 500 - 240);
+  //   }
+  // }, [ratio, endIsShown]);
 
   return (
-    <ScrollWrapper>
-      <OnScreenWrapper ref={onScreenRef} />
-      <ScrollArea ref={scrollRef}>{children}</ScrollArea>
-      <EndOfOnScreen ref={endOfOnScreenRef} />
-    </ScrollWrapper>
+    // <ScrollWrapper>
+      // <OnScreenWrapper ref={onScreenRef} />
+      // <ScrollArea ref={scrollRef}>{children}</ScrollArea>
+      <ScrollArea>{children}</ScrollArea>
+      // <EndOfOnScreen ref={endOfOnScreenRef} />
+    // </ScrollWrapper>
   );
 };
 
 export default HorizontalScroll;
 
-const ScrollWrapper = styled.div`
-  position: relative;
-`;
-const OnScreenWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 100vh;
-  pointer-events: none;
-`;
-const EndOfOnScreen = styled.div`
-  position: absolute;
-  bottom: calc(-2 * var(--section-padding-bottom));
-`;
+// const ScrollWrapper = styled.div`
+//   position: relative;
+// `;
+// const OnScreenWrapper = styled.div`
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   left: 0;
+//   height: 100vh;
+//   pointer-events: none;
+// `;
+// const EndOfOnScreen = styled.div`
+//   position: absolute;
+//   bottom: calc(-2 * var(--section-padding-bottom));
+// `;
 
 const ScrollArea = styled.div`
   --grid-gap-min: var(--space-8);
