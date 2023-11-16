@@ -49,6 +49,7 @@ const Wrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  border: 1px solid var(--color-border);
   --radius: clamp(var(--space-6), var(--space-fluid-7), var(--space-7));
   border-radius: var(--radius);
   overflow: hidden;
