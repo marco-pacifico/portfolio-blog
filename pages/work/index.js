@@ -40,7 +40,7 @@ const Section = styled.section`
   padding-left: var(--section-offset);
   padding-right: var(--section-offset);
   padding-bottom: var(--space-12);
-  padding-top: var(--space-8);
+  padding-top: calc(var(--space-9) + var(--space-7));
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
 `;

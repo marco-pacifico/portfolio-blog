@@ -31,17 +31,17 @@ const CardLink = styled(UnstyledLink)`
 `;
 
 const Wrapper = styled.div`
-  --card-gap-min: var(--space-5);
+  /* --card-gap-min: var(--space-5);
   --card-gap-target: var(--space-fluid-6);
   --card-gap-max: var(--space-6);
   --card-gap: clamp(
     var(--card-gap-min),
     var(--card-gap-target),
     var(--card-gap-max)
-  );
+  ); */
   display: flex;
   flex-direction: column;
-  gap: var(--card-gap);
+  gap: var(--space-5);
   /* max-width: var(--width-blog-content); */
   @media ${QUERY.tabletAndSmaller} {
     max-width: 100%;
@@ -49,7 +49,8 @@ const Wrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  --radius: clamp(var(--space-6), var(--space-fluid-7), var(--space-8));
+  border: 1px solid var(--color-border);
+  --radius: clamp(var(--space-6), var(--space-fluid-7), var(--space-7));
   border-radius: var(--radius);
   overflow: hidden;
   isolation: isolate; // fixes bug on Safari with border radius ignoring overflow: hidden
@@ -63,27 +64,30 @@ const CardImage = styled(Image)`
 
   @media (hover: hover) and (pointer: fine) {
     ${Wrapper}:hover & {
-      transform: scale(1.05);
+      transform: scale(1.025);
       transition: transform 200ms ease-in-out;
     }
   }
 `;
 
 const InfoWrapper = styled.div`
-  --info-gap-min: var(--space-2);
+  /* --info-gap-min: var(--space-2);
   --info-gap-target: var(--space-fluid-1);
   --info-gap-max: var(--space-fluid-1);
   --info-gap: clamp(
     var(--info-gap-min),
     var(--info-gap-target),
     var(--info-gap-max)
-  );
+  ); */
   display: flex;
   flex-direction: column;
-  gap: var(--info-gap);
+  gap: var(--space-3);
+  margin-left: var(--space-3);
 `;
 
 const Category = styled(Overline)`
+  font-size: var(--font-size-1);
+  color: var(--color-text-secondary);
   margin-left: var(--space-1);
   @media ${QUERY.laptopAndSmaller} {
     margin-left: calc(var(--space-1) / 2);
@@ -97,7 +101,7 @@ const Title = styled(H4)`
   transition: color 200ms ease-in-out;
   @media (hover: hover) and (pointer: fine) {
     ${Wrapper}:hover & {
-      color: var(--color-text-link);
+      color: var(--color-text-link-hover);
     }
   }
 `;

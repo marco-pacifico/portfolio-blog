@@ -26,6 +26,7 @@ export default function Writing({ allPostsData }) {
 }
 
 const List = styled.ol`
+  padding-top: var(--space-9);
   padding-left: var(--section-offset);
   padding-right: var(--section-offset);
   padding-bottom: var(--space-12);

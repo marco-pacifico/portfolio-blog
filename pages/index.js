@@ -27,7 +27,6 @@ export default function Home({ allPostsData, allProjectsData }) {
     <>
       <IndexHero />
       <IndexSection
-        title="Work"
         description="I make tools and simplify complexity. I’m a designer who can research,
         prototype, build design systems, and ship product."
       >
@@ -48,7 +47,6 @@ export default function Home({ allPostsData, allProjectsData }) {
       </IndexSection>
       <IndexSection
         title="Writing"
-        description="I write to clarify my thinking on topics that interest me."
       >
         <ol ref={postsListRef}>
           {postsToShow.map(({ slug, title, description }, index) => (

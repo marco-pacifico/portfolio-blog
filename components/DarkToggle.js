@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavWrapperStyles } from "./nav/NavLink";
+import NavButton from "./nav/NavButton";
 
 export default function DarkToggle() {
   // The value of the theme variable starts off as undefined when site is generated on server.
@@ -56,7 +57,10 @@ export default function DarkToggle() {
   }
 
   return (
+
+    // <NavButton onClick={toggleTheme} size="small">🌗</NavButton>
     <StyledLabel theme={theme}>
+      
       <input
         type="checkbox"
         id="checkbox"
@@ -72,15 +76,19 @@ export default function DarkToggle() {
 
 const StyledLabel = styled.label`
   ${NavWrapperStyles}
-  background-color: var(--color-nav-background);
+  /* background-color: var(--color-nav-background);
+  border: 1px solid var(--color-nav-border);
+  &:hover {
+    background-color: var(--color-nav-background-hover);
+  } */
+
   cursor: pointer;
   transition: background-color 200ms ease-in;
+
   & #checkbox {
     display: none;
   }
-  &:hover {
-    background-color: var(--color-nav-background-hover);
-  }
+
 `;
 
 // Function that returns a value for theme of either light or dark

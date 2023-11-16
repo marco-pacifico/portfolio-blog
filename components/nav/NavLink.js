@@ -17,7 +17,11 @@ const NavLink = ({ onClick, href, route, size, children }) => {
 export default NavLink;
 
 export const NavWrapperStyles = css`
-  user-select: none; // prevents selecting text of interactive elements 
+ 
+  border: 1px solid var(--color-nav-border);
+
+
+  user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }

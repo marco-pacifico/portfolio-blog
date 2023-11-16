@@ -20,7 +20,7 @@ const ListItem = ({ id, href, title, description, delay, isShown}) => {
             <Title>{title}</Title>
             {description && <Description>{description}</Description>}
           </InfoWrapper>
-          <Arrow>→</Arrow>
+          {/* <Arrow>→</Arrow> */}
         </Wrapper>
       </UnstyledLink>
     </li>
@@ -30,15 +30,16 @@ const ListItem = ({ id, href, title, description, delay, isShown}) => {
 export default ListItem;
 
 const Wrapper = styled.div`
-  --list-item-space-min: var(--space-7);
+  /* --list-item-space-min: var(--space-7);
   --list-item-space-target: var(--space-fluid-7);
   --list-item-space-max: var(--space-8);
   --list-item-space: clamp(
     var(--list-item-space-min),
     var(--list-item-space-target),
     var(--list-item-space-max)
-  );
+  ); */
 
+  --list-item-space: var(--space-7);
   padding-bottom: var(--list-item-space);
   margin-top: var(--list-item-space);
   margin-right: calc(-1 * var(--section-offset));
@@ -54,17 +55,17 @@ const Wrapper = styled.div`
 `;
 
 const InfoWrapper = styled.div`
-  --info-gap-min: var(--space-2);
+  /* --info-gap-min: var(--space-2);
   --info-gap-target: var(--space-fluid-1);
   --info-gap-max: var(--space-fluid-1);
   --info-gap: clamp(
     var(--info-gap-min),
     var(--info-gap-target),
     var(--info-gap-max)
-  );
+  ); */
   display: flex;
   flex-direction: column;
-  gap: var(--info-gap);
+  gap: var(--space-3);
   flex-grow: 1;
 `;
 
@@ -72,7 +73,7 @@ const Title = styled(H4)`
   transition: color 500ms;
   @media (hover: hover) and (pointer: fine) {
     ${Wrapper}:hover & {
-      color: var(--color-text-link);
+      color: var(--color-text-link-hover);
     }
   }
 `;

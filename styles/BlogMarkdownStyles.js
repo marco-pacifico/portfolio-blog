@@ -135,6 +135,7 @@ export const BlogMarkdownStyles = css`
     line-height: var(--line-height-paragraph);
     margin: var(--margin-paragraph);
     letter-spacing: -0.0125em;
+    /* letter-spacing: -0.01875em; */
   }
 
   a {

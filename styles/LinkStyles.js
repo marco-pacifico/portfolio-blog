@@ -2,7 +2,7 @@ import { css } from "styled-components";
 
 export const LinkStyles = css`
   --color-link-background-image: var(--color-text-link);
-  font-weight: var(--font-weight-bold);
+  /* font-weight: var(--font-weight-); */
   color: var(--color-text-link);
 
   padding-bottom: 1px;
