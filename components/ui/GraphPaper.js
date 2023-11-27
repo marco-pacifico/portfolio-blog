@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function GraphPaper({ ...props }) {
+export default function GraphPaper({ children, ...props }) {
   return (
     <Background {...props}>
       <Glow aria-hidden />
       <Grid />
+        {children}
     </Background>
   );
 }
