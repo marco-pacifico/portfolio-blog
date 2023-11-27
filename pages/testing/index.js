@@ -12,7 +12,7 @@ export default function Testing() {
   return (
     <Wrapper>
       <Switch checked={checked} onChange={handleChange}>
-        I'm a switch {checked ? "on" : "off"}
+        Switch is {checked ? "on" : "off"}
       </Switch>
       <Slider
         label="Slider"
