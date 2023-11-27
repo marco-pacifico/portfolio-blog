@@ -28,9 +28,10 @@ const Glow = styled.div`
 
   position: absolute;
   pointer-events: none;
-  z-index: 1; // TODO: make this a prop
+  z-index: 10; // TODO: make this a prop
   top: 0;
-  transform: translateX(-50%) translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%); // TODO: x and y percetages props
   background-image: radial-gradient(
     circle at 50% 50%,
     var(--color-glow) 0%,
