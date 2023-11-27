@@ -14,15 +14,18 @@ export default function Testing() {
       <Switch checked={checked} onChange={handleChange}>
         I'm a switch {checked ? "on" : "off"}
       </Switch>
-      <Slider label="Slider" value={value} onChange={(e)=>setValue(e.target.value)}/>
+      <Slider
+        label="Slider"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
     </Wrapper>
   );
 }
 
-
 const Wrapper = styled.div`
-    display: grid;
-    place-content: center;
-    height: 80vh;
-    gap: var(--space-8);
+  display: grid;
+  place-content: center;
+  height: 80vh;
+  gap: var(--space-8);
 `;
