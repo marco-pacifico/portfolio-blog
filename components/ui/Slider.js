@@ -15,7 +15,7 @@ export default function Slider({
   return (
     <StyledSlider>
       <StyledLabel htmlFor={id}>
-        {label} {value}
+        {label} {value}px
         <input
           type="range"
           id={id}

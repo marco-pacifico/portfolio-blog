@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function GraphPaper({ children, ...props }) {
+export default function GraphPaper({ children, cellSize = 50 }) {
+  // Add cellSize prop to GraphPaper component, initialize to 50 if no value is passed
   return (
-    <Background {...props}>
+    <Background>
       <Glow aria-hidden />
-      <GridLines />
+      <GridLines cellSize={cellSize} />{" "}
+      {/* Pass the cellSize prop to the GridLines component */}
       {children}
     </Background>
   );
@@ -42,27 +44,29 @@ const Glow = styled.div`
   width: var(--glow-width); // TODO: make this a prop
 `;
 
-function GridLines({ ...props }) {
+function GridLines({ cellSize }) {
+  // Add cellSize prop to GridLines component, initialize to cellSize from parent if no value is passed
   return (
     <StyledGridLines>
       <defs>
         <pattern
           id="grid"
-          width="10"
-          height="10"
+          width={cellSize}
+          height={cellSize}
           x="50%"
           y={-1}
           patternUnits="userSpaceOnUse"
         >
           <path
-            d="M 5 10 V.5 M0 .5 H10"
-            // d={`M${gridWidth / 2} ${gridHeight} V.5 M0 .5 H${gridWidth}`} // Make a props
+            // d="M 5 10 V.5 M0 .5 H10"
+            d={`M${cellSize / 2} ${cellSize} V.5 M0 .5 H${cellSize}`} // Make a props
             fill="none"
             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
           />
         </pattern>
       </defs>
-      <DecorativeSquares />
+      <DecorativeSquares cellSize={cellSize} />{" "}
+      {/* Pass the cellSize prop to the DecorativeSquares component */}
       <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
     </StyledGridLines>
   );
@@ -87,9 +91,8 @@ const StyledGridLines = styled.svg`
   ); // TODO: make second percentage a prop mask coverage
 `;
 
-function DecorativeSquares({ ...props }) {
-  const gridWidth = 10; // TODO: make this a prop
-  const gridHeight = 10; // TODO: make this a prop
+function DecorativeSquares({ cellSize }) {
+  // Add cellSize prop to DecorativeSquares component, initialize to cellSize from parent if no value is passed
   const squareColor = "purple"; // TODO: make this a prop
   const squareOpacity = 0.5; // TODO: make this a prop
   return (
@@ -99,17 +102,17 @@ function DecorativeSquares({ ...props }) {
       style={{ fill: squareColor, opacity: squareOpacity }}
     >
       <path
-        d={`M-${gridWidth / 2 + 0.5} 0 
-                h${gridWidth + 1} v${gridHeight + 1} h-${gridWidth + 1}Z 
-                M${gridWidth * 3.5 - 0.5} 0 h${gridWidth + 1} v${
-          gridHeight + 1
-        } h-${gridWidth + 1}Z 
-                M${gridWidth * 1.5 - 0.5} ${gridHeight * 2} h${
-          gridWidth + 1
-        } v${gridHeight + 1} h-${gridWidth + 1}Z  
-                M-${gridWidth * 1.5 + 0.5} ${gridHeight * 3} h${
-          gridWidth + 1
-        } v${gridHeight + 1} h-${gridWidth + 1}Z  `}
+        d={`M-${cellSize / 2 + 0.5} 0 
+                h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z 
+                M${cellSize * 3.5 - 0.5} 0 h${cellSize + 1} v${
+          cellSize + 1
+        } h-${cellSize + 1}Z 
+                M${cellSize * 1.5 - 0.5} ${cellSize * 2} h${cellSize + 1} v${
+          cellSize + 1
+        } h-${cellSize + 1}Z  
+                M-${cellSize * 1.5 + 0.5} ${cellSize * 3} h${cellSize + 1} v${
+          cellSize + 1
+        } h-${cellSize + 1}Z  `}
         strokeWidth={0}
       />
     </StyledDecorativeSquares>

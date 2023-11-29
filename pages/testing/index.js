@@ -6,21 +6,26 @@ import GraphPaper from "../../components/ui/GraphPaper";
 
 export default function Testing() {
   const [checked, setChecked] = React.useState(false);
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
-  const [value, setValue] = React.useState(50);
+  const [cellSize, setCellSize] = React.useState(50);  // Create a state for cellSize in the parent component
+
   return (
     <Wrapper>
-      <GraphPaper>
+      <GraphPaper cellSize={cellSize}> {/* Pass the cellSize state to the GraphPaper component */}
         <Controls>
-          <Switch checked={checked} onChange={handleChange}>
+          <Switch
+            checked={checked}
+            onChange={(e) => setChecked(e.target.checked)}
+          >
             Switch is {checked ? "on" : "off"}
           </Switch>
           <Slider
-            label="Slider"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
+            id="cellSize"
+            label="Cell Size"
+            value={cellSize}
+            min={10}
+            max={400}
+            step={10}
+            onChange={(e) => setCellSize(+e.target.value)} //+e.target.value converts input string to number
           />
         </Controls>
       </GraphPaper>
