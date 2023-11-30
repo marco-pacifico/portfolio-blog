@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../styles/1-DesignTokens";
 
-export default function GraphPaper({ children, cellSize = 50 }) {
-  // Add cellSize prop to GraphPaper component, initialize to 50 if no value is passed
+export default function GraphPaper({
+  children,
+  cellSize = 50,
+  gridOpacity = 50,
+}) {
   return (
-    <Background>
+    <Background gridOpacity={gridOpacity}>
       <Glow aria-hidden />
-      <GridLines cellSize={cellSize} />{" "}
-      {/* Pass the cellSize prop to the GridLines component */}
+      <GridLines cellSize={cellSize}/>{" "}
       {children}
     </Background>
   );
@@ -19,7 +22,9 @@ const Background = styled.div`
   overflow: hidden;
   background-color: var(
     --color-background
-  ); // TODO: make this a prop, or a theme
+  ); // TODO: make this a prop, or a them
+
+  --grid-opacity: ${(props) => props.gridOpacity/100};
 `;
 
 const Glow = styled.div`
@@ -46,8 +51,10 @@ const Glow = styled.div`
 
 function GridLines({ cellSize }) {
   // Add cellSize prop to GridLines component, initialize to cellSize from parent if no value is passed
+//   style={{ stroke: `hsla(${isDark ? COLORS.night[300] : COLORS.sidewalk[600]} / ${gridOpacity/100}` }}
   return (
-    <StyledGridLines>
+    <StyledGridLines >
+      {/* TODO: add to style tag and make this a prop, will need to also create a new css variable that only uses hsl values, opacity will be added in the component */}
       <defs>
         <pattern
           id="grid"
@@ -78,8 +85,8 @@ const StyledGridLines = styled.svg`
   inset: 0;
   width: 100%;
   height: 100%;
-
-  stroke: var(--color-text-secondary); // TODO: make this a prop
+  --grid-line-stroke: hsl(var(--color-value-grid-line) / var(--grid-opacity));
+  stroke: var(--grid-line-stroke);
   mask-image: radial-gradient(
     100% 100% at top center,
     white,

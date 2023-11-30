@@ -7,10 +7,12 @@ import GraphPaper from "../../components/ui/GraphPaper";
 export default function Testing() {
   const [checked, setChecked] = React.useState(false);
   const [cellSize, setCellSize] = React.useState(50);  // Create a state for cellSize in the parent component
+  const [gridOpacity, setGridOpacity] = React.useState(50);  // Create a state for cellSize in the parent component
+
 
   return (
     <Wrapper>
-      <GraphPaper cellSize={cellSize}> {/* Pass the cellSize state to the GraphPaper component */}
+      <GraphPaper cellSize={cellSize} gridOpacity={gridOpacity}> {/* Pass the cellSize state prop to the GraphPaper component */}
         <Controls>
           <Switch
             checked={checked}
@@ -21,11 +23,19 @@ export default function Testing() {
           <Slider
             id="cellSize"
             label="Cell Size"
-            value={cellSize}
+            value={cellSize} // Pass the cellSize to the value prop of Slider component
+            units="px"
             min={10}
             max={400}
             step={10}
             onChange={(e) => setCellSize(+e.target.value)} //+e.target.value converts input string to number
+          />
+          <Slider
+            id="gridOpacity"
+            label="Grid Opacity"
+            value={gridOpacity} // Pass the cellSize to the value prop of Slider component
+            units="%"
+            onChange={(e) => setGridOpacity(+e.target.value)} //+e.target.value converts input string to number
           />
         </Controls>
       </GraphPaper>

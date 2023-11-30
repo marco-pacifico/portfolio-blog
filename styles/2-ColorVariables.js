@@ -23,6 +23,9 @@ export const LightColors = css`
   /* BORDER COLORS */
   --color-border: hsl(${COLORS.sidewalk[200]});
 
+  /* GRID LINE COLORS */
+  --color-value-grid-line: ${COLORS.sidewalk[700]};
+
   /* NAV LINK COLORS */
   @media (${QUERY.phoneAndSmaller}) {
     --color-nav-text: hsl(${COLORS.sidewalk[800]});
@@ -101,6 +104,9 @@ export const DarkColors = css`
 
   /* BORDER COLORS */
   --color-border: hsl(${COLORS.night[600]});
+
+  /* GRID LINE COLORS */
+  --color-value-grid-line: ${COLORS.night[300]};
 
   /* NAV LINK COLORS */
   @media (${QUERY.phoneAndSmaller}) {
