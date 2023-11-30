@@ -8,6 +8,7 @@ export default function Slider({
   max = 100,
   step = 1,
   value,
+  units = "",
   onChange,
   ...props
 }) {
@@ -15,7 +16,7 @@ export default function Slider({
   return (
     <StyledSlider>
       <StyledLabel htmlFor={id}>
-        {label} {value}px
+        {label} {value}{units}
         <input
           type="range"
           id={id}
