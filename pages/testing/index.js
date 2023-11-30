@@ -6,13 +6,23 @@ import GraphPaper from "../../components/ui/GraphPaper";
 
 export default function Testing() {
   const [checked, setChecked] = React.useState(false);
-  const [cellSize, setCellSize] = React.useState(50);  // Create a state for cellSize in the parent component
-  const [gridOpacity, setGridOpacity] = React.useState(50);  // Create a state for cellSize in the parent component
-
+  const [cellSize, setCellSize] = React.useState(50);
+  const [gridOpacity, setGridOpacity] = React.useState(50);
+  const [glowOpacity, setGlowOpacity] = React.useState(50);
+  const [glowHeight, setGlowHeight] = React.useState("800");
+  const [glowWidth, setGlowWidth] = React.useState("1100");
 
   return (
     <Wrapper>
-      <GraphPaper cellSize={cellSize} gridOpacity={gridOpacity}> {/* Pass the cellSize state prop to the GraphPaper component */}
+      <GraphPaper
+        cellSize={cellSize}
+        gridOpacity={gridOpacity}
+        glowOpacity={glowOpacity}
+        glowWidth={glowWidth}
+        glowHeight={glowHeight}
+      >
+        {" "}
+        {/* Pass the cellSize state prop to the GraphPaper component */}
         <Controls>
           <Switch
             checked={checked}
@@ -36,6 +46,33 @@ export default function Testing() {
             value={gridOpacity} // Pass the cellSize to the value prop of Slider component
             units="%"
             onChange={(e) => setGridOpacity(+e.target.value)} //+e.target.value converts input string to number
+          />
+          <Slider
+            id="glowOpacity"
+            label="Glow Opacity"
+            value={glowOpacity} // Pass the cellSize to the value prop of Slider component
+            units="%"
+            onChange={(e) => setGlowOpacity(+e.target.value)} //+e.target.value converts input string to number
+          />
+          <Slider
+            id="glowWidth"
+            label="Glow Width"
+            value={glowWidth} // Pass the cellSize to the value prop of Slider component
+            units="px"
+            min={0}
+            max={2000}
+            step={20}
+            onChange={(e) => setGlowWidth(+e.target.value)} //+e.target.value converts input string to number
+          />
+          <Slider
+            id="glowHeight"
+            label="Glow Height"
+            value={glowHeight} // Pass the cellSize to the value prop of Slider component
+            units="px"
+            min={0}
+            max={1200}
+            step={20}
+            onChange={(e) => setGlowHeight(+e.target.value)} //+e.target.value converts input string to number
           />
         </Controls>
       </GraphPaper>
