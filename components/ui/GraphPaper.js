@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 export default function GraphPaper({
-  children,
   cellSize = 50,
   gridOpacity = 50,
   glowOpacity = 50,
   glowWidth = 1100,
   glowHeight = 800,
+  glowOnTop = false,
 }) {
   return (
     <Wrapper
@@ -15,16 +15,17 @@ export default function GraphPaper({
       glowOpacity={glowOpacity}
       glowWidth={glowWidth}
       glowHeight={glowHeight}
+      glowOnTop={glowOnTop}
     >
       <Glow aria-hidden />
-      <GridLines cellSize={cellSize} /> {children}
+      <GridLines cellSize={cellSize} />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  position: relative;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   background-color: var(
     --color-background
@@ -36,20 +37,18 @@ const Wrapper = styled.div`
   --glow-opacity: ${(props) => props.glowOpacity / 100};
   --glow-width: ${(props) => props.glowWidth}px;
   --glow-height: ${(props) => props.glowHeight}px;
+  --glow-z-index: ${(props) => (props.glowOnTop ? 1 : 0)};
   --color-glow: purple;
 `;
 
 const Glow = styled.div`
   position: absolute;
   pointer-events: none;
-  z-index: 10; // TODO: make this a prop
+  z-index: var(--glow-z-index);
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%); // TODO: x and y percetages props
-  background-image: radial-gradient(
-    var(--color-glow),
-    transparent 40%
-  ); 
+  background-image: radial-gradient(var(--color-glow), transparent 40%);
   opacity: var(--glow-opacity);
   height: var(--glow-height); // TODO: make this a prop
   width: var(--glow-width); // TODO: make this a prop
