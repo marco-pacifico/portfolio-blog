@@ -1,22 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import { COLORS } from "../../styles/1-DesignTokens";
 
 export default function GraphPaper({
   children,
   cellSize = 50,
   gridOpacity = 50,
+  glowOpacity = 50,
+  glowWidth = 1100,
+  glowHeight = 800,
 }) {
   return (
-    <Background gridOpacity={gridOpacity}>
+    <Wrapper
+      gridOpacity={gridOpacity}
+      glowOpacity={glowOpacity}
+      glowWidth={glowWidth}
+      glowHeight={glowHeight}
+    >
       <Glow aria-hidden />
-      <GridLines cellSize={cellSize}/>{" "}
-      {children}
-    </Background>
+      <GridLines cellSize={cellSize} /> {children}
+    </Wrapper>
   );
 }
 
-const Background = styled.div`
+const Wrapper = styled.div`
   position: relative;
   height: 100%;
   overflow: hidden;
@@ -24,15 +30,16 @@ const Background = styled.div`
     --color-background
   ); // TODO: make this a prop, or a them
 
-  --grid-opacity: ${(props) => props.gridOpacity/100};
+  /* GRID */
+  --grid-opacity: ${(props) => props.gridOpacity / 100};
+  /* GLOW */
+  --glow-opacity: ${(props) => props.glowOpacity / 100};
+  --glow-width: ${(props) => props.glowWidth}px;
+  --glow-height: ${(props) => props.glowHeight}px;
+  --color-glow: purple;
 `;
 
 const Glow = styled.div`
-  --color-glow: purple;
-  --glow-opacity: 0.2;
-  --glow-height: 50%;
-  --glow-width: 50%;
-
   position: absolute;
   pointer-events: none;
   z-index: 10; // TODO: make this a prop
@@ -40,20 +47,19 @@ const Glow = styled.div`
   left: 50%;
   transform: translate(-50%, -50%); // TODO: x and y percetages props
   background-image: radial-gradient(
-    circle at 50% 50%,
-    var(--color-glow) 0%,
+    var(--color-glow),
     transparent 40%
-  ); // TODO: make this a prop
-  opacity: var(--glow-opacity); // TODO: make this a prop
+  ); 
+  opacity: var(--glow-opacity);
   height: var(--glow-height); // TODO: make this a prop
   width: var(--glow-width); // TODO: make this a prop
 `;
 
 function GridLines({ cellSize }) {
   // Add cellSize prop to GridLines component, initialize to cellSize from parent if no value is passed
-//   style={{ stroke: `hsla(${isDark ? COLORS.night[300] : COLORS.sidewalk[600]} / ${gridOpacity/100}` }}
+  //   style={{ stroke: `hsla(${isDark ? COLORS.night[300] : COLORS.sidewalk[600]} / ${gridOpacity/100}` }}
   return (
-    <StyledGridLines >
+    <StyledGridLines>
       {/* TODO: add to style tag and make this a prop, will need to also create a new css variable that only uses hsl values, opacity will be added in the component */}
       <defs>
         <pattern
