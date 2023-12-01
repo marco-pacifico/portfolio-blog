@@ -12,25 +12,21 @@ export default function Testing() {
   const [glowWidth, setGlowWidth] = React.useState("1100");
   const [glowOnTop, setGlowOnTop] = React.useState(false);
   const [maskCoverage, setMaskCoverage] = React.useState(50);
+  const [decorationOpacity, setDecorationOpacity] = React.useState(50);
 
   return (
     <Wrapper>
-        <GraphPaper
-          cellSize={cellSize}
-          gridOpacity={gridOpacity}
-          glowOpacity={glowOpacity}
-          glowWidth={glowWidth}
-          glowHeight={glowHeight}
-          glowOnTop={glowOnTop}
-          maskCoverage={maskCoverage}
-        />
+      <GraphPaper
+        cellSize={cellSize}
+        gridOpacity={gridOpacity}
+        glowOpacity={glowOpacity}
+        glowWidth={glowWidth}
+        glowHeight={glowHeight}
+        glowOnTop={glowOnTop}
+        maskCoverage={maskCoverage}
+        decorationOpacity={decorationOpacity}
+      />
       <Controls>
-        <Switch
-          checked={glowOnTop}
-          onChange={(e) => setGlowOnTop(e.target.checked)}
-        >
-          Glow is {glowOnTop ? "on top" : "behind"}
-        </Switch>
         <Slider
           id="cellSize"
           label="Cell Size"
@@ -48,6 +44,21 @@ export default function Testing() {
           units="%"
           onChange={(e) => setGridOpacity(+e.target.value)} //+e.target.value converts input string to number
         />
+        <Slider
+          id="maskCoverage"
+          label="Grid Fade"
+          value={maskCoverage} // Pass the cellSize to the value prop of Slider component
+          units="%"
+          min={25}
+          max={200}
+          onChange={(e) => setMaskCoverage(+e.target.value)} //+e.target.value converts input string to number
+        />
+        <Switch
+          checked={glowOnTop}
+          onChange={(e) => setGlowOnTop(e.target.checked)}
+        >
+          Glow is {glowOnTop ? "on top" : "behind"}
+        </Switch>
         <Slider
           id="glowOpacity"
           label="Glow Opacity"
@@ -76,11 +87,11 @@ export default function Testing() {
           onChange={(e) => setGlowHeight(+e.target.value)} //+e.target.value converts input string to number
         />
         <Slider
-          id="maskCoverage"
-          label="Mask Coverage"
-          value={maskCoverage} // Pass the cellSize to the value prop of Slider component
+          id="decorationOpacity"
+          label="Decoration Opacity"
+          value={decorationOpacity} // Pass the cellSize to the value prop of Slider component
           units="%"
-          onChange={(e) => setMaskCoverage(+e.target.value)} //+e.target.value converts input string to number
+          onChange={(e) => setDecorationOpacity(+e.target.value)} //+e.target.value converts input string to number
         />
       </Controls>
     </Wrapper>
@@ -89,7 +100,7 @@ export default function Testing() {
 
 const Wrapper = styled.div`
   padding: var(--space-8);
-  height: 80vh;
+  height: 90vh;
   position: relative;
   display: flex;
   justify-content: end;
