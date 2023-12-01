@@ -29,7 +29,7 @@ export default function Testing() {
           checked={glowOnTop}
           onChange={(e) => setGlowOnTop(e.target.checked)}
         >
-          Glow {glowOnTop ? "on top" : "behind"}
+          Glow is {glowOnTop ? "on top" : "behind"}
         </Switch>
         <Slider
           id="cellSize"
