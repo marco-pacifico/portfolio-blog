@@ -8,6 +8,7 @@ export default function GraphPaper({
   glowWidth = 1100,
   glowHeight = 800,
   glowOnTop = false,
+  maskCoverage = 50,
 }) {
   return (
     <Wrapper
@@ -16,6 +17,7 @@ export default function GraphPaper({
       glowWidth={glowWidth}
       glowHeight={glowHeight}
       glowOnTop={glowOnTop}
+      maskCoverage={maskCoverage}
     >
       <Glow aria-hidden />
       <GridLines cellSize={cellSize} />
@@ -39,6 +41,9 @@ const Wrapper = styled.div`
   --glow-height: ${(props) => props.glowHeight}px;
   --glow-z-index: ${(props) => (props.glowOnTop ? 1 : 0)};
   --color-glow: purple;
+
+  /* MASK */
+  --mask-coverage: ${(props) => props.maskCoverage}%;
 `;
 
 const Glow = styled.div`
@@ -93,14 +98,14 @@ const StyledGridLines = styled.svg`
   --grid-line-stroke: hsl(var(--color-value-grid-line) / var(--grid-opacity));
   stroke: var(--grid-line-stroke);
   mask-image: radial-gradient(
-    100% 100% at top center,
+    100% var(--mask-coverage) at top center,
     white,
     rgba(255, 255, 255, 0.5),
     rgba(255, 255, 255, 0.25),
     rgba(255, 255, 255, 0.1),
     rgba(255, 255, 255, 0.05),
     transparent
-  ); // TODO: make second percentage a prop mask coverage
+  ); 
 `;
 
 function DecorativeSquares({ cellSize }) {
