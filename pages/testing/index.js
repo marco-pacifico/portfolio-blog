@@ -103,5 +103,6 @@ const Controls = styled.div`
   isolation: isolate; // Creates new stacking context and prevents the controls from being clipped by the GraphPaper
   max-width: 200px;
   display: grid;
+  align-items: start;
   gap: var(--space-6);
 `;
