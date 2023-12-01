@@ -11,6 +11,7 @@ export default function Testing() {
   const [glowHeight, setGlowHeight] = React.useState("800");
   const [glowWidth, setGlowWidth] = React.useState("1100");
   const [glowOnTop, setGlowOnTop] = React.useState(false);
+  const [maskCoverage, setMaskCoverage] = React.useState(50);
 
   return (
     <Wrapper>
@@ -21,6 +22,7 @@ export default function Testing() {
           glowWidth={glowWidth}
           glowHeight={glowHeight}
           glowOnTop={glowOnTop}
+          maskCoverage={maskCoverage}
         />
       <Controls>
         <Switch
@@ -73,6 +75,13 @@ export default function Testing() {
           step={20}
           onChange={(e) => setGlowHeight(+e.target.value)} //+e.target.value converts input string to number
         />
+        <Slider
+          id="maskCoverage"
+          label="Mask Coverage"
+          value={maskCoverage} // Pass the cellSize to the value prop of Slider component
+          units="%"
+          onChange={(e) => setMaskCoverage(+e.target.value)} //+e.target.value converts input string to number
+        />
       </Controls>
     </Wrapper>
   );
@@ -82,6 +91,9 @@ const Wrapper = styled.div`
   padding: var(--space-8);
   height: 80vh;
   position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: end;
 `;
 
 const Controls = styled.div`
@@ -90,7 +102,6 @@ const Controls = styled.div`
   border-radius: var(--space-4);
   isolation: isolate; // Creates new stacking context and prevents the controls from being clipped by the GraphPaper
   max-width: 200px;
-  margin: auto;
   display: grid;
   gap: var(--space-6);
 `;
