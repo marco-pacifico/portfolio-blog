@@ -1,1 +1,1 @@
-const DRAFTS = []; export default DRAFTS;
+const DRAFTS = [{"title":"Figma Plugins Variables API","date":"2023-12-2","category":"Draft Blog Post","description":"Description","slug":"figma-plugins-variables-api"}]; export default DRAFTS;

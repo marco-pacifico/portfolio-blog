@@ -1,0 +1,1 @@
+export { default } from "./figma-plugins-variables-api.mdx";

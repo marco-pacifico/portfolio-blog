@@ -1,0 +1,122 @@
+---
+title: Figma Plugins Variables API
+date: "2023-12-2"
+category: Draft Blog Post
+description: Description
+slug: figma-plugins-variables-api
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+
+The Figma Variables API allows developers to interact with variables in Figma, including creating and reading variables. 
+
+Variables in Figma are reusable values that can be applied to various design properties and prototyping actions, helping to save time and effort when building designs, managing design systems, and creating complex prototyping flows.
+
+## Getting Variable Collections and Variables
+
+You can use the following methods to get variables and variable collections:
+
+- `getLocalVariableCollections`: This method returns all local variable collections in the current file.
+  ```js 
+    const localCollections = figma.variables.getLocalVariableCollections();
+  ```
+
+- `getVariableCollectionById`: This method finds a variable collection by ID. If not found or the provided ID is invalid, it returns null.
+  ```js 
+  const collection = figma.variables.getVariableCollectionById('VariableCollectionId:257c3beb2/57:13');
+  ```
+
+- `getLocalVariables`: This method returns all local variables in the current file, optionally filtering by resolved type.
+
+```const localVariables = figma.variables.getLocalVariables('STRING'); // filters local variables by the 'STRING' type```
+
+
+- `getVariableById`: This method finds a variable by ID. If not found or the provided ID is invalid, it returns null.
+
+ ```const variable = figma.variables.getVariableById(variableId);```
+
+
+## Creating Variable Collections and Variables
+
+You can create variables or variable collections using the following methods:
+
+- `createVariableCollection`: This method is used to create a variable collection.
+   ```const collection = figma.variables.createVariableCollection('Example Collection');```
+
+- `createVariable`: This method is used to create a variable.
+  ``` const variable = figma.variables.createVariable(
+   'ExampleVariableName',
+   collection.id,
+   'STRING'
+  );```
+
+
+This example creates a variable with the name `ExampleVariableName` of the `STRING` type. The variable is created inside a collection with the ID `57:13`.
+
+## Helpers
+
+The `figma.variables` global object also provides some helper methods to make certain operations easier:
+
+- `createVariableAlias`: This method is a helper function to create a variable alias. Variable aliases are used to bind variables to other variables, or to bind variables to various properties on a node or style.
+- `setBoundVariableForPaint`: This method is a helper function to bind a variable to a SolidPaint.
+- `importVariableByKeyAsync`: This method loads a variable from the team library.
+
+## Examples
+
+Here are some examples of how to use the Figma Variables API:
+
+Authoring a new variable collection: This example creates a new variable collection with two modes, and a color variable that defines a value for each of those two modes.
+
+ ```const collection = figma.variables.createVariableCollection("new-collection")
+ collection.renameMode(collection.modes[0].modeId, "light")
+ const colorVariable = figma.variables.createVariable("color-variable", collection.id, "COLOR")
+ // rename our new variable and collection because naming is hard!
+ colorVariable.name = "text-primary"
+ collection.name = "semantic colors"
+ const lightModeId = collection.modes[0].modeId
+ const darkModeId = collection.addMode("dark")
+ // Sets the color to #000 in light mode and #fff in dark mode
+ colorVariable.setValueForMode(lightModeId, {r: 0, g: 0, b: 0})
+ colorVariable.setValueForMode(darkModeId, {r: 1, g: 1, b: 1})```
+
+
+Determining if a node is bound to a variable: Variables consumed by a given node are enumerated in the `boundVariables` map.
+
+ ```const rectangle = figma.getNodeById(rectangleId)
+ // rectangle.width is a number
+ if (rectangle.boundVariables['width'] !== undefined) {
+   // Width fields can only have one bound variable, but fills and strokes might have multiple.
+   const widthVariableId = rectangle.boundVariables['width'].id
+   const widthVariable = figma.variables.getVariableById(widthVariableId)
+   // At this point we know that `widthVariable` is bound to the `width` property of `rectangle`.
+   assert(widthVariable.resolveForConsumer(rectangle).value === rectangle.width)
+ }```
+
+
+Binding a variable to a node or style: Whether binding to a node or style, the procedure is roughly the same.
+
+```const collection = figma.variables.createVariableCollection("new-collection")
+ const widthVariable = figma.variables.createVariable("width-variable", collection.id, "FLOAT")
+ const colorVariable = figma.variables.createVariable("color-variable", collection.id, "COLOR")
+ const node = figma.getNodeById(...)
+ // Simple fields can be bound via setBoundVariable
+ node.setBoundVariable('width', widthVariable.id)
+ const fillsCopy = clone(node.fills)
+ // Fills and strokes must be set via their immutable arrays
+ fillsCopy[0] = figma.variables.setBoundVariableForPaint(fillsCopy[0], 'color', colorVariable)
+ node.fills = fillsCopy
+ const style = figma.getStyleById(...)
+ const paintsCopy = clone(style.paints)
+ paintsCopy[0] = figma.variables.setBoundVariableForPaint(paintsCopy[0], 'color', colorVariable)
+ style.paints = paintsCopy```
+
+
+Binding a variable to a variant property: This sample binds a string variable to the variant property on a `InstanceNode`.
+
+``` const instanceNode = figma.getNodeById(...);
+ const stringVariable = figma.variables.getVariableById(...);
+ node.setProperties({```
