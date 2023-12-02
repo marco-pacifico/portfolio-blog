@@ -142,11 +142,7 @@ const Controls = styled.div`
   align-items: start;
   gap: var(--space-6);
   margin: 0 auto;
-
-  @media ${QUERY.phoneAndSmaller} {
-    flex-direction: column;
-    align-items: center;
-  }
+  overflow-x: auto;
 `;
 
 const Fieldset = styled.fieldset`
