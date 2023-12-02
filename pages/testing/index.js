@@ -127,7 +127,8 @@ export default function Testing() {
 
 const Wrapper = styled.div`
   padding: var(--space-8);
-  height: 90vh;
+  min-height: 90vh;
+  height: 100%;
   position: relative;
   display: flex;
   justify-content: end;
