@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import VisuallyHidden from "./VisuallyHidden";
 
-export default function Switch({ children, checked, ...props }) {
+export default function Switch({ children, id, checked, ...props }) {
   return (
     <StyledLabel>
       <VisuallyHidden>
-        <input type="checkbox" role="switch" {...props} />
+        <input {...props} type="checkbox" role="switch" id={id}/>
       </VisuallyHidden>
       <Track checked={checked}>
         <Thumb />
