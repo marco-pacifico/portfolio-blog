@@ -5,27 +5,28 @@ export const CodeSyntax = css`
     Courier, monospace;
   code {
     font-family: var(--font-code);
+    font-size: 78%;
     background: var(--syntax-inline-bg);
     color: var(--syntax-inline-txt);
     border-radius: 7px;
-    padding: 0.25em 0.4em
-  }
-  p > code {
+    padding: 0.25em 0.4em;
     display: inline-block;
-    font-size: 78%;
-    line-height: normal;
     transform: translateY(-0.05em);
+    line-height: normal
   }
   pre {
+    font-size: var(--font-size-paragraph);
     margin: var(--margin-image);
     padding: var(--space-6) var(--space-7);
     background: var(--syntax-bg);
     border-radius: 12px;
     overflow: auto;
+    
     & code {
       background: none;
       padding: 0;
       color: var(--syntax-txt);
+      line-height: var(--line-height-paragraph);
     }
   }
   .token {
