@@ -8,9 +8,10 @@ export default function GraphPaper({
   glowWidth = 1100,
   glowHeight = 800,
   glowOnTop = false,
+  glowColor = "#ff00ff",
   maskCoverage = 50,
   decorationOpacity = 50,
-  glowColor = "#ff00ff",
+  decorationColor = "#ff00ff",
 }) {
   return (
     <Wrapper
@@ -22,6 +23,7 @@ export default function GraphPaper({
       maskCoverage={maskCoverage}
       decorationOpacity={decorationOpacity}
       glowColor={glowColor}
+      decorationColor={decorationColor}
     >
       <Glow aria-hidden />
       <GridLines cellSize={cellSize} />
@@ -33,9 +35,7 @@ const Wrapper = styled.div`
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background-color: var(
-    --color-background
-  ); 
+  background-color: var(--color-background);
 
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
@@ -51,6 +51,7 @@ const Wrapper = styled.div`
 
   /* DECORATION */
   --decoration-opacity: ${(props) => props.decorationOpacity / 100};
+  --decoration-color: ${(props) => props.decorationColor};
 `;
 
 const Glow = styled.div`
@@ -116,15 +117,8 @@ const StyledGridLines = styled.svg`
 `;
 
 function DecorativeSquares({ cellSize }) {
-  // Add cellSize prop to DecorativeSquares component, initialize to cellSize from parent if no value is passed
-  const squareColor = "purple"; // TODO: make this a prop
-
   return (
-    <StyledDecorativeSquares
-      x="50%"
-      y={-1}
-      style={{ fill: squareColor}}
-    >
+    <StyledDecorativeSquares x="50%" y={-1}>
       <path
         d={`M-${cellSize / 2 + 0.5} 0 
                 h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z 
@@ -146,4 +140,5 @@ function DecorativeSquares({ cellSize }) {
 const StyledDecorativeSquares = styled.svg`
   overflow: visible;
   opacity: var(--decoration-opacity);
+  fill: var(--decoration-color);
 `;
