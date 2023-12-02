@@ -1,0 +1,1 @@
+const DRAFTS = []; export default DRAFTS;

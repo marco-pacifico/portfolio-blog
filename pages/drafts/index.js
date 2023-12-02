@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ListItem from "../../components/ui/ListItem.js";
 import PageHero from "../../components/sections/PageHero.js";
-import { getSortedDraftsData } from "../../lib/getAndSavePosts.js";
+import { getSortedDraftsData } from "../../lib/getAndSaveDrafts.js";
 
 export async function getStaticProps() {
   const allDraftsData = getSortedDraftsData();
