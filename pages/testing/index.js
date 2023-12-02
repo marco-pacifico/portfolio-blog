@@ -142,15 +142,10 @@ const Controls = styled.div`
   align-items: start;
   gap: var(--space-6);
   margin: 0 auto;
-  overflow-x: scroll;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  // Snap scroll to center of card on touch devices
-  @media (hover: none) and (pointer: coarse) {
-    scroll-snap-type: x mandatory;
+  @media ${QUERY.phoneAndSmaller} { 
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
