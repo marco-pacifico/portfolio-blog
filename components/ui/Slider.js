@@ -12,12 +12,13 @@ export default function Slider({
   onChange,
   ...props
 }) {
-
   return (
     <StyledSlider>
       <StyledLabel htmlFor={id}>
-        {label} {value}{units}
+        {label} {value}
+        {units}
         <input
+          {...props}
           type="range"
           id={id}
           min={min}
@@ -25,7 +26,6 @@ export default function Slider({
           step={step}
           value={value}
           onChange={onChange}
-          {...props}
         />
       </StyledLabel>
     </StyledSlider>
@@ -38,6 +38,10 @@ const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
+  user-select: none; // prevents selecting text of interactive elements
+  @media (hover: none) and (pointer: coarse) {
+    -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
+  }
 `;
 
 const StyledSlider = styled.div`
@@ -52,12 +56,6 @@ const StyledSlider = styled.div`
   --slider-thumb-border-radius: 50%;
   --slider-thumb-shadow: 0 0 0 1px var(--color-border);
 
-  /* display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  grid-gap: var(--space-4);
-  align-items: center; */
-
   & input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
@@ -68,16 +66,6 @@ const StyledSlider = styled.div`
     border-radius: var(--slider-track-border-radius);
     box-shadow: var(--slider-track-shadow);
     outline: none;
-    /* opacity: 1; */
-    -webkit-transition: 0.2s;
-    transition: opacity 0.2s;
-    grid-row: 1 / 2;
-    grid-column: 1 / -1;
-    justify-self: center;
-
-    &:hover {
-      /* opacity: 1; */
-    }
 
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
@@ -88,7 +76,7 @@ const StyledSlider = styled.div`
       border: var(--slider-thumb-border);
       border-radius: var(--slider-thumb-border-radius);
       box-shadow: var(--slider-thumb-shadow);
-      cursor: pointer;
+      cursor: grab;
     }
 
     &::-moz-range-thumb {
@@ -98,7 +86,7 @@ const StyledSlider = styled.div`
       border: var(--slider-thumb-border);
       border-radius: var(--slider-thumb-border-radius);
       box-shadow: var(--slider-thumb-shadow);
-      cursor: pointer;
+      cursor: grab;
     }
   }
 `;

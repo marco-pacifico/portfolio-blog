@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Switch from "../../components/ui/Switch";
 import Slider from "../../components/ui/Slider";
+import ColorPicker from "../../components/ui/ColorPicker";
 import GraphPaper from "../../components/ui/GraphPaper";
 
 export default function Testing() {
@@ -13,6 +14,7 @@ export default function Testing() {
   const [glowOnTop, setGlowOnTop] = React.useState(false);
   const [maskCoverage, setMaskCoverage] = React.useState(50);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
+  const [glowColor, setGlowColor] = React.useState("#ff00ff");
 
   return (
     <Wrapper>
@@ -27,6 +29,11 @@ export default function Testing() {
         decorationOpacity={decorationOpacity}
       />
       <Controls>
+        <ColorPicker
+          label="Glow Color"
+          value={glowColor}
+          onChange={(event) => setGlowColor(event.target.value)}
+        />
         <Slider
           id="cellSize"
           label="Cell Size"
