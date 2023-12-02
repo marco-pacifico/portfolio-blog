@@ -23,7 +23,7 @@ const Wrapper = styled.label`
   }
 `;
 
-const Label = styled.p`
+const Label = styled.div`
   color: var(--color-text-primary);
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-bold);
