@@ -23,6 +23,7 @@ const StyledLabel = styled.label`
   gap: var(--space-5);
   align-items: center;
   width: max-content;
+  padding-block: var(--space-2);
   user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices

@@ -13,10 +13,8 @@ export default function Slider({
   ...props
 }) {
   return (
-    <StyledSlider>
-      <StyledLabel htmlFor={id}>
-        {label} {value}
-        {units}
+    <StyledSlider htmlFor={id}>
+      <Label>{label} <Value>{value}{units}</Value></Label>
         <input
           {...props}
           type="range"
@@ -27,24 +25,30 @@ export default function Slider({
           value={value}
           onChange={onChange}
         />
-      </StyledLabel>
     </StyledSlider>
   );
 }
 
-const StyledLabel = styled.label`
+const Label = styled.p`
   color: var(--color-text-primary);
   font-size: var(--font-size-2);
+  font-weight: var(--font-weight-bold);
   display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+  justify-content: space-between;
   user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }
 `;
+const Value = styled.span`
+  font-weight: var(--font-weight-regular);
+`;
 
-const StyledSlider = styled.div`
+const StyledSlider = styled.label`
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
   --slider-track-height: 0.5rem;
   --slider-track-background: var(--color-text-secondary);
   --slider-track-border: 1px solid var(--color-text-primary);
