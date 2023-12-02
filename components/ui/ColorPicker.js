@@ -4,30 +4,35 @@ import VisuallyHidden from "./VisuallyHidden";
 
 export default function ColorPicker({ label, value, ...props }) {
   return (
-    <Label>
-      {label}
-      {/* <VisuallyHidden>
-        <input {...props} type="color" value={value} />
-      </VisuallyHidden> */}
+    <Wrapper>
+      <Label>{label}<Value>{value.toUpperCase()}</Value></Label>
       <ColorSwatch style={{ backgroundColor: value }}>
         <InvisibleInput {...props} type="color" value={value} />
       </ColorSwatch>
-    </Label>
+    </Wrapper>
   );
 }
 
-const Label = styled.label`
+const Wrapper = styled.label`
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  font-size: var(--font-size-2);
-  color: var(--color-text-primary);
   user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }
 `;
 
+const Label = styled.p`
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  justify-content: space-between;
+`;
+const Value = styled.span`
+  font-weight: var(--font-weight-regular);
+`;
 const ColorSwatch = styled.div`
   position: relative;
   width: 100%;
