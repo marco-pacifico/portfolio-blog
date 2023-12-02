@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Switch from "../../components/ui/Switch";
-import Slider from "../../components/ui/Slider";
-import ColorPicker from "../../components/ui/ColorPicker";
-import GraphPaper from "../../components/ui/GraphPaper";
-import { QUERY } from "../../styles/1-DesignTokens";
+import Switch from "./ui/Switch";
+import Slider from "./ui/Slider";
+import ColorPicker from "./ui/ColorPicker";
+import GraphPaper from "./ui/GraphPaper";
+import { QUERY } from "../styles/1-DesignTokens";
 
 export default function InteractiveGraphPaper() {
   const [cellSize, setCellSize] = React.useState(50);
@@ -133,6 +133,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: end;
   align-items: end;
+  grid-column: 1 / -1;
 `;
 
 const Controls = styled.div`

@@ -4,7 +4,7 @@ import { H1, H3, Overline } from "../ui/Typography";
 
 const PageHero = ({ category, title, description }) => {
   return (
-    <SectionWrapper>
+    <SectionWrapper category={category}>
       {category && <Category>{category}</Category>}
       <Title as="h1">{title}</Title>
       {description && <Description as="p">{description}</Description>}
@@ -15,7 +15,7 @@ const PageHero = ({ category, title, description }) => {
 export default PageHero;
 
 const SectionWrapper = styled.section`
-  background-color: var(--color-background-darker);
+  background-color: ${(props) => props.category === "Code" ? "var(--color-background)" : "var(--color-background-darker)"};
   @media ${QUERY.phoneAndSmaller} {
       background-color: transparent;
       padding-bottom: 0;
@@ -32,6 +32,7 @@ const SectionWrapper = styled.section`
   );
   padding: var(--section-padding-block) var(--section-offset);
   border-radius: 0 0 40px 40px;
+  padding-bottom: ${props => props.category === "Code" ? "0" : "var(--section-padding-block)"};
 
 `;
 
