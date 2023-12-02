@@ -27,13 +27,10 @@ export default function Testing() {
         glowOnTop={glowOnTop}
         maskCoverage={maskCoverage}
         decorationOpacity={decorationOpacity}
+        glowColor={glowColor}
       />
       <Controls>
-        <ColorPicker
-          label="Glow Color"
-          value={glowColor}
-          onChange={(event) => setGlowColor(event.target.value)}
-        />
+        
         <Slider
           id="cellSize"
           label="Cell Size"
@@ -60,12 +57,12 @@ export default function Testing() {
           max={200}
           onChange={(e) => setMaskCoverage(+e.target.value)} //+e.target.value converts input string to number
         />
-        <Switch
-          checked={glowOnTop}
-          onChange={(e) => setGlowOnTop(e.target.checked)}
-        >
-          Glow is {glowOnTop ? "on top" : "behind"}
-        </Switch>
+        
+        <ColorPicker
+          label="Glow Color"
+          value={glowColor}
+          onChange={(event) => setGlowColor(event.target.value)}
+        />
         <Slider
           id="glowOpacity"
           label="Glow Opacity"
@@ -93,6 +90,12 @@ export default function Testing() {
           step={20}
           onChange={(e) => setGlowHeight(+e.target.value)} //+e.target.value converts input string to number
         />
+        <Switch
+          checked={glowOnTop}
+          onChange={(e) => setGlowOnTop(e.target.checked)}
+        >
+          Glow is {glowOnTop ? "on top" : "behind"}
+        </Switch>
         <Slider
           id="decorationOpacity"
           label="Decoration Opacity"

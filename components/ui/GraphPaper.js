@@ -10,6 +10,7 @@ export default function GraphPaper({
   glowOnTop = false,
   maskCoverage = 50,
   decorationOpacity = 50,
+  glowColor = "#ff00ff",
 }) {
   return (
     <Wrapper
@@ -20,6 +21,7 @@ export default function GraphPaper({
       glowOnTop={glowOnTop}
       maskCoverage={maskCoverage}
       decorationOpacity={decorationOpacity}
+      glowColor={glowColor}
     >
       <Glow aria-hidden />
       <GridLines cellSize={cellSize} />
@@ -33,7 +35,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   background-color: var(
     --color-background
-  ); // TODO: make this a prop, or a them
+  ); 
 
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
@@ -42,7 +44,7 @@ const Wrapper = styled.div`
   --glow-width: ${(props) => props.glowWidth}px;
   --glow-height: ${(props) => props.glowHeight}px;
   --glow-z-index: ${(props) => (props.glowOnTop ? 1 : 0)};
-  --color-glow: purple;
+  --color-glow: ${(props) => props.glowColor};
 
   /* MASK */
   --mask-coverage: ${(props) => props.maskCoverage}%;
