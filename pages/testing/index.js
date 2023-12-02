@@ -12,9 +12,11 @@ export default function Testing() {
   const [glowHeight, setGlowHeight] = React.useState("800");
   const [glowWidth, setGlowWidth] = React.useState("1100");
   const [glowOnTop, setGlowOnTop] = React.useState(false);
+  const [glowColor, setGlowColor] = React.useState("#ff00ff");
   const [maskCoverage, setMaskCoverage] = React.useState(50);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
-  const [glowColor, setGlowColor] = React.useState("#ff00ff");
+  const [decorationColor, setDecorationColor] = React.useState("#d4e3fe");
+
 
   return (
     <Wrapper>
@@ -27,13 +29,11 @@ export default function Testing() {
         glowOnTop={glowOnTop}
         maskCoverage={maskCoverage}
         decorationOpacity={decorationOpacity}
+        glowColor={glowColor}
+        decorationColor={decorationColor}
       />
       <Controls>
-        <ColorPicker
-          label="Glow Color"
-          value={glowColor}
-          onChange={(event) => setGlowColor(event.target.value)}
-        />
+        
         <Slider
           id="cellSize"
           label="Cell Size"
@@ -59,13 +59,13 @@ export default function Testing() {
           min={25}
           max={200}
           onChange={(e) => setMaskCoverage(+e.target.value)} //+e.target.value converts input string to number
+        />       
+        <ColorPicker
+          label="Glow Color"
+          id="glowColor"
+          value={glowColor}
+          onChange={(event) => setGlowColor(event.target.value)}
         />
-        <Switch
-          checked={glowOnTop}
-          onChange={(e) => setGlowOnTop(e.target.checked)}
-        >
-          Glow is {glowOnTop ? "on top" : "behind"}
-        </Switch>
         <Slider
           id="glowOpacity"
           label="Glow Opacity"
@@ -92,6 +92,18 @@ export default function Testing() {
           max={1200}
           step={20}
           onChange={(e) => setGlowHeight(+e.target.value)} //+e.target.value converts input string to number
+        />
+        <Switch
+          checked={glowOnTop}
+          onChange={(e) => setGlowOnTop(e.target.checked)}
+        >
+          Glow is {glowOnTop ? "in front" : "behind"}
+        </Switch>
+        <ColorPicker
+          label="Square Color"
+          id="decorationColor"
+          value={decorationColor}
+          onChange={(event) => setDecorationColor(event.target.value)}
         />
         <Slider
           id="decorationOpacity"
