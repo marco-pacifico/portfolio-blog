@@ -152,7 +152,7 @@ const Controls = styled.div`
 const Fieldset = styled.fieldset`
   display: grid;
   gap: var(--space-5);
-  min-width: 204px;
+  min-width: 256px;
   width: max-content;
   border: none;
   background-color: rgba(255, 255, 255, 0.2);
