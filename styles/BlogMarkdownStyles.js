@@ -7,9 +7,9 @@ const BlogTypographyVariables = css`
   /* FONT SIZES */
   /* --font-size-paragraph: calc(var(--font-size-4) + 2 * var(--font-size-bump)); */
   --font-size-paragraph: 1.375rem;
-  @media ${QUERY.tabletAndSmaller} {
+  /* @media ${QUERY.tabletAndSmaller} {
     --font-size-paragraph: var(--font-size-4);
-  }
+  } */
   --font-size-code: var(--font-size-3);
   --font-size-caption: var(--font-size-3);
 
@@ -19,9 +19,9 @@ const BlogTypographyVariables = css`
   --line-height-heading-loose: ${LINEHEIGHT[3]}em;
   /* --line-height-paragraph: ${LINEHEIGHT[3]}em; */
   --line-height-paragraph: 2.125rem;
-  @media ${QUERY.tabletAndSmaller} {
+  /* @media ${QUERY.tabletAndSmaller} {
     --line-height-paragraph: 2rem;
-  }
+  } */
 
   /* LETTER SPACING */
   --letter-spacing-display: ${LETTERSPACING[0]}em;
