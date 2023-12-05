@@ -29,8 +29,8 @@ export const NavWrapperStyles = css`
   height: var(--space-8);
   padding: 0 var(--space-4);
   @media ${QUERY.phoneAndSmaller} { 
-    height: auto;
-    padding: var(--space-4) var(--space-6);
+    height: 100%;
+    padding: var(--space-4) var(--space-5);
   }
   /* border: 1px solid var(--color-nav-border); */
   border-radius: 999px;

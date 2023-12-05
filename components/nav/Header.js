@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <LeftSide>
-        <NavLink href="/" route={currentRoute}>
+        <NavLink size="small" href="/" route={currentRoute}>
           M
         </NavLink>
         {showBackToWriting && (
@@ -194,15 +194,3 @@ const MobileNav = styled.div`
   }
 `;
 
-const MobileMenuButton = styled.button`
-  padding: 8px;
-  border-radius: 5px;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  font: inherit;
-  color: inherit;
-`;

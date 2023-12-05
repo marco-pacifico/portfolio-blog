@@ -15,7 +15,7 @@ export default NavButton;
 const StyledButton = styled.button`
   ${NavWrapperStyles}
   
-  height: ${(p) => p.size === "large" && "auto"};
+  height: ${(p) => p.size === "large" && "100%"};
   padding: ${(p) => p.size === "large" && "var(--space-4) var(--space-5)"};
   border-radius: ${(p) => p.size === "large" && "16px"};
   background-color: var(--color-nav-background);
