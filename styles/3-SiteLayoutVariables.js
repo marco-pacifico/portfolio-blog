@@ -56,7 +56,7 @@ export const SiteLayoutVariables = css`
 
   /* WIDTHS */
   --width-site-max: calc(${BREAKPOINT.desktoplarge}rem / 16); 
-  --width-blog-content: 62ch; 
+  --width-blog-content: 58ch; 
 
   /* HEADER */
   /* --header-height: var(--space-10);  */

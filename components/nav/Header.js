@@ -11,14 +11,14 @@ const Header = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  // const showBackground = currentRoute.includes("writing") || currentRoute.includes("work") || currentRoute.includes("about");
+  const showBackground = currentRoute.includes("writing") || currentRoute.includes("work") || currentRoute.includes("about");
   const showBackToWriting =
     currentRoute.includes("writing") && currentRoute !== "/writing";
   const showBackToWork =
     currentRoute.includes("work") && currentRoute !== "/work";
 
   return (
-    <StyledHeader>
+    <StyledHeader showBackground={showBackground}>
       <LeftSide>
         <NavLink size="small" href="/" route={currentRoute}>
           M
@@ -113,6 +113,7 @@ const HeaderVariables = css`
   /* BORDER */
   --header-border: 1px solid var(--color-border);
 
+  
   /* NAV ITEM SPACING*/
   --nav-item-gap: var(--space-4);
   @media ${QUERY.phoneAndSmaller} {
@@ -137,9 +138,9 @@ const StyledHeader = styled.header`
   height: var(--header-height);
   padding: var(--header-padding);
 
-  background-color: var(--color-background);
-  /* background-color: ${(p) =>
-    p.showBackground ? "var(--color-background-darker)" : "transparent"}; */
+  background-color: ${(p) =>
+    p.showBackground ? "var(--color-background-darker)" : "transparent"};
+  
 
   /* border-bottom: var(--header-border); */
 

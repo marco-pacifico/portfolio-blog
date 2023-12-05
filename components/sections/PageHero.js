@@ -15,8 +15,7 @@ const PageHero = ({ category, title, description }) => {
 export default PageHero;
 
 const SectionWrapper = styled.section`
-  /* background-color: ${(props) => props.category === "Code" ? "var(--color-background)" : "var(--color-background-darker)"}; */
-  background-color: var(--color-background);
+  background-color: ${(props) => props.category === "Code" ? "var(--color-background)" : "var(--color-background-darker)"};
   @media ${QUERY.phoneAndSmaller} {
       background-color: transparent;
       padding-bottom: 0;
