@@ -6,6 +6,7 @@ export const CodeSyntax = css`
   code {
     font-family: var(--font-code);
     font-size: 78%;
+    font-size: var(--font-size-code);
     background: var(--syntax-inline-bg);
     color: var(--syntax-inline-txt);
     border-radius: 7px;
@@ -15,7 +16,7 @@ export const CodeSyntax = css`
     line-height: normal;
   }
   pre {
-    font-size: var(--font-size-paragraph);
+    /* font-size: var(--font-size-paragraph); */
     margin: var(--margin-image);
     padding: var(--space-6) var(--space-7);
     background: var(--syntax-bg);
@@ -23,6 +24,7 @@ export const CodeSyntax = css`
     overflow: auto;
     
     & code {
+      font-size: var(--font-size-code);
       background: none;
       padding: 0;
       color: var(--syntax-txt);
