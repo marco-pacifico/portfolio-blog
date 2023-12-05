@@ -14,6 +14,7 @@ export const CodeSyntax = css`
     line-height: normal;
   }
   pre {
+    font-size: var(--font-size-3);
     margin: var(--margin-image);
     padding: var(--space-6) var(--space-7);
     background: var(--syntax-bg);
