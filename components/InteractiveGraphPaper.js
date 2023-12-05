@@ -14,7 +14,7 @@ export default function InteractiveGraphPaper() {
   const [glowWidth, setGlowWidth] = React.useState("1100");
   const [glowOnTop, setGlowOnTop] = React.useState(false);
   const [glowColor, setGlowColor] = React.useState("#ff00ff");
-  const [maskCoverage, setMaskCoverage] = React.useState(50);
+  const [maskCoverage, setMaskCoverage] = React.useState(120);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
   const [decorationColor, setDecorationColor] = React.useState("#d4e3fe");
 
