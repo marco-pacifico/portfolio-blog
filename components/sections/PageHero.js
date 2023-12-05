@@ -23,14 +23,7 @@ const SectionWrapper = styled.section`
     };
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
-  --section-padding-block-min: var(--space-9);
-  --section-padding-block-target: var(--space-fluid-11);
-  --section-padding-block-max: var(--space-fluid-11);
-  --section-padding-block: clamp(
-    var(--section-padding-block-min),
-    var(--section-padding-block-target),
-    var(--section-padding-block-max)
-  );
+  --section-padding-block: var(--space-11);
   padding: var(--section-padding-block) var(--section-offset);
   border-radius: 0 0 40px 40px;
   padding-bottom: ${props => props.category === "Code" ? "0" : "var(--section-padding-block)"};
@@ -38,16 +31,8 @@ const SectionWrapper = styled.section`
 `;
 
 const Category = styled(Overline)`
-  /* font-size: var(--font-size-2); */
-  --title-margin-min: var(--space-3);
-  --title-margin-target: var(--space-fluid-4);
-  --title-margin-max: var(--space-fluid-4);
-  --title-margin: clamp(
-    var(--title-margin-min),
-    var(--title-margin-target),
-    var(--title-margin-max)
-  );
-  margin-left: var(--space-fluid-2);
+  --title-margin: var(--space-4);
+  margin-left: var(--space-2);
   margin-bottom: var(--title-margin);
 `;
 const Title = styled(H1)`
