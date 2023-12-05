@@ -6,7 +6,7 @@ export const CodeSyntax = css`
   code {
     font-family: var(--font-code);
     font-size: 78%;
-    font-size: var(--font-size-code);
+    /* font-size: var(--font-size-code); */
     background: var(--syntax-inline-bg);
     color: var(--syntax-inline-txt);
     border-radius: 7px;
