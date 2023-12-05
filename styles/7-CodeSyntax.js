@@ -12,7 +12,7 @@ export const CodeSyntax = css`
     padding: 0.25em 0.4em;
     display: inline-block;
     transform: translateY(-0.05em);
-    line-height: normal
+    line-height: normal;
   }
   pre {
     font-size: var(--font-size-paragraph);
