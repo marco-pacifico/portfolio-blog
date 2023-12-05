@@ -29,6 +29,7 @@ export const LightColors = css`
   /* NAV LINK COLORS */
   @media (${QUERY.phoneAndSmaller}) {
     --color-nav-text: hsl(${COLORS.sidewalk[800]});
+    --color-nav-text-hover: var(--color-nav-text);
     --color-nav-background: white;
     --color-nav-border: var(--color-border);
     --color-nav-background-active: white;

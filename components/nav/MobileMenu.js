@@ -28,7 +28,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
                 About
               </NavLink>
               <Close asChild>
-                <CloseButton onClick={onDismiss}>Close</CloseButton>
+                <NavButton onClick={onDismiss}>Close</NavButton>
               </Close>
             </Nav>
           </InnerWrapper>
@@ -58,9 +58,9 @@ const slidein = keyframes`
 `;
 
 const CloseButton = styled(NavButton)`
-  & > p {
+  /* & > p {
     color: var(--color-nav-text);
-  }
+  } */
 `;
 
 const DialogOverlay = styled(Overlay)`

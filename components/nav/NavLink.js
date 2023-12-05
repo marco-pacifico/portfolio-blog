@@ -34,8 +34,6 @@ export const NavWrapperStyles = css`
   }
   /* border: 1px solid var(--color-nav-border); */
   border-radius: 999px;
-  display: grid;
-  place-items: center;
   transition: color, background-color 200ms ease-in;
   /* If href is current route, then apply active background color */
   background-color: ${(p) =>
@@ -47,6 +45,7 @@ export const NavWrapperStyles = css`
     display: flex;
     gap: var(--space-2);
     align-items: center;
+    justify-content: center;
   }
 `;
 
