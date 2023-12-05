@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { UnstyledLink } from "../ui/UnstyledLink";
 import { NavText } from "../ui/Typography";
+import { QUERY } from "../../styles/1-DesignTokens";
 
 const NavLink = ({ onClick, href, route, size, children }) => {
   return (
@@ -27,8 +28,12 @@ export const NavWrapperStyles = css`
   }
   height: var(--space-8);
   padding: 0 var(--space-4);
+  @media ${QUERY.phoneAndSmaller} { 
+    height: auto;
+    padding: var(--space-4) var(--space-6);
+  }
   /* border: 1px solid var(--color-nav-border); */
-  border-radius: 12px;
+  border-radius: 999px;
   display: grid;
   place-items: center;
   transition: color, background-color 200ms ease-in;
@@ -37,6 +42,12 @@ export const NavWrapperStyles = css`
     p.href === p.route
       ? "var(--color-nav-background-active)"
       : "var(--color-nav-background)"};
+
+  & > p {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
 `;
 
 const Wrapper = styled.div`
