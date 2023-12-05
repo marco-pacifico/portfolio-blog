@@ -4,7 +4,6 @@ export const CodeSyntax = css`
   --font-code: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
     Courier, monospace;
   code {
-    font-family: var(--font-code);
     font-size: 78%;
     background: var(--syntax-inline-bg);
     color: var(--syntax-inline-txt);
