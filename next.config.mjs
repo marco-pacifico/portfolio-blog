@@ -13,7 +13,7 @@ const withMDX = mdx({
     remarkPlugins: [
       remarkFrontmatter,
       [remarkMdxFrontmatter, { name: "meta" }],
-      [remarkPrism, {}],
+      // [remarkPrism, {}],
     ],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
