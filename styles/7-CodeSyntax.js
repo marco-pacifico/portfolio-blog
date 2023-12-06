@@ -23,7 +23,7 @@ export const CodeSyntax = css`
     overflow: auto;
     
     & code {
-      font-size: 16px
+      font-size: 16px;
       background: none;
       padding: 0;
       color: var(--syntax-txt);
