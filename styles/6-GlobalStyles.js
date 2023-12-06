@@ -37,6 +37,8 @@ const GlobalStyles = createGlobalStyle`
 		 background: var(--color-text-selection-background);
 		 color: var(--color-text-selection-text);
   	}
+
+	
 	
 
 	/* LIGHT AND DARK THEME */

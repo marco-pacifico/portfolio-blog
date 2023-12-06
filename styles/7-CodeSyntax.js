@@ -15,8 +15,11 @@ export const CodeSyntax = css`
     transform: translateY(-0.05em);
     line-height: normal;
   }
+  .remark-highlight { 
+		font-size: var(--font-size-code);
+	}
   pre {
-    font-size: var(--font-size-paragraph);
+    font-size: var(--font-size-code);
     margin: var(--margin-image);
     padding: var(--space-6) var(--space-7);
     background: var(--syntax-bg);
@@ -24,7 +27,7 @@ export const CodeSyntax = css`
     overflow: auto;
     
     & code {
-      /* font-size: var(--font-size-code); */
+      font-size: var(--font-size-code);
       background: none;
       padding: 0;
       color: var(--syntax-txt);
