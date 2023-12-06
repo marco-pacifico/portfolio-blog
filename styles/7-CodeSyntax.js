@@ -15,11 +15,8 @@ export const CodeSyntax = css`
     transform: translateY(-0.05em);
     line-height: normal;
   }
-  .remark-highlight { 
-		font-size: var(--font-size-code);
-	}
+
   pre {
-    font-size: var(--font-size-code);
     margin: var(--margin-image);
     padding: var(--space-6) var(--space-7);
     background: var(--syntax-bg);
