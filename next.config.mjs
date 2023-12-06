@@ -3,7 +3,7 @@
 import mdx from "@next/mdx";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
-// import remarkPrism from "remark-prism";
+import remarkPrism from "remark-prism";
 
 // Use '@next/mdx' package and configure to support top level .mdx pages.
 // The options object key is for passing in plugins.
@@ -13,7 +13,7 @@ const withMDX = mdx({
     remarkPlugins: [
       remarkFrontmatter,
       [remarkMdxFrontmatter, { name: "meta" }],
-      // [remarkPrism, {}],
+      [remarkPrism, {}],
     ],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
