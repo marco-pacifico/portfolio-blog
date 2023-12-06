@@ -31,7 +31,7 @@ export const CodeSyntax = css`
     }
   }
   .token {
-    font-size: var(--font-size-code);
+
     font-family: var(--font-code);
     line-height: 30px;
   }
