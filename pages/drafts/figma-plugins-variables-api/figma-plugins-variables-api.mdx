@@ -11,6 +11,154 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
+
+```js
+const password = "MySecurePassword123!";
+
+// Regex pattern to match: 
+// - Minimum 8 characters
+// - At least one uppercase letter
+// - At least one lowercase letter
+// - At least one number
+// - At least one special character (!@#$%^&*)
+const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+if (pattern.test(password)) {
+  console.log("Password is valid.");
+} else {
+  console.log("Password is invalid.");
+}
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<script src="index.js"></script>
+  </body>
+</html>
+```
+
+```css
+@font-face {
+  src: url(https://lea.verou.me/logo.otf);
+  font-family: "LeaVerou";
+
+  --syntax-txt: #fff;
+  --syntax-comment: #6c8998;
+  --syntax-prop: #ff39a8;
+
+  .token.string {
+    color: var(--syntax-string);
+  }
+  code {
+    font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
+      Courier, monospace;
+    line-height: normal;
+    /* background: rgba(135, 131, 120, 0.15);  */
+    background: var(--syntax-inline-bg);
+    color: var(--syntax-inline-txt);
+    border-radius: 6px;
+    /* font-size: var(--font-size-code); */
+
+    padding: 0.2em 0.4em;
+  }
+  
+}
+```
+
+```css
+--color-text-strong: hsl(${COLORS.sidewalk[900]});
+--color-text-primary: hsl(${COLORS.sidewalk[800]});
+--color-text-secondary: hsl(${COLORS.sidewalk[600]});
+--color-text-tertiary: hsl(${COLORS.sidewalk[500]});
+```
+
+```js
+export const SPACE = [
+  2, // 0
+  4, // 1
+  8, // 2
+  12, // 3
+  16, // 4
+  24, // 5
+  32, // 6
+  40, // 7
+  64, // 8
+  72, // 9
+  80, // 10
+  128, // 11
+];
+```
+
+```jsx
+export default function App({ children }) {
+  return <div className="viewport">{0}</div>;
+}
+```
+
+```jsx
+function NewItemForm({ handleAddItem }) {
+  const [value, setValue] = React.useState("");
+
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+
+        handleAddItem(value);
+        setValue("");
+      }}
+    >
+      {/* We'll touch on this ID stuff later too! */}
+      <label htmlFor="new-item-input">Item:</label>
+      <input 
+        value={value} 
+        onChange={
+          (event) => setValue(event.target.value)
+        } />
+      <button>Add Item</button>
+    </form>
+  );
+}
+
+export default NewItemForm;
+```
+
+```js
+class Shape {
+  draw() {
+    console.log("Uhhh maybe override me");
+  }
+}
+
+class Circle {
+  draw() {
+    console.log("I'm a circle! :D");
+  }
+}
+```
+
+```jsx
+function App() {
+  const [items, setItems] = React.useState([]);
+  return (
+    <div>
+        {items.length > 0 && 
+            <ShoppingList items={items} />
+        }
+    </div>
+  );
+}
+```
+
 The Figma Variables API allows developers to interact with variables in Figma, including creating and reading variables.
 
 Variables in Figma are reusable values that can be applied to various design properties and prototyping actions, helping to save time and effort when building designs, managing design systems, and creating complex prototyping flows.
