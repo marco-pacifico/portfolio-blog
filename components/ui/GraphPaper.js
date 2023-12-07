@@ -107,8 +107,9 @@ function GridLines({ cellSize, innerGrid }) {
         >
           <path
             // d="M 5 10 V.5 M0 .5 H10"
-            d={`M${cellSize} ${cellSize} V.5 M0 .5 H${cellSize}`} // Make a props
+            d={`M${cellSize} ${cellSize} V0 M0 0 H${cellSize}`} // Make a props
             fill="none"
+            strokeWidth={1}
             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
           />
           {innerGrid && <rect
@@ -150,24 +151,24 @@ function DecorativeSquares({ cellSize }) {
   return (
     <StyledDecorativeSquares x="50%" y={-1}>
       <path
-        d={`M-${cellSize * 1 + 0.5} 0 h${cellSize + 1} v${cellSize + 1} h-${
-          cellSize + 1
+        d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${
+          cellSize
         }Z 
-            M-${cellSize * 5 - 0.5} 0 h${cellSize + 1} v${cellSize + 1} h-${
-          cellSize + 1
+            M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${
+          cellSize
         }Z 
-            M${cellSize * 5 - 0.5} 0 h${cellSize + 1} v${cellSize + 1} h-${
-          cellSize + 1
+            M${cellSize * 5} 0 h${cellSize} v${cellSize} h-${
+          cellSize
         }Z 
-            M-${cellSize * 8 - 0.5} ${cellSize * 2} h${cellSize + 1} v${
-          cellSize + 1
-        } h-${cellSize + 1}Z  
-            M-${cellSize * 1 + 0.5} ${cellSize * 3} h${cellSize + 1} v${
-          cellSize + 1
-        } h-${cellSize + 1}Z
-            M${cellSize * 5 + 0.5} ${cellSize * 4} h${cellSize + 1} v${
-          cellSize + 1
-        } h-${cellSize + 1}Z
+            M-${cellSize * 8} ${cellSize * 2} h${cellSize} v${
+          cellSize
+        } h-${cellSize}Z  
+            M-${cellSize * 1} ${cellSize * 3} h${cellSize} v${
+          cellSize
+        } h-${cellSize}Z
+            M${cellSize * 5} ${cellSize * 4} h${cellSize} v${
+          cellSize
+        } h-${cellSize}Z
           `}
         strokeWidth={0}
       />
