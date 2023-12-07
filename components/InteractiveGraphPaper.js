@@ -17,7 +17,7 @@ export default function InteractiveGraphPaper() {
   const [maskCoverage, setMaskCoverage] = React.useState(120);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
   const [decorationColor, setDecorationColor] = React.useState("#d4e3fe");
-  const [gridPattern, setGridPattern] = React.useState("single");
+  const [innerGrid, setInnerGrid] = React.useState(false);
 
   return (
     <Wrapper>
@@ -32,16 +32,16 @@ export default function InteractiveGraphPaper() {
         decorationOpacity={decorationOpacity}
         glowColor={glowColor}
         decorationColor={decorationColor}
-        gridPattern={gridPattern}
+        innerGrid={innerGrid}
       />
       <Controls>
         <Fieldset>
           <LegendWrapper><legend>Grid settings</legend></LegendWrapper>
           <Switch
-            checked={gridPattern === "double"}
+            checked={innerGrid}
             onChange={(e) =>
-              setGridPattern(e.target.checked ? "single" : "double")
-            }>Double grid pattern</Switch>
+              setInnerGrid(!innerGrid)
+            }>Add inner grid</Switch>
           <Slider
             id="cellSize"
             label="Cell Size"
