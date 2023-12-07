@@ -74,6 +74,30 @@ function GridLines({ cellSize }) {
     <StyledGridLines>
       <defs>
         <pattern
+          id="innerGrid"
+          width={cellSize / 3}
+          height={cellSize / 3}
+  
+          patternUnits="userSpaceOnUse"
+        >
+          <line
+            x1={cellSize / 3}
+            y1="0"
+            x2={cellSize / 3}
+            y2={cellSize / 3}
+            strokeWidth={1}
+            // stroke="var(--color-glow)"
+          ></line>
+          <line
+            x1="0"
+            y1={cellSize / 3}
+            x2={cellSize / 3}
+            y2={cellSize / 3}
+            strokeWidth={1}
+            // stroke="var(--color-glow)"
+          ></line>
+        </pattern>
+        <pattern
           id="grid"
           width={cellSize}
           height={cellSize}
@@ -83,10 +107,16 @@ function GridLines({ cellSize }) {
         >
           <path
             // d="M 5 10 V.5 M0 .5 H10"
-            d={`M${cellSize / 2} ${cellSize} V.5 M0 .5 H${cellSize}`} // Make a props
+            d={`M${cellSize} ${cellSize} V.5 M0 .5 H${cellSize}`} // Make a props
             fill="none"
             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
           />
+          <rect
+            width={cellSize}
+            height={cellSize}
+            fill="url(#innerGrid)"
+            
+          ></rect>
         </pattern>
       </defs>
       <DecorativeSquares cellSize={cellSize} />{" "}
@@ -102,7 +132,9 @@ const StyledGridLines = styled.svg`
   inset: 0;
   width: 100%;
   height: 100%;
-  --grid-line-stroke-color: hsl(var(--color-value-grid-line) / var(--grid-opacity));
+  --grid-line-stroke-color: hsl(
+    var(--color-value-grid-line) / var(--grid-opacity)
+  );
   stroke: var(--grid-line-stroke-color);
   mask-image: radial-gradient(
     100% var(--mask-coverage) at top center,
@@ -119,17 +151,13 @@ function DecorativeSquares({ cellSize }) {
   return (
     <StyledDecorativeSquares x="50%" y={-1}>
       <path
-        d={`M-${cellSize / 2 + 0.5} 0 
-                h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z 
-                M${cellSize * 3.5 - 0.5} 0 h${cellSize + 1} v${
-          cellSize + 1
-        } h-${cellSize + 1}Z 
-                M${cellSize * 1.5 - 0.5} ${cellSize * 2} h${cellSize + 1} v${
-          cellSize + 1
-        } h-${cellSize + 1}Z  
-                M-${cellSize * 1.5 + 0.5} ${cellSize * 3} h${cellSize + 1} v${
-          cellSize + 1
-        } h-${cellSize + 1}Z  `}
+        d={`M-${cellSize * 1 + 0.5} 0 h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z 
+            M-${cellSize * 5 - 0.5} 0 h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z 
+            M${cellSize * 5 - 0.5} 0 h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z 
+            M-${cellSize * 8 - 0.5} ${cellSize * 2} h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z  
+            M-${cellSize * 1 + 0.5} ${cellSize * 3} h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z
+            M${cellSize * 5 + 0.5} ${cellSize * 4} h${cellSize + 1} v${cellSize + 1} h-${cellSize + 1}Z
+          `}
         strokeWidth={0}
       />
     </StyledDecorativeSquares>
@@ -166,7 +194,7 @@ function ThickGridLines({ cellSize }) {
             x2={cellSize}
             y2={cellSize}
             strokeWidth={1}
-            // stroke="var(--color-glow)" 
+            // stroke="var(--color-glow)"
           ></line>
         </pattern>
         <pattern
@@ -187,7 +215,6 @@ function ThickGridLines({ cellSize }) {
             y2={cellSize * 3}
             strokeWidth={2}
             // stroke="var(--color-glow)"
-   
           ></line>
           <line
             x1="0"
