@@ -12,6 +12,7 @@ export default function GraphPaper({
   maskCoverage = 50,
   decorationOpacity = 50,
   decorationColor = "#ff00ff",
+  gridPattern = "single",
 }) {
   return (
     <Wrapper
@@ -26,7 +27,8 @@ export default function GraphPaper({
       decorationColor={decorationColor}
     >
       <Glow aria-hidden />
-      <GridLines cellSize={cellSize} />
+      {gridPattern === "single" && <GridLines cellSize={cellSize} />}
+      {gridPattern === "double" && <ThickGridLines cellSize={cellSize} />}
     </Wrapper>
   );
 }
@@ -68,11 +70,8 @@ const Glow = styled.div`
 `;
 
 function GridLines({ cellSize }) {
-  // Add cellSize prop to GridLines component, initialize to cellSize from parent if no value is passed
-  //   style={{ stroke: `hsla(${isDark ? COLORS.night[300] : COLORS.sidewalk[600]} / ${gridOpacity/100}` }}
   return (
     <StyledGridLines>
-      {/* TODO: add to style tag and make this a prop, will need to also create a new css variable that only uses hsl values, opacity will be added in the component */}
       <defs>
         <pattern
           id="grid"
@@ -103,8 +102,8 @@ const StyledGridLines = styled.svg`
   inset: 0;
   width: 100%;
   height: 100%;
-  --grid-line-stroke: hsl(var(--color-value-grid-line) / var(--grid-opacity));
-  stroke: var(--grid-line-stroke);
+  --grid-line-stroke-color: hsl(var(--color-value-grid-line) / var(--grid-opacity));
+  stroke: var(--grid-line-stroke-color);
   mask-image: radial-gradient(
     100% var(--mask-coverage) at top center,
     white,
@@ -142,3 +141,65 @@ const StyledDecorativeSquares = styled.svg`
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
 `;
+
+function ThickGridLines({ cellSize }) {
+  return (
+    <StyledGridLines>
+      <defs>
+        <pattern
+          id="innerGrid"
+          width={cellSize}
+          height={cellSize}
+          patternUnits="userSpaceOnUse"
+        >
+          <line
+            x1={cellSize}
+            y1="0"
+            x2={cellSize}
+            y2={cellSize}
+            strokeWidth={1}
+            // stroke="var(--color-glow)"
+          ></line>
+          <line
+            x1="0"
+            y1={cellSize}
+            x2={cellSize}
+            y2={cellSize}
+            strokeWidth={1}
+            // stroke="var(--color-glow)" 
+          ></line>
+        </pattern>
+        <pattern
+          id="thickGrid"
+          width={cellSize * 3}
+          height={cellSize * 3}
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            width={cellSize * 3}
+            height={cellSize * 3}
+            fill="url(#innerGrid)"
+          ></rect>
+          <line
+            x1={cellSize * 3}
+            y1="0"
+            x2={cellSize * 3}
+            y2={cellSize * 3}
+            strokeWidth={2}
+            // stroke="var(--color-glow)"
+   
+          ></line>
+          <line
+            x1="0"
+            y1={cellSize * 3}
+            x2={cellSize * 3}
+            y2={cellSize * 3}
+            strokeWidth={2}
+            // stroke="var(--color-glow)"
+          ></line>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#thickGrid)" strokeWidth={1} />
+    </StyledGridLines>
+  );
+}

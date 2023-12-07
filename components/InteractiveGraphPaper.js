@@ -17,6 +17,7 @@ export default function InteractiveGraphPaper() {
   const [maskCoverage, setMaskCoverage] = React.useState(120);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
   const [decorationColor, setDecorationColor] = React.useState("#d4e3fe");
+  const [gridPattern, setGridPattern] = React.useState("single");
 
   return (
     <Wrapper>
@@ -31,10 +32,16 @@ export default function InteractiveGraphPaper() {
         decorationOpacity={decorationOpacity}
         glowColor={glowColor}
         decorationColor={decorationColor}
+        gridPattern={gridPattern}
       />
       <Controls>
         <Fieldset>
           <LegendWrapper><legend>Grid settings</legend></LegendWrapper>
+          <Switch
+            checked={gridPattern === "double"}
+            onChange={(e) =>
+              setGridPattern(e.target.checked ? "single" : "double")
+            }>Double grid pattern</Switch>
           <Slider
             id="cellSize"
             label="Cell Size"
