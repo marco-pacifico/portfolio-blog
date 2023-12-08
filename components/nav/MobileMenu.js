@@ -57,11 +57,6 @@ const slidein = keyframes`
   }
 `;
 
-const CloseButton = styled(NavButton)`
-  /* & > p {
-    color: var(--color-nav-text);
-  } */
-`;
 
 const DialogOverlay = styled(Overlay)`
   position: fixed;
