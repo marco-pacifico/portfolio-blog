@@ -12,6 +12,7 @@ const NavLink = ({ href, route, children }) => {
 export default NavLink;
 
 export const NavWrapperStyles = css`
+  // Mobile styling in Color Variables file under NAV LINK COLORS
   display: flex;
   align-items: center;
   justify-content: center;

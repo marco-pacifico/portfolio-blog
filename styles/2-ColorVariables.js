@@ -8,12 +8,14 @@ export const LightColors = css`
   --color-text-secondary: hsl(${COLORS.sidewalk[600]});
   --color-text-tertiary: hsl(${COLORS.sidewalk[500]});
 
+  /* TEXT SELECTION COLORS */
+  --color-text-selection-background: var(--color-text-link);
+  --color-text-selection-text: var(--color-background);
+
   /* LINK COLORS */
   --color-text-link: var(--color-text-strong);
   --color-text-link-hover: hsl(${COLORS.sky[600]});
   --color-text-link-underline: hsl(${COLORS.sidewalk[400]});
-  --color-text-selection-background: var(--color-text-link);
-  --color-text-selection-text: var(--color-text-strong);
 
   /* BACKGROUND COLORS */
   --color-background: hsl(${COLORS.sidewalk[100]});
@@ -91,7 +93,7 @@ export const DarkColors = css`
 
   /* TEXT SELECTION COLRS */
   --color-text-selection-background: var(--color-text-link);
-  --color-text-selection-text: var(--color-text-strong);
+  --color-text-selection-text: var(--color-background);
 
   /* HYPERLINK COLORS */
   --color-text-link: hsl(${COLORS.moss[500]});
