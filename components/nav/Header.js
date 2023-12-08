@@ -20,11 +20,11 @@ const Header = () => {
   return (
     <StyledHeader>
       <LeftSide>
-        <NavLink size="small" href="/" route={currentRoute}>
+        <NavLink href="/" route={currentRoute}>
           M
         </NavLink>
         {showBackToWriting && (
-          <NavLink size="small" href="/writing">
+          <NavLink href="/writing">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -44,7 +44,7 @@ const Header = () => {
           </NavLink>
         )}
         {showBackToWork && (
-          <NavLink size="small" href="/work">
+          <NavLink href="/work">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -65,16 +65,16 @@ const Header = () => {
         )}
       </LeftSide>
       <DesktopNav>
-        <NavLink size="small" href="/about" route={currentRoute}>
+        <NavLink href="/about" route={currentRoute}>
           About
         </NavLink>
         {!showBackToWriting && (
-          <NavLink size="small" href="/writing" route={currentRoute}>
+          <NavLink href="/writing" route={currentRoute}>
             Writing
           </NavLink>
         )}
         {!showBackToWork && (
-          <NavLink size="small" href="/work" route={currentRoute}>
+          <NavLink href="/work" route={currentRoute}>
             Work
           </NavLink>
         )}
@@ -114,7 +114,7 @@ const HeaderVariables = css`
   --header-border: 1px solid var(--color-border);
 
   /* NAV ITEM SPACING*/
-  --nav-item-gap: var(--space-4);
+  --nav-item-gap: 0;
   @media ${QUERY.phoneAndSmaller} {
     /* Tighten nav item spacing on mobile */
     --nav-item-gap: var(--space-3);
@@ -180,6 +180,7 @@ const LeftSide = styled.div`
 const DesktopNav = styled.nav`
   display: flex;
   gap: var(--nav-item-gap);
+  align-items: center;
   @media ${QUERY.phoneAndSmaller} {
     display: none;
   }
