@@ -2,12 +2,17 @@
 import { Root, Overlay, Content, Close } from "@radix-ui/react-dialog";
 import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
-import NavLink from "./NavLink";
 import NavButton from "./NavButton";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   const router = useRouter();
   const currentRoute = router.pathname;
+
+  function navigateTo(route) {
+    onDismiss();
+    router.push(route);
+  }
+
   return (
     <Root open={isOpen} onOpenChange={onDismiss}>
       <DialogOverlay>
@@ -15,18 +20,18 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
         <DialogContent aria-label="Menu">
           <InnerWrapper>
             <Nav>
-              <NavLink href="/" route={currentRoute} onClick={onDismiss}>
+              <NavButton route={currentRoute} onClick={() => navigateTo("/")}>
                 Home
-              </NavLink>
-              <NavLink href="/work" route={currentRoute} onClick={onDismiss}>
+              </NavButton>
+              <NavButton route={currentRoute} onClick={() => navigateTo("/work")}>
                 Work
-              </NavLink>
-              <NavLink href="/writing" route={currentRoute} onClick={onDismiss}>
+              </NavButton>
+              <NavButton route={currentRoute} onClick={() => navigateTo("/writing")}>
                 Writing
-              </NavLink>
-              <NavLink href="/about" route={currentRoute} onClick={onDismiss}>
+              </NavButton>
+              <NavButton route={currentRoute} onClick={() => navigateTo("/about")}>
                 About
-              </NavLink>
+              </NavButton>
               <Close asChild>
                 <NavButton onClick={onDismiss}>Close</NavButton>
               </Close>

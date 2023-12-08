@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import { UnstyledLink } from "../ui/UnstyledLink";
 
-const NavLink = ({ onClick, href, route, children }) => {
+const NavLink = ({ href, route, children }) => {
   return (
-    <StyledLink onClick={onClick} href={href} route={route}>
+    <StyledLink href={href} route={route}>
       {children}
     </StyledLink>
   );
