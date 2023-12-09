@@ -26,7 +26,7 @@ export default function GraphPaper({
       glowColor={glowColor}
       decorationColor={decorationColor}
     >
-        <Glow aria-hidden />
+      <Glow aria-hidden />
       <GridFade>
         <svg
           style={{
@@ -37,8 +37,8 @@ export default function GraphPaper({
         >
           <DecorativeSquares cellSize={cellSize} />
         </svg>
-        <DotGrid />
-        {/* <GridLines cellSize={cellSize} innerGrid={innerGrid} /> */}
+        {/* <DotGrid /> */}
+        <GridLines cellSize={cellSize} innerGrid={innerGrid} />
       </GridFade>
     </Wrapper>
   );
