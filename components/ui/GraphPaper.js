@@ -26,8 +26,20 @@ export default function GraphPaper({
       glowColor={glowColor}
       decorationColor={decorationColor}
     >
+      <GridFade>
+        <svg
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+          }}
+        >
+          <DecorativeSquares cellSize={cellSize} />
+        </svg>
+        <DotGrid />
+        {/* <GridLines cellSize={cellSize} innerGrid={innerGrid} /> */}
+      </GridFade>
       <Glow aria-hidden />
-      <GridLines cellSize={cellSize} innerGrid={innerGrid} />
     </Wrapper>
   );
 }
@@ -40,6 +52,7 @@ const Wrapper = styled.div`
 
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
+  --grid-dot-size: 15px;
   /* GLOW */
   --glow-opacity: ${(props) => props.glowOpacity / 100};
   --glow-width: ${(props) => props.glowWidth}px;
@@ -112,30 +125,27 @@ function GridLines({ cellSize, innerGrid }) {
             strokeWidth={1}
             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
           />
-          {innerGrid && <rect
-            width={cellSize}
-            height={cellSize}
-            fill="url(#innerGrid)"
-          ></rect>}
+          {innerGrid && (
+            <rect
+              width={cellSize}
+              height={cellSize}
+              fill="url(#innerGrid)"
+            ></rect>
+          )}
         </pattern>
       </defs>
-      <DecorativeSquares cellSize={cellSize} />{" "}
-      {/* Pass the cellSize prop to the DecorativeSquares component */}
+      {/* <DecorativeSquares cellSize={cellSize} />{" "} */}
       <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
     </StyledGridLines>
   );
 }
 
-const StyledGridLines = styled.svg`
+const GridFade = styled.div`
   position: absolute;
   pointer-events: none;
   inset: 0;
   width: 100%;
   height: 100%;
-  --grid-line-stroke-color: hsl(
-    var(--color-value-grid-line) / var(--grid-opacity)
-  );
-  stroke: var(--grid-line-stroke-color);
   mask-image: radial-gradient(
     100% var(--mask-coverage) at top center,
     white,
@@ -147,28 +157,55 @@ const StyledGridLines = styled.svg`
   );
 `;
 
+const StyledGridLines = styled.svg`
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  --grid-line-stroke-color: hsl(
+    var(--color-value-grid-line) / var(--grid-opacity)
+  );
+  stroke: var(--grid-line-stroke-color);
+`;
+
+const DotGrid = styled.div`
+  --grid-dot-color: hsl(var(--color-value-grid-line) / var(--grid-opacity));
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+        90deg,
+        var(--color-background) var(--grid-dot-size),
+        transparent 1%
+      )
+      center,
+    linear-gradient(
+        var(--color-background) var(--grid-dot-size),
+        transparent 1%
+      )
+      center,
+    var(--grid-dot-color);
+  background-size: calc(var(--grid-dot-size) + 1px)
+    calc(var(--grid-dot-size) + 1px);
+`;
 function DecorativeSquares({ cellSize }) {
   return (
     <StyledDecorativeSquares x="50%" y={-1}>
       <path
-        d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${
-          cellSize
-        }Z 
-            M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${
-          cellSize
-        }Z 
-            M${cellSize * 5} 0 h${cellSize} v${cellSize} h-${
-          cellSize
-        }Z 
-            M-${cellSize * 8} ${cellSize * 2} h${cellSize} v${
-          cellSize
-        } h-${cellSize}Z  
-            M-${cellSize * 1} ${cellSize * 3} h${cellSize} v${
-          cellSize
-        } h-${cellSize}Z
-            M${cellSize * 5} ${cellSize * 4} h${cellSize} v${
-          cellSize
-        } h-${cellSize}Z
+        d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
+            M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
+            M${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
+            M-${cellSize * 8} ${
+          cellSize * 2
+        } h${cellSize} v${cellSize} h-${cellSize}Z  
+            M-${cellSize * 1} ${
+          cellSize * 3
+        } h${cellSize} v${cellSize} h-${cellSize}Z
+            M${cellSize * 5} ${
+          cellSize * 4
+        } h${cellSize} v${cellSize} h-${cellSize}Z
           `}
         strokeWidth={0}
       />
@@ -177,8 +214,11 @@ function DecorativeSquares({ cellSize }) {
 }
 
 const StyledDecorativeSquares = styled.svg`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: visible;
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
 `;
-
