@@ -33,6 +33,7 @@ export default function GraphPaper({
             position: "absolute",
             inset: 0,
             width: "100%",
+            height: "100%",
           }}
         >
           <DecorativeSquares cellSize={cellSize} />
