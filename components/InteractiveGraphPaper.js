@@ -21,6 +21,7 @@ export default function InteractiveGraphPaper() {
   const [verticalLines, setVerticalLines] = React.useState(true);
   const [innerGrid, setInnerGrid] = React.useState(false);
   const [dots, setDots] = React.useState(false);
+  const [decorationShape, setDecorationShape] = React.useState("square");
 
   return (
     <Wrapper>
@@ -39,6 +40,7 @@ export default function InteractiveGraphPaper() {
         verticalLines={verticalLines}
         innerGrid={innerGrid}
         dots={dots}
+        decorationShape={decorationShape}
       />
       <Controls>
         <Fieldset>
@@ -147,6 +149,11 @@ export default function InteractiveGraphPaper() {
             units="%"
             onChange={(e) => setDecorationOpacity(+e.target.value)} //+e.target.value converts input string to number
           />
+          <Switch
+            checked={decorationShape === "circle"}
+            onChange={(e) =>
+              setDecorationShape(e.target.checked ? "circle" : "square")
+            }>Circle</Switch>
         </Fieldset>
       </Controls>
     </Wrapper>
