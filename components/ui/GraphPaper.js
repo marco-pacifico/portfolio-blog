@@ -134,6 +134,62 @@ function DotGridPattern({ cellSize }) {
   );
 }
 
+function GridPattern({ cellSize, showInnerGrid }) {
+  return (
+    <>
+      <defs>
+        {showInnerGrid && (
+          <pattern
+            id="innerGrid"
+            width={cellSize / 3}
+            height={cellSize / 3}
+            patternUnits="userSpaceOnUse"
+          >
+            <line
+              x1={cellSize / 3}
+              y1="0"
+              x2={cellSize / 3}
+              y2={cellSize / 3}
+              strokeWidth={1}
+            ></line>
+            <line
+              x1="0"
+              y1={cellSize / 3}
+              x2={cellSize / 3}
+              y2={cellSize / 3}
+              strokeWidth={1}
+            ></line>
+          </pattern>
+        )}
+        <pattern
+          id="grid"
+          width={cellSize}
+          height={cellSize}
+          x="50%"
+          y={-1}
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            // d="M 5 10 V.5 M0 .5 H10"
+            d={`M${cellSize} ${cellSize} V0 M0 0 H${cellSize}`} // Make a props
+            fill="none"
+            strokeWidth={1}
+            // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
+          />
+          {showInnerGrid && (
+            <rect
+              width={cellSize}
+              height={cellSize}
+              fill="url(#innerGrid)"
+            ></rect>
+          )}
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
+    </>
+  );
+}
+
 function GridLines({ cellSize, showInnerGrid }) {
   return (
     <StyledGridLines>
@@ -151,7 +207,6 @@ function GridLines({ cellSize, showInnerGrid }) {
               x2={cellSize / 3}
               y2={cellSize / 3}
               strokeWidth={1}
-              // stroke="var(--color-glow)"
             ></line>
             <line
               x1="0"
@@ -159,7 +214,6 @@ function GridLines({ cellSize, showInnerGrid }) {
               x2={cellSize / 3}
               y2={cellSize / 3}
               strokeWidth={1}
-              // stroke="var(--color-glow)"
             ></line>
           </pattern>
         )}
