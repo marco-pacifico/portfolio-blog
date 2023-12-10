@@ -12,7 +12,8 @@ export default function GraphPaper({
   maskCoverage = 50,
   decorationOpacity = 50,
   decorationColor = "#ff00ff",
-  innerGrid = false,
+  showInnerGrid = false,
+  showDots = false,
 }) {
   return (
     <Wrapper
@@ -25,6 +26,7 @@ export default function GraphPaper({
       decorationOpacity={decorationOpacity}
       glowColor={glowColor}
       decorationColor={decorationColor}
+      cellSize={cellSize}
     >
       <Glow aria-hidden />
       <GridFade>
@@ -38,8 +40,8 @@ export default function GraphPaper({
         >
           <DecorativeSquares cellSize={cellSize} />
         </svg>
-        {/* <DotGrid /> */}
-        <GridLines cellSize={cellSize} innerGrid={innerGrid} />
+        {showDots && <DotGridSVG cellSize={cellSize}/>}
+        <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
       </GridFade>
     </Wrapper>
   );
@@ -53,7 +55,8 @@ const Wrapper = styled.div`
 
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
-  --grid-dot-size: 15px;
+  --cell-size: ${(props) => props.cellSize}px;
+  --grid-dot-size: calc(var(--cell-size) / 20);
   /* GLOW */
   --glow-opacity: ${(props) => props.glowOpacity / 100};
   --glow-width: ${(props) => props.glowWidth}px;
@@ -82,11 +85,37 @@ const Glow = styled.div`
   width: var(--glow-width); // TODO: make this a prop
 `;
 
-function GridLines({ cellSize, innerGrid }) {
+function DotGridSVG({ cellSize }) {
   return (
     <StyledGridLines>
       <defs>
-        {innerGrid && (
+        <pattern
+          id="dotGrid"
+          width={cellSize}
+          height={cellSize}
+          x="50%"
+          patternUnits="userSpaceOnUse"
+        >
+          <circle
+            cx={cellSize / 2}
+            cy={cellSize / 2}
+            r={cellSize / 30}
+            strokeWidth={0}
+  
+  
+          />
+        </pattern>
+      </defs>
+        <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
+    </StyledGridLines>
+  );
+}
+
+function GridLines({ cellSize, showInnerGrid }) {
+  return (
+    <StyledGridLines>
+      <defs>
+        {showInnerGrid && (
           <pattern
             id="innerGrid"
             width={cellSize / 3}
@@ -126,7 +155,7 @@ function GridLines({ cellSize, innerGrid }) {
             strokeWidth={1}
             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
           />
-          {innerGrid && (
+          {showInnerGrid && (
             <rect
               width={cellSize}
               height={cellSize}
@@ -135,7 +164,6 @@ function GridLines({ cellSize, innerGrid }) {
           )}
         </pattern>
       </defs>
-      {/* <DecorativeSquares cellSize={cellSize} />{" "} */}
       <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
     </StyledGridLines>
   );
@@ -168,6 +196,7 @@ const StyledGridLines = styled.svg`
     var(--color-value-grid-line) / var(--grid-opacity)
   );
   stroke: var(--grid-line-stroke-color);
+  fill: var(--grid-line-stroke-color);
 `;
 
 const DotGrid = styled.div`
@@ -176,24 +205,18 @@ const DotGrid = styled.div`
   inset: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-        90deg,
-        var(--color-background) var(--grid-dot-size),
-        transparent 1%
-      )
-      center,
-    linear-gradient(
-        var(--color-background) var(--grid-dot-size),
-        transparent 1%
-      )
-      center,
-    var(--grid-dot-color);
-  background-size: calc(var(--grid-dot-size) + 1px)
-    calc(var(--grid-dot-size) + 1px);
+  background: repeating-radial-gradient(
+    circle at center,
+    var(--grid-dot-color),
+    var(--grid-dot-color) var(--grid-dot-size),
+    transparent var(--grid-dot-size),
+    transparent calc(var(--cell-size))
+  );
+  background-size: var(--cell-size) var(--cell-size);
 `;
 function DecorativeSquares({ cellSize }) {
   return (
-    <StyledDecorativeSquares x="50%" y={-1}>
+    <StyledDecorations x="50%" y={-1}>
       <path
         d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
             M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
@@ -210,11 +233,32 @@ function DecorativeSquares({ cellSize }) {
           `}
         strokeWidth={0}
       />
-    </StyledDecorativeSquares>
+      {/* <circle cx={`-${cellSize * 1}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+      <circle cx={`-${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+      <circle cx={`${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+      <circle
+        cx={`-${cellSize * 8}`}
+        cy={`${cellSize * 2}`}
+        r={cellSize / 2}
+        strokeWidth={0}
+      />
+      <circle
+        cx={`-${cellSize * 1}`}
+        cy={`${cellSize * 3}`}
+        r={cellSize / 2}
+        strokeWidth={0}
+      />
+      <circle
+        cx={`${cellSize * 5}`}
+        cy={`${cellSize * 4}`}
+        r={cellSize / 2}
+        strokeWidth={0}
+      /> */}
+    </StyledDecorations>
   );
 }
 
-const StyledDecorativeSquares = styled.svg`
+const StyledDecorations = styled.svg`
   position: absolute;
   inset: 0;
   width: 100%;
@@ -223,3 +267,27 @@ const StyledDecorativeSquares = styled.svg`
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
 `;
+
+function Decorations({ cellSize, numCircles = 100 }) {
+  // Create an array of circle positions
+  const positions = new Array(numCircles).fill(null).map((_, index) => {
+    const x = (index % 5) * cellSize * 3; // Example positioning logic
+    const y = Math.floor(index / 5) * cellSize * 3;
+    return { x, y };
+  });
+
+  // Render circles from the positions array
+  return (
+    <StyledDecorations>
+      {positions.map((pos, index) => (
+        <circle
+          key={index}
+          cx={pos.x}
+          cy={pos.y}
+          r={cellSize / 2}
+          strokeWidth={0}
+        />
+      ))}
+    </StyledDecorations>
+  );
+}
