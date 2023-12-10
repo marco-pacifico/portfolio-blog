@@ -30,10 +30,9 @@ export default function GraphPaper({
     >
       <Glow aria-hidden />
 
-        <Decorations cellSize={cellSize} />
-        {showDots && <DotGridSVG cellSize={cellSize} />}
-        <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
-
+      <Decorations cellSize={cellSize} />
+      {showDots && <DotGridSVG cellSize={cellSize} />}
+      <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
     </Wrapper>
   );
 }
@@ -54,7 +53,6 @@ const Wrapper = styled.div`
     rgba(255, 255, 255, 0.05),
     transparent
   );
-
 
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
@@ -109,6 +107,30 @@ function DotGridSVG({ cellSize }) {
       </defs>
       <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
     </StyledGridLines>
+  );
+}
+
+function DotGridPattern({ cellSize }) {
+  return (
+    <>
+      <defs>
+        <pattern
+          id="dotGrid"
+          width={cellSize}
+          height={cellSize}
+          x="50%"
+          patternUnits="userSpaceOnUse"
+        >
+          <circle
+            cx={cellSize / 2}
+            cy={cellSize / 2}
+            r={cellSize / 30}
+            strokeWidth={0}
+          />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
+    </>
   );
 }
 
