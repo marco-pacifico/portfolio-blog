@@ -155,10 +155,11 @@ const Controls = styled.div`
   width: min-content;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
   align-items: start;
   gap: var(--space-6);
   margin: 0 auto;
+  width: 100%;
 
   @media ${QUERY.phoneAndSmaller} { 
     flex-direction: column;
