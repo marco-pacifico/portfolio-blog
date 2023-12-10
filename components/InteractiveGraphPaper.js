@@ -17,8 +17,10 @@ export default function InteractiveGraphPaper() {
   const [maskCoverage, setMaskCoverage] = React.useState(120);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
   const [decorationColor, setDecorationColor] = React.useState("#d4e3fe");
-  const [showInnerGrid, setShowInnerGrid] = React.useState(false);
-  const [showDots, setShowDots] = React.useState(false);
+  const [horizontalLines, setHorizontalLines] = React.useState(true); 
+  const [verticalLines, setVerticalLines] = React.useState(true);
+  const [innerGrid, setInnerGrid] = React.useState(false);
+  const [dots, setDots] = React.useState(false);
 
   return (
     <Wrapper>
@@ -33,21 +35,33 @@ export default function InteractiveGraphPaper() {
         decorationOpacity={decorationOpacity}
         glowColor={glowColor}
         decorationColor={decorationColor}
-        showInnerGrid={showInnerGrid}
-        showDots={showDots}
+        horizontalLines={horizontalLines}
+        verticalLines={verticalLines}
+        innerGrid={innerGrid}
+        dots={dots}
       />
       <Controls>
         <Fieldset>
           <LegendWrapper><legend>Grid settings</legend></LegendWrapper>
           <Switch
-            checked={showInnerGrid}
+            checked={horizontalLines}
             onChange={(e) =>
-              setShowInnerGrid(!showInnerGrid)
+              setHorizontalLines(!horizontalLines)
+            }>Horizontal lines</Switch>
+          <Switch
+            checked={verticalLines}
+            onChange={(e) =>
+              setVerticalLines(!verticalLines)
+            }>Vertical Lines</Switch>
+          <Switch
+            checked={innerGrid}
+            onChange={(e) =>
+              setInnerGrid(!innerGrid)
             }>Inner grid</Switch>
           <Switch
-            checked={showDots}
+            checked={dots}
             onChange={(e) =>
-              setShowDots(!showDots)
+              setDots(!dots)
             }>Dots</Switch>
           <Slider
             id="cellSize"
