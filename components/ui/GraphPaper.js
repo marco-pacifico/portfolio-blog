@@ -30,17 +30,8 @@ export default function GraphPaper({
     >
       <Glow aria-hidden />
       <GridMask>
-        <svg
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <Decorations cellSize={cellSize} />
-        </svg>
-        {showDots && <DotGridSVG cellSize={cellSize}/>}
+        <Decorations cellSize={cellSize} />
+        {showDots && <DotGridSVG cellSize={cellSize} />}
         <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
       </GridMask>
     </Wrapper>
@@ -101,12 +92,10 @@ function DotGridSVG({ cellSize }) {
             cy={cellSize / 2}
             r={cellSize / 30}
             strokeWidth={0}
-  
-  
           />
         </pattern>
       </defs>
-        <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
     </StyledGridLines>
   );
 }
@@ -199,41 +188,49 @@ const StyledGridLines = styled.svg`
   fill: var(--grid-line-stroke-color);
 `;
 
-const DotGrid = styled.div`
-  --grid-dot-color: hsl(var(--color-value-grid-line) / var(--grid-opacity));
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-radial-gradient(
-    circle at center,
-    var(--grid-dot-color),
-    var(--grid-dot-color) var(--grid-dot-size),
-    transparent var(--grid-dot-size),
-    transparent calc(var(--cell-size))
-  );
-  background-size: var(--cell-size) var(--cell-size);
-`;
+// const DotGrid = styled.div`
+//   --grid-dot-color: hsl(var(--color-value-grid-line) / var(--grid-opacity));
+//   position: absolute;
+//   inset: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: repeating-radial-gradient(
+//     circle at center,
+//     var(--grid-dot-color),
+//     var(--grid-dot-color) var(--grid-dot-size),
+//     transparent var(--grid-dot-size),
+//     transparent calc(var(--cell-size))
+//   );
+//   background-size: var(--cell-size) var(--cell-size);
+// `;
 function Decorations({ cellSize }) {
   return (
-    <StyledDecorations x="50%" y={-1}>
-      <path
-        d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
+    <svg
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <StyledDecorations x="50%" y={-1}>
+        <path
+          d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
             M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
             M${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
             M-${cellSize * 8} ${
-          cellSize * 2
-        } h${cellSize} v${cellSize} h-${cellSize}Z  
+            cellSize * 2
+          } h${cellSize} v${cellSize} h-${cellSize}Z  
             M-${cellSize * 1} ${
-          cellSize * 3
-        } h${cellSize} v${cellSize} h-${cellSize}Z
+            cellSize * 3
+          } h${cellSize} v${cellSize} h-${cellSize}Z
             M${cellSize * 5} ${
-          cellSize * 4
-        } h${cellSize} v${cellSize} h-${cellSize}Z
+            cellSize * 4
+          } h${cellSize} v${cellSize} h-${cellSize}Z
           `}
-        strokeWidth={0}
-      />
-      {/* <circle cx={`-${cellSize * 1}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+          strokeWidth={0}
+        />
+        {/* <circle cx={`-${cellSize * 1}`} cy="0" r={cellSize / 2} strokeWidth={0} />
       <circle cx={`-${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
       <circle cx={`${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
       <circle
@@ -254,7 +251,8 @@ function Decorations({ cellSize }) {
         r={cellSize / 2}
         strokeWidth={0}
       /> */}
-    </StyledDecorations>
+      </StyledDecorations>
+    </svg>
   );
 }
 
