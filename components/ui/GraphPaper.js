@@ -29,7 +29,7 @@ export default function GraphPaper({
       cellSize={cellSize}
     >
       <Glow aria-hidden />
-      <GridFade>
+      <GridMask>
         <svg
           style={{
             position: "absolute",
@@ -38,11 +38,11 @@ export default function GraphPaper({
             height: "100%",
           }}
         >
-          <DecorativeSquares cellSize={cellSize} />
+          <Decorations cellSize={cellSize} />
         </svg>
         {showDots && <DotGridSVG cellSize={cellSize}/>}
         <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
-      </GridFade>
+      </GridMask>
     </Wrapper>
   );
 }
@@ -169,7 +169,7 @@ function GridLines({ cellSize, showInnerGrid }) {
   );
 }
 
-const GridFade = styled.div`
+const GridMask = styled.div`
   position: absolute;
   pointer-events: none;
   inset: 0;
