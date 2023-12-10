@@ -29,11 +29,11 @@ export default function GraphPaper({
       cellSize={cellSize}
     >
       <Glow aria-hidden />
-      <GridMask>
+
         <Decorations cellSize={cellSize} />
         {showDots && <DotGridSVG cellSize={cellSize} />}
         <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
-      </GridMask>
+
     </Wrapper>
   );
 }
@@ -43,6 +43,18 @@ const Wrapper = styled.div`
   inset: 0;
   overflow: hidden;
   background-color: var(--color-background);
+
+  /* MASK */
+  mask-image: radial-gradient(
+    100% var(--mask-coverage) at top center,
+    white,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+
 
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
@@ -157,23 +169,6 @@ function GridLines({ cellSize, showInnerGrid }) {
     </StyledGridLines>
   );
 }
-
-const GridMask = styled.div`
-  position: absolute;
-  pointer-events: none;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  mask-image: radial-gradient(
-    100% var(--mask-coverage) at top center,
-    white,
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05),
-    transparent
-  );
-`;
 
 const StyledGridLines = styled.svg`
   position: absolute;
