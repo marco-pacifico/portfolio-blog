@@ -214,7 +214,7 @@ const DotGrid = styled.div`
   );
   background-size: var(--cell-size) var(--cell-size);
 `;
-function DecorativeSquares({ cellSize }) {
+function Decorations({ cellSize }) {
   return (
     <StyledDecorations x="50%" y={-1}>
       <path
@@ -267,27 +267,3 @@ const StyledDecorations = styled.svg`
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
 `;
-
-function Decorations({ cellSize, numCircles = 100 }) {
-  // Create an array of circle positions
-  const positions = new Array(numCircles).fill(null).map((_, index) => {
-    const x = (index % 5) * cellSize * 3; // Example positioning logic
-    const y = Math.floor(index / 5) * cellSize * 3;
-    return { x, y };
-  });
-
-  // Render circles from the positions array
-  return (
-    <StyledDecorations>
-      {positions.map((pos, index) => (
-        <circle
-          key={index}
-          cx={pos.x}
-          cy={pos.y}
-          r={cellSize / 2}
-          strokeWidth={0}
-        />
-      ))}
-    </StyledDecorations>
-  );
-}
