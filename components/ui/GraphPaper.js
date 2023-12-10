@@ -16,9 +16,10 @@ export default function GraphPaper({
   horizontalLines = false,
   innerGrid = false,
   dots = false,
+  decorationShape = "square",
 }) {
   return (
-    <Wrapper
+    <MaskedGraphPaperWrapper
       gridOpacity={gridOpacity}
       glowOpacity={glowOpacity}
       glowWidth={glowWidth}
@@ -31,19 +32,19 @@ export default function GraphPaper({
       cellSize={cellSize}
     >
       <Glow aria-hidden />
+      <Decorations cellSize={cellSize} shape={decorationShape} />
 
-      <GridPatterns>
+      <GridPatternWrapper>
         {verticalLines && <VerticalLines cellSize={cellSize} />}
         {horizontalLines && <HorizontalLines cellSize={cellSize} />}
         {innerGrid && <InnerGrid cellSize={cellSize} />}
         {dots && <Dots cellSize={cellSize} />}
-      </GridPatterns>
-      <Decorations cellSize={cellSize} />
-    </Wrapper>
+      </GridPatternWrapper>
+    </MaskedGraphPaperWrapper>
   );
 }
 
-const Wrapper = styled.div`
+const MaskedGraphPaperWrapper = styled.div`
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -200,8 +201,7 @@ function InnerGrid({ cellSize }) {
   );
 }
 
-
-const GridPatterns = styled.svg`
+const GridPatternWrapper = styled.svg`
   position: absolute;
   pointer-events: none;
   inset: 0;
@@ -214,67 +214,85 @@ const GridPatterns = styled.svg`
   fill: var(--grid-line-stroke-color);
 `;
 
-function Decorations({ cellSize }) {
+const DecorationCoordinates = [
+  { row: 0, column: -1 },
+  { row: 0, column: -5 },
+  { row: 2, column: 5 },
+  { row: 2, column: -3 },
+  { row: 3, column: -8 },
+  { row: 3, column: 2 },
+  { row: 4, column: -2 },
+  { row: 5, column: 4 },
+];
+
+function Circles({ cellSize, coordinates = DecorationCoordinates }) {
+  const gridStrokeWidth = 1;
   return (
-    <svg
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <StyledDecorations x="50%" y={-1}>
-        <path
-          d={`M-${cellSize * 1} 0 h${cellSize - 0.5} v${cellSize} h-${
-            cellSize - 0.5
-          }Z 
-            M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
-            M${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
-            M-${cellSize * 8} ${
-            cellSize * 2
-          } h${cellSize} v${cellSize} h-${cellSize}Z  
-            M-${cellSize * 1} ${
-            cellSize * 3
-          } h${cellSize} v${cellSize} h-${cellSize}Z
-            M${cellSize * 5} ${
-            cellSize * 4
-          } h${cellSize} v${cellSize} h-${cellSize}Z
-          `}
-          strokeWidth={0}
-        />
-        {/* <circle cx={`-${cellSize * 1}`} cy="0" r={cellSize / 2} strokeWidth={0} />
-      <circle cx={`-${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
-      <circle cx={`${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
-      <circle
-        cx={`-${cellSize * 8}`}
-        cy={`${cellSize * 2}`}
-        r={cellSize / 2}
-        strokeWidth={0}
-      />
-      <circle
-        cx={`-${cellSize * 1}`}
-        cy={`${cellSize * 3}`}
-        r={cellSize / 2}
-        strokeWidth={0}
-      />
-      <circle
-        cx={`${cellSize * 5}`}
-        cy={`${cellSize * 4}`}
-        r={cellSize / 2}
-        strokeWidth={0}
-      /> */}
-      </StyledDecorations>
+    <svg x="50%" y={cellSize / 2} style={{ overflow: "visible" }}>
+      {coordinates.map(({ row, column }, index) => {
+        let side = "";
+        let xOffset = cellSize / 2 - gridStrokeWidth / 2;
+        if (column <= 0) {
+          side = "-";
+          column = Math.abs(column);
+          xOffset = -xOffset;
+        }
+        const xPosition = `${side}${cellSize * column + xOffset}`;
+        const yPosition = `${cellSize * row - gridStrokeWidth}`;
+        const radius = cellSize / 2 - gridStrokeWidth;
+        return (
+          <circle
+            key={index}
+            cx={xPosition}
+            cy={yPosition}
+            r={radius}
+            strokeWidth={0}
+          />
+        );
+      })}
     </svg>
   );
 }
 
-const StyledDecorations = styled.svg`
+function Squares({ cellSize, coordinates = DecorationCoordinates }) {
+  const gridStrokeWidth = 1;
+  const distance = cellSize - gridStrokeWidth / 2;
+  return (
+    <svg x="50%" y={-1} style={{ overflow: "visible" }}>
+      <path
+        d={coordinates
+          .map(({ row, column }) => {
+            let side = "";
+            if (column <= 0) {
+              side = "-";
+              column = Math.abs(column);
+            }
+
+            return `M${side}${cellSize * column} ${
+              cellSize * row
+            } h${distance} v${distance} h-${distance}Z`;
+          })
+          .join(" ")}
+        strokeWidth={0}
+      />
+    </svg>
+  );
+}
+
+function Decorations({ cellSize, shape = "square" }) {
+  return (
+    <DecorationsWrapper>
+      {shape === "square" && <Squares cellSize={cellSize} />}
+      {shape === "circle" && <Circles cellSize={cellSize} />}
+    </DecorationsWrapper>
+  );
+}
+
+const DecorationsWrapper = styled.svg`
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  overflow: visible;
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
 `;
@@ -295,59 +313,3 @@ const StyledDecorations = styled.svg`
 //   );
 //   background-size: var(--cell-size) var(--cell-size);
 // `;
-
-// function SquareGridPattern({ cellSize, showInnerGrid }) {
-//   return (
-//     <>
-//       <defs>
-//         {showInnerGrid && (
-//           <pattern
-//             id="innerGrid"
-//             width={cellSize / 3}
-//             height={cellSize / 3}
-//             patternUnits="userSpaceOnUse"
-//           >
-//             <line
-//               x1={cellSize / 3}
-//               y1="0"
-//               x2={cellSize / 3}
-//               y2={cellSize / 3}
-//               strokeWidth={1}
-//             ></line>
-//             <line
-//               x1="0"
-//               y1={cellSize / 3}
-//               x2={cellSize / 3}
-//               y2={cellSize / 3}
-//               strokeWidth={1}
-//             ></line>
-//           </pattern>
-//         )}
-//         <pattern
-//           id="grid"
-//           width={cellSize}
-//           height={cellSize}
-//           x="50%"
-//           y={-1}
-//           patternUnits="userSpaceOnUse"
-//         >
-//           <path
-//             // d="M 5 10 V.5 M0 .5 H10"
-//             d={`M${cellSize} ${cellSize} V0 M0 0 H${cellSize}`} // Make a props
-//             fill="none"
-//             strokeWidth={1}
-//             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
-//           />
-//           {showInnerGrid && (
-//             <rect
-//               width={cellSize}
-//               height={cellSize}
-//               fill="url(#innerGrid)"
-//             ></rect>
-//           )}
-//         </pattern>
-//       </defs>
-//       <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
-//     </>
-//   );
-// }
