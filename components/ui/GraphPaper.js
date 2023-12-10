@@ -12,8 +12,10 @@ export default function GraphPaper({
   maskCoverage = 50,
   decorationOpacity = 50,
   decorationColor = "#ff00ff",
-  showInnerGrid = false,
-  showDots = false,
+  verticalLines = true,
+  horizontalLines = false,
+  innerGrid = false,
+  dots = false,
 }) {
   return (
     <Wrapper
@@ -30,9 +32,13 @@ export default function GraphPaper({
     >
       <Glow aria-hidden />
 
+      <GridPatterns>
+        {verticalLines && <VerticalLines cellSize={cellSize} />}
+        {horizontalLines && <HorizontalLines cellSize={cellSize} />}
+        {innerGrid && <InnerGrid cellSize={cellSize} />}
+        {dots && <Dots cellSize={cellSize} />}
+      </GridPatterns>
       <Decorations cellSize={cellSize} />
-      {showDots && <DotGridSVG cellSize={cellSize} />}
-      <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
     </Wrapper>
   );
 }
@@ -86,31 +92,58 @@ const Glow = styled.div`
   width: var(--glow-width); // TODO: make this a prop
 `;
 
-function DotGridSVG({ cellSize }) {
+function VerticalLines({ cellSize }) {
   return (
-    <StyledGridLines>
+    <>
       <defs>
         <pattern
-          id="dotGrid"
+          id="gridLine"
           width={cellSize}
           height={cellSize}
-          x="50%"
           patternUnits="userSpaceOnUse"
+          x="50%"
+          y={-1}
         >
-          <circle
-            cx={cellSize / 2}
-            cy={cellSize / 2}
-            r={cellSize / 30}
-            strokeWidth={0}
-          />
+          <line
+            x1={cellSize}
+            y1="0"
+            x2={cellSize}
+            y2={cellSize}
+            strokeWidth={1}
+          ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
-    </StyledGridLines>
+      <rect width="100%" height="100%" fill="url(#gridLine)" strokeWidth={0} />
+    </>
+  );
+}
+function HorizontalLines({ cellSize }) {
+  return (
+    <>
+      <defs>
+        <pattern
+          id="gridLine"
+          width={cellSize}
+          height={cellSize}
+          patternUnits="userSpaceOnUse"
+          x="50%"
+          y={-1}
+        >
+          <line
+            x1="0"
+            y1={cellSize}
+            x2={cellSize}
+            y2={cellSize}
+            strokeWidth={1}
+          ></line>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#gridLine)" strokeWidth={0} />
+    </>
   );
 }
 
-function DotGridPattern({ cellSize }) {
+function Dots({ cellSize }) {
   return (
     <>
       <defs>
@@ -134,119 +167,41 @@ function DotGridPattern({ cellSize }) {
   );
 }
 
-function GridPattern({ cellSize, showInnerGrid }) {
+function InnerGrid({ cellSize }) {
   return (
     <>
       <defs>
-        {showInnerGrid && (
-          <pattern
-            id="innerGrid"
-            width={cellSize / 3}
-            height={cellSize / 3}
-            patternUnits="userSpaceOnUse"
-          >
-            <line
-              x1={cellSize / 3}
-              y1="0"
-              x2={cellSize / 3}
-              y2={cellSize / 3}
-              strokeWidth={1}
-            ></line>
-            <line
-              x1="0"
-              y1={cellSize / 3}
-              x2={cellSize / 3}
-              y2={cellSize / 3}
-              strokeWidth={1}
-            ></line>
-          </pattern>
-        )}
         <pattern
-          id="grid"
-          width={cellSize}
-          height={cellSize}
+          id="innerGrid"
+          width={cellSize / 3}
+          height={cellSize / 3}
+          patternUnits="userSpaceOnUse"
           x="50%"
           y={-1}
-          patternUnits="userSpaceOnUse"
         >
-          <path
-            // d="M 5 10 V.5 M0 .5 H10"
-            d={`M${cellSize} ${cellSize} V0 M0 0 H${cellSize}`} // Make a props
-            fill="none"
+          <line
+            x1={cellSize / 3}
+            y1="0"
+            x2={cellSize / 3}
+            y2={cellSize / 3}
             strokeWidth={1}
-            // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
-          />
-          {showInnerGrid && (
-            <rect
-              width={cellSize}
-              height={cellSize}
-              fill="url(#innerGrid)"
-            ></rect>
-          )}
+          ></line>
+          <line
+            x1="0"
+            y1={cellSize / 3}
+            x2={cellSize / 3}
+            y2={cellSize / 3}
+            strokeWidth={1}
+          ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill="url(#innerGrid)" strokeWidth={0} />
     </>
   );
 }
 
-function GridLines({ cellSize, showInnerGrid }) {
-  return (
-    <StyledGridLines>
-      <defs>
-        {showInnerGrid && (
-          <pattern
-            id="innerGrid"
-            width={cellSize / 3}
-            height={cellSize / 3}
-            patternUnits="userSpaceOnUse"
-          >
-            <line
-              x1={cellSize / 3}
-              y1="0"
-              x2={cellSize / 3}
-              y2={cellSize / 3}
-              strokeWidth={1}
-            ></line>
-            <line
-              x1="0"
-              y1={cellSize / 3}
-              x2={cellSize / 3}
-              y2={cellSize / 3}
-              strokeWidth={1}
-            ></line>
-          </pattern>
-        )}
-        <pattern
-          id="grid"
-          width={cellSize}
-          height={cellSize}
-          x="50%"
-          y={-1}
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            // d="M 5 10 V.5 M0 .5 H10"
-            d={`M${cellSize} ${cellSize} V0 M0 0 H${cellSize}`} // Make a props
-            fill="none"
-            strokeWidth={1}
-            // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
-          />
-          {showInnerGrid && (
-            <rect
-              width={cellSize}
-              height={cellSize}
-              fill="url(#innerGrid)"
-            ></rect>
-          )}
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
-    </StyledGridLines>
-  );
-}
 
-const StyledGridLines = styled.svg`
+const GridPatterns = styled.svg`
   position: absolute;
   pointer-events: none;
   inset: 0;
@@ -259,21 +214,6 @@ const StyledGridLines = styled.svg`
   fill: var(--grid-line-stroke-color);
 `;
 
-// const DotGrid = styled.div`
-//   --grid-dot-color: hsl(var(--color-value-grid-line) / var(--grid-opacity));
-//   position: absolute;
-//   inset: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: repeating-radial-gradient(
-//     circle at center,
-//     var(--grid-dot-color),
-//     var(--grid-dot-color) var(--grid-dot-size),
-//     transparent var(--grid-dot-size),
-//     transparent calc(var(--cell-size))
-//   );
-//   background-size: var(--cell-size) var(--cell-size);
-// `;
 function Decorations({ cellSize }) {
   return (
     <svg
@@ -286,7 +226,9 @@ function Decorations({ cellSize }) {
     >
       <StyledDecorations x="50%" y={-1}>
         <path
-          d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
+          d={`M-${cellSize * 1} 0 h${cellSize - 0.5} v${cellSize} h-${
+            cellSize - 0.5
+          }Z 
             M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
             M${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
             M-${cellSize * 8} ${
@@ -336,3 +278,76 @@ const StyledDecorations = styled.svg`
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
 `;
+
+// DOT GRID USING REPEATING RADIAL GRADIENT
+// const DotGrid = styled.div`
+//   --grid-dot-color: hsl(var(--color-value-grid-line) / var(--grid-opacity));
+//   position: absolute;
+//   inset: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: repeating-radial-gradient(
+//     circle at center,
+//     var(--grid-dot-color),
+//     var(--grid-dot-color) var(--grid-dot-size),
+//     transparent var(--grid-dot-size),
+//     transparent calc(var(--cell-size))
+//   );
+//   background-size: var(--cell-size) var(--cell-size);
+// `;
+
+// function SquareGridPattern({ cellSize, showInnerGrid }) {
+//   return (
+//     <>
+//       <defs>
+//         {showInnerGrid && (
+//           <pattern
+//             id="innerGrid"
+//             width={cellSize / 3}
+//             height={cellSize / 3}
+//             patternUnits="userSpaceOnUse"
+//           >
+//             <line
+//               x1={cellSize / 3}
+//               y1="0"
+//               x2={cellSize / 3}
+//               y2={cellSize / 3}
+//               strokeWidth={1}
+//             ></line>
+//             <line
+//               x1="0"
+//               y1={cellSize / 3}
+//               x2={cellSize / 3}
+//               y2={cellSize / 3}
+//               strokeWidth={1}
+//             ></line>
+//           </pattern>
+//         )}
+//         <pattern
+//           id="grid"
+//           width={cellSize}
+//           height={cellSize}
+//           x="50%"
+//           y={-1}
+//           patternUnits="userSpaceOnUse"
+//         >
+//           <path
+//             // d="M 5 10 V.5 M0 .5 H10"
+//             d={`M${cellSize} ${cellSize} V0 M0 0 H${cellSize}`} // Make a props
+//             fill="none"
+//             strokeWidth={1}
+//             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
+//           />
+//           {showInnerGrid && (
+//             <rect
+//               width={cellSize}
+//               height={cellSize}
+//               fill="url(#innerGrid)"
+//             ></rect>
+//           )}
+//         </pattern>
+//       </defs>
+//       <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
+//     </>
+//   );
+// }
