@@ -200,7 +200,6 @@ function InnerGrid({ cellSize }) {
   );
 }
 
-
 const GridPatterns = styled.svg`
   position: absolute;
   pointer-events: none;
@@ -214,14 +213,32 @@ const GridPatterns = styled.svg`
   fill: var(--grid-line-stroke-color);
 `;
 
-function DecorationPosition ({ cellSize, row, column, side="left" }) {
-  side === "left" ? "-" : "";
-  return `M${side}${cellSize * column} ${cellSize * row}`
-};
+function DecorationSquare({ cellSize }) {
+  const strokeWidth = 1;
+  const distance  = cellSize - strokeWidth / 2
+  // draw horizontal line right = distance, 
+  // draw vertical line down = distance, 
+  // draw horizontal line left = distance, 
+  // Z closes the path at the starting point to form a square
+  // h and v are lowercase therefore relative to the current point (not absolute)
+  return `h${distance} v${distance} h-${distance}Z`;
+}
 
-function DecorationShape ({ cellSize }) {
-  return `h${cellSize} v${cellSize} h-${cellSize}Z`
-};
+function DecorationPosition({
+  cellSize,
+  row,
+  column,
+  decorationShape = DecorationSquare,
+}) {
+  let side ="";
+  if (column <= 0) {
+    side = "-";
+    column = Math.abs(column);
+  }
+  return `M${side}${cellSize * column} ${cellSize * row} ${decorationShape({
+    cellSize,
+  })}`;
+}
 
 function Decorations({ cellSize }) {
   return (
@@ -235,7 +252,31 @@ function Decorations({ cellSize }) {
     >
       <StyledDecorations x="50%" y={-1}>
         <path
-          d={`M-${cellSize * 1} 0 h${cellSize - 0.5} v${cellSize} h-${
+          d={
+            DecorationPosition({ cellSize, row: 0, column: -1 }) +
+            DecorationPosition({ cellSize, row: 0, column: -5 }) +
+            DecorationPosition({ cellSize, row: 2, column: 5 }) +
+            DecorationPosition({ cellSize, row: 2, column: -3 }) +
+            DecorationPosition({ cellSize, row: 3, column: -8 }) +
+            DecorationPosition({ cellSize, row: 3, column: 2 }) +
+            DecorationPosition({ cellSize, row: 4, column: -2 }) +
+            DecorationPosition({ cellSize, row: 5, column: 4 }) 
+          }
+          strokeWidth={0}
+        />
+      </StyledDecorations>
+    </svg>
+  );
+}
+
+const StyledDecorations = styled.svg`
+  overflow: visible;
+  opacity: var(--decoration-opacity);
+  fill: var(--decoration-color);
+`;
+
+{
+  /* `M-${cellSize * 1} 0 h${cellSize - 0.5} v${cellSize} h-${
             cellSize - 0.5
           }Z 
             M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
@@ -249,10 +290,10 @@ function Decorations({ cellSize }) {
             M${cellSize * 5} ${
             cellSize * 4
           } h${cellSize} v${cellSize} h-${cellSize}Z
-          `}
-          strokeWidth={0}
-        />
-        {/* <circle cx={`-${cellSize * 1}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+          ` */
+}
+{
+  /* <circle cx={`-${cellSize * 1}`} cy="0" r={cellSize / 2} strokeWidth={0} />
       <circle cx={`-${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
       <circle cx={`${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
       <circle
@@ -272,17 +313,8 @@ function Decorations({ cellSize }) {
         cy={`${cellSize * 4}`}
         r={cellSize / 2}
         strokeWidth={0}
-      /> */}
-      </StyledDecorations>
-    </svg>
-  );
+      /> */
 }
-
-const StyledDecorations = styled.svg`
-  overflow: visible;
-  opacity: var(--decoration-opacity);
-  fill: var(--decoration-color);
-`;
 
 // DOT GRID USING REPEATING RADIAL GRADIENT
 // const DotGrid = styled.div`
