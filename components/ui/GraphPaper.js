@@ -25,6 +25,7 @@ export default function GraphPaper({
       decorationOpacity={decorationOpacity}
       glowColor={glowColor}
       decorationColor={decorationColor}
+      cellSize={cellSize}
     >
       <Glow aria-hidden />
       <GridFade>
@@ -38,8 +39,8 @@ export default function GraphPaper({
         >
           <DecorativeSquares cellSize={cellSize} />
         </svg>
-        {/* <DotGrid /> */}
-        <GridLines cellSize={cellSize} innerGrid={innerGrid} />
+        <DotGrid />
+        {/* <GridLines cellSize={cellSize} innerGrid={innerGrid} /> */}
       </GridFade>
     </Wrapper>
   );
@@ -53,7 +54,8 @@ const Wrapper = styled.div`
 
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
-  --grid-dot-size: 15px;
+  --cell-size: ${(props) => props.cellSize}px;
+  --grid-dot-size: calc(var(--cell-size) / 12);
   /* GLOW */
   --glow-opacity: ${(props) => props.glowOpacity / 100};
   --glow-width: ${(props) => props.glowWidth}px;
@@ -178,18 +180,18 @@ const DotGrid = styled.div`
   height: 100%;
   background: linear-gradient(
         90deg,
-        var(--color-background) var(--grid-dot-size),
+        var(--color-background) var(--cell-size),
         transparent 1%
       )
       center,
     linear-gradient(
-        var(--color-background) var(--grid-dot-size),
+        var(--color-background) var(--cell-size),
         transparent 1%
       )
       center,
     var(--grid-dot-color);
-  background-size: calc(var(--grid-dot-size) + 1px)
-    calc(var(--grid-dot-size) + 1px);
+  background-size: calc(var(--cell-size) + var(--grid-dot-size))
+  calc(var(--cell-size) + var(--grid-dot-size));
 `;
 function DecorativeSquares({ cellSize }) {
   return (
