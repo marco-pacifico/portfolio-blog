@@ -213,34 +213,52 @@ const GridPatterns = styled.svg`
   fill: var(--grid-line-stroke-color);
 `;
 
+const DecorationCoordinates = [
+  { row: 0, column: -1 },
+  { row: 0, column: -5 },
+  { row: 2, column: 5 }, 
+  { row: 2, column: -3 },
+  { row: 3, column: -8 },
+  { row: 3, column: 2 },
+  { row: 4, column: -2 },
+  { row: 5, column: 4 },
+];
+
 function DecorationSquare({ cellSize }) {
-  const strokeWidth = 1;
-  const distance  = cellSize - strokeWidth / 2
-  // draw horizontal line right = distance, 
-  // draw vertical line down = distance, 
-  // draw horizontal line left = distance, 
+  const gridLineWidth = 1;
+  const distance = cellSize - gridLineWidth / 2;
+  // draw horizontal line right = distance,
+  // draw vertical line down = distance,
+  // draw horizontal line left = distance,
   // Z closes the path at the starting point to form a square
   // h and v are lowercase therefore relative to the current point (not absolute)
   return `h${distance} v${distance} h-${distance}Z`;
 }
 
-function DecorationPosition({
-  cellSize,
-  row,
-  column,
-  decorationShape = DecorationSquare,
-}) {
-  let side ="";
+function Decoration({ cellSize, row, column, shape = "square" }) {
+  let side = "";
   if (column <= 0) {
     side = "-";
     column = Math.abs(column);
   }
-  return `M${side}${cellSize * column} ${cellSize * row} ${decorationShape({
-    cellSize,
-  })}`;
+  if (shape === "square") {
+    return `M${side}${cellSize * column} ${cellSize * row} ${DecorationSquare({
+      cellSize,
+    })}`;
+  }
+  if (shape === "circle") {
+    return (
+      <circle
+        cx={`${side}${cellSize * column - cellSize / 2}`}
+        cy={`${cellSize * row}`}
+        r={cellSize / 2 - 2}
+        strokeWidth={0}
+      />
+    );
+  }
 }
 
-function Decorations({ cellSize }) {
+function Decorations({ cellSize, shape = "square", coordinates = DecorationCoordinates }) {
   return (
     <svg
       style={{
@@ -250,21 +268,35 @@ function Decorations({ cellSize }) {
         height: "100%",
       }}
     >
-      <StyledDecorations x="50%" y={-1}>
-        <path
-          d={
-            DecorationPosition({ cellSize, row: 0, column: -1 }) +
-            DecorationPosition({ cellSize, row: 0, column: -5 }) +
-            DecorationPosition({ cellSize, row: 2, column: 5 }) +
-            DecorationPosition({ cellSize, row: 2, column: -3 }) +
-            DecorationPosition({ cellSize, row: 3, column: -8 }) +
-            DecorationPosition({ cellSize, row: 3, column: 2 }) +
-            DecorationPosition({ cellSize, row: 4, column: -2 }) +
-            DecorationPosition({ cellSize, row: 5, column: 4 }) 
-          }
-          strokeWidth={0}
-        />
-      </StyledDecorations>
+      {shape === "square" && (
+        <StyledDecorations x="50%" y={-1}>
+          <path
+            d={
+              Decoration({ cellSize, row: 0, column: -1 }) +
+              Decoration({ cellSize, row: 0, column: -5 }) +
+              Decoration({ cellSize, row: 2, column: 5 }) +
+              Decoration({ cellSize, row: 2, column: -3 }) +
+              Decoration({ cellSize, row: 3, column: -8 }) +
+              Decoration({ cellSize, row: 3, column: 2 }) +
+              Decoration({ cellSize, row: 4, column: -2 }) +
+              Decoration({ cellSize, row: 5, column: 4 })
+            }
+            strokeWidth={0}
+          />
+        </StyledDecorations>
+      )}
+      {shape === "circle" && (
+        <StyledDecorations x="50%" y={cellSize / 2 -1}>
+          <Decoration cellSize={cellSize} row={0} column={-1} shape="circle" />
+          <Decoration cellSize={cellSize} row={0} column={-5} shape="circle" />
+          <Decoration cellSize={cellSize} row={2} column={5} shape="circle" />
+          <Decoration cellSize={cellSize} row={2} column={-3} shape="circle" />
+          <Decoration cellSize={cellSize} row={3} column={-8} shape="circle" />
+          <Decoration cellSize={cellSize} row={3} column={2} shape="circle" />
+          <Decoration cellSize={cellSize} row={4} column={-2} shape="circle" />
+          <Decoration cellSize={cellSize} row={5} column={4} shape="circle" />
+        </StyledDecorations>
+      )}
     </svg>
   );
 }
