@@ -214,6 +214,15 @@ const GridPatterns = styled.svg`
   fill: var(--grid-line-stroke-color);
 `;
 
+function DecorationPosition ({ cellSize, row, column, side="left" }) {
+  side === "left" ? "-" : "";
+  return `M${side}${cellSize * column} ${cellSize * row}`
+};
+
+function DecorationShape ({ cellSize }) {
+  return `h${cellSize} v${cellSize} h-${cellSize}Z`
+};
+
 function Decorations({ cellSize }) {
   return (
     <svg
@@ -270,10 +279,6 @@ function Decorations({ cellSize }) {
 }
 
 const StyledDecorations = styled.svg`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   overflow: visible;
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
