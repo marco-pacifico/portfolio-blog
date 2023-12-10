@@ -229,7 +229,7 @@ function Circles({ cellSize, coordinates = DecorationCoordinates }) {
   const gridStrokeWidth = 1;
   return (
     <svg x="50%" y={cellSize / 2} style={{ overflow: "visible" }}>
-      {coordinates.map(({ row, column }) => {
+      {coordinates.map(({ row, column }, index) => {
         let side = "";
         let xOffset = cellSize / 2 - gridStrokeWidth / 2;
         if (column <= 0) {
@@ -242,6 +242,7 @@ function Circles({ cellSize, coordinates = DecorationCoordinates }) {
         const radius = cellSize / 2 - gridStrokeWidth;
         return (
           <circle
+            key={index}
             cx={xPosition}
             cy={yPosition}
             r={radius}
