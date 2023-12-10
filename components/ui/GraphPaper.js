@@ -12,7 +12,8 @@ export default function GraphPaper({
   maskCoverage = 50,
   decorationOpacity = 50,
   decorationColor = "#ff00ff",
-  innerGrid = false,
+  showInnerGrid = false,
+  showDots = false,
 }) {
   return (
     <Wrapper
@@ -39,8 +40,8 @@ export default function GraphPaper({
         >
           <DecorativeSquares cellSize={cellSize} />
         </svg>
-        <DotGridSVG cellSize={cellSize}/>
-        <GridLines cellSize={cellSize} innerGrid={innerGrid} />
+        {showDots && <DotGridSVG cellSize={cellSize}/>}
+        <GridLines cellSize={cellSize} showInnerGrid={showInnerGrid} />
       </GridFade>
     </Wrapper>
   );
@@ -110,11 +111,11 @@ function DotGridSVG({ cellSize }) {
   );
 }
 
-function GridLines({ cellSize, innerGrid }) {
+function GridLines({ cellSize, showInnerGrid }) {
   return (
     <StyledGridLines>
       <defs>
-        {innerGrid && (
+        {showInnerGrid && (
           <pattern
             id="innerGrid"
             width={cellSize / 3}
@@ -154,7 +155,7 @@ function GridLines({ cellSize, innerGrid }) {
             strokeWidth={1}
             // strokeWidth={1} // If you want to make this 0.5, need to change y-offset to -0.5, and change path to "M 5 10 V0 M0 0 H10" and then also have to adjust positioning of the decorative squares
           />
-          {innerGrid && (
+          {showInnerGrid && (
             <rect
               width={cellSize}
               height={cellSize}

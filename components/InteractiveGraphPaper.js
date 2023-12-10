@@ -17,7 +17,8 @@ export default function InteractiveGraphPaper() {
   const [maskCoverage, setMaskCoverage] = React.useState(120);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
   const [decorationColor, setDecorationColor] = React.useState("#d4e3fe");
-  const [innerGrid, setInnerGrid] = React.useState(false);
+  const [showInnerGrid, setShowInnerGrid] = React.useState(false);
+  const [showDots, setShowDots] = React.useState(false);
 
   return (
     <Wrapper>
@@ -32,16 +33,22 @@ export default function InteractiveGraphPaper() {
         decorationOpacity={decorationOpacity}
         glowColor={glowColor}
         decorationColor={decorationColor}
-        innerGrid={innerGrid}
+        showInnerGrid={showInnerGrid}
+        showDots={showDots}
       />
       <Controls>
         <Fieldset>
           <LegendWrapper><legend>Grid settings</legend></LegendWrapper>
           <Switch
-            checked={innerGrid}
+            checked={showInnerGrid}
             onChange={(e) =>
-              setInnerGrid(!innerGrid)
-            }>Add inner grid</Switch>
+              setShowInnerGrid(!showInnerGrid)
+            }>Inner grid</Switch>
+          <Switch
+            checked={showDots}
+            onChange={(e) =>
+              setShowDots(!showDots)
+            }>Dots</Switch>
           <Slider
             id="cellSize"
             label="Cell Size"
@@ -61,7 +68,7 @@ export default function InteractiveGraphPaper() {
           />
           <Slider
             id="maskCoverage"
-            label="Grid Fade"
+            label="Grid Coverage"
             value={maskCoverage} // Pass the cellSize to the value prop of Slider component
             units="%"
             min={25}
