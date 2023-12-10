@@ -27,7 +27,6 @@ export default function GraphPaper({
       decorationColor={decorationColor}
       cellSize={cellSize}
     >
-      
       <Glow aria-hidden />
       <GridFade>
         <svg
@@ -40,8 +39,8 @@ export default function GraphPaper({
         >
           <DecorativeSquares cellSize={cellSize} />
         </svg>
-        <DotGrid />
-        {/* <GridLines cellSize={cellSize} innerGrid={innerGrid} /> */}
+        <DotGridSVG cellSize={cellSize}/>
+        <GridLines cellSize={cellSize} innerGrid={innerGrid} />
       </GridFade>
     </Wrapper>
   );
@@ -84,6 +83,32 @@ const Glow = styled.div`
   height: var(--glow-height); // TODO: make this a prop
   width: var(--glow-width); // TODO: make this a prop
 `;
+
+function DotGridSVG({ cellSize }) {
+  return (
+    <StyledGridLines>
+      <defs>
+        <pattern
+          id="dotGrid"
+          width={cellSize}
+          height={cellSize}
+          x="50%"
+          patternUnits="userSpaceOnUse"
+        >
+          <circle
+            cx={cellSize / 2}
+            cy={cellSize / 2}
+            r={cellSize / 30}
+            strokeWidth={0}
+  
+  
+          />
+        </pattern>
+      </defs>
+        <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
+    </StyledGridLines>
+  );
+}
 
 function GridLines({ cellSize, innerGrid }) {
   return (
@@ -138,7 +163,6 @@ function GridLines({ cellSize, innerGrid }) {
           )}
         </pattern>
       </defs>
-      {/* <DecorativeSquares cellSize={cellSize} />{" "} */}
       <rect width="100%" height="100%" fill="url(#grid)" strokeWidth={0} />
     </StyledGridLines>
   );
@@ -171,6 +195,7 @@ const StyledGridLines = styled.svg`
     var(--color-value-grid-line) / var(--grid-opacity)
   );
   stroke: var(--grid-line-stroke-color);
+  fill: var(--grid-line-stroke-color);
 `;
 
 const DotGrid = styled.div`
@@ -186,11 +211,11 @@ const DotGrid = styled.div`
     transparent var(--grid-dot-size),
     transparent calc(var(--cell-size))
   );
-  background-size: var(--cell-size) var(--cell-size); 
+  background-size: var(--cell-size) var(--cell-size);
 `;
 function DecorativeSquares({ cellSize }) {
   return (
-    <StyledDecorativeSquares x="50%" y={-1}>
+    <StyledDecorations x="50%" y={-1}>
       <path
         d={`M-${cellSize * 1} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
             M-${cellSize * 5} 0 h${cellSize} v${cellSize} h-${cellSize}Z 
@@ -207,11 +232,32 @@ function DecorativeSquares({ cellSize }) {
           `}
         strokeWidth={0}
       />
-    </StyledDecorativeSquares>
+      {/* <circle cx={`-${cellSize * 1}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+      <circle cx={`-${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+      <circle cx={`${cellSize * 5}`} cy="0" r={cellSize / 2} strokeWidth={0} />
+      <circle
+        cx={`-${cellSize * 8}`}
+        cy={`${cellSize * 2}`}
+        r={cellSize / 2}
+        strokeWidth={0}
+      />
+      <circle
+        cx={`-${cellSize * 1}`}
+        cy={`${cellSize * 3}`}
+        r={cellSize / 2}
+        strokeWidth={0}
+      />
+      <circle
+        cx={`${cellSize * 5}`}
+        cy={`${cellSize * 4}`}
+        r={cellSize / 2}
+        strokeWidth={0}
+      /> */}
+    </StyledDecorations>
   );
 }
 
-const StyledDecorativeSquares = styled.svg`
+const StyledDecorations = styled.svg`
   position: absolute;
   inset: 0;
   width: 100%;
@@ -220,3 +266,27 @@ const StyledDecorativeSquares = styled.svg`
   opacity: var(--decoration-opacity);
   fill: var(--decoration-color);
 `;
+
+function Decorations({ cellSize, numCircles = 100 }) {
+  // Create an array of circle positions
+  const positions = new Array(numCircles).fill(null).map((_, index) => {
+    const x = (index % 5) * cellSize * 3; // Example positioning logic
+    const y = Math.floor(index / 5) * cellSize * 3;
+    return { x, y };
+  });
+
+  // Render circles from the positions array
+  return (
+    <StyledDecorations>
+      {positions.map((pos, index) => (
+        <circle
+          key={index}
+          cx={pos.x}
+          cy={pos.y}
+          r={cellSize / 2}
+          strokeWidth={0}
+        />
+      ))}
+    </StyledDecorations>
+  );
+}
