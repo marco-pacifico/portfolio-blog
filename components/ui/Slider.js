@@ -30,7 +30,7 @@ export default function Slider({
 }
 
 const Label = styled.div`
-  color: var(--color-text-primary);
+  color: var(--color-text-strong);
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-bold);
   display: flex;
@@ -42,6 +42,7 @@ const Label = styled.div`
 `;
 const Value = styled.span`
   font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
 `;
 
 const StyledSlider = styled.label`
@@ -60,14 +61,6 @@ const StyledSlider = styled.label`
   --slider-thumb-border-radius: 50%;
   --slider-thumb-shadow: 0 0 0 1px var(--color-border);
 
-  --track-background: ${(p) =>
-    p.checked ? "var(--color-track-checked)" : "var(--color-track-unchecked)"};
-
-  --thumb-background: ${(p) =>
-    p.checked ? "var(--color-thumb-checked)" : "var(--color-thumb-unchecked)"};
-  
-  --track-border: 2px solid ${(p) =>
-    p.checked ? "var(--color-track-border-checked)" : "var(--color-track-border-unchecked)"};
 
   & input[type="range"] {
     -webkit-appearance: none;

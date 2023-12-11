@@ -18,7 +18,7 @@ export default function Switch({ children, id, checked, ...props }) {
 }
 
 const StyledLabel = styled.label`
-  color: var(--color-text-primary);
+  color: var(--color-text-strong);
   font-size: var(--font-size-2);
   display: flex;
   gap: var(--space-5);

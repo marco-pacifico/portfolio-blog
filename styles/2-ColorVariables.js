@@ -57,6 +57,8 @@ export const LightColors = css`
   --color-thumb-checked: hsl(${COLORS.night[500]});
   --color-thumb-unchecked: hsl(${COLORS.sidewalk[400]});
 
+  --color-border-picker: hsl(${COLORS.black[300]});
+
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-bg: var(--color-background-darker);
   --syntax-inline-bg: var(--color-background-darker);
@@ -156,7 +158,9 @@ export const DarkColors = css`
   --color-track-border-checked: hsl(${COLORS.moss[500]});
   --color-track-border-unchecked: hsl(${COLORS.sidewalk[300]});
   --color-thumb-checked: hsl(${COLORS.night[600]});
-  --color-thumb-unchecked: hsl(${COLORS.night[600]});
+  --color-thumb-unchecked: hsl(${COLORS.night[700]});
+
+  --color-border-picker: hsl(${COLORS.white[700]});
 
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-inline-bg: hsl(226deg 20% 14%); // dark gray

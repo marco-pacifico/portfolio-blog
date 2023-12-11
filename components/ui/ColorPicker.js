@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import VisuallyHidden from "./VisuallyHidden";
+import { COLORS } from "../../styles/1-DesignTokens";
 
 export default function ColorPicker({ label, value, ...props }) {
   return (
@@ -24,7 +24,7 @@ const Wrapper = styled.label`
 `;
 
 const Label = styled.div`
-  color: var(--color-text-primary);
+  color: var(--color-text-strong);
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-bold);
   display: flex;
@@ -32,13 +32,14 @@ const Label = styled.div`
 `;
 const Value = styled.span`
   font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
 `;
 const ColorSwatch = styled.div`
   position: relative;
   width: 100%;
   height: var(--space-7);
-  border-radius: var(--space-3);
-  border: 1px solid var(--color-text-primary);
+  border-radius: 9999px;
+  border: 3px solid var(--color-border-picker);
 `;
 const InvisibleInput = styled.input`
   &[type="color"] {
