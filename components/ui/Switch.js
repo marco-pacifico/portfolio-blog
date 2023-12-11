@@ -17,36 +17,41 @@ export default function Switch({ children, id, checked, ...props }) {
 }
 
 const StyledLabel = styled.label`
-  color: var(--color-text-primary);
+  color: var(--color-text-strong);
   font-size: var(--font-size-2);
   display: flex;
   gap: var(--space-5);
   align-items: center;
   width: max-content;
-  padding-block: var(--space-2);
   user-select: none; // prevents selecting text of interactive elements
+  -webkit-user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }
 `;
 
 const Track = styled.div`
-  --track-height: 1.5rem;
+  
   --track-background: ${(p) =>
-    p.checked ? "green" : "var(--color-text-secondary)"};
-  --track-border: 2px solid var(--color-text-primary);
+    p.checked ? "var(--color-track-checked)" : "var(--color-track-unchecked)"};
+
+  --thumb-background: ${(p) =>
+    p.checked ? "var(--color-thumb-checked)" : "var(--color-thumb-unchecked)"};
+  
+  --track-border: var(--border-width) solid ${(p) =>
+    p.checked ? "var(--color-track-border-checked)" : "var(--color-track-border-unchecked)"};
+
+  --thumb-height: 1.25rem;
   --track-border-radius: 0.5rem;
-  --track-shadow: 0 0 0 1px var(--color-border);
-  --thumb-border-width: 2px;
-  --thumb-translate-x: translateX(calc(100% - var(--thumb-border-width) * 2));
-  --thumb-background: var(--color-text-strong);
-  --thumb-border: var(--thumb-border-width) solid var(--track-background);
+  --border-width: .125rem;
+  --thumb-translate-x: translateX(100%);
+  --thumb-border: var(--border-width) solid var(--track-background);
   --thumb-border-radius: 50%;
   --thumb-shadow: 0 0 0 1px var(--color-border);
 
   display: flex;
-  height: var(--track-height);
-  aspect-ratio: 5 / 3;
+  height: calc(var(--thumb-height) + var(--border-width)*2 );
+  width: calc(var(--thumb-height) * 2 + var(--border-width) * 2);
   border: var(--track-border);
   border-radius: 9999px;
   background: var(--track-background);
@@ -59,6 +64,7 @@ const Track = styled.div`
 
 const Thumb = styled.span`
   height: 100%;
+  height: var(--thumb-height);
   aspect-ratio: 1;
   background-color: var(--thumb-background);
   border-radius: 9999px;

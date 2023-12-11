@@ -137,7 +137,7 @@ export default function InteractiveGraphPaper() {
         <Fieldset>
           <LegendWrapper>Decoration settings</LegendWrapper>
           <ColorPicker
-            label="Square Color"
+            label="Decoration Color"
             id="decorationColor"
             value={decorationColor}
             onChange={(event) => setDecorationColor(event.target.value)}

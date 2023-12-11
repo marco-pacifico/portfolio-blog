@@ -1,4 +1,7 @@
 export const COLORS = {
+    black: {
+        300: '0deg 0% 0% / 25%',
+    },
     white: {
         700: '0deg 0% 100% / 55%',
         800: '0deg 0% 100% / 80%',

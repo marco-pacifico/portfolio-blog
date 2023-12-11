@@ -30,18 +30,20 @@ export default function Slider({
 }
 
 const Label = styled.div`
-  color: var(--color-text-primary);
+  color: var(--color-text-strong);
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-bold);
   display: flex;
   justify-content: space-between;
   user-select: none; // prevents selecting text of interactive elements
+  -webkit-user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }
 `;
 const Value = styled.span`
   font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
 `;
 
 const StyledSlider = styled.label`
@@ -49,16 +51,16 @@ const StyledSlider = styled.label`
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+
   --slider-track-height: 0.5rem;
-  --slider-track-background: var(--color-text-secondary);
-  --slider-track-border: 1px solid var(--color-text-primary);
   --slider-track-border-radius: 0.5rem;
-  --slider-track-shadow: 0 0 0 1px var(--color-border);
-  --slider-thumb-size: 1.5rem;
-  --slider-thumb-background: var(--color-text-strong);
-  --slider-thumb-border: 1px solid var(--color-border);
+  --slider-track-background: var(--color-slider-track);
+
+  --slider-thumb-size: 1.25rem;
   --slider-thumb-border-radius: 50%;
-  --slider-thumb-shadow: 0 0 0 1px var(--color-border);
+  --slider-thumb-background: var(--color-slider-thumb);
+
+
 
   & input[type="range"] {
     -webkit-appearance: none;
@@ -66,9 +68,7 @@ const StyledSlider = styled.label`
     width: 100%;
     height: var(--slider-track-height);
     background: var(--slider-track-background);
-    border: var(--slider-track-border);
     border-radius: var(--slider-track-border-radius);
-    box-shadow: var(--slider-track-shadow);
     outline: none;
 
     &::-webkit-slider-thumb {
@@ -77,9 +77,7 @@ const StyledSlider = styled.label`
       width: var(--slider-thumb-size);
       height: var(--slider-thumb-size);
       background: var(--slider-thumb-background);
-      border: var(--slider-thumb-border);
       border-radius: var(--slider-thumb-border-radius);
-      box-shadow: var(--slider-thumb-shadow);
       cursor: grab;
     }
 
@@ -87,9 +85,7 @@ const StyledSlider = styled.label`
       width: var(--slider-thumb-size);
       height: var(--slider-thumb-size);
       background: var(--slider-thumb-background);
-      border: var(--slider-thumb-border);
       border-radius: var(--slider-thumb-border-radius);
-      box-shadow: var(--slider-thumb-shadow);
       cursor: grab;
     }
   }
