@@ -49,6 +49,14 @@ export const LightColors = css`
   --color-nav-text-active-hover: var(--color-text-strong);
   --color-nav-background-active-hover: var(--color-background);
 
+  /* SWITCH AND SLIDER COLORS */
+  --color-track-checked: hsl(${COLORS.moss[500]});
+  --color-track-unchecked: hsl(${COLORS.sidewalk[500]});
+  --color-track-border-checked: hsl(${COLORS.moss[500]});
+  --color-track-border-unchecked: hsl(${COLORS.sidewalk[500]});
+  --color-thumb-checked: hsl(${COLORS.night[500]});
+  --color-thumb-unchecked: hsl(${COLORS.sidewalk[300]});
+
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-bg: var(--color-background-darker);
   --syntax-inline-bg: var(--color-background-darker);
@@ -140,6 +148,15 @@ export const DarkColors = css`
   /* NAV LINK COLORS (ACTIVE, HOVER) */
   --color-nav-text-active-hover: hsl(${COLORS.night[100]});
   --color-nav-background-active-hover: hsl(${COLORS.night[700]});
+
+  /* SWITCH AND SLIDER COLORS */
+ 
+  --color-track-checked: hsl(${COLORS.moss[500]});
+  --color-track-unchecked: hsl(${COLORS.sidewalk[300]});
+  --color-track-border-checked: hsl(${COLORS.moss[500]});
+  --color-track-border-unchecked: hsl(${COLORS.sidewalk[300]});
+  --color-thumb-checked: hsl(${COLORS.night[600]});
+  --color-thumb-unchecked: hsl(${COLORS.sidewalk[600]});
 
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-inline-bg: hsl(226deg 20% 14%); // dark gray

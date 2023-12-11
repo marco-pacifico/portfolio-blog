@@ -32,18 +32,20 @@ const StyledLabel = styled.label`
 `;
 
 const Track = styled.div`
-  --checked-color: hsl(${COLORS.moss[500]});
-  --unchecked-color: hsl(${COLORS.sidewalk[500]});
-  --track-height: 1.5rem;
+  
   --track-background: ${(p) =>
-    p.checked ? "var(--checked-color)" : "var(--unchecked-color)"};
-  --track-border: 2px solid var(--color-text-primary);
+    p.checked ? "var(--color-track-checked)" : "var(--color-track-unchecked)"};
+
+  --thumb-background: ${(p) =>
+    p.checked ? "var(--color-thumb-checked)" : "var(--color-thumb-unchecked)"};
+  
+  --track-border: 2px solid ${(p) =>
+    p.checked ? "var(--color-track-border-checked)" : "var(--color-track-border-unchecked)"};
+
+  --track-height: 1.5rem;
   --track-border-radius: 0.5rem;
-  --track-shadow: 0 0 0 1px var(--color-border);
   --thumb-border-width: 2px;
   --thumb-translate-x: translateX(calc(100% - var(--thumb-border-width) * 2));
-  --thumb-background: ${(p) =>
-    p.checked ? "var(--color-text-strong)" : "var(--color-text-primary)"};
   --thumb-border: var(--thumb-border-width) solid var(--track-background);
   --thumb-border-radius: 50%;
   --thumb-shadow: 0 0 0 1px var(--color-border);
