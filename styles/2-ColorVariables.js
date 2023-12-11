@@ -50,12 +50,23 @@ export const LightColors = css`
   --color-nav-background-active-hover: var(--color-background);
 
   /* SWITCH AND SLIDER COLORS */
-  --color-track-checked: hsl(${COLORS.moss[500]});
+  /* --color-track-checked: hsl(${COLORS.moss[500]});
   --color-track-unchecked: hsl(${COLORS.sidewalk[600]});
   --color-track-border-checked: hsl(${COLORS.moss[500]});
   --color-track-border-unchecked: hsl(${COLORS.sidewalk[500]});
   --color-thumb-checked: hsl(${COLORS.night[500]});
-  --color-thumb-unchecked: hsl(${COLORS.sidewalk[400]});
+  --color-thumb-unchecked: hsl(${COLORS.sidewalk[400]}); */
+
+  --color-track-checked: hsl(${COLORS.moss[500]});
+  --color-track-border-checked: var(--color-track-checked);
+  --color-thumb-checked: hsl(${COLORS.night[700]});
+
+  --color-track-unchecked: hsl(${COLORS.sidewalk[300]});
+  --color-track-border-unchecked: var(--color-track-unchecked);
+  --color-thumb-unchecked: hsl(${COLORS.night[300]});
+
+  --color-slider-track: var(--color-track-unchecked);
+  --color-slider-thumb: var(--color-thumb-unchecked);
 
   --color-border-picker: hsl(${COLORS.black[300]});
 
@@ -154,11 +165,15 @@ export const DarkColors = css`
   /* SWITCH AND SLIDER COLORS */
  
   --color-track-checked: hsl(${COLORS.moss[500]});
-  --color-track-unchecked: hsl(${COLORS.sidewalk[400]});
-  --color-track-border-checked: hsl(${COLORS.moss[500]});
-  --color-track-border-unchecked: hsl(${COLORS.sidewalk[300]});
-  --color-thumb-checked: hsl(${COLORS.night[600]});
-  --color-thumb-unchecked: hsl(${COLORS.night[700]});
+  --color-track-border-checked: var(--color-track-checked);
+  --color-thumb-checked: hsl(${COLORS.night[700]});
+
+  --color-track-unchecked: hsl(${COLORS.night[700]});
+  --color-track-border-unchecked: var(--color-track-unchecked);
+  --color-thumb-unchecked: hsl(${COLORS.night[300]});
+
+  --color-slider-track: var(--color-track-unchecked);
+  --color-slider-thumb: var(--color-thumb-unchecked);
 
   --color-border-picker: hsl(${COLORS.white[700]});
 

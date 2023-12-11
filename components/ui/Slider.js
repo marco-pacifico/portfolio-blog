@@ -36,6 +36,7 @@ const Label = styled.div`
   display: flex;
   justify-content: space-between;
   user-select: none; // prevents selecting text of interactive elements
+  -webkit-user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }
@@ -50,28 +51,24 @@ const StyledSlider = styled.label`
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+
   --slider-track-height: 0.5rem;
-  --slider-track-background: var(--color-text-secondary);
-  --slider-track-border: 1px solid var(--color-text-primary);
   --slider-track-border-radius: 0.5rem;
-  --slider-track-shadow: 0 0 0 1px var(--color-border);
+  --slider-track-background: var(--color-slider-track);
+
   --slider-thumb-size: 1.25rem;
-  --slider-thumb-background: var(--color-text-strong);
-  --slider-thumb-border: 1px solid var(--color-border);
   --slider-thumb-border-radius: 50%;
-  --slider-thumb-shadow: 0 0 0 1px var(--color-border);
+  --slider-thumb-background: var(--color-slider-thumb);
+
 
 
   & input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-
     height: var(--slider-track-height);
-    background: var(--color-thumb-unchecked);
-    /* border: var(--color-track-unchecked); */
+    background: var(--slider-track-background);
     border-radius: var(--slider-track-border-radius);
-    /* box-shadow: var(--slider-track-shadow); */
     outline: none;
 
     &::-webkit-slider-thumb {
@@ -79,10 +76,8 @@ const StyledSlider = styled.label`
       appearance: none;
       width: var(--slider-thumb-size);
       height: var(--slider-thumb-size);
-      background: var(--color-track-unchecked);
-      /* border: 2px solid var(--color-track-unchecked); */
+      background: var(--slider-thumb-background);
       border-radius: var(--slider-thumb-border-radius);
-      /* box-shadow: var(--slider-thumb-shadow); */
       cursor: grab;
     }
 
@@ -90,9 +85,7 @@ const StyledSlider = styled.label`
       width: var(--slider-thumb-size);
       height: var(--slider-thumb-size);
       background: var(--slider-thumb-background);
-      border: var(--slider-thumb-border);
       border-radius: var(--slider-thumb-border-radius);
-      box-shadow: var(--slider-thumb-shadow);
       cursor: grab;
     }
   }

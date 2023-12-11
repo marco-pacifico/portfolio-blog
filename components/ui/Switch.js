@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import VisuallyHidden from "./VisuallyHidden";
-import { COLORS } from "../../styles/1-DesignTokens";
 
 export default function Switch({ children, id, checked, ...props }) {
   return (
@@ -24,8 +23,8 @@ const StyledLabel = styled.label`
   gap: var(--space-5);
   align-items: center;
   width: max-content;
-  padding-block: var(--space-2);
   user-select: none; // prevents selecting text of interactive elements
+  -webkit-user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }
@@ -34,25 +33,25 @@ const StyledLabel = styled.label`
 const Track = styled.div`
   
   --track-background: ${(p) =>
-    p.checked ? "var(--color-track-checked)" : "var(--color-thumb-unchecked)"};
+    p.checked ? "var(--color-track-checked)" : "var(--color-track-unchecked)"};
 
   --thumb-background: ${(p) =>
-    p.checked ? "var(--color-thumb-checked)" : "var(--color-track-unchecked)"};
+    p.checked ? "var(--color-thumb-checked)" : "var(--color-thumb-unchecked)"};
   
   --track-border: 2px solid ${(p) =>
-    p.checked ? "var(--color-track-border-checked)" : "var(--color-thumb-unchecked)"};
+    p.checked ? "var(--color-track-border-checked)" : "var(--color-track-border-unchecked)"};
 
-  --track-height: 1.5rem;
+  --thumb-height: 1.5rem;
   --track-border-radius: 0.5rem;
-  --thumb-border-width: 2px;
-  --thumb-translate-x: translateX(calc(100% - var(--thumb-border-width) * 2));
+  --thumb-border-width: .125rem;
+  --thumb-translate-x: translateX(100%);
   --thumb-border: var(--thumb-border-width) solid var(--track-background);
   --thumb-border-radius: 50%;
   --thumb-shadow: 0 0 0 1px var(--color-border);
 
   display: flex;
-  height: var(--track-height);
-  aspect-ratio: 5 / 3;
+  height: calc(var(--track-height) + var(--thumb-border-width) * 2);
+  width: calc(var(--thumb-height) * 2 + var(--thumb-border-width) * 2);
   border: var(--track-border);
   border-radius: 9999px;
   background: var(--track-background);
@@ -65,6 +64,7 @@ const Track = styled.div`
 
 const Thumb = styled.span`
   height: 100%;
+  height: var(--thumb-height);
   aspect-ratio: 1;
   background-color: var(--thumb-background);
   border-radius: 9999px;

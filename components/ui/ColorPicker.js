@@ -18,6 +18,7 @@ const Wrapper = styled.label`
   flex-direction: column;
   gap: var(--space-3);
   user-select: none; // prevents selecting text of interactive elements
+  -webkit-user-select: none; // prevents selecting text of interactive elements
   @media (hover: none) and (pointer: coarse) {
     -webkit-tap-highlight-color: transparent; // prevents flash when clicking buttons on touch devices
   }
