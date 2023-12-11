@@ -38,20 +38,20 @@ const Track = styled.div`
   --thumb-background: ${(p) =>
     p.checked ? "var(--color-thumb-checked)" : "var(--color-thumb-unchecked)"};
   
-  --track-border: var(--thumb-border-width) solid ${(p) =>
+  --track-border: var(--border-width) solid ${(p) =>
     p.checked ? "var(--color-track-border-checked)" : "var(--color-track-border-unchecked)"};
 
   --thumb-height: 1.25rem;
   --track-border-radius: 0.5rem;
-  --thumb-border-width: .125rem;
+  --border-width: .125rem;
   --thumb-translate-x: translateX(100%);
-  --thumb-border: var(--thumb-border-width) solid var(--track-background);
+  --thumb-border: var(--border-width) solid var(--track-background);
   --thumb-border-radius: 50%;
   --thumb-shadow: 0 0 0 1px var(--color-border);
 
   display: flex;
-  height: calc(var(--thumb-height) + var(--thumb-border-width)*2 );
-  width: calc(var(--thumb-height) * 2 + var(--thumb-border-width) * 2);
+  height: calc(var(--thumb-height) + var(--border-width)*2 );
+  width: calc(var(--thumb-height) * 2 + var(--border-width) * 2);
   border: var(--track-border);
   border-radius: 9999px;
   background: var(--track-background);
