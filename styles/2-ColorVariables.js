@@ -152,11 +152,11 @@ export const DarkColors = css`
   /* SWITCH AND SLIDER COLORS */
  
   --color-track-checked: hsl(${COLORS.moss[500]});
-  --color-track-unchecked: hsl(${COLORS.sidewalk[300]});
+  --color-track-unchecked: hsl(${COLORS.sidewalk[400]});
   --color-track-border-checked: hsl(${COLORS.moss[500]});
   --color-track-border-unchecked: hsl(${COLORS.sidewalk[300]});
   --color-thumb-checked: hsl(${COLORS.night[600]});
-  --color-thumb-unchecked: hsl(${COLORS.sidewalk[600]});
+  --color-thumb-unchecked: hsl(${COLORS.night[600]});
 
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-inline-bg: hsl(226deg 20% 14%); // dark gray
