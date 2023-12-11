@@ -54,21 +54,31 @@ const StyledSlider = styled.label`
   --slider-track-border: 1px solid var(--color-text-primary);
   --slider-track-border-radius: 0.5rem;
   --slider-track-shadow: 0 0 0 1px var(--color-border);
-  --slider-thumb-size: 1.5rem;
+  --slider-thumb-size: 1.25rem;
   --slider-thumb-background: var(--color-text-strong);
   --slider-thumb-border: 1px solid var(--color-border);
   --slider-thumb-border-radius: 50%;
   --slider-thumb-shadow: 0 0 0 1px var(--color-border);
 
+  --track-background: ${(p) =>
+    p.checked ? "var(--color-track-checked)" : "var(--color-track-unchecked)"};
+
+  --thumb-background: ${(p) =>
+    p.checked ? "var(--color-thumb-checked)" : "var(--color-thumb-unchecked)"};
+  
+  --track-border: 2px solid ${(p) =>
+    p.checked ? "var(--color-track-border-checked)" : "var(--color-track-border-unchecked)"};
+
   & input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
+
     height: var(--slider-track-height);
-    background: var(--slider-track-background);
-    border: var(--slider-track-border);
+    background: var(--color-thumb-unchecked);
+    /* border: var(--color-track-unchecked); */
     border-radius: var(--slider-track-border-radius);
-    box-shadow: var(--slider-track-shadow);
+    /* box-shadow: var(--slider-track-shadow); */
     outline: none;
 
     &::-webkit-slider-thumb {
@@ -76,10 +86,10 @@ const StyledSlider = styled.label`
       appearance: none;
       width: var(--slider-thumb-size);
       height: var(--slider-thumb-size);
-      background: var(--slider-thumb-background);
-      border: var(--slider-thumb-border);
+      background: var(--color-track-unchecked);
+      /* border: 2px solid var(--color-track-unchecked); */
       border-radius: var(--slider-thumb-border-radius);
-      box-shadow: var(--slider-thumb-shadow);
+      /* box-shadow: var(--slider-thumb-shadow); */
       cursor: grab;
     }
 

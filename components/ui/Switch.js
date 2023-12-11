@@ -34,13 +34,13 @@ const StyledLabel = styled.label`
 const Track = styled.div`
   
   --track-background: ${(p) =>
-    p.checked ? "var(--color-track-checked)" : "var(--color-track-unchecked)"};
+    p.checked ? "var(--color-track-checked)" : "var(--color-thumb-unchecked)"};
 
   --thumb-background: ${(p) =>
-    p.checked ? "var(--color-thumb-checked)" : "var(--color-thumb-unchecked)"};
+    p.checked ? "var(--color-thumb-checked)" : "var(--color-track-unchecked)"};
   
   --track-border: 2px solid ${(p) =>
-    p.checked ? "var(--color-track-border-checked)" : "var(--color-track-border-unchecked)"};
+    p.checked ? "var(--color-track-border-checked)" : "var(--color-thumb-unchecked)"};
 
   --track-height: 1.5rem;
   --track-border-radius: 0.5rem;
