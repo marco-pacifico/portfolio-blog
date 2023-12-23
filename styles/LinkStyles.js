@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
 export const LinkStyles = css`
-  --color-link-background-image: var(--color-text-link);
+  --color-link-background-image: var(--color-text-link-hover);
   /* font-weight: var(--font-weight-); */
   color: var(--color-text-link);
 
@@ -25,5 +25,6 @@ export const LinkStyles = css`
   &:hover {
     /* border-bottom: 1px solid transparent; */
     background-size: 100% 2px;
+    color: var(--color-text-link-hover);
   }
 `;
