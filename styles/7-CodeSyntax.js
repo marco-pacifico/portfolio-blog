@@ -6,7 +6,6 @@ export const CodeSyntax = css`
   code {
     font-family: var(--font-code);
     font-size: 78%;
-    /* font-size: var(--font-size-code); */
     background: var(--syntax-inline-bg);
     color: var(--syntax-inline-txt);
     border-radius: 7px;
@@ -28,12 +27,11 @@ export const CodeSyntax = css`
       background: none;
       padding: 0;
       color: var(--syntax-txt);
-      line-height: var(--line-height-paragraph);
     }
   }
   .token {
     font-family: var(--font-code);
-    line-height: 30px;
+    line-height: 1.5;
   }
   .token.function,
   .token.class-name {

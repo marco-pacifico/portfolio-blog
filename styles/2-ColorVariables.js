@@ -77,7 +77,7 @@ export const LightColors = css`
   --syntax-inline-bg: var(--color-background-darker);
   --syntax-tag-punctuation: #696969; // light gray
   --syntax-comment: #696969; // light gray
-  --syntax-inline-txt: #cb0101; // red
+  --syntax-inline-txt: #303030; // dark gray
   --syntax-txt: #303030; // dark gray
   --syntax-parameter: #303030; // dark gray
   --syntax-property: #303030; // dark gray
@@ -183,7 +183,7 @@ export const DarkColors = css`
 
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-inline-bg: hsl(226deg 20% 14%); // dark gray
-  --syntax-inline-txt: #ff5555; // red
+  --syntax-inline-txt: #75a0ea; // light blue
   --syntax-bg: hsl(226deg 15% 9%); // dark gray
   --syntax-txt: #fff; // white
   --syntax-keyword: #88ddff; // cyan

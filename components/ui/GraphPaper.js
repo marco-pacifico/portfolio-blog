@@ -19,7 +19,8 @@ export default function GraphPaper({
   decorationShape = "square",
 }) {
   return (
-    <MaskedGraphPaperWrapper
+    <MaskedWrapper 
+      aria-hidden
       gridOpacity={gridOpacity}
       glowOpacity={glowOpacity}
       glowWidth={glowWidth}
@@ -31,7 +32,7 @@ export default function GraphPaper({
       decorationColor={decorationColor}
       cellSize={cellSize}
     >
-      <Glow aria-hidden />
+      <Glow />
       <Decorations cellSize={cellSize} shape={decorationShape} />
 
       <GridPatternWrapper>
@@ -40,11 +41,11 @@ export default function GraphPaper({
         {innerGrid && <InnerGrid cellSize={cellSize} />}
         {dots && <Dots cellSize={cellSize} />}
       </GridPatternWrapper>
-    </MaskedGraphPaperWrapper>
+    </MaskedWrapper>
   );
 }
 
-const MaskedGraphPaperWrapper = styled.div`
+const MaskedWrapper = styled.div`
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -203,8 +204,8 @@ function InnerGrid({ cellSize }) {
 
 const GridPatternWrapper = styled.svg`
   position: absolute;
-  pointer-events: none;
-  inset: 0;
+  /* pointer-events: none; */
+  /* inset: 0; */
   width: 100%;
   height: 100%;
   --grid-line-stroke-color: hsl(
