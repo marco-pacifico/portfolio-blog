@@ -16,7 +16,7 @@ import GraphPaper from "../../../components/ui/GraphPaper";
 
 <InteractiveGraphPaper />
 
-## Why Make This?
+## Why make this?
 
 Recently I came across a [landing page](https://vaul.emilkowal.ski/) by [Emil Kowalski](https://emilkowal.ski/). The hero section has subtle gridlines that gradually fade out. I really like how this pattern gives a sense of technical precision and engineering.
 
@@ -25,21 +25,22 @@ Whenever I see a grid pattern like this, I'm alway curious to learn how it was i
 There are so many variations. You can do a square grid, a dot grid, or a double grid (also called "engineering paper"). You even can create guidelines that align to content on the page.
 
 <div style={{display: "flex"}}>
-  <div style={{position: "relative", height: 200, width: "33%", margin: "40px 0 24px 0"}}>
-  <GraphPaper 
-    glowOpacity={0} 
-    decorationOpacity={0} 
-    maskCoverage={1000}
-    verticalLines={false}
-    dots={true}
-    />  
-  </div>
+ 
   <div style={{position: "relative", height: 200, width: "33%", margin: "40px 0 24px 0"}}>
   <GraphPaper 
     glowOpacity={0} 
     decorationOpacity={0} 
     maskCoverage={1000}
     horizontalLines={true}
+    />  
+  </div>
+   <div style={{position: "relative", height: 200, width: "33%", margin: "40px 0 24px 0"}}>
+  <GraphPaper 
+    glowOpacity={0} 
+    decorationOpacity={0} 
+    maskCoverage={1000}
+    verticalLines={false}
+    dots={true}
     />  
   </div>
   <div style={{position: "relative", height: 200, width: "33%", margin: "40px 0 24px 0"}}>
@@ -57,11 +58,11 @@ I made this interactive grid because it felt like a fun way to learn how to crea
 
 I was inspired by [Josh Comeau](https://www.joshwcomeau.com) who writes [interactive blog posts](https://www.joshwcomeau.com/css/interactive-guide-to-grid/) and makes tools like this [CSS Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/). I also learned React mostly from Josh's course, [The Joy of React](https://www.joyofreact.com/), which I highly recommend.
 
-## Repeating Shapes
+## Repeating shapes
 
 To create a grid pattern you draw a shape in a small bit of space. Then you repeat it across the width and height of a parent container.
 
-To create gridlines, you can draw and repeat a line or an L shape.
+To create gridlines, you can draw and repeat a line or a backwards L shape.
  <div style={{position: "relative", height: 100, width: 100, margin: "40px 0 24px 0"}}>
   <GraphPaper 
     glowOpacity={0} 
@@ -90,7 +91,7 @@ To create a dot grid, you can draw and repeat a small circle.
 </div>
 
 
-## How To Draw and Repeat Shapes
+## How to draw and repeat a shape
 
 It turns out there are at least three ways to draw a shape and repeat it across the width and height of a parent container on a website.
 
@@ -98,7 +99,7 @@ It turns out there are at least three ways to draw a shape and repeat it across 
 2. CSS Grid
 3. SVG Patterns
 
-### Using a Background Image
+### Using a background image
 
 In CSS, if you set a `background-image` on an element, the image will be repeated so it covers the entire element, giving a tiling effect. [[source](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)]
 
@@ -109,18 +110,18 @@ In CSS, if you set a `background-image` on an element, the image will be repeate
 /* some-image.png is tiled across the element */
 ```
 
-By setting the `background-size` property, you can define the size of the image or tile that will be repeated. The smaller the tile, the denser the grid will be. [[source](https://developer.mozilla.org/en-US/docs/Web/CSS/background-size)]
+By setting the `background-size` [property](https://developer.mozilla.org/en-US/docs/Web/CSS/background-size), you can define the size of the image or tile that will be repeated. The smaller the tile, the denser the grid will be.
 
 ```css
 .element {
   background-size: 200px 100px; 
 }
-/* sets the width and height of the image or tile */
+/* Sets the width and height of the image or tile */
 ```
 
 Instead of an image url, you can use the `linear-gradient()` function to create a line or the `radial-gradient()` function to create a small circle.
 
-Linear and radial gradients are special kind of images that consist of *"a progressive transition between two or more colors."* [[source](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient#linear-color-stop), [source](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient)]
+[Linear](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient) and [radial gradients](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient) are special kind of images that consist of *"a progressive transition between two or more colors."* 
 
 The trick for creating a line or a dot is to make the outer color transparent and then place the color stops next to each other to create a sharp edge where one color transitions to the next color.
 
@@ -141,7 +142,6 @@ of a 16px sqaure */
 ```
 Similarly, using radial gradient, you can create a circle with a sharp edge by making the outer color transparent and then placing the color stops next to each other.
 
-
 ```css
 /* Create a cicle of radius --dot-size and color --dot-color, 
 placed at the center of a --cell-size square */
@@ -155,53 +155,112 @@ background-image: radial-gradient(
 background-size: var(--cell-size) var(--cell-size);
 ```
 
-### Using CSS Grid
+### Using CSS grid
 
-Create a grid of N rows and N columns. Add empty divs to the grid and apply a border. The downside of this approach is you need NxN empty divs to apply the border to. If the number of columns or rows changes, the number of empty divs has to change too
+Let's say you want to make a square grid, first create a grid of `--num-rows` and `--num-columns` where each square in the grid is `--cell-size` wide and tall.
 
-Benefit is you can mix dense gridlines with widely spaced and cut out sections. Can also actaully precisely align content with the lines, since you make both the conten and the line created on the same grid.
+```css
 
-Example. Stripe Sessions. Vercel AI.
+```css
+.grid {
+  --num-rows: 10;
+  --num-columns: 10;
+  --cell-size: 100px;
 
-### Using SVG Patterns
+  display: grid;
+  grid-template-columns: repeat(
+    var(--num-columns),
+    var(--cell-size));
+  grid-template-rows: repeat(
+    var(--num-rows),
+    var(--cell-size));
+}
+```
 
-defs, pattern id, rect url=id
+Then place empty divs on the grid and apply a right and bottom border to create a backwards L shape.
+  
+```css
+/* Grid child elements */
+.cell-1-1 {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.cell-1-2 {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+/* Repeat for each cell in the grid */
+...
+```
 
-shapes to draw in pattern
+**One challenge with this approach** is you need NxN empty divs to apply the border to. If the number of columns or rows changes, then number of empty divs has to change too.
 
-`<line>`
+**Another challenge** is that the `--cell-size` has to divide evenly into the width and height of the grid. Otherwise, the grid will be misaligned.
 
-`<path>` with the d attribute
+So as the grid shrinks and grows with the viewport, it will break unless you dynamically update the number of rows and columns and the cell size, using a combination of media queries and css custom properties.
 
- d="M H V Z"`</path>`
+**The benefit of this approach** is the precision and flexibility it gives you. You can mix dense gridlines with widely spaced gridlines and you can create cutouts in the grid. Also, you can actaully align content with the lines, since you can define the same grid for both the content and the gridlines.
 
-`<circle>`
+Examples of where this appraoch is used are [stripesessions.com](https://stripesessions.com/) and [vercel.com/ai](https://vercel.com/ai).
 
-and whatever else you can image (reference dude's site on svg path drawing)
+### Using SVG patterns
 
-This is the approach I took.
+I ended up using SVG patterns to create the gridlines for this interactive grid.
 
-## Layering Patterns
+This approach is similar to background images, except the parent container is an SVG `<rect>` element and the bit of space that gets repeated is a `<pattern>` element.
 
+Here's how it works:
+
+SVG has a `<defs>` element that can contain reusable definitions. One of the things you can define is a `<pattern>` element. Then you can reference the `<pattern>` element by passing its `id` attribute to the `fill` attribute on an the `<rect>` element. 
+
+```html
+<svg>
+  <defs>
+    <pattern id="grid" width="10" height="10">
+      /* draw a shape here */
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grid)" />
+</svg>
+```
+
+Notice that `<pattern>` has a `width` and `height` attribute that define the size of the shape you want to repeat. This is similar to the `background-size` property in that it determines the density of the grid.
+
+Inside the `<pattern>` element, you draw a shape using SVG shape elements: 
+- `<line>` element to create a line or a backwards L shape. 
+- `<circle>` element to create a dot.  
+- `<path>` element to create a square or any other shape you can imagine.
+- Other shapes you can use are `<rect>`, `<ellipse>`, `<polygon>`, `<polyline>`, `<text>` and more.
+- You can even nest a `<pattern>` element inside another `<pattern>` element.
+
+If you want to learn more about drawing shapes using SVG paths, [Nanda Syahrasyad](https://www.nan.fyi) has a super cool interactive post, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths). To learn about SVG more generally, W3Schools has a [comprehensive tutorial](https://www.w3schools.com/graphics/svg_intro.asp).
+
+## Stacking Layers
+
+Absolutely postined, inset 0, pointer events none, aria hidden
 Layer approach rather than one big pattern, so SVG was the best way to do that, transparent, composable, easier to specific exact location
 
-### Horizontal Lines
+Horizontal Lines
 
 line
 
-### Vertical Lines
+Vertical Lines
 
 line
 
-### Inner Grid
+Inner Grid
 
 Two lines 1/3 size
 
-### Dots
+Dots
 
 circle 1/20th size of cell
 
-## Adding Visual Effects
+## Adding visual effects
 
 In addition to the gridlines, Emil's landing page also has subtle details like a radial gradient and a few filled in squared that take the visual design to the next level.
 
@@ -254,6 +313,6 @@ Color Picker
 
 CSS variables to avoid prop drilling and to makes code easier to read and understand
 
-## Light and Dark Mode
+## Supporting Light and Dark Mode
 
 colors for site background, svg fills and strokes, and inputs are in my global color variables, with both light and dark definitions.
