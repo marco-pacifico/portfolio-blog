@@ -104,9 +104,9 @@ I ended up using SVG patterns to create the grid patterns for this interactive g
 
 If you're curious to know how each apprach works, I explain them in more detail in the sections below.
 
+<div style={{margin:"var(--margin-paragraph)"}}>
 <details>
 <summary>Using a background image </summary>
-### Using a background image
 
 In CSS, if you set a `background-image` on an element, the image will be repeated so it covers the entire element, giving a tiling effect. [[source](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)]
 
@@ -164,7 +164,6 @@ background-size: var(--cell-size) var(--cell-size);
 </details>
 <details>
 <summary>Using CSS grid </summary>
-### Using CSS grid
 
 Let's say you want to make a square grid, first create a grid of `--num-rows` and `--num-columns` where each square in the grid is `--cell-size` wide and tall.
 
@@ -218,9 +217,6 @@ Examples of where this appraoch is used are [stripesessions.com](https://stripes
 </details>
 <details>
 <summary>Using SVG patterns </summary>
-### Using SVG patterns
-
-I ended up using SVG patterns to create the gridlines for this interactive grid.
 
 This approach is similar to background images, except the parent container is an SVG `<rect>` element and the bit of space that gets repeated is a `<pattern>` element.
 
@@ -253,7 +249,7 @@ Inside the `<pattern>` element, you draw a shape using SVG shape elements:
 If you want to learn more about drawing shapes using SVG paths, [Nanda Syahrasyad](https://www.nan.fyi) has a super cool interactive post, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths). To learn about SVG more generally, W3Schools has a [comprehensive tutorial](https://www.w3schools.com/graphics/svg_intro.asp).
 
 </details>
-
+</div>
 ## Layering patterns
 
 To create the grid, I'm layering patterns so that each one can be toggled on and off to create different pattern combinations.
@@ -305,8 +301,8 @@ const GridPatternWrapper = styled.svg`
 ## Layering on visual effects
 
 In addition to the gridlines, [Emil's landing page](https://vaul.emilkowal.ski/) also has subtle visual effects that take the design to the next level.
-- The gridliens fade out toward the bottom. 
-- Theres a subtle glow effect "shining down" on the gridlines.
+- The grid fades out toward the bottom. 
+- There's a subtle glow effect "shining down" on the grid.
 - A few of the grid cells are filled in with a solid color.
 
 I recreated these effects in my interactive grid to learn how they were implemented.

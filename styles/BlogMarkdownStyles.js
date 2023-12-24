@@ -57,6 +57,27 @@ const BlogTypographyVariables = css`
 
 export const BlogMarkdownStyles = css`
   ${BlogTypographyVariables}
+
+  details {
+
+    & summary {
+      cursor: pointer;
+      padding: var(--space-2) var(--space-4);
+      margin-left: calc(-1 * var(--space-4));
+
+      border-radius: var(--space-5);
+      overflow: hidden;
+      font-family: var(--font-sans);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-paragraph);
+      line-height: var(--line-height-paragraph);
+      color: var(--color-text-primary);
+      transition: color 200ms ease-in;
+    }
+    & summary:hover {
+      color: var(--color-text-strong);
+    }
+  }
   hr {
     margin: var(--margin-divider);
     height: 1px;

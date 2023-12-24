@@ -183,7 +183,7 @@ export const DarkColors = css`
 
   /* CODE SYNTAX HIGHLIGHTING */
   --syntax-inline-bg: hsl(226deg 20% 14%); // dark gray
-  --syntax-inline-txt: #75a0ea; // light blue
+  --syntax-inline-txt: var(--color-text-primary);
   --syntax-bg: hsl(226deg 15% 9%); // dark gray
   --syntax-txt: #fff; // white
   --syntax-keyword: #88ddff; // cyan
