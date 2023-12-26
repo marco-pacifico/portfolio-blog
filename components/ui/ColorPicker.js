@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../../styles/1-DesignTokens";
 
-export default function ColorPicker({ label, value, ...props }) {
+export default function ColorPicker({ label="Color", value="#ffffff", ...props }) {
   return (
     <Wrapper>
       <Label>{label}<Value>{value.toUpperCase()}</Value></Label>

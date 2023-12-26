@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Switch from "./ui/Switch";
 import Slider from "./ui/Slider";
 import ColorPicker from "./ui/ColorPicker";
-import GraphPaper from "./ui/GraphPaper";
+import GridPattern from "./ui/GridPattern";
 import { QUERY } from "../styles/1-DesignTokens";
 
-export default function InteractiveGraphPaper() {
+export default function InteractiveGridPattern() {
   const [cellSize, setCellSize] = React.useState(50);
   const [gridOpacity, setGridOpacity] = React.useState(50);
   const [glowOpacity, setGlowOpacity] = React.useState(50);
@@ -14,7 +14,7 @@ export default function InteractiveGraphPaper() {
   const [glowWidth, setGlowWidth] = React.useState("1100");
   const [glowOnTop, setGlowOnTop] = React.useState(false);
   const [glowColor, setGlowColor] = React.useState("#ff00ff");
-  const [maskCoverage, setMaskCoverage] = React.useState(120);
+  const [fadeCoverage, setFadeCoverage] = React.useState(120);
   const [decorationOpacity, setDecorationOpacity] = React.useState(50);
   const [decorationColor, setDecorationColor] = React.useState("#d4e3fe");
   const [horizontalLines, setHorizontalLines] = React.useState(true); 
@@ -25,14 +25,14 @@ export default function InteractiveGraphPaper() {
 
   return (
     <Wrapper>
-      <GraphPaper
+      <GridPattern
         cellSize={cellSize}
         gridOpacity={gridOpacity}
         glowOpacity={glowOpacity}
         glowWidth={glowWidth}
         glowHeight={glowHeight}
         glowOnTop={glowOnTop}
-        maskCoverage={maskCoverage}
+        fadeCoverage={fadeCoverage}
         decorationOpacity={decorationOpacity}
         glowColor={glowColor}
         decorationColor={decorationColor}
@@ -83,13 +83,13 @@ export default function InteractiveGraphPaper() {
             onChange={(e) => setGridOpacity(+e.target.value)} //+e.target.value converts input string to number
           />
           <Slider
-            id="maskCoverage"
-            label="Grid Coverage"
-            value={maskCoverage} // Pass the cellSize to the value prop of Slider component
+            id="fadeCoverage"
+            label="Fade Coverage"
+            value={fadeCoverage} // Pass the cellSize to the value prop of Slider component
             units="%"
             min={25}
             max={200}
-            onChange={(e) => setMaskCoverage(+e.target.value)} //+e.target.value converts input string to number
+            onChange={(e) => setFadeCoverage(+e.target.value)} //+e.target.value converts input string to number
           />
         </Fieldset>
         <Fieldset>
@@ -193,7 +193,6 @@ const Fieldset = styled.fieldset`
   gap: var(--space-5);
   min-width: 256px;
   width: max-content;
-  border: none;
   background-color: rgba(255, 255, 255, 0.2);
   margin: 0;
   padding: var(--space-6);

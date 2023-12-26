@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function GraphPaper({
+export default function GridPattern({
   cellSize = 50,
   gridOpacity = 50,
   glowOpacity = 50,
@@ -9,7 +9,7 @@ export default function GraphPaper({
   glowHeight = 800,
   glowOnTop = false,
   glowColor = "#ff00ff",
-  maskCoverage = 50,
+  fadeCoverage = 50,
   decorationOpacity = 50,
   decorationColor = "#ff00ff",
   verticalLines = true,
@@ -19,19 +19,20 @@ export default function GraphPaper({
   decorationShape = "square",
 }) {
   return (
-    <MaskedGraphPaperWrapper
+    <Fade 
+      aria-hidden
       gridOpacity={gridOpacity}
       glowOpacity={glowOpacity}
       glowWidth={glowWidth}
       glowHeight={glowHeight}
       glowOnTop={glowOnTop}
-      maskCoverage={maskCoverage}
+      fadeCoverage={fadeCoverage}
       decorationOpacity={decorationOpacity}
       glowColor={glowColor}
       decorationColor={decorationColor}
       cellSize={cellSize}
     >
-      <Glow aria-hidden />
+      <Glow />
       <Decorations cellSize={cellSize} shape={decorationShape} />
 
       <GridPatternWrapper>
@@ -40,19 +41,19 @@ export default function GraphPaper({
         {innerGrid && <InnerGrid cellSize={cellSize} />}
         {dots && <Dots cellSize={cellSize} />}
       </GridPatternWrapper>
-    </MaskedGraphPaperWrapper>
+    </Fade>
   );
 }
 
-const MaskedGraphPaperWrapper = styled.div`
+const Fade = styled.div`
   position: absolute;
   inset: 0;
   overflow: hidden;
   background-color: var(--color-background);
 
-  /* MASK */
+  /* FADE */
   mask-image: radial-gradient(
-    100% var(--mask-coverage) at top center,
+    100% var(--fade-coverage) at top center,
     white,
     rgba(255, 255, 255, 0.5),
     rgba(255, 255, 255, 0.25),
@@ -73,7 +74,7 @@ const MaskedGraphPaperWrapper = styled.div`
   --color-glow: ${(props) => props.glowColor};
 
   /* MASK */
-  --mask-coverage: ${(props) => props.maskCoverage}%;
+  --fade-coverage: ${(props) => props.fadeCoverage}%;
 
   /* DECORATION */
   --decoration-opacity: ${(props) => props.decorationOpacity / 100};
@@ -84,13 +85,14 @@ const Glow = styled.div`
   position: absolute;
   pointer-events: none;
   z-index: var(--glow-z-index);
+  inset: 0;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%); // TODO: x and y percetages props
+  transform: translate(-50%, -50%); 
   background-image: radial-gradient(var(--color-glow), transparent 40%);
   opacity: var(--glow-opacity);
-  height: var(--glow-height); // TODO: make this a prop
-  width: var(--glow-width); // TODO: make this a prop
+  height: var(--glow-height); 
+  width: var(--glow-width);
 `;
 
 function VerticalLines({ cellSize }) {
@@ -203,8 +205,8 @@ function InnerGrid({ cellSize }) {
 
 const GridPatternWrapper = styled.svg`
   position: absolute;
-  pointer-events: none;
-  inset: 0;
+  /* pointer-events: none; */
+  /* inset: 0; */
   width: 100%;
   height: 100%;
   --grid-line-stroke-color: hsl(
