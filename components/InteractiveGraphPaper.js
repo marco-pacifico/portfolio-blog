@@ -193,7 +193,6 @@ const Fieldset = styled.fieldset`
   gap: var(--space-5);
   min-width: 256px;
   width: max-content;
-  border: none;
   background-color: rgba(255, 255, 255, 0.2);
   margin: 0;
   padding: var(--space-6);

@@ -550,9 +550,9 @@ If you're interested in learning more about drawing shapes using SVG path comman
 
 ## Parameterizing Values
 
-What I mean by paramertizing is making certain properties of the grid editable so that they can be dynamically manipulated.
+What I mean by paramertizing is making certain properties of the grid dynamic so they can be adjusted.
 
-This makes it possible to create a variety of grid patterns and visual effects. It's fun to play with the values and see what you can create. Doing this also helped me understand the fundamentals of how these patterns and effects are created.
+It's been fun to play with the parameters and see what combinations can be created. Doing this also helped me better understand the fundamentals of how these patterns and effects are created.
 
 The parameters are passed in as props and then used to set css custom properties on the root element of the component. 
 
@@ -622,28 +622,72 @@ const Fade = styled.div`
 
 ## Controlled inputs
 
-Created inputs to adjust the parameters of the grid. CSS variables to avoid prop drilling and to makes code easier to read and understand
+To make the parameters adjustable, I created inputs that are controlled using React state. 
 
-Switch
+For example, here's simplified version of the code demonstrating how I used a `<Slider />` component (i.e. an `<input>` of `type="range"`) to control the cell size of the grid.
+
+```jsx
+function InteractiveGrid() {
+  // Declare a state variable for cell size
+  const [cellSize, setCellSize] = useState(50);
+  return (
+    <>
+      {/* Render the grid pattern pass cellSize state variable as a prop */}
+      <GridPattern cellSize={cellSize} /> 
+
+      <Slider
+        id="cellSize"
+        label="Cell Size"
+        // State controls the value of the input
+        value={cellSize} 
+        units="px"
+        min={10}
+        max={400}
+        step={10}
+        // Update state when input changes
+        onChange={(e) => setCellSize(+e.target.value)}  
+        //+e.target.value converts input string to number
+      />
+    </>
+  );
+}
+```
+
+In all I created three types of inputs: 
+- `<Switch />`
+- `<Slider />`
+- `<ColorPicker>`
+
+<div style={{
+  width: 280,
+  margin: "24px auto",
+  padding: 24,
+  borderRadius: 16,
+  backgroundColor: "rgba(255, 255, 255, 0.3)",
+  border: "1px solid var(--color-border)",
+  display: "flex",
+  flexDirection: "column",
+  gap: 40,
+}}>
 
 <Switch checked>On</Switch>
 
-Slider
-
 <Slider label={"Opacity"} value={"50"} units={"%"} />
 
-Color Picker
-
 <ColorPicker />
+</div>
 
 ## Light and Dark Mode
 
-If you toggle between light and dark mode, the colors of the grid and inputs change. That's because the grid background, grid fill and strokes, and the inputs are pointing to global color variables that have both light and dark definitions defined in the root element.
+If you toggle between light and dark mode, the colors of the grid and inputs change. 
 
-Feel free to give it a try:
+That's because the grid background, fill and stroke colors are set to global color variables that have both light and dark definitions. Same with the colors used to style the inputs.
 
 <div style={{
   margin: "24px 0",
+  display: "flex",
+  gap: "8px",
 }}>
+Dark mode toggle: 
 <DarkToggle />
 </div>
