@@ -851,6 +851,29 @@ That's because the grid background, fill and stroke colors are set to global col
   <DarkToggle />
 </div>
 
-## Important but invisible 
-One final thing I want to mention is that the grid pattern is aria hidden so it's not visible to screen readers.
+## Important and invisible 
+
+One final thing I want to mention has to do with accessibility.
+
+Because the grid is purely decorative, it's important to hide it from screen readers so it doesn't get read out loud. 
+
+To achieve this, I'm using adding the `aria-hidden` attribute on the root element of the `<GridPattern />` component. Since `aria-hidden` is inherited by all child elements, all the gridliens and visual effects will be hidden from screen readers. 
+
+```jsx
+function GridPattern() {
+  return (
+    <Fade aria-hidden >
+      <Glow />
+      <Decorations />
+      <svg>
+        <VerticalLines />
+        <HorizontalLines />
+        <InnerGrid />
+        <Dots />
+      </svg>
+    </Fade>
+  );
+}
+```
+
 

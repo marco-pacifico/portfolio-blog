@@ -19,7 +19,7 @@ export default function GridPattern({
   decorationShape = "square",
 }) {
   return (
-    <MaskedWrapper 
+    <Fade 
       aria-hidden
       gridOpacity={gridOpacity}
       glowOpacity={glowOpacity}
@@ -41,17 +41,17 @@ export default function GridPattern({
         {innerGrid && <InnerGrid cellSize={cellSize} />}
         {dots && <Dots cellSize={cellSize} />}
       </GridPatternWrapper>
-    </MaskedWrapper>
+    </Fade>
   );
 }
 
-const MaskedWrapper = styled.div`
+const Fade = styled.div`
   position: absolute;
   inset: 0;
   overflow: hidden;
   background-color: var(--color-background);
 
-  /* MASK */
+  /* FADE */
   mask-image: radial-gradient(
     100% var(--fade-coverage) at top center,
     white,
