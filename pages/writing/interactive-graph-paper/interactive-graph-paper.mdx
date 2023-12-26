@@ -27,7 +27,7 @@ I made this interactive grid because I wanted to learn how to implement various 
 
 Recently I came across a [landing page](https://vaul.emilkowal.ski/) by [Emil Kowalski](https://emilkowal.ski/). The hero section has subtle gridlines that gradually fade out. 
 
-I love how a grid pattern gives a sense of technical precision and engineering Whenever I see one, I'm alway curious to learn how it was implemented.
+I love how a grid pattern gives a sense of technical precision and engineering Whenever I see one I'm alway curious to know how it was implemented.
 
 There are so many variations. You can do a square grid, a dot grid, or a double grid (also called "engineering paper"). You even can create guidelines that align to content on the page.
 
@@ -672,9 +672,9 @@ The component that renders the decorations layer can render either squares...
   />
 </div>
 
-To draw the decorations, I'm mapping through a list of coordinates to render a `<path>` element for the squares or `<circle>` elements for the circles.
+To draw the decorations, I'm mapping through an array of coordinates. The coordinates render a `<path>` element for the squares or `<circle>` elements for the circles.
 
-Here's simplified version of what that looks like for the squares. The coordinates are used to populate commands (`M`, `h`, `v`, `Z`) in the `<d>` attribute of the `<path>` element. It's these commands that draw the squares at different locations on the grid.
+Here's simplified version of what that looks like for the squares. Each coordinate is used to populate commands (`M`, `h`, `v`, `Z`) in the `<d>` attribute of the `<path>` element. It's these commands that draw the squares at different locations on the grid.
 
 ```jsx
 function Squares({ cellSize }) {
@@ -837,7 +837,7 @@ I made three types of inputs:
 <ColorPicker />
 </div>
 
-## Light and Dark Mode
+## Light and dark mode
 
 If you toggle between light and dark mode, the colors of the grid and inputs change.
 
@@ -860,7 +860,7 @@ One final thing I want to mention has to do with accessibility.
 
 Because the grid is purely decorative, it's important to hide it from screen readers so it doesn't get read out loud. 
 
-To achieve this, I'm using adding the `aria-hidden` attribute on the root element of the `<GridPattern />` component. Since `aria-hidden` is inherited by all child elements, all the gridliens and visual effects will be hidden from screen readers. 
+To achieve this, I added the `aria-hidden` attribute to the root element of the `<GridPattern />` component. Since `aria-hidden` is inherited by all child elements, the grid pattens and visual effects will be hidden from screen readers. 
 
 ```jsx
 function GridPattern() {
