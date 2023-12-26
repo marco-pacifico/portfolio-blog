@@ -46,6 +46,14 @@ export default function Home({ allPostsData, allProjectsData }) {
         </HorizontalScroll>
       </IndexSection>
       <IndexSection
+        title="Code"
+
+      >
+        <Card 
+          href={"/writing/interactive-graph-paper"}
+        />
+      </IndexSection>
+      <IndexSection
         title="Writing"
       >
         <ol ref={postsListRef}>
