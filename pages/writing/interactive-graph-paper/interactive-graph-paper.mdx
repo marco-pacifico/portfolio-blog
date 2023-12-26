@@ -550,10 +550,75 @@ If you're interested in learning more about drawing shapes using SVG path comman
 
 ## Parameterizing Values
 
-fun way to learn how it works
+What I mean by paramertizing is making certain properties of the grid editable so that they can be dynamically manipulated.
 
-fun to play with and see what you can create
+This makes it possible to create a variety of grid patterns and visual effects. It's fun to play with the values and see what you can create. Doing this also helped me understand the fundamentals of how these patterns and effects are created.
 
+The parameters are passed in as props and then used to set css custom properties on the root element of the component. 
+
+```jsx
+function GridPattern({
+  cellSize = 50,
+  gridOpacity = 50,
+  glowOpacity = 50,
+  glowWidth = 1100,
+  glowHeight = 800,
+  glowOnTop = false,
+  glowColor = "#ff00ff",
+  maskCoverage = 50,
+  decorationOpacity = 50,
+  decorationColor = "#ff00ff",
+  verticalLines = true,
+  horizontalLines = false,
+  innerGrid = false,
+  dots = false,
+  decorationShape = "square",
+}) {
+  return (
+    <Fade 
+      gridOpacity={gridOpacity}
+      glowOpacity={glowOpacity}
+      glowWidth={glowWidth}
+      glowHeight={glowHeight}
+      glowOnTop={glowOnTop}
+      fadeCoverage={fadeCoverage}
+      decorationOpacity={decorationOpacity}
+      glowColor={glowColor}
+      decorationColor={decorationColor}
+      cellSize={cellSize}
+    >
+      <Glow />
+      <Decorations cellSize={cellSize} shape={decorationShape} />
+      <svg>
+        {verticalLines && <VerticalLines cellSize={cellSize} />}
+        {horizontalLines && <HorizontalLines cellSize={cellSize} />}
+        {innerGrid && <InnerGrid cellSize={cellSize} />}
+        {dots && <Dots cellSize={cellSize} />}
+      </svg>
+    </Fade>
+  );
+}
+
+const Fade = styled.div`
+  /* ... */
+
+  /* GRID */
+  --grid-opacity: ${(props) => props.gridOpacity / 100};
+  --cell-size: ${(props) => props.cellSize}px;
+  --grid-dot-size: calc(var(--cell-size) / 20);
+  /* GLOW */
+  --glow-opacity: ${(props) => props.glowOpacity / 100};
+  --glow-width: ${(props) => props.glowWidth}px;
+  --glow-height: ${(props) => props.glowHeight}px;
+  --glow-z-index: ${(props) => (props.glowOnTop ? 1 : 0)};
+  --color-glow: ${(props) => props.glowColor};
+  /* FADE */
+  --fade-coverage: ${(props) => props.fadeCoverage}%;
+  /* DECORATION */
+  --decoration-opacity: ${(props) => props.decorationOpacity / 100};
+  --decoration-color: ${(props) => props.decorationColor};
+`;
+```
 
 ## Controlled inputs
 
@@ -575,3 +640,10 @@ Color Picker
 
 If you toggle between light and dark mode, the colors of the grid and inputs change. That's because the grid background, grid fill and strokes, and the inputs are pointing to global color variables that have both light and dark definitions defined in the root element.
 
+Feel free to give it a try:
+
+<div style={{
+  margin: "24px 0",
+}}>
+<DarkToggle />
+</div>
