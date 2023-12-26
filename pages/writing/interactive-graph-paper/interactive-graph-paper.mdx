@@ -24,7 +24,7 @@ import DarkToggle from "../../../components/DarkToggle";
 
 Recently I came across a [landing page](https://vaul.emilkowal.ski/) by [Emil Kowalski](https://emilkowal.ski/). The hero section has subtle gridlines that gradually fade out. I really like how this grid pattern gives a sense of technical precision and engineering.
 
-Whenever I see a website using a grid like this, I'm alway curious to learn how it was implemented.
+Whenever I see a website using a grid pattern, I'm alway curious to learn how it was implemented.
 
 There are so many variations. You can do a square grid, a dot grid, or a double grid (also called "engineering paper"). You even can create guidelines that align to content on the page.
 
@@ -78,7 +78,7 @@ There are so many variations. You can do a square grid, a dot grid, or a double 
   </div>
 </div>
 
-I made this interactive grid because it felt like a good way to learn how to create these various patterns and also to practice my React skills, especially what I've learned about [state and controlled inputs](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
+I made this interactive grid because it felt like a good way to learn how to create these various patterns and also to practice my frontend skills, especially what I've learned about [state and controlled inputs in React](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
 
 I was inspired by [Josh Comeau](https://www.joshwcomeau.com) who writes [interactive blog posts](https://www.joshwcomeau.com/css/interactive-guide-to-grid/) and makes tools like this [CSS Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/). I also learned React mostly from Josh's course, [The Joy of React](https://www.joyofreact.com/), which I highly recommend.
 
@@ -281,14 +281,16 @@ Inside the `<pattern>` element, you draw a shape using SVG shape elements:
 - Other shapes you can use are `<rect>`, `<ellipse>`, `<polygon>`, `<polyline>`, `<text>` and more.
 - You can even nest a `<pattern>` element inside another `<pattern>` element.
 
-If you want to learn more about drawing shapes using SVG paths, [Nanda Syahrasyad](https://www.nan.fyi) has a super cool interactive post, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths). To learn about SVG more generally, W3Schools has a [comprehensive tutorial](https://www.w3schools.com/graphics/svg_intro.asp).
+If you're interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths). To learn about SVG more generally, W3Schools has a [comprehensive tutorial](https://www.w3schools.com/graphics/svg_intro.asp).
 
 </details>
 </div>
 
 ## Layering patterns
 
-I'm layering grid patterns so that each one can be toggled on and off to create different pattern combinations.
+Below is a simplified version of the component that renders the grid pattern for this interactive grid.
+
+I'm layering patterns so that each one can be toggled on and off to create different pattern combinations.
 
 ```jsx
 function GridPattern() {
@@ -303,9 +305,9 @@ function GridPattern() {
 }
 ```
 
-Each pattern is a component that renders a `<rect>` element that's filled by a `<pattern>`.
+Each pattern is a component that renders a `<rect>` element that's filled by a `<pattern>` element.
 
-For example, here's the component that renders the vertical lines:
+For example, below is the component that creates the vertical gridlines. The pattern `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. And the pattern that's defined is vertical line, drawn using the `<line>` element. 
 
 ```jsx
 function VerticalLines() {
@@ -409,7 +411,7 @@ The glow effect is another radial gradient. Like with the mask image, the center
     />
   </div>
 
-And interesting difference here is that the div containing the gradient is being centered at the top center of the grid. 
+An interesting difference here is that the div containing the gradient is being centered at the top center of the grid, rather than the gradient itself.
 
 <div style={{
   background: "var(--color-background-darker)",
@@ -440,7 +442,7 @@ And interesting difference here is that the div containing the gradient is being
 
 The div is positioned using a combination of `top: 0`, `left: 50%`, and `transform: translate(-50%, -50%)`. With this combination of properties, the div can be any width or height and it will always be positioned at the top center of the grid. 
 
-One benefit of doing it this way is that you can adjust the width and height of the div to control the size of the glow effect. The glow can be wide and short or tall and narrow or anything in between.
+One implication of doing it this way is that you can set the width and height of the div to control the size of the glow effect.
 
 ```js
 const Glow = styled.div`
@@ -454,7 +456,7 @@ const Glow = styled.div`
 `;
 ```
 
-To be fair, you could also have glow div fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it's done with the fade effect. 
+Another way to impliment this would be to have the div fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it's done with the fade effect. 
 
 ```js
 // Alternative way to implement the glow effect
@@ -470,6 +472,10 @@ const Glow = styled.div`
 ```
 
 ### Decorations
+You'll notice that some of the grid cells appear to be filled in with a solid color. These filled in cells are what I'm calling "decorations" and they're just another layer on the grid. 
+
+The component that renders the decorations layer can render either squares...
+
 
 <div
     style={{
@@ -486,6 +492,8 @@ const Glow = styled.div`
       horizontalLines={true}
     />
   </div>
+
+...or circles.
 <div
     style={{
       position: "relative",
@@ -502,13 +510,43 @@ const Glow = styled.div`
       decorationShape="circle"
     />
   </div>
-Square
 
-path to form a square
+To draw the decorations, I map through a list of coordinates to render a `<path>` element for the squares or `<circle>` elements for the circles. 
 
-Circle
+Here's simplified version of what that looks like for the squares. The coordinates are used to populate commands (`M`, `h`, `v`, `Z`) in the `<d>` attribute of the `<path>` element. It's these commands that draw the squares at different locations on the grid.
 
-circle
+```jsx
+function Squares({ cellSize }) {
+  return (
+    <svg>
+      <path
+        d={DECORATION_COORDINATES
+          .map(({ row, column }) => {
+            return 
+              `M${cellSize * column} ${cellSize * row} 
+               h${cellSize} 
+               v${cellSize} 
+               h-${cellSize}Z`;
+          })
+          .join(" ")}
+      />
+    </svg>
+  );
+}
+
+const DECORATION_COORDINATES = [
+  { row: 0, column: -1 },
+  { row: 0, column: -5 },
+  { row: 2, column: 5 },
+  { row: 2, column: -3 },
+  { row: 3, column: -8 },
+  { row: 3, column: 2 },
+  { row: 4, column: -2 },
+  { row: 5, column: 4 },
+];
+```
+
+If you're interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths).
 
 ## Parameterizing Values
 
