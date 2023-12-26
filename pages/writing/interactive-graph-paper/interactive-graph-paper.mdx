@@ -11,14 +11,14 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-import InteractiveGraphPaper from "../../../components/InteractiveGraphPaper";
-import GraphPaper from "../../../components/ui/GraphPaper";
+import InteractiveGridPattern from "../../../components/InteractiveGridPattern";
+import GraphPaper from "../../../components/ui/GridPattern";
 import Switch from "../../../components/ui/Switch";
 import Slider from "../../../components/ui/Slider";
 import ColorPicker from "../../../components/ui/ColorPicker";
 import DarkToggle from "../../../components/DarkToggle";
 
-<InteractiveGraphPaper />
+<InteractiveGridPattern />
 
 ## Why make this?
 
@@ -40,7 +40,7 @@ There are so many variations. You can do a square grid, a dot grid, or a double 
     <GraphPaper
       glowOpacity={0}
       decorationOpacity={0}
-      maskCoverage={1000}
+      fadeCoverage={1000}
       horizontalLines={true}
     />
   </div>
@@ -55,7 +55,7 @@ There are so many variations. You can do a square grid, a dot grid, or a double 
     <GraphPaper
       glowOpacity={0}
       decorationOpacity={0}
-      maskCoverage={1000}
+      fadeCoverage={1000}
       verticalLines={false}
       dots={true}
     />
@@ -71,7 +71,7 @@ There are so many variations. You can do a square grid, a dot grid, or a double 
     <GraphPaper
       glowOpacity={0}
       decorationOpacity={0}
-      maskCoverage={1000}
+      fadeCoverage={1000}
       horizontalLines={true}
       innerGrid={true}
     />
@@ -86,46 +86,197 @@ I was inspired by [Josh Comeau](https://www.joshwcomeau.com) who writes [interac
 
 To create a grid pattern you draw a shape in a small bit of space. Then you repeat it across the width and height of a parent container.
 
-To create gridlines, you can draw and repeat a line or a backwards L shape.
+To create a square grid, you draw and repeat a backwards L shape.
 
-{" "}
 <div
   style={{
-    position: "relative",
-    height: 100,
-    width: 100,
-    margin: "40px 0 24px 0",
+    margin: "24px auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 80px)",
+    gridTemplateRows: "repeat(2, 80px)",
+    gap: 16,
   }}
 >
-  <GraphPaper
-    glowOpacity={0}
-    decorationOpacity={0}
-    maskCoverage={1000}
-    horizontalLines={true}
-    cellSize={100}
+  <div
+    style={{
+      gridColumnStart: 1,
+      gridRowStart: 1,
+      borderRight: "1px solid red",
+      borderBottom: "1px solid red",
+    }}
+  />
+  <div
+    style={{
+      gridColumnStart: 2,
+      gridRowStart: 1,
+      borderRight: "1px dashed rgba(255, 0, 0, 0.55)",
+      borderBottom: "1px dashed rgba(255, 0, 0, 0.55)",
+    }}
+  />
+  <div
+    style={{
+      gridColumnStart: 3,
+      gridRowStart: 1,
+      borderRight: "1px dashed rgba(255, 0, 0, 0.55)",
+      borderBottom: "1px dashed rgba(255, 0, 0, 0.55)",
+    }}
+  />
+  <div
+    style={{
+      gridColumnStart: 1,
+      gridRowStart: 2,
+      borderRight: "1px dashed rgba(255, 0, 0, 0.55)",
+      borderBottom: "1px dashed rgba(255, 0, 0, 0.55)",
+    }}
+  />
+  <div
+    style={{
+      gridColumnStart: 2,
+      gridRowStart: 2,
+      borderRight: "1px dashed rgba(255, 0, 0, 0.55)",
+      borderBottom: "1px dashed rgba(255, 0, 0, 0.55)",
+    }}
+  />
+  <div
+    style={{
+      gridColumnStart: 3,
+      gridRowStart: 2,
+      borderRight: "1px dashed rgba(255, 0, 0, 0.55)",
+      borderBottom: "1px dashed rgba(255, 0, 0, 0.55)",
+    }}
   />
 </div>
 
-To create a dot grid, you can draw and repeat a small circle.
+To create a dot grid, you draw and repeat a small circle.
 
-<div style={{ display: "flex" }}>
+<div
+  style={{
+    margin: "24px auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 80px)",
+    gridTemplateRows: "repeat(2, 80px)",
+    gap: 16,
+  }}
+>
   <div
     style={{
-      position: "relative",
-      height: 100,
-      width: 100,
-      margin: "40px 0 24px 0",
+      gridColumnStart: 1,
+      gridRowStart: 1,
+      border: "1px dashed rgba(255, 0, 0, 0.35)",
+      display: "grid",
+      placeItems: "center",
     }}
   >
-    <GraphPaper
-      glowOpacity={0}
-      decorationOpacity={0}
-      maskCoverage={1000}
-      verticalLines={false}
-      dots={true}
-      cellSize={100}
+    <div
+      style={{
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        backgroundColor: "red",
+      }}
     />
   </div>
+  <div
+    style={{
+      gridColumnStart: 2,
+      gridRowStart: 1,
+ 
+      display: "grid",
+      placeItems: "center",
+    }}
+  >
+    <div
+      style={{
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        backgroundColor: "red",
+        opacity: 0.55,
+      }}
+    />
+  </div>
+
+    <div
+    style={{
+      gridColumnStart: 3,
+      gridRowStart: 1,
+      display: "grid",
+      placeItems: "center",
+    }}
+
+>
+
+    <div
+      style={{
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        backgroundColor: "red",
+        opacity: 0.55,
+      }}
+    />
+
+  </div>
+
+<div
+  style={{
+    gridColumnStart: 3,
+    gridRowStart: 2,
+    display: "grid",
+    placeItems: "center",
+  }}
+>
+  <div
+    style={{
+      width: 8,
+      height: 8,
+      borderRadius: "50%",
+      backgroundColor: "red",
+      opacity: 0.55,
+    }}
+  />
+</div>
+<div
+  style={{
+    gridColumnStart: 2,
+    gridRowStart: 2,
+    display: "grid",
+    placeItems: "center",
+  }}
+>
+  <div
+    style={{
+      width: 8,
+      height: 8,
+      borderRadius: "50%",
+      backgroundColor: "red",
+      opacity: 0.55,
+    }}
+  />
+</div>
+
+    <div
+    style={{
+      gridColumnStart: 1,
+      gridRowStart: 2,
+      display: "grid",
+      placeItems: "center",
+    }}
+
+>
+
+    <div
+      style={{
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        backgroundColor: "red",
+        opacity: 0.55,
+      }}
+    />
+
+  </div>
+
 </div>
 
 ## How to repeat shapes
@@ -288,7 +439,7 @@ If you're interested in learning more about drawing shapes using SVG path comman
 
 ## Layering patterns
 
-Below is a simplified version of the component that renders the grid pattern for this interactive grid.
+Below is a simplified version of the component that renders the grid patterns.
 
 I'm layering patterns so that each one can be toggled on and off to create different pattern combinations.
 
@@ -305,9 +456,9 @@ function GridPattern() {
 }
 ```
 
-Each pattern is a component that renders a `<rect>` element that's filled by a `<pattern>` element.
+Each layer is a component that renders a `<rect>` element that's filled by a `<pattern>` element.
 
-For example, below is the component that creates the vertical gridlines. The pattern `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. And the pattern that's defined is vertical line, drawn using the `<line>` element. 
+For example, below is the component that creates the vertical gridlines. The pattern `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. And the pattern that's defined is vertical line, drawn using the `<line>` element.
 
 ```jsx
 function VerticalLines() {
@@ -332,7 +483,7 @@ The grid pattern on [Emil's landing page](https://vaul.emilkowal.ski/) also has 
 - There's a subtle glow effect shining down on the grid.
 - A few of the grid cells are filled in with a solid color.
 
-I recreated these effects in my interactive grid to learn how they were implemented. 
+I recreated these effects in my interactive grid to learn how they were implemented.
 
 Continuing with the layered approach, this is how I'm rendering the effects:
 
@@ -354,29 +505,27 @@ function GridPattern() {
 ```
 
 ### Fade effect
+
 <div
-    style={{
-      position: "relative",
-      height: 320,
-      width: "100%",
-    }}
-  >
-    <GraphPaper
-      glowOpacity={0}
-      decorationOpacity={0}
-      maskCoverage={150}
-      horizontalLines={true}
-    />
-  </div>
-To achieve the fade out effet, the grid and the other visual effects are wrapped in a div where the `mask-image` property is set to a radial gradient. 
+  style={{
+    position: "relative",
+    height: 320,
+    width: "100%",
+  }}
+>
+  <GraphPaper
+    glowOpacity={0}
+    decorationOpacity={0}
+    fadeCoverage={180}
+    horizontalLines={true}
+    gridOpacity={100}
+  />
+</div>
+To achieve a fade effect, the grid and the other visual effects are wrapped
+in a div where the `mask-image` property is set to a radial gradient.
 
 ```js
 const MaskedWrapper = styled.div`
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-
-  /* MASK */
   mask-image: radial-gradient(
     100% 100% at top center,
     white,
@@ -391,72 +540,79 @@ const MaskedWrapper = styled.div`
 
 The way `mask-image` works by default is that opaque areas of the mask image will reveal the content underneate it, and transparent areas of the mask image will hide the content underneath it.
 
-In this case the mask image is a radial gradient that starts as solid white at the top center of the grid and then gradually transitions to transparent, creating a conical, spotlight shape. 
+In this case the `mask-image` is a radial gradient that starts as solid white and gradually transitions to transparent. A spotlight shape is created because the center of the gradient is positioned at the `top center` of the grid and overflow is hidden.
 
 ### Glow
-The glow effect is another radial gradient. Like with the mask image, the center of the gradient is at the top center of the grid, creating a conical, spotlight shape that appears to shine down on the grid. 
+
+The glow effect is another radial gradient. Like with the mask image, the center of the gradient is at the `top center` of the grid, creating a spotlight shape that appears to shine down on the grid.
+
 <div
-    style={{
-      position: "relative",
-      height: 320,
-      width: "100%",
-      margin: "40px 0 24px 0",
-    }}
-  >
-    <GraphPaper
-      glowOpacity={100}
-      decorationOpacity={0}
-      maskCoverage={1000}
-      horizontalLines={true}
-    />
-  </div>
-
-An interesting difference here is that the div containing the gradient is being centered at the top center of the grid, rather than the gradient itself.
-
-<div style={{
-  background: "var(--color-background-darker)",
-  height: 100,
-  width: 200,
-  position: "relative",
-  margin: "80px auto 24px auto",
-  paddingTop: 40,
-  display: "grid",
-  placeItems: "center",
-  }}>
-  <div style={{
-    position: "absolute",
-    top: 0,
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    background: "radial-gradient(red, transparent 40%)",
-    height: 50,
-    width: 150,
-    paddingTop: 48,
-    border: "1px solid red",
-    color: "red"
-    }}>
-    <span>glow div</span>
-  </div>
-   grid
+  style={{
+    position: "relative",
+    height: 320,
+    width: "100%",
+    margin: "40px 0 24px 0",
+  }}
+>
+  <GraphPaper
+    glowOpacity={100}
+    decorationOpacity={0}
+    fadeCoverage={1000}
+    horizontalLines={true}
+    glowOpacity={50}
+  />
 </div>
 
-The div is positioned using a combination of `top: 0`, `left: 50%`, and `transform: translate(-50%, -50%)`. With this combination of properties, the div can be any width or height and it will always be positioned at the top center of the grid. 
+An interesting difference here is that the div containing the gradient is being centered at the top center of the grid, rather than the gradient itself being positioned.
 
-One implication of doing it this way is that you can set the width and height of the div to control the size of the glow effect.
+<div
+  style={{
+    background: "var(--color-background-darker)",
+    height: 100,
+    width: 200,
+    position: "relative",
+    margin: "80px auto 24px auto",
+    paddingTop: 40,
+    display: "grid",
+    placeItems: "center",
+  }}
+>
+  <div
+    style={{
+      position: "absolute",
+      top: 0,
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      background: "radial-gradient(red, transparent 40%)",
+      height: 50,
+      width: 150,
+      paddingTop: 48,
+      border: "1px solid red",
+      color: "red",
+    }}
+  >
+    <span>glow div</span>
+  </div>
+  grid
+</div>
+
+The div is positioned using a combination of `top: 0`, `left: 50%`, and `transform: translate(-50%, -50%)`. With this combination of properties, the div can be any width or height and it will always be centered at the `top center` of the grid.
+
+One implication of doing it this way is that the width and height of the div can be used to control the size of the glow effect.
 
 ```js
 const Glow = styled.div`
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   background-image: radial-gradient(var(--glow-color), transparent 40%);
   height: var(--glow-height);
-  width: var(--glow-width);  
+  width: var(--glow-width);
 `;
 ```
 
-Another way to impliment this would be to have the div fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it's done with the fade effect. 
+Another way to impliment this would be to have the div fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it's done with the fade effect.
 
 ```js
 // Alternative way to implement the glow effect
@@ -465,53 +621,55 @@ const Glow = styled.div`
   inset: 0;
   background-image: radial-gradient(
     var(--glow-width) var(--glow-height) at top center,
-    var(--glow-color), 
-    transparent 40%);
+    var(--glow-color),
+    transparent 40%
+  );
   opacity: var(--glow-opacity);
 `;
 ```
 
 ### Decorations
-You'll notice that some of the grid cells appear to be filled in with a solid color. These filled in cells are what I'm calling "decorations" and they're just another layer on the grid. 
+
+You'll notice that some of the grid cells appear to be filled in with a solid color. These filled in cells are what I'm calling "decorations" and they're just another layer on the grid.
 
 The component that renders the decorations layer can render either squares...
 
-
 <div
-    style={{
-      position: "relative",
-      height: 320,
-      width: "100%",
-      margin: "40px 0 24px 0",
-    }}
-  >
-    <GraphPaper
-      glowOpacity={0}
-      decorationOpacity={50}
-      maskCoverage={150}
-      horizontalLines={true}
-    />
-  </div>
+  style={{
+    position: "relative",
+    height: 320,
+    width: "100%",
+    margin: "40px 0 24px 0",
+  }}
+>
+  <GraphPaper
+    glowOpacity={0}
+    decorationOpacity={50}
+    fadeCoverage={150}
+    horizontalLines={true}
+  />
+</div>
 
 ...or circles.
-<div
-    style={{
-      position: "relative",
-      height: 320,
-      width: "100%",
-      margin: "40px 0 24px 0",
-    }}
-  >
-    <GraphPaper
-      glowOpacity={0}
-      decorationOpacity={50}
-      maskCoverage={150}
-      horizontalLines={true}
-      decorationShape="circle"
-    />
-  </div>
 
-To draw the decorations, I map through a list of coordinates to render a `<path>` element for the squares or `<circle>` elements for the circles. 
+<div
+  style={{
+    position: "relative",
+    height: 320,
+    width: "100%",
+    margin: "40px 0 24px 0",
+  }}
+>
+  <GraphPaper
+    glowOpacity={0}
+    decorationOpacity={50}
+    fadeCoverage={150}
+    horizontalLines={true}
+    decorationShape="circle"
+  />
+</div>
+
+To draw the decorations, I'm mapping through a list of coordinates to render a `<path>` element for the squares or `<circle>` elements for the circles.
 
 Here's simplified version of what that looks like for the squares. The coordinates are used to populate commands (`M`, `h`, `v`, `Z`) in the `<d>` attribute of the `<path>` element. It's these commands that draw the squares at different locations on the grid.
 
@@ -520,15 +678,13 @@ function Squares({ cellSize }) {
   return (
     <svg>
       <path
-        d={DECORATION_COORDINATES
-          .map(({ row, column }) => {
-            return 
-              `M${cellSize * column} ${cellSize * row} 
+        d={DECORATION_COORDINATES.map(({ row, column }) => {
+          return;
+          `M${cellSize * column} ${cellSize * row} 
                h${cellSize} 
                v${cellSize} 
                h-${cellSize}Z`;
-          })
-          .join(" ")}
+        }).join(" ")}
       />
     </svg>
   );
@@ -548,13 +704,13 @@ const DECORATION_COORDINATES = [
 
 If you're interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths).
 
-## Parameterizing Values
+## Parameterizing values
 
 What I mean by paramertizing is making certain properties of the grid dynamic so they can be adjusted.
 
 It's been fun to play with the parameters and see what combinations can be created. Doing this also helped me better understand the fundamentals of how these patterns and effects are created.
 
-The parameters are passed in as props and then used to set css custom properties on the root element of the component. 
+The parameters are passed in as props and then used to set css custom properties on the root element of the component.
 
 ```jsx
 function GridPattern({
@@ -565,7 +721,7 @@ function GridPattern({
   glowHeight = 800,
   glowOnTop = false,
   glowColor = "#ff00ff",
-  maskCoverage = 50,
+  fadeCoverage = 50,
   decorationOpacity = 50,
   decorationColor = "#ff00ff",
   verticalLines = true,
@@ -575,7 +731,7 @@ function GridPattern({
   decorationShape = "square",
 }) {
   return (
-    <Fade 
+    <Fade
       gridOpacity={gridOpacity}
       glowOpacity={glowOpacity}
       glowWidth={glowWidth}
@@ -622,7 +778,7 @@ const Fade = styled.div`
 
 ## Controlled inputs
 
-To make the parameters adjustable, I created inputs that are controlled using React state. 
+To make the parameters adjustable, I created inputs that are controlled using React state.
 
 For example, here's simplified version of the code demonstrating how I used a `<Slider />` component (i.e. an `<input>` of `type="range"`) to control the cell size of the grid.
 
@@ -633,19 +789,19 @@ function InteractiveGrid() {
   return (
     <>
       {/* Render the grid pattern pass cellSize state variable as a prop */}
-      <GridPattern cellSize={cellSize} /> 
+      <GridPattern cellSize={cellSize} />
 
       <Slider
         id="cellSize"
         label="Cell Size"
         // State controls the value of the input
-        value={cellSize} 
+        value={cellSize}
         units="px"
         min={10}
         max={400}
         step={10}
         // Update state when input changes
-        onChange={(e) => setCellSize(+e.target.value)}  
+        onChange={(e) => setCellSize(+e.target.value)}
         //+e.target.value converts input string to number
       />
     </>
@@ -653,7 +809,8 @@ function InteractiveGrid() {
 }
 ```
 
-In all I created three types of inputs: 
+I made three types of inputs:
+
 - `<Switch />`
 - `<Slider />`
 - `<ColorPicker>`
@@ -679,15 +836,21 @@ In all I created three types of inputs:
 
 ## Light and Dark Mode
 
-If you toggle between light and dark mode, the colors of the grid and inputs change. 
+If you toggle between light and dark mode, the colors of the grid and inputs change.
 
 That's because the grid background, fill and stroke colors are set to global color variables that have both light and dark definitions. Same with the colors used to style the inputs.
 
-<div style={{
-  margin: "24px 0",
-  display: "flex",
-  gap: "8px",
-}}>
-Dark mode toggle: 
-<DarkToggle />
+<div
+  style={{
+    margin: "24px 0",
+    display: "flex",
+    gap: "8px",
+  }}
+>
+  Dark mode toggle:
+  <DarkToggle />
 </div>
+
+## Important but invisible 
+One final thing I want to mention is that the grid pattern is aria hidden so it's not visible to screen readers.
+

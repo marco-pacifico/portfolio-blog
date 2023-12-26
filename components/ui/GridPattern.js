@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function GraphPaper({
+export default function GridPattern({
   cellSize = 50,
   gridOpacity = 50,
   glowOpacity = 50,
@@ -9,7 +9,7 @@ export default function GraphPaper({
   glowHeight = 800,
   glowOnTop = false,
   glowColor = "#ff00ff",
-  maskCoverage = 50,
+  fadeCoverage = 50,
   decorationOpacity = 50,
   decorationColor = "#ff00ff",
   verticalLines = true,
@@ -26,7 +26,7 @@ export default function GraphPaper({
       glowWidth={glowWidth}
       glowHeight={glowHeight}
       glowOnTop={glowOnTop}
-      maskCoverage={maskCoverage}
+      fadeCoverage={fadeCoverage}
       decorationOpacity={decorationOpacity}
       glowColor={glowColor}
       decorationColor={decorationColor}
@@ -53,7 +53,7 @@ const MaskedWrapper = styled.div`
 
   /* MASK */
   mask-image: radial-gradient(
-    100% var(--mask-coverage) at top center,
+    100% var(--fade-coverage) at top center,
     white,
     rgba(255, 255, 255, 0.5),
     rgba(255, 255, 255, 0.25),
@@ -74,7 +74,7 @@ const MaskedWrapper = styled.div`
   --color-glow: ${(props) => props.glowColor};
 
   /* MASK */
-  --mask-coverage: ${(props) => props.maskCoverage}%;
+  --fade-coverage: ${(props) => props.fadeCoverage}%;
 
   /* DECORATION */
   --decoration-opacity: ${(props) => props.decorationOpacity / 100};
