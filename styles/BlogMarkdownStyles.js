@@ -7,6 +7,7 @@ const BlogTypographyVariables = css`
   /* FONT SIZES */
   /* --font-size-paragraph: calc(var(--font-size-4) + 2 * var(--font-size-bump)); */
   --font-size-paragraph: 1.375rem;
+  /* --font-size-paragraph: var(--font-size-4); */
   /* @media ${QUERY.tabletAndSmaller} {
     --font-size-paragraph: var(--font-size-4);
   } */

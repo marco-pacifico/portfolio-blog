@@ -85,13 +85,14 @@ const Glow = styled.div`
   position: absolute;
   pointer-events: none;
   z-index: var(--glow-z-index);
+  inset: 0;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%); // TODO: x and y percetages props
+  transform: translate(-50%, -50%); 
   background-image: radial-gradient(var(--color-glow), transparent 40%);
   opacity: var(--glow-opacity);
-  height: var(--glow-height); // TODO: make this a prop
-  width: var(--glow-width); // TODO: make this a prop
+  height: var(--glow-height); 
+  width: var(--glow-width);
 `;
 
 function VerticalLines({ cellSize }) {
