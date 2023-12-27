@@ -6,6 +6,7 @@ import ListItem from "../components/ui/ListItem";
 import { getSortedPostsData } from "../lib/getAndSavePosts";
 import { getSortedProjectsData } from "../lib/getAndSaveProjects";
 import useIsOnScreen from "../hooks/is-on-screen";
+import GridPattern from "../components/ui/GridPattern";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -20,7 +21,8 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData, allProjectsData }) {
   const postsLimit = 3;
-  const postsToShow = allPostsData.slice(0, postsLimit);
+  const filteredPosts = allPostsData.filter(({category}) => category !== "Code");
+  const postsToShow = filteredPosts.slice(0, postsLimit);
   const [postsListRef, isShown] = useIsOnScreen({});
 
   return (
@@ -44,19 +46,29 @@ export default function Home({ allPostsData, allProjectsData }) {
             )
           )}
         </HorizontalScroll>
+  
       </IndexSection>
-      <IndexSection
-        title="Code"
-
-      >
-        <Card 
-          href={"/writing/interactive-graph-paper"}
-        />
-      </IndexSection>
-      <IndexSection
-        title="Writing"
-      >
+     
+      <IndexSection title="Writing">
+          
         <ol ref={postsListRef}>
+          <ListItem 
+            title="Interactive Grid"
+            description={"Play with grid patterns, size, colors, masking, and opacity.            "}
+            href="/writing/interactive-graph-paper"
+            delay={0}
+            isShown={isShown}
+            >
+                <div style={{position: "relative", width: "100%", height: 400}}>
+          <GridPattern 
+            fadeCoverage={200}
+            horizontalLines={true}
+            dots={true}
+            innerGrid={true}
+           />
+        </div>
+            </ListItem>
+  
           {postsToShow.map(({ slug, title, description }, index) => (
             <ListItem
               key={slug}
@@ -74,6 +86,21 @@ export default function Home({ allPostsData, allProjectsData }) {
             isShown={isShown}
           />
         </ol>
+      </IndexSection>
+      <IndexSection 
+        title={"Code"}
+        description={"A grid that responds to your mouse movement."}
+      >
+        
+        <div style={{position: "relative", width: "100%", height: 400}}>
+          <GridPattern 
+            fadeCoverage={200}
+            horizontalLines={true}
+            dots={true}
+            innerGrid={true}
+           />
+        </div>
+    
       </IndexSection>
     </>
   );
