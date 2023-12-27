@@ -3,7 +3,7 @@ import { UnstyledLink } from "./UnstyledLink";
 import { H4, Paragraph, LinkAffordance } from "./Typography";
 import { QUERY } from "../../styles/1-DesignTokens";
 
-const ListItem = ({ id, href, title, description, delay, isShown}) => {
+const ListItem = ({ id, href, title, description, delay, isShown, children}) => {
   const translateY = isShown ? "0%" : "120%";
   const opacity = isShown ? "1" : "0";
   const animationStyles = {
@@ -20,7 +20,7 @@ const ListItem = ({ id, href, title, description, delay, isShown}) => {
             <Title>{title}</Title>
             {description && <Description>{description}</Description>}
           </InfoWrapper>
-          {/* <Arrow>→</Arrow> */}
+          {children}
         </Wrapper>
       </UnstyledLink>
     </li>
@@ -45,11 +45,12 @@ const Wrapper = styled.div`
   margin-right: calc(-1 * var(--section-offset));
   border-bottom: 1px solid var(--color-border);
   display: flex;
-  gap: var(--space-5);
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-7);
   padding-right: var(--space-6);
   @media ${QUERY.phoneAndSmaller} {
-    gap: var(--space-3);
+    gap: var(--space-5);
     align-items: flex-start;
   }
 `;
