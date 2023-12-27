@@ -56,7 +56,7 @@ export default function Home({ allPostsData, allProjectsData }) {
             title="Interactive Grid"
             description={"Adjust grid patterns, size, colors, masking, and opacity.            "}
             href="/writing/interactive-graph-paper"
-            delay={0}
+            delay={-1}
             isShown={isShown}
             >
                 <div style={{position: "relative", width: "100%", height: 320}}>
