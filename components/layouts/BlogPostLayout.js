@@ -81,9 +81,18 @@ const BlogPostContent = styled.article`
       var(--page-padding-block-max)
       );
     padding: var(--page-padding-block) var(--site-gutter);
+    padding-top: var(--space-8);
     & > * {
     grid-column: 2;
+
+    // Hero image or hero div (for code posts) are spaced closer to the title vs. text-only posts
+    // If the first child of the article not an image or div, give it a larger top margin to create more space between the title and the first paragraph
+    &:first-child:not(img):not(div){
+      margin-top: var(--space-12);
+    }
+
   }
+ 
   grid-row-gap: var(--space-3);
 `;
 
