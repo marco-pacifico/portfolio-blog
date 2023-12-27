@@ -687,7 +687,7 @@ The component that renders the decorations layer can render either squares...
   />
 </div>
 
-To draw the decorations, I'm mapping through an array of coordinates. The coordinates render a `<path>` element for the squares or `<circle>` elements for the circles.
+To draw the decorations, I'm mapping through an array of coordinates and rendering a `<path>` element for the squares or `<circle>` elements for the circles.
 
 Here's simplified version of what that looks like for the squares. Each coordinate is used to populate commands (`M`, `h`, `v`, `Z`) in the `<d>` attribute of the `<path>` element. It's these commands that draw the squares at different locations on the grid.
 
