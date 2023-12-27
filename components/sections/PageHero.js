@@ -24,9 +24,9 @@ const SectionWrapper = styled.section`
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
   --section-padding-block: var(--space-11);
-  padding: var(--section-padding-block) var(--section-offset);
+  padding: var(--space-11) var(--section-offset) 0 var(--section-offset);
   border-radius: 0 0 40px 40px;
-  padding-bottom: ${props => props.category === "Code" ? "0" : "var(--section-padding-block)"};
+  /* padding-bottom: ${props => props.category === "Code" ? "0" : "var(--section-padding-block)"}; */
 
 `;
 
