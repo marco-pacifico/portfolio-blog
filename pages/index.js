@@ -54,12 +54,12 @@ export default function Home({ allPostsData, allProjectsData }) {
         <ol ref={postsListRef}>
           <ListItem 
             title="Interactive Grid"
-            description={"Play with grid patterns, size, colors, masking, and opacity.            "}
+            description={"Adjust grid patterns, size, colors, masking, and opacity.            "}
             href="/writing/interactive-graph-paper"
             delay={0}
             isShown={isShown}
             >
-                <div style={{position: "relative", width: "100%", height: 400}}>
+                <div style={{position: "relative", width: "100%", height: 320}}>
           <GridPattern 
             fadeCoverage={200}
             horizontalLines={true}

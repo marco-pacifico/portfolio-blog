@@ -47,10 +47,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-8);
+  gap: var(--space-7);
   padding-right: var(--space-6);
   @media ${QUERY.phoneAndSmaller} {
-    gap: var(--space-3);
+    gap: var(--space-5);
     align-items: flex-start;
   }
 `;
