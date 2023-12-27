@@ -87,21 +87,6 @@ export default function Home({ allPostsData, allProjectsData }) {
           />
         </ol>
       </IndexSection>
-      <IndexSection 
-        title={"Code"}
-        description={"A grid that responds to your mouse movement."}
-      >
-        
-        <div style={{position: "relative", width: "100%", height: 400}}>
-          <GridPattern 
-            fadeCoverage={200}
-            horizontalLines={true}
-            dots={true}
-            innerGrid={true}
-           />
-        </div>
-    
-      </IndexSection>
     </>
   );
 }

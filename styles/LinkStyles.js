@@ -17,14 +17,13 @@ export const LinkStyles = css`
   background-size: 0% 2px;
   background-repeat: no-repeat;
   background-position: left 104%;
-  transition: 
-    background-size 200ms ease-out, 
-    border-color 300ms ease-in,
+  transition: background-size 200ms ease-out, border-color 300ms ease-in,
     color 300ms ease-in;
 
-  &:hover {
-    /* border-bottom: 1px solid transparent; */
-    background-size: 100% 2px;
-    color: var(--color-text-link-hover);
+  @media (hover: hover) {
+    &:hover {
+      background-size: 100% 2px;
+      color: var(--color-text-link-hover);
+    }
   }
 `;
