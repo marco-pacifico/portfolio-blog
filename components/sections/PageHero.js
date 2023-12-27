@@ -16,14 +16,9 @@ export default PageHero;
 
 const SectionWrapper = styled.section`
   background-color: var(--color-background);
-  /* @media ${QUERY.phoneAndSmaller} {
-      background-color: transparent;
-      padding-bottom: 0;
-    }; */
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
   padding: var(--space-11) var(--section-offset) 0 var(--section-offset);
-  /* padding-bottom: ${props => props.category === "Code" ? "0" : "var(--section-padding-block)"}; */
 `;
 
 const Category = styled(Overline)`
@@ -47,7 +42,6 @@ const Title = styled(H1)`
     var(--title-margin-max)
   );
   margin-bottom: var(--title-margin);
-  /* margin-bottom: 1rem; */
   line-height: 1.1em;
 `;
 
@@ -56,11 +50,6 @@ const Description = styled(H3)`
   line-height: 1.4em;
   @media ${QUERY.phoneAndSmaller} {
       font-size: 1.875rem;
-      /* line-height: 1.3em; */
     };
   color: var(--color-text-secondary);
- 
-  @media ${QUERY.phoneAndSmaller} {
-    margin-bottom: 0;
-  }
 `;

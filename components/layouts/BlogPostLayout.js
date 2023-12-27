@@ -5,7 +5,7 @@ import PageHero from "../sections/PageHero";
 import MoreWriting from "../sections/MoreWriting";
 import MoreWork from "../sections/MoreWork";
 import { BlogMarkdownStyles } from "../../styles/BlogMarkdownStyles";
-import { BREAKPOINT, QUERY} from "../../styles/1-DesignTokens";
+import { BREAKPOINT, QUERY } from "../../styles/1-DesignTokens";
 // import localFont from "@next/font/local";
 // const UntitledSerif = localFont({
 //   variable: "--font-serif",
@@ -46,22 +46,19 @@ export default function BlogPostLayout({ children, meta }) {
         <meta property="og:title" content={meta.title} key="title" />
         <meta name="description" content={meta.description} />
       </Head>
-      <PageHero category={meta.category} title={meta.title} description={meta.description} />
+      <PageHero
+        category={meta.category}
+        title={meta.title}
+        description={meta.description}
+      />
       <BlogPostContent>{children}</BlogPostContent>
-      {isAboutPage && <PageBottomSpacing/>}
+      {isAboutPage && <PageBottomSpacing />}
       {isWritingPage && <MoreWriting currentPost={meta.slug} />}
       {isWorkPage && <MoreWork currentPost={meta.slug} />}
-      {/* {isAboutPage ? (
-        <PageBottomSpacing />
-      ) : (
-        <MoreWriting currentPost={meta.slug} />
-      )} */}
     </>
   );
 }
 
-// const Wrapper = styled.div`
-// `;
 
 const BlogPostContent = styled.article`
   ${BlogMarkdownStyles}
@@ -72,31 +69,26 @@ const BlogPostContent = styled.article`
     1fr
     min(var(--width-blog-content), 100%)
     1fr;
-    --page-padding-block-min: var(--space-9);
-    --page-padding-block-target: var(--space-fluid-11);
-    --page-padding-block-max: var(--space-11);
-    --page-padding-block: clamp(
-      var(--page-padding-block-min),
-      var(--page-padding-block-target),
-      var(--page-padding-block-max)
-      );
-    padding: var(--page-padding-block) var(--site-gutter);
-    padding-top: var(--space-8);
-    & > * {
+ 
+  padding: var(--space-11) var(--site-gutter);
+  padding-top: var(--space-8);
+
+  // Target all child elements of the article 
+  & > * {
+    // Set the width of the article content to the middle column
     grid-column: 2;
 
-    // Hero image or hero div (for code posts) are spaced closer to the title vs. text-only posts
-    // If the first child of the article not an image or div, give it a larger top margin to create more space between the title and the first paragraph
-    &:first-child:not(img):not(div){
+    // If the first child of the article is not an image or div, 
+    // give it a larger top margin to create more space between the title and the first paragraph
+    &:first-child:not(img):not(div) {
       margin-top: var(--space-12);
 
       @media ${QUERY.phoneAndSmaller} {
         margin-top: var(--space-8);
       }
     }
-
   }
- 
+
   grid-row-gap: var(--space-3);
 `;
 
