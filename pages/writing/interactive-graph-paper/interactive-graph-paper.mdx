@@ -27,7 +27,7 @@ I made this interactive grid because I wanted to learn how to implement various 
 
 Recently I came across a [landing page](https://vaul.emilkowal.ski/) by [Emil Kowalski](https://emilkowal.ski/). The hero section has subtle gridlines that gradually fade out. 
 
-I love how a grid pattern creates a feeling of technical precision and engineering. Whenever I see one I'm alway curious to know how it was implemented.
+I love how a grid pattern conveys a sense of technical precision and engineering. Whenever I see one I'm alway curious to know how it was implemented.
 
 There are many variations. You can do a square grid, a dot grid, or a double grid (also called "engineering paper"). You even can create guidelines that align to content on the page.
 
@@ -81,15 +81,35 @@ There are many variations. You can do a square grid, a dot grid, or a double gri
   </div>
 </div>
 
-I made this interactive grid because it felt like a good way to learn how to create these various patterns and also to practice my frontend skills, especially what I've learned about [state and controlled inputs in React](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
+I made this interactive grid because it felt like a good way to learn how to create grid patterns and also to practice my frontend skills, especially what I've learned about [state and controlled inputs in React](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
 
 I was inspired by [Josh Comeau](https://www.joshwcomeau.com) who writes [interactive blog posts](https://www.joshwcomeau.com/css/interactive-guide-to-grid/) and makes tools like this [CSS Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/). I also learned React mostly from Josh's course, [The Joy of React](https://www.joyofreact.com/), which I highly recommend.
 
 ## Repeating shapes
 
-To create a grid pattern you draw a shape in a small bit of space. Then you repeat it across the width and height of a parent container.
+To create a grid pattern you draw a shape in a small bit of space. 
 
-To create a square grid, you draw and repeat a backwards L shape.
+  <div
+  style={{
+    margin: "24px auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 80px)",
+    gridTemplateRows: "repeat(1, 80px)",
+    gap: 16,
+  }}
+>
+  <div
+    style={{
+      gridColumnStart: 1,
+      gridRowStart: 1,
+      borderRight: "1px solid red",
+      borderBottom: "1px solid red",
+      backgroundColor: "rgba(255, 0, 0, 0.12)",
+    }}
+  />
+</div>
+
+Then you repeat it across the width and height of an element.
 
 <div
   style={{
@@ -106,6 +126,7 @@ To create a square grid, you draw and repeat a backwards L shape.
       gridRowStart: 1,
       borderRight: "1px solid red",
       borderBottom: "1px solid red",
+      backgroundColor: "rgba(255, 0, 0, 0.12)",
     }}
   />
   <div
@@ -150,7 +171,7 @@ To create a square grid, you draw and repeat a backwards L shape.
   />
 </div>
 
-To create a dot grid, you draw and repeat a small circle.
+L shapes create a square grid and circles create a dot grid.
 
 <div
   style={{
@@ -165,15 +186,15 @@ To create a dot grid, you draw and repeat a small circle.
     style={{
       gridColumnStart: 1,
       gridRowStart: 1,
-      border: "1px dashed rgba(255, 0, 0, 0.35)",
       display: "grid",
       placeItems: "center",
+      backgroundColor: "rgba(255, 0, 0, 0.12)",
     }}
   >
     <div
       style={{
-        width: 8,
-        height: 8,
+        width: 20,
+        height: 20,
         borderRadius: "50%",
         backgroundColor: "red",
       }}
@@ -190,11 +211,10 @@ To create a dot grid, you draw and repeat a small circle.
   >
     <div
       style={{
-        width: 8,
-        height: 8,
+        width: 20,
+        height: 20,
         borderRadius: "50%",
-        backgroundColor: "red",
-        opacity: 0.55,
+        border: "1px dashed rgba(255, 0, 0, 1)",
       }}
     />
   </div>
@@ -211,11 +231,10 @@ To create a dot grid, you draw and repeat a small circle.
 
     <div
       style={{
-        width: 8,
-        height: 8,
+        width: 20,
+        height: 20,
         borderRadius: "50%",
-        backgroundColor: "red",
-        opacity: 0.55,
+        border: "1px dashed rgba(255, 0, 0, 1)",
       }}
     />
 
@@ -231,11 +250,10 @@ To create a dot grid, you draw and repeat a small circle.
 >
   <div
     style={{
-      width: 8,
-      height: 8,
+      width: 20,
+      height: 20,
       borderRadius: "50%",
-      backgroundColor: "red",
-      opacity: 0.55,
+      border: "1px dashed rgba(255, 0, 0, 1)",
     }}
   />
 </div>
@@ -249,11 +267,10 @@ To create a dot grid, you draw and repeat a small circle.
 >
   <div
     style={{
-      width: 8,
-      height: 8,
+      width: 20,
+      height: 20,
       borderRadius: "50%",
-      backgroundColor: "red",
-      opacity: 0.55,
+      border: "1px dashed rgba(255, 0, 0, 1)",
     }}
   />
 </div>
@@ -267,14 +284,12 @@ To create a dot grid, you draw and repeat a small circle.
     }}
 
 >
-
     <div
       style={{
-        width: 8,
-        height: 8,
+        width: 20,
+        height: 20,
         borderRadius: "50%",
-        backgroundColor: "red",
-        opacity: 0.55,
+        border: "1px dashed rgba(255, 0, 0, 1)",
       }}
     />
 
@@ -461,7 +476,7 @@ function GridPattern() {
 
 Each layer is a component that renders a `<rect>` element that's filled by a `<pattern>` element.
 
-For example, below is the component that creates the vertical gridlines. The pattern `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. And the pattern that's defined is vertical line, drawn using the `<line>` element.
+For example, below is the component for the vertical gridlines. The pattern's `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. The pattern that's defined is vertical line, drawn using the `<line>` element.
 
 ```jsx
 function VerticalLines() {
@@ -480,7 +495,7 @@ function VerticalLines() {
 
 ## Layering on visual effects
 
-The grid pattern on [Emil's landing page](https://vaul.emilkowal.ski/) also has subtle visual effects that take the design to the next level.
+The grid pattern on [Emil's landing page](https://vaul.emilkowal.ski/) also has subtle visual effects that elevate the design.
 
 - The grid fades out from the top toward the edges.
 - There's a subtle glow effect shining down on the grid.
@@ -528,7 +543,7 @@ To achieve a fade effect, the grid and the other visual effects are wrapped
 in a div where the `mask-image` property is set to a radial gradient.
 
 ```js
-const MaskedWrapper = styled.div`
+const Fade = styled.div`
   mask-image: radial-gradient(
     100% 100% at top center,
     white,
@@ -615,7 +630,7 @@ const Glow = styled.div`
 `;
 ```
 
-Another way to impliment this would be to have the div fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it's done with the fade effect.
+Another way to impliment this would be to have the `<Glow />` layer fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it's done with the fade effect.
 
 ```js
 // Alternative way to implement the glow effect
@@ -709,9 +724,9 @@ If you're interested in learning more about drawing shapes using SVG path comman
 
 ## Parameterizing values
 
-What I mean by parameterizing is making certain properties of the grid dynamic so they can be adjusted.
+What I mean by parameterizing is creating variables for certain properties of the grid so they can be dynamically adjusted.
 
-It's been fun to play with the parameters and see what combinations can be created. Doing this also helped me better understand the fundamentals of how these patterns and effects are created.
+It's been fun to play with the parameters and see what combinations can be created. It also helped me better understand the css properties that create these patterns and effects.
 
 The parameters are passed in as props and then used to set css custom properties on the root element of the component.
 
@@ -854,13 +869,13 @@ That's because the grid background, fill and stroke colors are set to global col
   <DarkToggle />
 </div>
 
-## Important and invisible 
+## Invisible and important
 
 One final thing I want to mention has to do with accessibility.
 
 Because the grid is purely decorative, it's important to hide it from screen readers so it doesn't get read out loud. 
 
-To achieve this, I added the `aria-hidden` attribute to the root element of the `<GridPattern />` component. Since `aria-hidden` is inherited by all child elements, the grid pattens and visual effects will be hidden from screen readers. 
+To achieve this, I added the `aria-hidden` attribute to the root element of the `<GridPattern />` component. Since `aria-hidden` is inherited by all child elements, the grid pattens and visual effects will be hidden from screen readers as well. 
 
 ```jsx
 function GridPattern() {
