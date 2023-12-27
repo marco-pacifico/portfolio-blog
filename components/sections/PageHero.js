@@ -15,19 +15,15 @@ const PageHero = ({ category, title, description }) => {
 export default PageHero;
 
 const SectionWrapper = styled.section`
-  /* background-color: ${(props) => props.category === "Code" ? "var(--color-background)" : "var(--color-background-darker)"}; */
   background-color: var(--color-background);
-  @media ${QUERY.phoneAndSmaller} {
+  /* @media ${QUERY.phoneAndSmaller} {
       background-color: transparent;
       padding-bottom: 0;
-    };
+    }; */
   max-width: ${BREAKPOINT.desktoplarge / 16}rem;
   margin: 0 auto;
-  --section-padding-block: var(--space-11);
-  padding: var(--section-padding-block) var(--section-offset);
-  border-radius: 0 0 40px 40px;
-  padding-bottom: ${props => props.category === "Code" ? "0" : "var(--section-padding-block)"};
-
+  padding: var(--space-11) var(--section-offset) 0 var(--section-offset);
+  /* padding-bottom: ${props => props.category === "Code" ? "0" : "var(--section-padding-block)"}; */
 `;
 
 const Category = styled(Overline)`
@@ -63,15 +59,7 @@ const Description = styled(H3)`
       /* line-height: 1.3em; */
     };
   color: var(--color-text-secondary);
-  --description-margin-min: var(--space-5);
-  --description-margin-target: var(--space-fluid-6);
-  --description-margin-max: var(--space-fluid-6);
-  --description-margin: clamp(
-    var(--description-margin-min),
-    var(--description-margin-target),
-    var(--description-margin-max)
-  );
-  margin-bottom: var(--description-margin);
+ 
   @media ${QUERY.phoneAndSmaller} {
     margin-bottom: 0;
   }

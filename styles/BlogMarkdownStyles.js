@@ -59,6 +59,7 @@ const BlogTypographyVariables = css`
 export const BlogMarkdownStyles = css`
   ${BlogTypographyVariables}
 
+ 
   details {
 
     & summary {
@@ -94,7 +95,13 @@ export const BlogMarkdownStyles = css`
     height: auto;
     border-radius: 16px;
     margin: var(--margin-image);
+
+    // First image has no top margin
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
+
   /* Surround images with em tag set image with same as content width */
   em > img {
     grid-column: 2;
