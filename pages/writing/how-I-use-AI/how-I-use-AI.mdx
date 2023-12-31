@@ -1,0 +1,153 @@
+---
+title: How I’ve Been Using AI
+date: "2023-12-29"
+category: Blog Post
+description: A look back at how I used AI in 2023
+slug: how-I-use-AI
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+
+It’s hard to think about 2023 without thinking about AI. So as a sort of year in review, I thought I’d go back and document the ways I’ve used AI over the last twelve months.
+
+## What I mean by AI
+When I say AI, I’m talking about text-based, generative AI powered by large language models like GPT-4. 
+
+There are the chat assistants: ChatGPT by OpenAI, Anthropic’s Claude, and Google’s Bard are the ones I’ve used.
+
+And then there are tools that use a model’s API to power certain features. Top of mind for me are:
+
+- **Github’s Copilot** for suggesting and autocompleting code
+- **v0 by Vercel** for generating interfaces written in React and Tailwind 
+- **Notion** as a writing assitant 
+- **Otter.ai** as a transcription service
+- **Framer** to generate landing page designs and copy
+- **Figma’s FigJam** to organize sticky notes
+
+I’ve tried a bunch of tools and features powered by large language models, but aside from Coplilot, I haven’t used them nearly as much as the chat-based assistants.
+
+I feel like **90% plus of my use of AI has been through ChatGPT’s chat interface and Copilot’s autocomplete in VS Code.**
+
+As an aside, it’s interesting that chat and autocomplete in a text editor are the two interfaces that have had the most traction with me, probably because they go with the grain of the underlying technology. 
+
+So with that out of the way, below are the top ways I’ve been using AI in 2023. 
+
+## Tutor
+One of the uses I’ve valued most is asking an AI to explain concepts and code syntax. 
+
+In 2023 I learned more about code and spent more time coding than any year before. It would have been much harder to learn what I did without help from AI and it’s likely I would have spent a lot more time feeling stuck and frustrated. 
+
+Looking back at my chat history in ChatGPT and Claude, here are some examples of things I’ve asked to have explained:
+
+- *"Explain the following code line by line [code]"*
+- *"What does the `zip` do in `for x, y in zip(sizes[:-1], sizes[1:])`?"*
+- *"Can you explain the math behind gradient descent?"*
+- *"What are the main concepts of TypeScript?"*
+
+I often asked follow up questions to clarify things I didn’t understand.
+- *"Can you explain [this sentence, syntax, or line of code] further?"*
+- *"What does the `??` syntax do?"*
+- *"Why did you define an interface rather than a type?"*
+
+I’d even challenge an explanation when I thought it was wrong.
+- *"I’ve been doing it this way and it seems to work. Why did you suggest this other way?"*
+- *"I’m trying this code and it’s doing the opposite of what you’re saying it should do. Why is that?"*
+
+The thing is sometimes it actually is 100% wrong and sometimes it’s only sort of right. So you have to have some base knowledge and ways of validating what it says to use it effectively. 
+
+
+## Problem Solver
+Another valuable use case has been asking or talking through how to approach a problem or fix an issue. 
+
+For example, I asked ChatGPT, *"How might I create a table of contents component in React that links to headlines within an article written in markdown?"* and it sketched how to do it step by step. I still had to write most of the code and figure out a bunch of issues on my own, but this gave me a starting point and map to follow. 
+
+Here’s another example. I asked Claude, *"I’m using styled components and my css changes depending on the value of the props I pass in. [sample of my code] What are some ways to avoid all this prop drilling?"* 
+
+In this case I didn’t use any of the approaches it suggested, but I had a conversation with it where I pointed out the issues with each appraoch, and that helped me think through the problem and come up with my own solution.
+
+In cases like this, it’s been to cool ask *"what about this approach instead?"* and get feedback on whether it’s a good idea or not.
+
+When it comes to fixing issues, I’ve either pasted in my code and asked why the code isn’t doing what I’m expecting it to do. Or I’ve pasted in an error message and asked, *"How would you fix this error?"* or *"What does this error mean?"* or *"What’s causing this error?"* 
+
+## Data Formatter 
+Large language models are good at converting data from one format to another. Here are some examples of conversions I’ve ask for:
+
+- *"I have a json object and I need it reformatted. This the original format: ... and I’d like it in this format: ..."*
+- *"Remove the quotation marks from this text. ’--color-primary-100’: ’hsl(240deg 100% 90%)’* "
+- Extract dates from strings
+- Convert hex to float rbg 
+
+The AI will either format the data directly or give me the code to do it. The is especially useful when regex is involved since the syntax is hard to read and remember.
+
+## Automator
+I’ve used AI to write simple scripts to automate tasks. For example I used it to write a script that generates the boilerplate files and folders needed for a new blog post on this site. 
+
+## Copy Editor 
+I’ve been using AI as copy editor to help me write better. 
+
+If I want something proofread, I’ll paste what I’ve written into the chat and ask it to point out grammatical errors, spelling mistakes, or clumbsy construction. 
+- *"How does this paragraph sound? Are there any spelling mistakes or grammatical errors or confusing, clumsy language?"*
+- *How could I improve this text for clarity and concision?*
+
+If I’m unsure if I’ve phrased something clearly, I’ll ask it to interpret what I wrote.
+- *"How would you interpret the following? [my writing]"*
+
+Occationally I’ll ask for help finding the right word or making sure I’m using the correct terminology. 
+- *"What’s another way to say this?"*
+- *"What’s another word for folder in the context of a code repository?"*
+
+I’ve tried asking it to write in a specific style, like in the style of William Zinsser or based on Amazon’s writing guidelines. Unfortunatly this never seems to give me the result I’m hoping for. 
+
+It’s interesting that even "bad" suggestions can be helpful because they help me eliminate options and can spark ideas. When I see something I know I don’t want, it can drive me to think of what I do want. I think, *no that’s not it, I want to say it this way instead.* 
+
+## Summarizer
+I once pasted a long article into the chat, asked for a summary of insights, and asked follow up questions. The article was Atwul Gawande’s article in *The New Yorker* about coaching.
+
+My prompt was: 
+- *Can you summarize the key takeaways as it relates to coaching. I don’t want to know about any personal history or anecdotes, just the actionable insights and takeaways*
+
+And one of my follow-up questions was:
+- *"Does he talk about how to get a coach or any specific steps to take?"*
+
+In a few seconds I was able to see if the article contained anything specific I wanted to know about coaching, rather than having to read the whole thing to find out. 
+
+I also tried asking questions of an annual financial report, and of my own website by scraping content from it. Neither of these worked very well for me, but I’d like to try again now that the models are more advanced.
+
+Also, Amazon is now summarizing customer reviews, and so I’ve used it indirectly in this way since I’ve actaully read and benefited from the summaries.
+
+## Researcher
+I’ve used AI to help me research topics, basically as an alternative to Google.
+
+For example, I’ve asked:
+- *"What arguments can the "googlefinance" function take in google sheets?"*
+- *"Let’s dive deeper on Newsletter Software. What options exist? How would you evaluate each option?"*
+- *"What are some small beachside towns in Italy where I could go on vacation?"*
+
+The benefit over a Google search is that I get detailed bullet points vs. a collection of links I have to sift through and parse myself. 
+
+Interestingly, I always ignored the summary from Bard that Google was putting at the top of its search results. I don’t know why exactly, but I’d guess it has something about muscle memory and expectations that have been build up over years. My brain is trained to ignore that section and go straight to the links. It sort of felt like an interuption to my expected workflow.
+
+On the other hand I love when Google can just give me the answer directly, like when it pulls up a summary from Wikepedia. 
+
+
+## Autocompleter 
+Obviously Copilot is great for autocompleting code. The main benefit has been speeding up my workflow by reducing the amount of typing I have to do and saving me having to look up syntax.
+
+It turns out Copilot also works for writing prose. Since I write my blog posts in markdown in my code editor, it will autocomplete sentences in the same way it autocompletes code. 
+
+Rarely do I keep the exact words Copilot suggests, but it’s a good way to get unstuck and keep the words flowing. 
+
+The downside is that it’s literally finishing my sentences, which can be somewhat annoying and intrusive. It can influence me to go in a direction I wasn’t planning on going. I need more time with it to decide if it’s more helpful than not. 
+
+## Going forward
+I'll keep find more ways to use AI in everyday life. I'd also like to use the APIs to build tools that help me get things done.
+
+Aside from Copilot and other autocomplete features, AI tools still feel like something I have to actively work on integrating into my life and practice using. 
+
+I’m curious to see if we can improve on the chat interface or if other interfaces will emerge that become equally pervasive. The chat format is great for asking questions and having conversations, but it’s also a bit clunky and high friction for many use cases. And I don’t feel like the context menu approach is the best answer either.
+
+It’s been exciting to see this technology emerge and be rapidly adopted and improved in such a short period of time. I’m looking forward to seeing how things progress in 2024, and how quaint this post will seem in a year or two.
