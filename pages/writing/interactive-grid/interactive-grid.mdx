@@ -3,7 +3,7 @@ title: Interactive Grid
 date: "2023-12-02"
 category: Code
 description: Playing with grid size, color, masking, and opacity
-slug: interactive-graph-paper
+slug: interactive-grid
 ---
 
 import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
@@ -27,7 +27,7 @@ I made this interactive grid because I wanted to learn how to implement various 
 
 Recently I came across a [landing page](https://vaul.emilkowal.ski/) by [Emil Kowalski](https://emilkowal.ski/). The hero section has subtle gridlines that gradually fade out. 
 
-I love how a grid pattern conveys a sense of technical precision and engineering. Whenever I see one I'm alway curious to know how it was implemented.
+I love how a grid pattern conveys a sense of technical precision and engineering. Whenever I see one I’m alway curious to know how it was implemented.
 
 There are many variations. You can do a square grid, a dot grid, or a double grid (also called "engineering paper"). You even can create guidelines that align to content on the page.
 
@@ -81,9 +81,9 @@ There are many variations. You can do a square grid, a dot grid, or a double gri
   </div>
 </div>
 
-I made this interactive grid because it felt like a good way to learn how to create grid patterns and also to practice my frontend skills, especially what I've learned about [state and controlled inputs in React](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
+I made this interactive grid because it felt like a good way to learn how to create grid patterns and also to practice my frontend skills, especially what I’ve learned about [state and controlled inputs in React](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
 
-I was inspired by [Josh Comeau](https://www.joshwcomeau.com) who writes [interactive blog posts](https://www.joshwcomeau.com/css/interactive-guide-to-grid/) and makes tools like this [CSS Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/). I also learned React mostly from Josh's course, [The Joy of React](https://www.joyofreact.com/), which I highly recommend.
+I was also inspired by [Josh Comeau](https://www.joshwcomeau.com) who writes [interactive blog posts](https://www.joshwcomeau.com/css/interactive-guide-to-grid/) and makes tools like this [CSS Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/). I also learned React mostly from Josh’s course, [The Joy of React](https://www.joyofreact.com/), which I highly recommend.
 
 ## Repeating shapes
 
@@ -305,9 +305,9 @@ It turns out there are at least three ways to repeat a shape.
 2. CSS Grid
 3. SVG Patterns
 
-I'm using SVG patterns to create the grid patterns for this interactive grid.
+I’m using SVG patterns to create the grid patterns for this interactive grid.
 
-If you're curious to know how each approach works, I explain them in more detail in the sections below.
+If you’re curious to know how each approach works, I explain them in more detail in the sections below.
 
 <div style={{margin:"var(--margin-paragraph)"}}>
 <details>
@@ -373,7 +373,7 @@ background-size: var(--cell-size) var(--cell-size);
 <details>
 <summary>Using CSS grid </summary>
 
-Let's say you want to make a square grid, first create a grid of `--num-rows` and `--num-columns` where each square in the grid is `--cell-size` wide and tall.
+Let’s say you want to make a square grid, first create a grid of `--num-rows` and `--num-columns` where each square in the grid is `--cell-size` wide and tall.
 
 ````css
 ```css .grid {
@@ -423,7 +423,7 @@ Examples of where this appraoch is used are [stripesessions.com](https://stripes
 
 This approach is similar to background images, except the parent container is an SVG `<rect>` element and the bit of space that gets repeated is a `<pattern>` element.
 
-Here's how it works:
+Here’s how it works:
 
 SVG has a `<defs>` element that can contain reusable definitions. One of the things you can define is a `<pattern>` element. Then you can reference the `<pattern>` element by passing its `id` attribute to the `fill` attribute on an the `<rect>` element.
 
@@ -440,7 +440,7 @@ SVG has a `<defs>` element that can contain reusable definitions. One of the thi
 
 Notice that `<pattern>` has a `width` and `height` attribute that define the size of the shape you want to repeat. This is similar to the `background-size` property in that it determines the density of the grid.
 
-Another important attribute on the `<pattern>` element is `patternUnits="userSpaceOnUse"`. This ensures that the width and height of the pattern won't scale up or down as size of the parent container changes. In the code above, the width and height of the pattern will be 10px x 10px, no matter how big or small the parent container is.
+Another important attribute on the `<pattern>` element is `patternUnits="userSpaceOnUse"`. This ensures that the width and height of the pattern won’t scale up or down as size of the parent container changes. In the code above, the width and height of the pattern will be 10px x 10px, no matter how big or small the parent container is.
 
 Inside the `<pattern>` element, you draw a shape using SVG shape elements:
 
@@ -450,7 +450,7 @@ Inside the `<pattern>` element, you draw a shape using SVG shape elements:
 - Other shapes you can use are `<rect>`, `<ellipse>`, `<polygon>`, `<polyline>`, `<text>` and more.
 - You can even nest a `<pattern>` element inside another `<pattern>` element.
 
-If you're interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths). To learn about SVG more generally, W3Schools has a [comprehensive tutorial](https://www.w3schools.com/graphics/svg_intro.asp).
+If you’re interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths). To learn about SVG more generally, W3Schools has a [comprehensive tutorial](https://www.w3schools.com/graphics/svg_intro.asp).
 
 </details>
 </div>
@@ -459,7 +459,7 @@ If you're interested in learning more about drawing shapes using SVG path comman
 
 Below is a simplified version of the component that renders the grid patterns.
 
-I'm layering patterns so that each one can be toggled on and off to create different pattern combinations.
+I’m layering patterns so that each one can be toggled on and off to create different pattern combinations.
 
 ```jsx
 function GridPattern() {
@@ -474,9 +474,9 @@ function GridPattern() {
 }
 ```
 
-Each layer is a component that renders a `<rect>` element that's filled by a `<pattern>` element.
+Each layer is a component that renders a `<rect>` element that’s filled by a `<pattern>` element.
 
-For example, below is the component for the vertical gridlines. The pattern's `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. The pattern that's defined is vertical line, drawn using the `<line>` element.
+For example, below is the component for the vertical gridlines. The pattern’s `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. The pattern that’s defined is vertical line, drawn using the `<line>` element.
 
 ```jsx
 function VerticalLines() {
@@ -495,15 +495,15 @@ function VerticalLines() {
 
 ## Layering on visual effects
 
-The grid pattern on [Emil's landing page](https://vaul.emilkowal.ski/) also has subtle visual effects that elevate the design.
+The grid pattern on [Emil’s landing page](https://vaul.emilkowal.ski/) also has subtle visual effects that elevate the design.
 
 - The grid fades out from the top toward the edges.
-- There's a subtle glow effect shining down on the grid.
+- There’s a subtle glow effect shining down on the grid.
 - A few of the grid cells are filled in with a solid color.
 
 I recreated these effects in my interactive grid to learn how they were implemented.
 
-Continuing with the layered approach, this is how I'm rendering the effects:
+Continuing with the layered approach, this is how I’m rendering the effects:
 
 ```jsx
 function GridPattern() {
@@ -630,7 +630,7 @@ const Glow = styled.div`
 `;
 ```
 
-Another way to impliment this would be to have the `<Glow />` layer fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it's done with the fade effect.
+Another way to impliment this would be to have the `<Glow />` layer fill the width and height of the grid, and then use positioning within the radial gradient function to control the width and height of the glow. This is how it’s done with the fade effect.
 
 ```js
 // Alternative way to implement the glow effect
@@ -648,7 +648,7 @@ const Glow = styled.div`
 
 ### Decorations
 
-You'll notice that some of the grid cells appear to be filled in with a solid color. These filled in cells are what I'm calling "decorations" and they're just another layer on the grid.
+You’ll notice that some of the grid cells appear to be filled in with a solid color. These filled in cells are what I’m calling "decorations" and they’re just another layer on the grid.
 
 The component that renders the decorations layer can render either squares...
 
@@ -687,9 +687,9 @@ The component that renders the decorations layer can render either squares...
   />
 </div>
 
-To draw the decorations, I'm mapping through an array of coordinates and rendering a `<path>` element for the squares or `<circle>` elements for the circles.
+To draw the decorations, I’m mapping through an array of coordinates and rendering a `<path>` element for the squares or `<circle>` elements for the circles.
 
-Here's simplified version of what that looks like for the squares. Each coordinate is used to populate commands (`M`, `h`, `v`, `Z`) in the `<d>` attribute of the `<path>` element. It's these commands that draw the squares at different locations on the grid.
+Here’s simplified version of what that looks like for the squares. Each coordinate is used to populate commands (`M`, `h`, `v`, `Z`) in the `<d>` attribute of the `<path>` element. It’s these commands that draw the squares at different locations on the grid.
 
 ```jsx
 function Squares({ cellSize }) {
@@ -720,13 +720,13 @@ const DECORATION_COORDINATES = [
 ];
 ```
 
-If you're interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths).
+If you’re interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths).
 
 ## Parameterizing values
 
 What I mean by parameterizing is creating variables for certain properties of the grid so they can be dynamically adjusted.
 
-It's been fun to play with the parameters and see what combinations can be created. It also helped me better understand the css properties that create these patterns and effects.
+It’s been fun to play with the parameters and see what combinations can be created. It also helped me better understand the css properties that create these patterns and effects.
 
 The parameters are passed in as props and then used to set css custom properties on the root element of the component.
 
@@ -798,7 +798,7 @@ const Fade = styled.div`
 
 To make the parameters adjustable, I created inputs that are controlled using React state.
 
-For example, here's simplified version of the code demonstrating how I used a `<Slider />` component (i.e. an `<input>` of `type="range"`) to control the cell size of the grid.
+For example, here’s simplified version of the code demonstrating how I used a `<Slider />` component (i.e. an `<input>` of `type="range"`) to control the cell size of the grid.
 
 ```jsx
 function InteractiveGrid() {
@@ -856,7 +856,7 @@ I made three types of inputs:
 
 If you toggle between light and dark mode, the colors of the grid and inputs change.
 
-That's because the grid background, fill and stroke colors are set to global color variables that have both light and dark definitions. Same with the colors used to style the inputs.
+That’s because the grid background, fill and stroke colors are set to global color variables that have both light and dark definitions. Same with the colors used to style the inputs.
 
 <div
   style={{
@@ -873,7 +873,7 @@ That's because the grid background, fill and stroke colors are set to global col
 
 One final thing I want to mention has to do with accessibility.
 
-Because the grid is purely decorative, it's important to hide it from screen readers so it doesn't get read out loud. 
+Because the grid is purely decorative, it’s important to hide it from screen readers so it doesn’t get read out loud. 
 
 To achieve this, I added the `aria-hidden` attribute to the root element of the `<GridPattern />` component. Since `aria-hidden` is inherited by all child elements, the grid pattens and visual effects will be hidden from screen readers as well. 
 
