@@ -31,110 +31,124 @@ I’ve tried a bunch of tools and features powered by large language models, but
 
 I feel like **90% plus of my use of AI has been through ChatGPT’s chat interface and Copilot’s autocomplete in VS Code.**
 
-As an aside, it’s interesting that chat and autocomplete in a text editor are the two interfaces that have had the most traction with me, probably because they go with the grain of the underlying technology. Many tools take more of a "right click to do something using AI" approach that feels bolted on and not seamlessly integrated into a workflow. Obviously we’re still in the early days, so I’m curious to see AI-powered features and interfaces evolve. 
+As an aside, it’s interesting that chat and autocomplete in a text editor are the two interfaces that have had the most traction with me, probably because they go with the grain of the underlying technology. Many tools have taken more of a "right click to do something using AI" approach that can feel bolted on and not seamlessly integrated into a workflow. Obviously we’re still in the early days and people are still experimenting and figuring out what works.
 
 So with that out of the way, below are the top ways I’ve been using AI in 2023. 
 
-## Teacher
-One of the use cases I’ve valued most is asking chat-based AI assistants to explain concepts and code syntax. 
+## Tutor
+One of the uses I’ve valued most is asking an AI to explain concepts and code syntax. 
 
 In 2023 I learned more about code and spent more time coding than any year before. It would have been much harder to learn what I did without help from AI. I definitely would have spent a lot more time feeling stuck and frustrated. 
 
 Looking back at my chat history in ChatGPT and Claude, here are some examples of things I’ve asked to have explained:
 
-- *Explain the following code line by line [code]*
-- *What does the `zip` do in `for x, y in zip(sizes[:-1], sizes[1:])`?*
-- *Can you explain the math behind gradient descent?*
-- *What are the main concepts of TypeScript?*
+- *"Explain the following code line by line [code]"*
+- *"What does the `zip` do in `for x, y in zip(sizes[:-1], sizes[1:])`?"*
+- *"Can you explain the math behind gradient descent?"*
+- *"What are the main concepts of TypeScript?"*
 
-I’d often ask follow up questions to clarify things I didn’t understand.
-- *Can you explain [this sentence, syntax, or line of code] further?*
-- *What does the `??` syntax do?*
-- *Why did you define an interface rather than a type?*
+I often asked follow up questions to clarify things I didn’t understand.
+- *"Can you explain [this sentence, syntax, or line of code] further?"*
+- *"What does the `??` syntax do?"*
+- *"Why did you define an interface rather than a type?"*
 
-I’d even challenge an explination when I thought it was wrong.
-- *I’ve been doing it this way and it seems to work. Why did you suggest this other way?*
-- *I’m trying this code and it’s doing the opposite of what you’re saying it should do. Why is that?*
+I’d even challenge an explanation when I thought it was wrong.
+- *"I’ve been doing it this way and it seems to work. Why did you suggest this other way?"*
+- *"I’m trying this code and it’s doing the opposite of what you’re saying it should do. Why is that?"*
 
 The thing is sometimes it actually is 100% wrong and sometimes it’s only sort of right. So you have to have some base knowledge and ways of validating what it says to use it effectively. 
 
 
-## Collaborator
-Another valuable use case has been asking or talking through how to approach a problem or how to fix an issue. 
+## Problem Solver
+Another valuable use case has been asking or talking through how to approach a problem or fix an issue. 
 
 For example, I asked ChatGPT, *"How might I create a table of contents component in React that links to headlines within an article written in markdown?"* and it sketched how to do it step by step. I still had to write most of the code and figure out a bunch of issues on my own, but this gave me a starting point and map to follow. 
 
-Here's another example. I asked Claude, *"I'm using styled components and my css changes depending on the value of the props I pass in. [sample of my code] What are some ways to avoid all this prop drilling?"* 
+Here’s another example. I asked Claude, *"I’m using styled components and my css changes depending on the value of the props I pass in. [sample of my code] What are some ways to avoid all this prop drilling?"* 
 
-In this case I didn't use any of the approaches it suggested, but I had a conversation with it discussing the issues with each appraoch, and that helped me think through the problem and come up with my own solution.
+In this case I didn’t use any of the approaches it suggested, but I had a conversation with it where I pointed out the issues with each appraoch, and that helped me think through the problem and come up with my own solution.
 
-In cases like this, it's been cool ask *"what about this approach instead?"* and get feedback on whether it's a good idea or not.
+In cases like this, it’s been cool ask *"what about this approach instead?"* and get feedback on whether it’s a good idea or not.
 
-When it comes to fixing issues, I've either pasted in my code and asked why the code isn't doing what I'm expecting it to do. Or I've pasted in an error message and asked, *"How would you fix this error?"* or *"What does this error mean?"* or *"What's causing this error?"* 
+When it comes to fixing issues, I’ve either pasted in my code and asked why the code isn’t doing what I’m expecting it to do. Or I’ve pasted in an error message and asked, *"How would you fix this error?"* or *"What does this error mean?"* or *"What’s causing this error?"* 
 
-## Data Convertor 
-Take data in one format and convert it to another.
-Unstructured to structured. Structured to unstructured.
-Bullet points to a paragraph. Paragraph to bullet points.
+## Data Formatter 
+Large language models are good at converting data from one format to another. Here are some examples of conversions I’ve ask for:
 
-What I mean is translating between different data formats. Turn a CSV into a JSON, or a JSON into a YAML. Turn HSL into RGB, or RGB into HEX. 
+- *"I have a json object and I need it reformatted. This the original format: ... and I’d like it in this format: ..."*
+- *"Remove the quotation marks from this text. ’--color-primary-100’: ’hsl(240deg 100% 90%)’* "
+- Extract dates from strings
+- Convert hex to float rbg 
 
-- *I have a json object and I need it reformatted. This the original format: ... and I’d like it in this format: ...*
-
-Remove the quotation marks from this text. '--color-primary-100': 'hsl(240deg 100% 90%)',
-
-Extract a date from a string
+The AI will either format the data directly or give me the code to do it. The is especially useful when regex is involved since the syntax is hard to read and remember.
 
 ## Automator
-
-Writing simple scripts to automate tasks is another common use case for me.
-
-REgex to find and replace text.
-Reformatting text, or converting between different data formats.
-
-Writing a script to create the boilerplate for a new blog post. 
-
+I’ve used AI to write simple scripts to automate tasks. For example I used it to write a script that generates the boilerplate files and folders needed for a new blog post on this site. 
 
 ## Copy Editor 
-Help me write better. Grammatical errors, spelling mistakes, and word choice. Clumbsy or clunky construction. 
+I’ve been using AI as copy editor to help me write better. 
 
-I’ll ask, how would you interpret what I wrote to see if what I’m trying to say is clear.
-- *How would you interpret this sentence?*
+If I want something proofread, I’ll paste what I’ve written into the chat and ask it to point out grammatical errors, spelling mistakes, or clumbsy construction. 
+- *"How does this paragraph sound? Are there any spelling mistakes or grammatical errors or confusing, clumsy language?"*
 - *How could I improve this text for clarity and concision?*
 
-Alternative phrases for a word or phrase I’m using.
+If I’m unsure if I’ve phrased something clearly, I’ll ask it to interpret what I wrote.
+- *"How would you interpret the following? [my writing]"*
 
-Write this in the style of William Zinsser or Strunk and White or Amazon’s writing style guide.
+Occationally I’ll ask for help finding the right word or making sure I’m using the correct terminology. 
+- *"What’s another way to say this?"*
+- *"What’s another word for folder in the context of a code repository?"*
 
-Getting correct terminology for a concept or word or thing I’m trying to describe. E.g What's another word for folder in the context of a code repository?
+I’ve tried asking it to write in a specific style, like in the style of William Zinsser or based on Amazon’s writing guidelines. Unfortunatly this never seems to give me the result I’m hoping for. 
 
+It’s interesting that even "bad" suggestions can be helpful because they help me eliminate options and can spark ideas. When I see something I know I don’t want, it can drive me to think of what I do want. I think, *no that’s all wrong, I want to say it this way instead.* 
 
 ## Summarizer
-Put in a long article or PDF and get a summary of the key points. Then ask follow up queustions. I did this with Atwul Gawande’s New Yorker article on coaching. I want to do with with annual reports but haven’t done that yet. 
+I once pasted a long article into the chat, asked for a summary of insights, and asked follow up questions. The article was Atwul Gawande’s article in *The New Yorker* about coaching.
 
-Can you summarize the key takeaways as it relates to coaching. I don't want to know about his personal history or anecdotes -- just the actionable insights and takeaways
-Sumarizing documentation is another common use case for me.
+My prompt was: 
+- *Can you summarize the key takeaways as it relates to coaching. I don’t want to know about any personal history or anecdotes, just the actionable insights and takeaways*
+
+And one follow-up question:
+- *"Does he talk about how to get a coach or any specific steps to take?"*
+
+In a few seconds I was able to see if the article contained anything specific I wanted to know about coaching, rather than having to read the whole thing to find out. 
+
+I also tried asking questions of an annual financial report, and of my own website by scraping content from it. Neither of these worked very well for me, but I’d like to try again now that the models are more advanced.
+
+Also, Amazon is now summarizing customer reviews, and so I’ve used it indirectly in this way since I’ve actaully read and benefited from the summaries.
 
 ## Researcher
-I’ve used AI to help me research topics. I’ll ask it to find articles on a topic and then summarize the key points.
+I’ve used AI to help me research topics, basically as an alternative to Google.
 
-What arguments can the "googlefinance" function take in google sheets?
+For example, I’ve asked:
+- *"What arguments can the "googlefinance" function take in google sheets?"
+- *"Let’s dive deeper on Newsletter Software. What options exist? How would you evaluate each option?"*
+- *"What are some small beachside towns in Italy where I could go on vacation?"*
 
-What questions should I ask when offered stock options as part of an employment offer?
+The benefit over a Google search is that I get detailed bullet points vs. a collection of links I have to sift through and parse myself. 
 
-Let's dive deeper on Newsletter Software. What options exist? How would you evaluate each option?
+Interestingly, I always ignored the summary from Bard that Google was putting at the top of its search results. I don’t know why exactly, but I’d guess it has something about muscle memory and expectations that have been build up over years. My brain is trained to ignore that section and go straight to the links. It sort of felt like an interuption to my expected workflow.
 
-What are some small beachside towns in Italy where I could go on vacation?
+On the other hand I love when Google can just give me the answer directly, like when it pulls up a summary from Wikepedia. 
 
-## Auto-completer 
-Obviously Copilot is great for this and the main benefit is speeding up my workflow by reducing the amount of typing I have to do and not having to look up syntax.
 
-I’ve discoverd Copilot also works for writing, since I write my blog posts in markdown in the VS Code editor. 
+## Autocompleter 
+Obviously Copilot is great for autocompleting code. The main benefit has been speeding up my workflow by reducing the amount of typing I have to do and saving me having to look up syntax.
 
-Rarely ever do I keep the exact words Copilot suggests, but it’s a great way to get ideas, play with different ways of saying things, and to get unstuck. It also helps me identify what I don’t want to say, which is just as important as what I do want to say.
+It turns out Copilot also works for writing prose. Since I write my blog posts in markdown in my code editor, it will autocomplete sentences in the same way it autocompletes code. 
 
-## What it’s not good at
-Writing articles based on bullet points or outlines. I’ve tried this a few times and it’s not good.
+Rarely do I keep the exact words Copilot suggests, but it’s a good way to get unstuck and keep the words flowing. 
+
+The downside is that it’s literally finishing my sentences, which can be somewhat annoying and intrusive. It can influence me to go in a direction I wasn’t planning on going. It will suggest something and I’ll think, *hmm that sounds reasonalble, I’ll go with that* and then I’ll realize it’s a bunch of fluff I didn’t need. I need more time with it to decide if it’s more helpful than not. 
 
 ## Going forward
-I want to integrate AI into my workflow by using the APIs to build tools that help me do my work.
+I want to find more ways to use and benefit from AI in everyday life. I also want to experiment using the APIs to build tools that help me get things done.
+
+Aside from Copilot and other autocomplete features, using AI still feels like something I have to remember to do vs. something that’s just there and I use without thinking about it.
+
+I’m curious to see if we can improve on the chat interface or if other interfaces will emerge that become equally pervasive. The chat format is great for asking questions and having conversations, but it’s also a bit clunky and high friction for many use cases. And I don’t feel like the context menu approach is the best answer either.
+
+I’m also curious to see how quaint this post will seem in the future.
+
+It’s been exciting to see this technology emerge and be rapidly adopted and improved in such a short period of time. I’m looking forward to seeing how things progress in 2024.
