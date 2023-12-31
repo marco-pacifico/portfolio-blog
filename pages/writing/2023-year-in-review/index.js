@@ -1,0 +1,1 @@
+export { default } from "./2023-year-in-review.mdx";
