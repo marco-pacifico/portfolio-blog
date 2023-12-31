@@ -55,7 +55,7 @@ export default function Home({ allPostsData, allProjectsData }) {
           <ListItem 
             title="Interactive Grid"
             description={"Adjust grid patterns, size, colors, masking, and opacity.            "}
-            href="/writing/interactive-graph-paper"
+            href="/writing/interactive-grid"
             delay={-1}
             isShown={isShown}
             >

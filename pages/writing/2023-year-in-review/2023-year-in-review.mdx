@@ -10,91 +10,80 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+import hero from "./hero.jpg";
+import Image from "next/image";
 
-Let's talk about the good things. 
+<Image src={hero} />
 
-## Green card
-In January, after two years (!) of waiting, my green card was approved. In February it was mailed out and in March it was finally in my hands. I let the process take up way too much of my mental space for far too long. I'm so glad to have it and have this chapter behind me. 
+Let’s talk about the good things. 
 
-## Code
-I picked up more code skills and coded more than ever before. Off the top of my head...
+## Green Card
+In January, after two years (!) of waiting, my green card was approved. In February it was mailed out and in March it was finally in my hands. I let the process take up way too much of my mental space for far too long. I’m so glad to have it and put this chapter behind me. 
 
-Technologies learned:
-- Next Pages Router
-- React useState, useEffect, 
-- TypeScript
-- Next App Router and React Server Components
-- Tailwind
-- Framer Motion
-- IntersectionObserver API
-- Figma Plugins API
-- Figma Variables API
-- Async Await
-- Fetch API
+## Code + AI
+In 2023 I picked up more coding skills and coded more than any year before. I did this by taking courses, watching YouTube videos, and working on side projects. Plus [I used AI to help me learn and get unstuck](/writing/how-I-use-AI). 
 
+The combination of some base of knowledge plus a little help from AI has given me a kind of leverage I didn’t have before. And it feels pretty great. 
 
-Let me list what I did:
-- Switched my site from Gatsby to Next.js
+### Technologies learned:
+Next.js Pages Router · Next.js App Router and Server Components  · React hooks like useState, useEffect, useRef, useId, useMemo and cache, createContext and useContext · Data Binding and Controled Inputs ·  Async/Await · Fetch API · TypeScript · Tailwind · Framer Motion · IntersectionObserver API · Figma Plugins API · Figma Variables API 
+
+### Some things I made:
+- Switched my site from Gatsby to Next.js pages router
 - Used IntersectionObserver to animate on scroll and animate when in view
 - Dark mode and theming using CSS variables
-- TypeScript
-- Tailwind
-- Next App Router and Server Components
-- Josh Comeau's React Course
-- Prototyped a table of contents
-- Wrote a node.js script
-- Interactive Grid Pattern
+- Created an [Interactive Grid and blog post](/writing/interactive-grid)
 - Wrote Figma plugins to generate Figma variables and draw/populate frames and components on the canvas
-- Wrote a script to generate themes
 
-Courses I took and resources I used:
-- Josh Comeau's The Joy of React course
-- Build UI
-- Bytegrad's videos
-- Kevin Powell's videos
-- 
+
+### Courses and resources I learned from:
+- Josh Comeau’s [The Joy of React](https://www.joyofreact.com) course
+- [Build UI](https://buildui.com) and [Sam Selikoff](https://www.youtube.com/@samselikoff)’s YouTube channel
+- [ByteGrad](https://www.youtube.com/@ByteGrad)’s YouTube channel
+- [Kevin Powell](https://www.youtube.com/@KevinPowell)’s YouTube channel
 
 ## Travel
-I traveled a lot in 2023. I think only three months didn't have a trip and some months had multiple trips. I also just generally did more things and spent more money on entertainment and food and drinks. I think 2023 was the first year post-pandemic where things felt fully open and free of restrictions or fear. 
+I traveled a lot in 2023. I think there were only three months when I didn’t have a trip, and some months had multiple trips. I also generally did more things and spent more money on entertainment, food, and drinks. I think 2023 was the first year post-pandemic where things felt fully open and free of restrictions or uneasiness. 
 
-- Mexico City
-- Rio
-- Fire Island
-- Sicily
-- Paris
-- San Francisco
-- Miami 4x
-- Hometown 2x
+### Destinations
+Mexico City · Rio de Janeiro · Fire Island · Sicily · Paris · San Francisco · Miami 4x · Hometown 2x
 
 ## The Brass Factory
-One of my goals for 2023 was to spend less time in my apartment. Actually I was committed to getting out of my apartment as much as possible. 
+One of my goals for 2023 was to spend as little time in my apartment as possible. After nearly three years of working from the same low-lit room, I was desperate to get out.
 
-To that end, I rented a desk at a co-working space. Lots of light. Lots of plants. It was so worth it for my mental health. 
+To that end, I rented a desk at a co-working space that has lots of natural light and lots of plants. It turned out to be absolutely worth it for my mental health and general quality of life.
 
-## Design Systems and Design Engineering
-- Figma Variables
-- Theming
+## Design Systems
 
-## Financial tracking 
-Finally got 
+In July I left Capsule and joined OpenStore to lead design systems. I’m excited to be working on a multi-brand design system and to be bridging the gap between design and engineering. It’s been fun going deep on things like Figma variables and plugins, theming, and component libraries.
 
-***
+## Financial Tracking 
+I consolidated my investments and leveled up how I track my finances. At any given time I now know my asset allocation, spending rate, savings rate, tax rate, inflation rate, investment growth and rate of return, and net worth. This actually took me a lot of time to set up and get right. But now that it’s done, it’s fairly easy to maintain, and I should continue to benefit from it. 
 
-Now, something that wasn't so great...
+<div 
+  style={{
+    margin: "3rem",
+  }}
+/>
 
-## Layoffs and bad vibes in tech
-In January many people I worked with were let go, and for the first time ever, I had to personally deliver the news. It sucked. And it really set the tone for the next few months and if I'm being honest for the rest of the year. 
+Now, something that wasn’t so great...
 
-It's been a weird year in tech. It feels like a big balloon popped in 2022 and has been continually deflating all year. Vibes are off. I still sense fear and malaise in the air, and it's hard to shake the feeling things just aren't as good as they used to be. 
+## Layoffs
+In January many people I worked with were let go, and for the first time ever I had to personally deliver the news. It fucking sucked. And it set the tone for the next few months and if I’m being honest for the rest of the year. 
 
-I'm hoping optimism and excitement will return in 2024.
+I’m grateful I wasn’t let go and that I have a job.
 
-***
+But still... it’s been a weird year for me and I think for a lot of people in tech. It feels like a big balloon popped in 2022 and it’s still deflating. Vibes feel off. Fear and malaise seem to be in the air, and it’s hard to shake the feeling that things just aren’t as good as they used to be. 
 
-## Looking ahead
+I’m hoping optimism and excitement will return in 2024.
+
+
+## Looking Ahead
+I’ll close out with some advice for myself to follow in the new year. 
 
 - Start at the end with the story you want to be able to tell and work backwards from there. Also be clear on who you want to tell your story to.
-- Write, write, write!
-- Make more things for myself i.e. side projects
-- Work in public i.e. share things
-- Work on things that compound and that build up over time
+- Write!
+- Make more things for yourself (i.e. side projects)
+- Work in public (i.e. share things)
+- Work on things that compound and build up over time
+

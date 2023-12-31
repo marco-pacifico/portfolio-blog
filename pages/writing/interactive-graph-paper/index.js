@@ -1,1 +1,0 @@
-export { default } from "./interactive-graph-paper.mdx";
