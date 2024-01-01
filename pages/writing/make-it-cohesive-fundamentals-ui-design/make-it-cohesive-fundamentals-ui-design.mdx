@@ -10,6 +10,8 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+import Link from "next/link";
+
 
 Interfaces that look cohesive feel easier to use. 
 
@@ -44,3 +46,13 @@ Don’t use three styles when one style will do.
 Styles should support levels of hierarchy in the UI (e.g. headings and paragraphs, primary and secondary actions). Remove styles that aren’t serving this purpose. Add styles only to fill gaps in hierarchy. Then apply them consistently across the UI.
 
 This goes for text and interactive elements. 
+
+---
+*This is post is part of a series on the **fundamentals of interface design**.*
+
+*The series summarizes technical knowledge and best practices that make it easier for humans to interact with software on screens.*
+
+- <Link href={"/writing/create-clarity-fundamentals-ui-design"}>Create Clarity</Link>
+- <Link href={"/writing/create-hierarchy-fundamentals-ui-design"}>Create Hierarchy</Link>
+- <Link href={"/writing/display-feedback-fundamentals-ui-design"}>Display Feedback</Link>
+- <Link href={"/writing/enable-recovery-fundamentals-ui-design"}>Enable Recovery</Link>

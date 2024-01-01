@@ -10,7 +10,7 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
-
+import Link from "next/link";
 
 Hierarchy communicates the relative importance of elements on the page.
 
@@ -45,3 +45,13 @@ Show information that communicates the location and purpose of the UI — “Whe
 Nest elements to enable “drilling down” into content. This allows a user to progressively view information with increasing specificity, as they need it, rather than having to view everything up front and all at once. 
 
 One way to nest elements is to use expandable and collapsable sections to show and hide information. Another way is to organize content into first-level and second-level pages. 
+
+---
+*This is post is part of a series on the **fundamentals of interface design**.*
+
+*The series summarizes technical knowledge and best practices that make it easier for humans to interact with software on screens.*
+
+- <Link href={"/writing/create-clarity-fundamentals-ui-design"}>Create Clarity</Link>
+- <Link href={"/writing/make-it-cohesive-fundamentals-ui-design"}>Make It Cohesive</Link>
+- <Link href={"/writing/display-feedback-fundamentals-ui-design"}>Display Feedback</Link>
+- <Link href={"/writing/enable-recovery-fundamentals-ui-design"}>Enable Recovery</Link>

@@ -10,6 +10,7 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+import Link from "next/link";
 
 If the UI has changed state or if it’s in the process of changing state, then the user needs to know about it — especially when the change was triggered by an action the user took.  
 
@@ -30,3 +31,13 @@ A UI needs to show feedback for the following states:
 **Connection Status** if data isn’t syncing.
 
 **Interactivity** Hover, Pressed, Focused, Disabled states on interactive elements like buttons, links, inputs, and controls.
+
+---
+*This is post is part of a series on the **fundamentals of interface design**.*
+
+*The series summarizes technical knowledge and best practices that make it easier for humans to interact with software on screens.*
+
+- <Link href={"/writing/create-clarity-fundamentals-ui-design"}>Create Clarity</Link>
+- <Link href={"/writing/create-hierarchy-fundamentals-ui-design"}>Create Hierarchy</Link>
+- <Link href={"/writing/make-it-cohesive-fundamentals-ui-design"}>Make It Cohesive</Link>
+- <Link href={"/writing/enable-recovery-fundamentals-ui-design"}>Enable Recovery</Link>

@@ -10,6 +10,7 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+import Link from "next/link";
 
 Don’t create dead ends. A dead end is a path in the UI that ends on a view with no options. 
 
@@ -22,3 +23,13 @@ UI patterns that enable recovery include:
 - Back
 - Retry, redo, recover
 - End on a main menu or start page
+
+---
+*This is post is part of a series on the **fundamentals of interface design**.*
+
+*The series summarizes technical knowledge and best practices that make it easier for humans to interact with software on screens.*
+
+- <Link href={"/writing/create-clarity-fundamentals-ui-design"}>Create Clarity</Link>
+- <Link href={"/writing/create-hierarchy-fundamentals-ui-design"}>Create Hierarchy</Link>
+- <Link href={"/writing/make-it-cohesive-fundamentals-ui-design"}>Make It Cohesive</Link>
+- <Link href={"/writing/display-feedback-fundamentals-ui-design"}>Display Feedback</Link>

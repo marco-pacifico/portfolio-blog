@@ -10,6 +10,7 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+import Link from "next/link";
 
 The opposite of clarity is confusion. 
 
@@ -65,4 +66,15 @@ Familiar concepts can instantly convey the functionality of a feature, or even t
 A pencil icon, for example, implies text editing. A progress bar indicates a beginning, middle, and end in a process, and a goal to be reached.
 
 ## Create Hierarchy
-One of the most effective ways to provide clarity is to communicate the relative importance of elements on the page. That is to [create hierarchy](/writing/create-hierarchy-fundamentals-ui-design). 
+One of the most effective ways to provide clarity is to communicate the relative importance of elements on the page. That is to <Link href="/writing/create-hierarchy-fundamentals-ui-design">create hierarchy</Link>.
+
+
+---
+*This is post is part of a series on the **fundamentals of interface design**.*
+
+*The series summarizes technical knowledge and best practices that make it easier for humans to interact with software on screens.*
+
+- <Link href={"/writing/create-hierarchy-fundamentals-ui-design"}>Create Hierarchy</Link>
+- <Link href={"/writing/make-it-cohesive-fundamentals-ui-design"}>Make It Cohesive</Link>
+- <Link href={"/writing/display-feedback-fundamentals-ui-design"}>Display Feedback</Link>
+- <Link href={"/writing/enable-recovery-fundamentals-ui-design"}>Enable Recovery</Link>
