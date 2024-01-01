@@ -20,7 +20,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData, allProjectsData }) {
-  const postsLimit = 3;
+  const postsLimit = 10;
   const filteredPosts = allPostsData.filter(({category}) => category !== "Code");
   const postsToShow = filteredPosts.slice(0, postsLimit);
   const [postsListRef, isShown] = useIsOnScreen({});
