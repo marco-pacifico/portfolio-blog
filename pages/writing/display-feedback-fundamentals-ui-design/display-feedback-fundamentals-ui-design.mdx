@@ -1,0 +1,32 @@
+---
+title: Display Feedback
+date: '2021-04-02'
+category: Blog Post
+description: Fundamentals of interface design
+slug: display-feedback-fundamentals-ui-design
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+If the UI has changed state or if it’s in the process of changing state, then the user needs to know about it — especially when the change was triggered by an action the user took.  
+
+Feedback reduces uncertainty and frustration for the user, and preserves their confidence in the UI.  
+
+A UI needs to show feedback for the following states:
+
+**Success** when a change in state was successful. This doesn’t always have to be a green checkmark and a success message. It can be as subtle as changing a label from “on” to “off,” for example. 
+
+**Error** when a change in state failed or an input was invalid.
+
+**Progress** when quantity or position has incremented. 
+
+**Loading** when the UI is between states, waiting for data to load. 
+
+**Empty** when there is no data to show. This makes it clear there is no data rather than a bug or connection error. 
+
+**Connection Status** if data isn’t syncing.
+
+**Interactivity** Hover, Pressed, Focused, Disabled states on interactive elements like buttons, links, inputs, and controls.
