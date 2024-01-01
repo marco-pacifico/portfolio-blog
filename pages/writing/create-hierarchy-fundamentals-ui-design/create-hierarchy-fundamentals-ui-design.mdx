@@ -1,0 +1,58 @@
+---
+title: Create Hierarchy
+date: '2021-04-03'
+category: Design
+description: Fundamentals of interface design
+slug: create-hierarchy-fundamentals-ui-design
+featured: true
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+import Link from "next/link";
+
+Hierarchy communicates the relative importance of elements on the page.
+
+If everything is a priority then nothing is a priority. 
+
+Without hierarchy, each element commands the same amount of attention, which means a user has to read everything from top to bottom to get the whole picture. 
+
+When hierarchy is established the number of things a user has to take in at once is reduced. 
+
+The goal of hierarchy is to guide a user’s attention in a sequence that makes it:
+- Easier to absorb and comprehend the UI
+- Faster to discover relevant information and actions. Usually this means guiding attention from the general to the specific. 
+
+**There are two ways to create hierarchy:**
+
+## Adjust visual prominence to draw attention
+Create visual hierarchy by making one element more (or less) visually prominent than other elements. 
+
+### Visual prominence increases with contrast, and contrast increases with surface area and the difference in darkness between a foreground and background color. 
+
+Headings should be more prominent than paragraph text, and primary actions should be more prominent than secondary or tertiary ones. 
+
+To make text more prominent, for example, increase font size and/or font weight (i.e. its surface area), and make it darker if it’s on a light background. 
+
+To emphasize an entire area of the UI, apply a different background color, add a border, and/or use shadow to increase its contrast and give the appearance of elevation. 
+
+## Arrange elements so that important content is seen first
+Structural hierarchy (document hierarchy for web pages) refers to the order of elements on a page, and the nesting of child elements within parent elements. 
+
+Show information that communicates the location and purpose of the UI — “Where am I? What is this?” — first. It sounds obvious but this is why page titles and navigation breadcrumbs go at the top of a page.
+
+Nest elements to enable “drilling down” into content. This allows a user to progressively view information with increasing specificity, as they need it, rather than having to view everything up front and all at once. 
+
+One way to nest elements is to use expandable and collapsable sections to show and hide information. Another way is to organize content into first-level and second-level pages. 
+
+---
+*This is post is part of a series on the **fundamentals of interface design**.*
+
+*The series summarizes technical knowledge and best practices that make it easier for humans to interact with software on screens.*
+
+- <Link href={"/writing/create-clarity-fundamentals-ui-design"}>Create Clarity</Link>
+- <Link href={"/writing/make-it-cohesive-fundamentals-ui-design"}>Make It Cohesive</Link>
+- <Link href={"/writing/display-feedback-fundamentals-ui-design"}>Display Feedback</Link>
+- <Link href={"/writing/enable-recovery-fundamentals-ui-design"}>Enable Recovery</Link>

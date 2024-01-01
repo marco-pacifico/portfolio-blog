@@ -1,0 +1,1 @@
+export { default } from "./make-it-cohesive-fundamentals-ui-design.mdx";

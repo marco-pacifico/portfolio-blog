@@ -1,0 +1,1 @@
+export { default } from "./enable-recovery-fundamentals-ui-design.mdx";

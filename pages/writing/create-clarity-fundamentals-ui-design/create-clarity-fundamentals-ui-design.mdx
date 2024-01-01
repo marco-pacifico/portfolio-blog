@@ -1,0 +1,81 @@
+---
+title: Create Clarity
+date: '2021-04-05'
+category: Design
+description: Fundamentals of interface design
+slug: create-clarity-fundamentals-ui-design
+featured: true
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+import Link from "next/link";
+
+The opposite of clarity is confusion. 
+
+A confusing UI can make even simple tasks difficultg because a user has to make sense of what they’re looking at before they can make a decision and take action.  
+
+A clear UI is self-evident, meaning it’s immediately obvious what to do, how to do it, and why. It delivers on the UX design maxim, _don’t make me think_.
+
+## Eliminate or Deemphasize
+Ask, does this piece of the UI support the job to be done? If not, then remove it or deemphasize it. 
+
+For example, get rid of optional fields in a form, or  move rarely-changed settings to a secondary view. 
+
+## Use Labels
+It can be confusing when an interface is missing labels. This includes labels on form elements, headings for different areas of content, and page titles.
+
+A label is one of the easiest ways to remove ambiguity. These bits of text allow a user quickly understand what things do and identify what they need. 
+
+## Make Controls Visible
+Controls (buttons, toggles, dropdowns) enable action, navigation, and input. But they also inform and instruct. 
+
+Don’t hide or obfuscate important actions behind overflow menus or collapsed sections, and don’t place them far away from the content they’re related to. 
+
+If the UI has a primary action, then try to show it in the main view, and make it more visually prominent than secondary actions.
+
+Use signifiers (e.g. underlined text and a hover state) to distinguish interactive elements from other content. 
+
+Finally, don’t make a user guess what a control will do by using vague language or, worse, by not using a label at all.
+
+## Group Related Things
+Divide the interface logically by grouping content into sections based on category of information, function, or sequence within a workflow. 
+
+Organizing the UI in this way is like creating a map for the user. They’ll get an overview and quickly find what’s relevant to them. 
+
+## Shorten Copy
+People don’t read UIs, they scan. Replace blocks of text with a pithy sentence. Even better, use a label.
+
+## Check Contrast
+Make sure the contrast ratios of text on backgrounds are meeting accessibility standards. Contrast ratios should be at least 3:1 for large text and 4.5:1 for small text. 
+
+I use a Figma plugin called Contrast to quickly check contrast ratios in my designs.  
+
+## Use Established Patterns
+People use and are familiar with many UIs. Piggyback on their prior knowledge to make your UI easier to understand and use. Don’t ask users to learn novel layouts and interactions if it’s not necessary. 
+
+Examples of established patterns include:
+- Placing a submit button at the bottom of a form.
+- Using a stepper to indicate progress in a flow.
+- Using a page layout that follows the F-shaped pattern of how people naturally scan a page. 
+
+## Use Metaphor
+Familiar concepts can instantly convey the functionality of a feature, or even the mental model of an entire application. 
+
+A pencil icon, for example, implies text editing. A progress bar indicates a beginning, middle, and end in a process, and a goal to be reached.
+
+## Create Hierarchy
+One of the most effective ways to provide clarity is to communicate the relative importance of elements on the page. That is to <Link href="/writing/create-hierarchy-fundamentals-ui-design">create hierarchy</Link>.
+
+
+---
+*This is post is part of a series on the **fundamentals of interface design**.*
+
+*The series summarizes technical knowledge and best practices that make it easier for humans to interact with software on screens.*
+
+- <Link href={"/writing/create-hierarchy-fundamentals-ui-design"}>Create Hierarchy</Link>
+- <Link href={"/writing/make-it-cohesive-fundamentals-ui-design"}>Make It Cohesive</Link>
+- <Link href={"/writing/display-feedback-fundamentals-ui-design"}>Display Feedback</Link>
+- <Link href={"/writing/enable-recovery-fundamentals-ui-design"}>Enable Recovery</Link>
