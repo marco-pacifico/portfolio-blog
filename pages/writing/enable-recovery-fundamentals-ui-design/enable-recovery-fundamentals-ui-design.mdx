@@ -1,8 +1,8 @@
 ---
-title: Title
-date: "2023-03-10"
+title: Enable Recovery
+date: '2021-04-02'
 category: Blog Post
-description: Description
+description: Fundamentals of interface design
 slug: enable-recovery-fundamentals-ui-design
 ---
 
@@ -10,3 +10,15 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+
+Don’t create dead ends. A dead end is a path in the UI that ends on a view with no options. 
+
+Every action should be reversible. There should always be a way to navigate back or forward or to take another action. 
+
+In rare cases where none of these options are possible, use copy to tell the user what happened and provide guidance on what to do next. 
+
+UI patterns that enable recovery include:
+- Undo
+- Back
+- Retry, redo, recover
+- End on a main menu or start page
