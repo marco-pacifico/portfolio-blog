@@ -100,7 +100,7 @@ function VerticalLines({ cellSize }) {
     <>
       <defs>
         <pattern
-          id="gridLine"
+          id="verticalGridLine"
           width={cellSize}
           height={cellSize}
           patternUnits="userSpaceOnUse"
@@ -116,7 +116,7 @@ function VerticalLines({ cellSize }) {
           ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#gridLine)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill="url(#verticalGridLine)" strokeWidth={0} />
     </>
   );
 }
@@ -125,7 +125,7 @@ function HorizontalLines({ cellSize }) {
     <>
       <defs>
         <pattern
-          id="gridLine"
+          id="horizontalGridLine"
           width={cellSize}
           height={cellSize}
           patternUnits="userSpaceOnUse"
@@ -141,7 +141,7 @@ function HorizontalLines({ cellSize }) {
           ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#gridLine)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill="url(#horizontalGridLine)" strokeWidth={0} />
     </>
   );
 }
