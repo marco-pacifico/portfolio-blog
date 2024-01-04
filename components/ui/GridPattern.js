@@ -62,6 +62,16 @@ const Fade = styled.div`
     transparent
   );
 
+  -webkit-mask-image: radial-gradient(
+    100% var(--fade-coverage) at top center,
+    white,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+
   /* GRID */
   --grid-opacity: ${(props) => props.gridOpacity / 100};
   --cell-size: ${(props) => props.cellSize}px;
@@ -100,7 +110,7 @@ function VerticalLines({ cellSize }) {
     <>
       <defs>
         <pattern
-          id="verticalGridLine"
+          id="vLine"
           width={cellSize}
           height={cellSize}
           patternUnits="userSpaceOnUse"
@@ -116,7 +126,7 @@ function VerticalLines({ cellSize }) {
           ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#verticalGridLine)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill="url(#vLine)" strokeWidth={0} />
     </>
   );
 }
@@ -125,7 +135,7 @@ function HorizontalLines({ cellSize }) {
     <>
       <defs>
         <pattern
-          id="horizontalGridLine"
+          id="hLine"
           width={cellSize}
           height={cellSize}
           patternUnits="userSpaceOnUse"
@@ -141,7 +151,7 @@ function HorizontalLines({ cellSize }) {
           ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#horizontalGridLine)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill="url(#hLine)" strokeWidth={0} />
     </>
   );
 }
