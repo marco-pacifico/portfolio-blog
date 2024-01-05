@@ -61,7 +61,6 @@ const Fade = styled.div`
     rgba(255, 255, 255, 0.05),
     transparent
   );
-
   -webkit-mask-image: radial-gradient(
     100% var(--fade-coverage) at top center,
     white,
