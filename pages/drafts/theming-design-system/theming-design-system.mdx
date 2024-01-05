@@ -1,5 +1,5 @@
 ---
-title: Theming Color
+title: Theme Colors
 category: Design
 description: A series on theming in design systems
 slug: theming-design-system
@@ -12,31 +12,27 @@ export default ({ children }) => (
 
 
 ---
-- A series on theming in design systems 
-- Color Schemes
-- Typography
-  - Headings, Paragraphs, UI Text
-  - Type scale to support hierarchy
-    - Size and line-height combinations, suport baseline grid and vertical rhythm
-  - Font weight to support hierarchy
-  - Font Family to support brand identity and use cases
-   - Expressive vs. functional
-  - Adjusting font-size, line-height, and letter-spacing based on font-family
-- Other Visual Properties
-  - Radius
-  - Density
-  - Shadows and Effects (Flat vs. Elevated)
-  - Solid vs. translucent background
-  - And pretty much anything else that can styled with CSS 
-- Creating Brand Themes
-  - Deciding what to support in your theme
-  - Configuring a theme
-  - Generating a theme
-  - Supporting overrides and customizations
-- Component Variants vs. Theme Properties
 
-Intro
-- Color is the most important (and complex) part of theming. 
+Color is the most important — and as you'll see, complex — part of theming. 
+
+### Colors Differentiate Brands
+Themes let you support multiple brand identities with the same set of UI components, and color is one of the main things that visually differentiates one brand from another. 
+ 
+[Color as a brand differentiator. Brand A, B, C]
+
+But colors do more than differntiate one brand from another.
+
+### Colors Have Functional Jobs
+Colors also have funcitonal jobs to do in the interface. They help guide someone's attention to make it easier for them to do what they came to do. This is done in two ways:
+1. Creating hierarchy 
+2. Communicating meaning
+
+Color is one of the most important tools we have to guide someone's attention. This is done in two main ways:
+1. Hierarchy 
+2. Meaning
+
+
+
 - A theme can change many visual properties, but without a change in color, it would be hard to tell that a theme has changed. 
 - Themes are usually created to support multiple brand identities with the same set of UI components, and color is one of the main things that visually differentiates one brand from another. 
 
@@ -46,16 +42,20 @@ Intro
 
 Colors are there for a reason. They have jobs to do.
 - Create the contrast needed to create hierarchy in the interface.
+- Create the contrast needed to make text readable and accessible.  
 - Give feedback to users by communicating interactivity and state. (e.g. hover, focus, active, success, error, warning, etc.)
+  - Affordance, signifiers, semantic meaning
 - Support user preferences like mode of the interface. (e.g. light, dark, etc.)
-- Support accessibility by meeting contrast requirements. (e.g. WCAG AA, WCAG AAA, etc.)
+- Ensure accessibility by meeting contrast requirements. (e.g. WCAG AA, WCAG AAA, etc.)
 
 
 Given these various jobs, it's important to have a color palette that supports these jobs.
 
 A color is a hue and shade. 
-Hue is the 
-Shade 
+Hue is the color itself.
+Shade is the lightness or darkness of the color.
+
+
 
 - A range of shades and hues is needed to support an interface. 
   - Different elements need different colors. (Text, Background, Border, Icon, Shadow, etc.)  
@@ -96,73 +96,3 @@ Shade
 
 
 
-
-
-
---- 
-## Themes are a way to change the look and feel of UI components
-A theme changes the styling of UI elements without changing thier underlying structure or functionality.
-
-A theme changes the look and feel of UI elements without changing thier underlying structure or functionality. 
-
-
-The benefit is that you can use the same UI components in different contexts. It's form of leverage. Solve a problem once and reuse the solution in different contexts. 
-
-Probaly the most common use case for theming is light and dark. 
-
-Branding is another use case for theming. Some companies need to support multiple brands. Each brand has its own visual identity. The UI components need to look different for each brand, but the UI components themselves are the same. library wants their components to be flexible enough to work for different brands.
-
-What is a brand? A brand is a visual identity that communicates certain values, attributes, and emotions.
-
-For example, a company might have multiple brands. Each brand has its own identity or personality. The company might want to use the same UI components for each brand, but the UI components need to look different for each brand.
-Another reason to theme is to support multiple brands. For example, a company might have multiple brands. Each brand has its own identity or personality. The company might want to use the same UI components for each brand, but the UI components need to look different for each brand.
-
-
-
-But I want go further than that. I want to talk about how themes can be used to support multiple brands.
-
-For example, let's look at a simple `<Button />` component. The component itself is a button with a label. The theme changes the color of the button and the color of the label.
-
-- Button brand A
-- Button brand B
-- Button brand C
-
-
-
-
-
-
-## Themes vs. Variants
-The buttton's theme is different from its variants. 
-
-A variant is created to support diffent use cases and levels of hierarchy. 
-
-For example, a primary button and a secondary button. The primary button is used for the most important action on a page. The secondary button is used for less important actions.
-
-Each of these variants can be used with any theme.
-
-That being said, variants can also be used to support styling that might be considered part of theme choice.
-
-e.g. classic button vs. modern button vs. flat button
-
-
-```jsx
-    <Button variant="classic">Edit profile</Button>
-    <Button variant="solid">Edit profile</Button>
-    <Button variant="soft">Edit profile</Button>
-    <Button variant="surface">Edit profile</Button>
-    <Button variant="outline">Edit profile</Button>
-```
-
-
-You can combine a theme and a variant to create a primary button with a dark theme and a secondary button with a light theme. 
-
-## Why Even Theme?
-Branding is the most common reason to theme.
-
-
-## What Properties Can Be Themed?
-
-- Color palettes or color schemes
-- Typography
-- Corner radius
