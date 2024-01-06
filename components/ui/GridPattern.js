@@ -105,11 +105,12 @@ const Glow = styled.div`
 `;
 
 function VerticalLines({ cellSize }) {
+  const id = React.useId();
   return (
     <>
       <defs>
         <pattern
-          id="vLine"
+          id={`vertical-line-${id}`}
           width={cellSize}
           height={cellSize}
           patternUnits="userSpaceOnUse"
@@ -125,16 +126,17 @@ function VerticalLines({ cellSize }) {
           ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#vLine)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill={`url(#vertical-line-${id})`} strokeWidth={0} />
     </>
   );
 }
 function HorizontalLines({ cellSize }) {
+  const id = React.useId();
   return (
     <>
       <defs>
         <pattern
-          id="hLine"
+          id={`horizontal-ine-${id}`}
           width={cellSize}
           height={cellSize}
           patternUnits="userSpaceOnUse"
@@ -150,17 +152,18 @@ function HorizontalLines({ cellSize }) {
           ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#hLine)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill={`url(#horizontal-ine-${id})`} strokeWidth={0} />
     </>
   );
 }
 
 function Dots({ cellSize }) {
+  const id = React.useId();
   return (
     <>
       <defs>
         <pattern
-          id="dotGrid"
+          id={`dot-grid-${id}`}
           width={cellSize}
           height={cellSize}
           x="50%"
@@ -174,17 +177,18 @@ function Dots({ cellSize }) {
           />
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#dotGrid)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill={`url(#dot-grid-${id})`} strokeWidth={0} />
     </>
   );
 }
 
 function InnerGrid({ cellSize }) {
+  const id = React.useId();
   return (
     <>
       <defs>
         <pattern
-          id="innerGrid"
+          id={`inner-grid-${id}`}
           width={cellSize / 3}
           height={cellSize / 3}
           patternUnits="userSpaceOnUse"
@@ -207,7 +211,7 @@ function InnerGrid({ cellSize }) {
           ></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#innerGrid)" strokeWidth={0} />
+      <rect width="100%" height="100%" fill={`url(#inner-grid-${id})`} strokeWidth={0} />
     </>
   );
 }

@@ -475,18 +475,43 @@ function GridPattern() {
 
 Each layer is a component that renders a `<rect>` element that’s filled by a `<pattern>` element.
 
-For example, below is the component for the vertical gridlines. The pattern’s `id = gridLine` is passed to the `fill` attribute on the `<rect>` element. The pattern that’s defined is vertical line, drawn using the `<line>` element.
+For example, below is the component for the vertical gridlines. The pattern’s `id = vertical-line` is passed to the `fill` attribute on the `<rect>` element. The pattern that’s defined is vertical line, drawn using the `<line>` element.
 
 ```jsx
 function VerticalLines() {
   return (
     <>
       <defs>
-        <pattern id="gridLine">
-          <line x1="1" y1="0" x2="1" y2="1"><line>
+        <pattern id="vertical-line">
+          <line x1="1" y1="0" x2="1" y2="1"></line>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#gridLine)" />
+      <rect width="100%" height="100%" fill="url(#vertical-line)" />
+    </>
+  );
+}
+```
+
+## Using Unique Pattern IDs
+I noticed a bug on Chrome where the grid in the hero looked and worked as expected, but the rest of grids throught this blog post looked broken. 
+
+Playing around in the dev tools, if I changed the `id` attribute on the `<pattern>` element, the grid would render correctly.
+
+A lightbulb went off. I realized that because I use the same component to render each grid pattern, the `id` attribute was being repeated. Chrome was probably getting confused because it was trying to render multiple elements with the same `id`. Surprisingly this wasn't an issue in Safari.
+
+To fix this, I used React's `useId` hook to create a unique id for each layer.
+
+```jsx
+function VerticalLines() {
+  const id = useId();
+  return (
+    <>
+      <defs>
+        <pattern id={`vertical-line-${id}`}>
+          ...
+        </pattern>
+      </defs>
+      <rect fill={`url(#vertical-line-${id})`} />
     </>
   );
 }
@@ -720,6 +745,7 @@ const DECORATION_COORDINATES = [
 ```
 
 If you’re interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths).
+
 
 ## Parameterizing values
 
