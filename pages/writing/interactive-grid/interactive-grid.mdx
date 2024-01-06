@@ -84,7 +84,7 @@ I made this interactive grid because it felt like a good way to learn how to cre
 
 I was also inspired by [Josh Comeau](https://www.joshwcomeau.com) who writes [interactive blog posts](https://www.joshwcomeau.com/css/interactive-guide-to-grid/) and makes tools like this [CSS Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/). I also learned React mostly from Josh’s course, [The Joy of React](https://www.joyofreact.com/), which I highly recommend.
 
-## Repeating shapes
+## Repeating Shapes
 
 To create a grid pattern you draw a shape in a small bit of space. 
 
@@ -296,7 +296,7 @@ L shapes create a square grid and circles create a dot grid.
 
 </div>
 
-## How to repeat shapes
+## How To Repeat Shapes
 
 It turns out there are at least three ways to repeat a shape.
 
@@ -454,7 +454,7 @@ If you’re interested in learning more about drawing shapes using SVG path comm
 </details>
 </div>
 
-## Layering patterns
+## Layering Patterns
 
 Below is a simplified version of the component that renders the grid patterns.
 
@@ -492,32 +492,7 @@ function VerticalLines() {
 }
 ```
 
-## Using Unique Pattern IDs
-I noticed a bug on Chrome where the grid in the hero looked and worked as expected, but the rest of grids throught this blog post looked broken. 
-
-Playing around in the dev tools, if I changed the `id` attribute on the `<pattern>` element, the grid would render correctly.
-
-A lightbulb went off. I realized that because I use the same component to render each grid pattern, the `id` attribute was being repeated. Chrome was probably getting confused because it was trying to render multiple elements with the same `id`. Surprisingly this wasn't an issue in Safari.
-
-To fix this, I used React's `useId` hook to create a unique id for each layer.
-
-```jsx
-function VerticalLines() {
-  const id = useId();
-  return (
-    <>
-      <defs>
-        <pattern id={`vertical-line-${id}`}>
-          ...
-        </pattern>
-      </defs>
-      <rect fill={`url(#vertical-line-${id})`} />
-    </>
-  );
-}
-```
-
-## Layering on visual effects
+## Layering Visual Effects
 
 The grid pattern on [Emil’s landing page](https://vaul.emilkowal.ski/) also has subtle visual effects that elevate the design.
 
@@ -546,7 +521,7 @@ function GridPattern() {
 }
 ```
 
-### Fade effect
+### Fade
 
 <div
   style={{
@@ -747,7 +722,7 @@ const DECORATION_COORDINATES = [
 If you’re interested in learning more about drawing shapes using SVG path commands, [Nanda Syahrasyad](https://www.nan.fyi) wrote an amazing interactive guide, [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths).
 
 
-## Parameterizing values
+## Parameterizing Values
 
 What I mean by parameterizing is creating variables for certain properties of the grid so they can be dynamically adjusted.
 
@@ -819,7 +794,7 @@ const Fade = styled.div`
 `;
 ```
 
-## Controlled inputs
+## Controlled Inputs
 
 To make the parameters adjustable, I created inputs that are controlled using React state.
 
@@ -877,7 +852,7 @@ I made three types of inputs:
 <ColorPicker />
 </div>
 
-## Light and dark mode
+## Light and Dark Mode
 
 If you toggle between light and dark mode, the colors of the grid and inputs change.
 
@@ -894,7 +869,7 @@ That’s because the grid background, fill and stroke colors are set to global c
   <DarkToggle />
 </div>
 
-## Invisible and important
+## Invisible and Important
 
 One final thing I want to mention has to do with accessibility.
 
@@ -919,4 +894,27 @@ function GridPattern() {
 }
 ```
 
+## Using Unique Pattern IDs
+*Update:* After I published this post, I noticed a bug on Chrome where the grid in the hero looked and worked as expected, but the rest of grids throught this blog post looked broken. 
 
+Playing around in the dev tools, if I changed the `id` attribute on the `<pattern>` element, the grid would render correctly.
+
+A lightbulb went off. I realized that because I use the same component to render each grid pattern, the `id` attribute was being repeated. Chrome was probably getting confused because it was trying to render multiple elements with the same `id`. Surprisingly this wasn't an issue in Safari.
+
+To fix this, I used React's `useId` hook to create a unique id for each layer.
+
+```jsx
+function VerticalLines() {
+  const id = useId();
+  return (
+    <>
+      <defs>
+        <pattern id={`vertical-line-${id}`}>
+          ...
+        </pattern>
+      </defs>
+      <rect fill={`url(#vertical-line-${id})`} />
+    </>
+  );
+}
+```
