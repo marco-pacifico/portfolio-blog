@@ -1,7 +1,7 @@
 ---
-title: Theme Colors
+title: When and Why Theming Makes Sense
 category: Design
-description: A series on theming in design systems
+description: Part one of a series on theming in design systems
 slug: theming-design-system
 ---
 
@@ -10,130 +10,73 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-I can't talk about theming without talking about color. Color is the most obvious part of a theme. It's also the most complex. 
+Theming means that the same component library can be used to build multiple products, and each product can have completely different look and feel. 
 
-[Theme one, theme 2]
+- One component library
+- Supports multiple products
+- Each product has a different look and feel
 
-Why is color a complex topic? Two reasons.
+## Benefits
 
-## Places
+### One source of truth means less code to maintain
+Any bug fixes or improvements made to a component only need to be made in once place for all products to benefit from the change.
 
-## Roles
+### Consistent user experience
+The structure and behavior of individual components will be the same across products. For example, tooltips will work the same way in all products. Keyboard navigation on modals will work the same way. 
 
-Multiply these out. Lots of colors.
+Even the typographical scale will be the same across products.That means all products will benefit from the hierarchy and accessibility of the components.
 
-## Color Scales
-Contrast = difference between lightness. Every color has a job. 
+### Scalable 
+The marginal cost of adding a new theme is essentially zero, you can add an arbitrary number of themes without increasing the complexity of the system.
 
+Styling is systematic and parameterized rather than one off and ad hoc
+Styling changes have to be made in one place -- the theme -- and from a constrained set of options. 
 
-Why is that? A couple reason. First color is applied to every single element in an interface, from text, to backgrounds, to fills, to icons. 
+## Downsides of theming
 
-That's because color is applied to every element in an interface. 
+### Upfront work to get right
+- Theming is hard to do well
+- Upfront work to get right
+- Involves naming things you wouldn't otherwise have to name. For example, if you have a component that has a background color, you have to name the background color. If you have a component that has a border, you have to name the border.
 
-[background, border, icon, text]
+### Potential for a one size fits none problem as needs diverge
+If the needs of the products diverge, you're faced with either adding additional props to the components to support the different use cases, or adding more components to support the different use cases. Meanign all the products have to be weighed down with the additional complexity.
 
-Then multiply that by the fact that each element has function to perform, and so colors are needed to support that function.  
+API of each component grows as you add more props to support different use cases. Products weighed down with additional complexity.
 
-For example, a single button might have five different colors. 
+Users of the system have to learn how to use the system. They have to learn how to use the components, and they have to learn how to use the theme.
 
-[background, border, icon, hover, pressed, disabled]
+### Customization is limited
+If you want to customize the look and feel of a component, you have to do it within the constraints of the theme. For example, if you want to change the color of a button, you have to choose from the colors defined in the theme.
 
+Things like icons and illustrations are hard to theme. You can't just change the color of an icon, you have to change the icon itself.
 
+### Potential for breaking changes
+Anothe downside of single source of truth
+Breaking changes to the theme can have a ripple effect across all products. For example, if you change the color of a button, you have to change the color of all the buttons in all the products.
 
- 
-As you'll see, there's more to it than picking a hue or two that represent your brand.  
+--- 
 
-That's because colors serve many purposes (brand and functional) and because every single element in an interface has at least one color applied to it. 
+Let's say you have a set of UI components you've been using to make a website. 
 
-That's becasue in addition to branding and visual identity, colors have many functional jobs to perform. And every single element in an interface has a color applied to it. 
+[Show example of a website with components]
 
+Then at some point you need to make a second website that has the same functionality, but it's for a different product that's branded differently.
 
+So, instead of blue buttons you need purple buttons. Instead of a white background you need a black background. And instead of a sans serif font you need a serif font. 
 
-### Colors Differentiate Brands
-Theming lets you support multiple brand identities with the same set of UI components, and color is one of the main things that visually differentiates one brand from another. 
- 
-[Color as a brand differentiator. Brand A, B, C]
+One way to do make the second website would be to duplicate the code from the first website and update the styles one at at time.
 
-But colors do more than differntiate one brand from another.
+The problem with this is that now you have two sets of code to maintain. If you find a bug in one component, you have to fix it in both places. If you want to add a new component, you'd have to add it in both places.
 
-That's because color is used in every part of the interface -- backgrounds, borders, text, icons -- and because there are many fucntional roles colors serve.  
-[places = backgrounds, borders]
+So another way to do this would be to add a prop to each component that lets you change some of the styles. For example, you could have a color prop on the button.  purple button vs blue button.
 
-### Visual Identiy 
+And while this might be manageable for two websites, what if you need to support 10 websites? Or 100 websites? Or 1000 websites?
 
-### Fucntional Jobs 
-Colors also have funcitonal jobs to do in the interface. They help guide someone's attention to make it easier for them to do what they came to do. This is done in two ways:
-1. Creating hierarchy 
-2. Communicating meaning
-
-Color is one of the most important tools we have to guide someone's attention. This is done in two main ways:
-1. Hierarchy 
-2. Meaning
-
-The theme needs to support these jobs as well as the brand identities.
-
-### Color Scale
-
-- A theme can change many visual properties, but without a change in color, it would be hard to tell that a theme has changed. 
-- Themes are usually created to support multiple brand identities with the same set of UI components, and color is one of the main things that visually differentiates one brand from another. 
-
-- But colors do more than communicate a brand identity. 
-
-- Colors have funcitonal jobs to do in the interface.
-
-Colors are there for a reason. They have jobs to do.
-- Create the contrast needed to create hierarchy in the interface.
-- Create the contrast needed to make text readable and accessible.  
-- Give feedback to users by communicating interactivity and state. (e.g. hover, focus, active, success, error, warning, etc.)
-  - Affordance, signifiers, semantic meaning
-- Support user preferences like mode of the interface. (e.g. light, dark, etc.)
-- Ensure accessibility by meeting contrast requirements. (e.g. WCAG AA, WCAG AAA, etc.)
+This is where theming comes in. **Theming lets you change the look and feel of the components without changing the components themselves.**
 
 
-Given these various jobs, it's important to have a color palette that supports these jobs.
-
-A color is a hue and shade. 
-Hue is the color itself.
-Shade is the lightness or darkness of the color.
-
-
-
-- A range of shades and hues is needed to support an interface. 
-  - Different elements need different colors. (Text, Background, Border, Icon, Shadow, etc.)  
-  - Different levels of contrast are needed to support different levels of hierarchy.
-  - Different colors are needed to support different states. (e.g. hover, focus, active, disabled, etc.)
-  - Different colors are needed to support different modes. (e.g. light, dark, brand A, brand B, etc.)
-
-  - Tailwind color generator example, point out the different colors.
-  - blurb from 
-- Every color has a job 
-- Color scale. Shades of a given hue. Constants, literal names. Every color in the scale has a job. 
-- Jobs of color
-  - Backgrounds
-  - Text
-  - Borders
-  - Icons
-  - Shadows (maybe?)
-  - Outlines/ring (maybe?)
-
-- Palette 
-  - Brand Scheme 
-    - Brand
-    - On Brand 
-  - Accent Scheme (Optional)
-    - Accent
-    - On Accent
-  - Neutral 
-    - Text
-    - UI elements 
-  - System colors: 
-    - Success
-    - Error
-    - Warning
-- Light and Dark 
-  - Each scheme has a light and dark version
-
-
-
+Design tokens and json files
+Another way to do this would be to create a theme. A theme is a set of properties that define the look and feel of a product. Themes are used to customize the appearance of the UI components in a product. Themes are defined in a JSON file that contains key-value pairs for the properties that define the theme.
 
 
