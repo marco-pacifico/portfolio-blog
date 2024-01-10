@@ -1,0 +1,129 @@
+---
+title: Theming in Design Systems
+category: Design
+description: When, why, and why not to use theming
+date: "2024-01-10"
+slug: theming-design-system
+featured: true
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+Let's say you have a set of UI components you've been using to make a website.
+
+Then at some point you need to make a second website that has the same functionality, but it's for a different product with its own visual identity.
+
+Instead of blue buttons you need purple buttons. Instead of a white background you need a black background. And instead of a sans serif font you need a serif font.
+
+One way to make the second website would be to duplicate the code from the first website and update the styles one at at time.
+
+That approach works, but now you have two sets of components to maintain. If you find a bug in one component, you have to fix it in both codebases. Same if you want to add a new component.
+
+One way to make one set of components work for both websites would be to add props to the components that let you change the styles. For example, you could have a color prop on the button.
+
+```jsx
+<Button color="purple">Click me</Button>
+<Button color="blue">Click me</Button>
+```
+
+Again, this appraoch works, but it also has its downsides: 
+- The number of props (and complexity) grows as you add more styling options.
+- It's up to the developer to choose the right props for styling, one component at a time, and to know which props are available for styling. This is tedious and prone to inconsitency.
+- The props used for styling compete with the existing props (e.g. `destructive` vs. `primary` vs. `purple`).
+
+```jsx
+<Button
+  color="purple"
+  role="destructive" // Is this button red or purple?
+  size="large" 
+  variant="outline"
+  corners="full"
+  shadow="full" 
+  // So many styling props to remember and choose from!
+>
+  Click me
+</Button>
+```
+
+And while these downsides might be manageable for a couple websites with a few styling options, what if you need to support 10 or 100 websites, each with many different styling options?
+
+This is where theming comes in. Theming lets you change the styling of components without adding additional props.
+
+## Theming
+
+Theming makes sense when you have the following requirements:
+- One component library
+- Supports multiple products or brands
+- Each product or brand has a different look and feel
+
+Some examples where these requirements are met:
+- A design system like Google's Material Design that's used by different companies to build their own uniquely branded products.
+- Publishers like Conde Nast who own and manage many publications, each with their own branded website.
+- Products where each customer applies their own branding (i.e. multi-tenancy apps).
+
+### Light and dark mode is not necessarily theming
+I'm not including light and dark mode here because it's possible to support light and dark mode without theming in the way I'm talking about. You can use media queuries and hardcoded styling. But some implementations of light and dark mode are in fact themes.
+
+## Benefits of Theming 
+
+### Less code to maintain
+As mentioned above, any bug fixes or improvements made to a component only needs to be made in once place for all products to benefit from the change.
+
+### Consistent user experience
+Because the architecture and behavior of individual components will be the same, all products will benefit from the same best practices and patterns for things like interactive feedback, accessibility, hierarchy, and cohesiveness.
+
+For example, icon buttons will have tooltips, keyboard navigation will work the same way, and details like padding on buttons and the relative sizes of headlines to body text will be the same. 
+
+### Styling changes are wholistically and consistently applied
+Rather than having to choose the right props one component at time, the styling of all components is changed in the same way, all at once. All the thought and effort that goes into styling is done upfront when the theme is designed and configured. 
+
+That's because styling via themes is systematic. Each style property and its value was chosen to serve a specific need and harmonize with all the other styles.
+
+### Scalable
+The marginal cost of adding a new theme is essentially zero, so you can add an arbitrary number of themes without increasing the complexity of the system.
+
+## Downsides of Theming
+
+### Upfront work to get it right
+
+Theming is hard to do well and it takes time and effort to get it right. You have to get the structure and foundations right so that it's flexible enough to support changing requirements and use cases, while being simple enough to use and maintain.
+
+### Naming things you wouldn't otherwise have to name
+This is one of the reasons theming is hard to do.
+
+Any property that you want to be able to change in the theme has to be named. That can included background colors, text colors, border colors, box shadows, font families, and so on.
+
+It's important to find a naming convention that's intuitive, simple, and flexible.  
+
+### Customization is constrained
+
+Theming works best when you're ok with (or ideally want and need) similarities and consistency between products. But if you want a product to be wildly different from the others, you might have to create a separate component library for that product.
+
+That's becasue to customize the look and feel of a component, you have to do it within the constraints of the theme. For example, if you want to change the shadow on button, you can only change it if that property is exposed in the theme. 
+
+Certain things, like the iconography, cannot be themed. And certain things like animations are likely to not be themed either. 
+
+Also theme changes typically apply to the entire application. You can't use one theme on one page and another theme on another page, or one theme on one component and another theme on another component. There may be ways to achieve this, but it's generally not the way theming is intended to be used.
+
+### Potential for a one-size-fits-none problem as needs diverge
+
+As the needs of a product grows, you might need to add additional props and/or components to support its use cases.
+
+If you add these changes to the component library, they'll be available to all products. Over time, you could end up in a situation where any given product only uses a small subset of the available props and components.
+
+This isn't ideal because the library becomes harder to learn, use, and maintain as the API of each component grows and there are more components to choose from. 
+
+## Design and Implementation
+
+In the rest of this series, I'll go over how to design and implement theming in a design system. I plan to cover the following topics:
+- Structure (Constants, Semantic Tokens, and Variants)
+- Naming and Using Semantic Tokens 
+- Palettes and Color Schemes
+- Typography
+- Other Styles (shadows, borders, corner radius, etc.)
+- Configuring and Generating Themes
+- Deciding What To Theme
+
