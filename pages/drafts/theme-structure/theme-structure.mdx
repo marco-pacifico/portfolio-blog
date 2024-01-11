@@ -1,0 +1,79 @@
+---
+title: Theme Structure
+date: "2023-03-10"
+category: Draft
+description: What exactly is a theme?
+slug: theme-structure
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+What exactly is a theme? What does it consist of? 
+
+Theming comes down to styling UI components with semantically named variables rather than hard coded values, so that when you switch themes, you only have to change the values of the variables, and not the code itself.
+
+Property | Semantic Name | Value Theme A | Value Theme B
+---------|---------------|--------------|--------------
+background-color | color-bg-brand | #ff0000 | #0000ff
+color | color-text-brand | #ffffff | #000000
+border-color | color-border-brand | #000000 | #ffffff
+
+What you need for that to work in practice is the following:
+1. A list of elements and properties you want to style
+2. A list of semantically named varialbes representing the value of each property
+3. A way of defining the value of the semantic names for each theme
+4. A way of applying/switching the theme 
+
+## Properties to Style
+
+Take stock of ui elemnts and think about the various parts of each element that you want to style.
+Eg. 
+by type 
+color
+text
+borders
+backgrounds
+shadows
+icons
+
+by ui components
+buttons
+inputs
+
+
+## Semantically Named Variables (Tokens)
+
+The core of theming is semantic variables or design tokens. All that means is instead of styling a property with a literal value (e.g. background-color: red) you'd come up with a name for that property that has meaning. (e.g. background-color: color-bg-brand)
+
+Coming up with these names is tricky and I'll have an entire post on that. 
+
+Naive way would be to have a unique name for every property on every element. This would work but it would be really difficult to manage and remember. Too many variables, names way too long and specific. 
+
+## Defining the Values of Semantic Variables
+`--color-bg-brand: #ff0000;`
+
+Rather than use a literal value, you'd use a semantic name. (e.g. background-color: var(--color-bg-brand))
+
+Data structure that maps semantic names to values.
+Figma modes table
+json file or js file with object
+
+### Constants vs Variables
+You can set raw values (hex codes) but usually you want to choose values from a predefined scale of values. (e.g. color-bg-brand: color-brand-500 that comes from a design system.()
+Outside of the scope of theming but related to design systems is that ideally the values you're choosing come from a design system, so that you're not just making up values as you go along. A predefined scale of values that you can choose from, that are all designed to work together, and that were chosen because they serve a specific purpose, usually to do with how they create contrast (for hierarchy and accessibility), how they work together (for harmony and consistency), and the meaning they convey.
+
+### Choosing Values
+Can be done one at a time or programmatically based on a few key values. Eg. primary color, secondary color, etc.
+
+
+## Applying or Switching the Theme
+
+CSS variables are scoped to the element they're defined on. So if you define a variable on the body element, it will be available to all the elements in the body. If you define a variable on a button, it will only be available to that button and its children.
+
+Theme provider component
+React context API
+creating a theme file that exports an object containing the semantic names and their values. The theme file is then imported into the theme provider component.
+The theme provider component will make the theme available to all the components in your application via React's context API.
