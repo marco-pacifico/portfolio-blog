@@ -22,21 +22,72 @@ color | color-text-brand | #ffffff | #000000
 border-color | color-border-brand | #000000 | #ffffff
 
 What you need for that to work in practice is the following:
-1. A list of elements and properties you want to style
-2. A list of semantically named varialbes representing the value of each property
-3. A way of defining the value of the semantic names for each theme
-4. A way of applying/switching the theme 
+1. A list of styles or properties you want to change from one theme to the next
+2. Semantically named varialbes representing the value of each property identified in step 1
+3. A way of defining the values of the semantic variables for each theme
+4. A way of applying the theme to your UI
 
-## Properties to Style
+## List of Properties to Style
+The naive approach would be to start by listing every style or property on every UI element. 
+
+```css
+.button-primary {
+  /* Property 1 */ background-color: #000; 
+  /* 2 */ color: #fff; 
+  /* 3 */ border-color: #000; 
+  /* 4 */ border-radius: 4px;
+  /* 5 */ box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+  &:hover {
+    /* 6 */ background-color: #eee; 
+  }
+}
+.button-secondary {
+  /* 7 */ background-color: #eee; 
+  /* 8 */ color: #fff; 
+  ...
+}
+.heading-1 {
+  /* 9 */ color: #000; 
+  ...
+}
+
+```
+
+But this isn't very practical or scalable, since the number of properties grows with the number elements in your UI. As soon as you add a new element, you have to add all its properties to your theme.
+
+Remember that you'll have to come up with names for each of these properties. You want your list to be short and finite, so that you can remember them and so that you can easily define the values of the semantic variables for each theme.
+
+
+### Generalize properties into common types or categories
+Instead of listing every property on every element, a more practical approach is to generalize the properties into common types or categories that are used in most elements. 
+
+For example, the `color` property is used on almost all eleemnts to style the text color. So you can factor it out into a common type of property called `text`. 
+
+```css
+.button-primary {
+  /* 1 - text */ color: #fff; 
+
+.button-secondary {
+  /* 1 - text */ color: #fff; 
+  ...
+}
+.heading-1 {
+  /* 1 - text */ color: #000; 
+  ...
+}
+```
+
+A more practical approach is to think about the different parts of each element that you want to style.
+Eg. text, borders, backgrounds, icons, etc.
+
 
 Take stock of ui elemnts and think about the various parts of each element that you want to style.
 Eg. 
 by type 
-color
 text
 borders
 backgrounds
-shadows
 icons
 
 by ui components
@@ -44,8 +95,21 @@ buttons
 inputs
 
 
-## Semantically Named Variables (Tokens)
+## Semantically Named Variables
 
+You'll might notice that the value of the text property isn't the same for every element. The text color of a button is different from the text color of a heading. So you'll need a way to distinguish between the two.
+
+The way to do that is to come up with a name for each property that has meaning. 
+
+Meaning comes from the `role` the property plays in the UI. 
+
+Name = `type` + `role`
+
+```css
+
+```css
+
+```css
 The core of theming is semantic variables or design tokens. All that means is instead of styling a property with a literal value (e.g. background-color: red) you'd come up with a name for that property that has meaning. (e.g. background-color: color-bg-brand)
 
 Coming up with these names is tricky and I'll have an entire post on that. 
