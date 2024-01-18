@@ -11,26 +11,48 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-In this post I'll talk about what I mean 
-- What exactly is a theme? 
-- What does it consist of? 
+The key to theming is using semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`) when styling UI components. 
 
-The key to theming is using semantically named variables (e.g. background-color: `--color-bg-brand`) rather than literal values (e.g. background-color: `#ff0000`) when styling UI components. That way, when you want to switch themes you don't have to go through the code to replace every instance of a style. Instead, you simply change the values assigned to these semantically named variables in one central place.
+That way, when you want to switch themes you don't have to go through the code to replace every instance of a style. Instead, you change the values assigned to these semantically named variables in one central place.
+
+## Process
+The process for implementing theming can be broken down into four steps:
+
+1. Identify visual properties that will change from one theme to the next. 
+2. Define meaningful names for the property values defined in Step 1. I'll call these *semantic variables*.
+3. Assign values to the semantic variables for each theme.
+4. Apply the theme to the UI.
+
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr>
+        <th style={{textAlign: "left"}}>Property</th>
+        <th style={{textAlign: "left"}}>Semantic Variable</th>
+        <th style={{textAlign: "left"}}>Value (Theme A)</th>
+        <th style={{textAlign: "left"}}>Value (Theme B)</th>
+    </tr>
+    <tr>
+        <td>background-color</td>
+        <td>color-bg-brand</td>
+        <td>#FF0000</td>
+        <td>#0000FF</td>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td>color-text-brand</td>
+        <td>#FFFFFF</td>
+        <td>#000000</td>
+    </tr>
+    <tr>
+        <td>border-color</td>
+        <td>color-border-brand</td>
+        <td>#000000</td>
+        <td>#FFFFFF</td>
+    </tr>
+</table>
 
 
-Property | Semantic Name | Value Theme A | Value Theme B
----------|---------------|--------------|--------------
-background-color | color-bg-brand | #ff0000 | #0000ff
-color | color-text-brand | #ffffff | #000000
-border-color | color-border-brand | #000000 | #ffffff
 
-What you need for that to work in practice is the following:
-1. A list of styles or properties you want to change from one theme to the next
-2. Semantically named varialbes representing the value of each property identified in step 1
-3. A way of defining the values of the semantic variables for each theme
-4. A way of applying the theme to your UI
-
-## List of Properties to Style
+## Visual Properties
 The naive approach would be to start by listing every style or property on every UI element. 
 
 ```css
@@ -98,7 +120,7 @@ buttons
 inputs
 
 
-## Semantically Named Variables
+## Semantic Variables
 
 You'll might notice that the value of the text property isn't the same for every element. The text color of a button is different from the text color of a heading. So you'll need a way to distinguish between the two.
 
@@ -108,18 +130,13 @@ Meaning comes from the `role` the property plays in the UI.
 
 Name = `type` + `role`
 
-```css
-
-```css
-
-```css
 The core of theming is semantic variables or design tokens. All that means is instead of styling a property with a literal value (e.g. background-color: red) you'd come up with a name for that property that has meaning. (e.g. background-color: color-bg-brand)
 
 Coming up with these names is tricky and I'll have an entire post on that. 
 
 Naive way would be to have a unique name for every property on every element. This would work but it would be really difficult to manage and remember. Too many variables, names way too long and specific. 
 
-## Defining the Values of Semantic Variables
+## Assign Values to Semantic Variables
 `--color-bg-brand: #ff0000;`
 
 Rather than use a literal value, you'd use a semantic name. (e.g. background-color: var(--color-bg-brand))
@@ -136,7 +153,7 @@ Outside of the scope of theming but related to design systems is that ideally th
 Can be done one at a time or programmatically based on a few key values. Eg. primary color, secondary color, etc.
 
 
-## Applying or Switching the Theme
+## Apply the Theme
 
 CSS variables are scoped to the element they're defined on. So if you define a variable on the body element, it will be available to all the elements in the body. If you define a variable on a button, it will only be available to that button and its children.
 
