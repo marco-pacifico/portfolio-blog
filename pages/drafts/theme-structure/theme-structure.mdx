@@ -11,18 +11,21 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-The key to theming is using semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`) when styling UI components. 
+The key to theming is styling UI components with semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`).
 
 That way, when you want to switch themes you don't have to go through the code to replace every instance of a style. Instead, you change the values assigned to these semantically named variables in one central place.
 
 ## Process
-The process for implementing theming can be broken down into four steps:
+The process for implementing theming can be broken down into five steps:
 
 1. Identify visual properties that will change from one theme to the next. 
 2. Define meaningful names for the property values defined in Step 1. I'll call these *semantic variables*.
-3. Assign values to the semantic variables for each theme.
-4. Apply the theme to the UI.
+3. Style UI components with the semantic variables. 
+4. Assign values to the semantic variables for each theme.
+5. Apply the theme to the UI.
 
+---
+### Example theme structure
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr>
         <th style={{textAlign: "left"}}>Property</th>
@@ -50,7 +53,37 @@ The process for implementing theming can be broken down into four steps:
     </tr>
 </table>
 
+```css
+/* Style UI components with the semantic variables */
+.button-primary {
+  background-color: var(--color-bg-brand); 
+  color: var(--color-text-brand); 
+  border-color: var(--color-border-brand); 
+}
 
+/* Assign Values to Semantic Variables for Each Theme */
+.root {
+  [data-theme="theme-a"] {
+    --color-bg-brand: #FF0000;
+    --color-text-brand: #FFFFFF;
+    --color-border-brand: #000000;
+  }
+  [data-theme="theme-b"] {
+    --color-bg-brand: #0000FF;
+    --color-text-brand: #000000;
+    --color-border-brand: #FFFFFF;
+  }
+}
+
+/* Apply the theme to the UI */
+<button 
+  class="button-primary" 
+  data-theme="theme-a">
+  Click Me
+</button>
+```
+
+---
 
 ## Visual Properties
 The naive approach would be to start by listing every style or property on every UI element. 
