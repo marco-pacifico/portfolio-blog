@@ -13,7 +13,7 @@ export default ({ children }) => (
 
 The key to theming is styling UI components with semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`).
 
-That way, when you want to switch themes you don't have to go through the code to replace every instance of a style. Instead, you change the values assigned to these semantically named variables in one central place.
+That way, when you want to switch themes you don't have to go through the code to replace every instance of a style. Instead, you change the values assigned to these semantically named variables.
 
 ## Process
 The process for implementing theming can be broken down into five steps:
@@ -84,9 +84,9 @@ The process for implementing theming can be broken down into five steps:
 ```
 
 ---
-
+<span style={{fontWeight: 600}}>Step 1</span>
 ## Identify Visual Properties
-The naive approach would be to start by listing every style or property on every UI element. 
+You could go through every UI element and identify all the properties that could change from one theme to the next, with the intention of giving each style a unique name.
 
 ```css
 .button-primary {
@@ -109,18 +109,53 @@ The naive approach would be to start by listing every style or property on every
   /* 9 */ color: #000; 
   ...
 }
-
 ```
 
-But this isn't very practical or scalable, since the number of properties grows with the number elements in your UI. As soon as you add a new element, you have to add all its properties to your theme.
+But this approach isn't very practical or scalable because the number of properties would grow with the number elements in an application. As soon as you add a new element, you'd have to add all its properties to the theme.
 
-Remember that you'll have to come up with names for each of these properties. You want your list to be short and finite, so that you can remember them and so that you can easily define the values of the semantic variables for each theme.
+You want the list of properties to be short and finite, so you can name them and remember them. That way it won't be too complicated and tedius to work with and configure a theme.
 
+### Generalize and factor out common visual properties
+Instead of listing every property on every element, a more practical approach is to factor out properties into common types or categories that are used in most elements. 
 
-### Generalize properties into common types or categories
-Instead of listing every property on every element, a more practical approach is to generalize the properties into common types or categories that are used in most elements. 
+Zoom out and think about styling more generally. What types of visual changes are possible?
 
-For example, the `color` property is used on almost all eleemnts to style the text color. So you can factor it out into a common type of property called `text`. 
+You can change font or typography.
+You can change spacing.
+You can change colors on text, backgrounds, borders, and svgs/icons.
+You can change shadows is it elevated or flat.
+You can change border styles. Both thickness and radius. 
+
+So this is most geneneral things you can change, so you can start there.
+
+Then you can think about where. Again, deconstruct and generalize the ui. A button for example has text, a background, a border, and an icon. So you can start there.
+
+Finally you can get into why you're changing these properties. What is the purpose of changing them? What is the role they play in the ui?
+
+One is creating contrast to create hierarchy and draw attention. The other might be to provide feedback on interactivity. The other might be to convey meaning. Meaning could be semantic (e.g. success, warning, error) or it could be to convey a mood or feeling (e.g. dark mode, light mode, etc. or it could be to convey a brand (e.g. primary color, secondary color, etc.
+
+Then you can go one level deeper and think about where these properties are applied. For someo of them, it's obvious, like typography is applied to text. For things like color, though, you have to specific where it's applied.
+
+The other thing to consider is the role of the property. What is it used for? What does it do? What does it mean?
+
+Role = hierarchy (level of contrast), 
+
+Then fur
+
+For some of these, like color, you might need to specific where it's applied. 
+
+Kind = Color, Font, Space, Shadow, Radius, Border 
+One level deepr is where it's applied = Text, Background, Border, Icon. Again these are the most generalized parts of a ui. 
+
+So you could have a `color-text` property, a `color-bg` property, a `color-border` property, and a `color-icon` property. 
+
+For example, the `color` property is used on almost all elemnts to style the text color. So you can factor it out into a common type of property called `color-text`. 
+
+Since the text color of a button is different from the text color of a heading, you'll need a way to distinguish between the two. The way to do that is to come up with a name for each property that has meaning. 
+
+That's where role comes in.
+
+```css
 
 ```css
 .button-primary {
@@ -135,6 +170,9 @@ For example, the `color` property is used on almost all eleemnts to style the te
   ...
 }
 ```
+
+In addition to `text`, common types of properties include `background`, `border`, `shadow`, and `radius`.
+
 
 A more practical approach is to think about the different parts of each element that you want to style.
 Eg. text, borders, backgrounds, icons, etc.
