@@ -1,10 +1,10 @@
 ---
 title: Theming in Design Systems
 category: Design
-description: When, why, and why not to use theming
+description: When and why to use theming
 date: "2024-01-10"
 slug: theming-design-system
-featured: true
+featured: false
 ---
 
 import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
@@ -12,25 +12,21 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-Let's say you have a set of UI components you've been using to make a website.
-
-Then at some point you need to make a second website that has the same functionality, but it's for a different product with its own visual identity.
+Let's say you have a set of UI components you've been using to make a website. Then at some point you need to make a second website that has the same functionality, but it's for a different product with its own visual identity.
 
 Instead of blue buttons you need purple buttons. Instead of a white background you need a black background. And instead of a sans serif font you need a serif font.
 
-One way to make the second website would be to duplicate the code from the first website and update the styles one at at time.
+One way to make the second website would be to duplicate the code from the first website and update the styles one at at time. This approach works, but now you have two sets of components to maintain. If you find a bug in one component, you have to fix it in both codebases. Same if you want to add a new component.
 
-That approach works, but now you have two sets of components to maintain. If you find a bug in one component, you have to fix it in both codebases. Same if you want to add a new component.
-
-One way to make one set of components work for both websites would be to add props to the components that let you change the styles. For example, you could have a color prop on the button.
+To use one set components for both websites you could add props to the components that let you change the styles. For example, you could have a color prop on the button.
 
 ```jsx
 <Button color="purple">Click me</Button>
 <Button color="blue">Click me</Button>
 ```
 
-Again, this appraoch works, but it also has its downsides: 
-- The number of props (and complexity) grows as you add more styling options.
+Again, this appraoch works but it also has its downsides: 
+- The number of props grows as you add more styling options.
 - It's up to the developer to choose the right props for styling, one component at a time, and to know which props are available for styling. This is tedious and prone to inconsitency.
 - The props used for styling compete with the existing props (e.g. `destructive` vs. `primary` vs. `purple`).
 
@@ -65,8 +61,8 @@ Some examples where these requirements are met:
 - Publishers like Conde Nast who own and manage many publications, each with their own branded website.
 - Products where each customer applies their own branding (i.e. multi-tenancy apps).
 
-### Light and dark mode is not necessarily theming
-I'm not including light and dark mode here because it's possible to support light and dark mode without theming in the way I'm talking about. You can use media queuries and hardcoded styling. But some implementations of light and dark mode are in fact themes.
+### Light and dark mode
+It's possible to support light and dark mode without theming. You can use media queries and hardcoded styling. But some implementations of light and dark mode are in fact themes.
 
 ## Benefits of Theming 
 
@@ -121,7 +117,7 @@ This isn't ideal because the library becomes harder to learn, use, and maintain 
 
 In the rest of this series, I'll go over how to design and implement theming in a design system. I plan to cover the following topics:
 - Structure (Constants, Semantic Tokens, and Variants)
-- Naming and Using Semantic Tokens 
+- Naming and Using Semantic Variables 
 - Palettes and Color Schemes
 - Typography
 - Other Styles (shadows, borders, corner radius, etc.)
