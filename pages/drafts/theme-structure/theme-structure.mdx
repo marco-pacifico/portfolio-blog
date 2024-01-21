@@ -41,16 +41,15 @@ Now when you switch themes, the semantic variables are assigned the values for t
 
 ## Theme vs. Theming
 
-So an individual theme is a set of semantic variables and their corresponding values. But ***theming*** requires more than that. 
+So an individual theme is a set of semantic variables and their corresponding values. But ***theming*** is more than that. 
 
-The process of theming can be broken down into five main parts or steps:
+Theming can be broken down into five main parts or steps:
 
 - Defining what needs to change from one theme to the next
 - Coming up with meaningful names for the properties that change
 - A way of assigning values to those properties for each theme
 - Styling UI components with the correct semantic variables
 - A way of applying those values to the UI
-
 
 ## Process
 Implementing theming can be broken down into five steps:
@@ -94,12 +93,12 @@ You want the list of properties to be short, so you can name them and remember t
 
 {/* Naive way would be to have a unique name for every property on every element. This would work but it would be really difficult to manage and remember. Too many variables, names way too long and specific.  */}
 
-### Identify styles that won't change
-Theming is about changing the visual look and feel of a UI. The layout, hiearchy, and behavior of individual components won't change from theme to theme. 
+### Exclude styles that change layout or relative hierarchy of elements
+Theming is about changing the look and feel of a UI. Things like layout, hierarchy, and behavior of individual components shouldn't change from theme to theme. 
 
-Therefore the only styles that can change are the purely visual ones that don't affect the layout or structure of the UI. 
+Any styles that fundamentally change the layout, hierarchy, or behavior should live with the component itself, not in the theme. For example, the button sizes aren't controlled by the theme. They're controlled by the button component itself. Same with the relative hierarchy of elements. The heading is always going to be bigger than paragraph text. That's not something that should change from theme to theme.
 
-Any style that affects the layout or structure of the UI should be excluded from the theme. And live with the component itself. 
+Think of the components as the building blocks of the UI. The theme is the paint that you apply to the building blocks. The paint doesn't change the shape of the building blocks. It just changes the color.
 
 ### Generalize and factor out common visual changes
 Rather than zooming into each component and thinking about the specific properties that might change, a better approach is to zoom out and think about styling more generally.
@@ -128,8 +127,6 @@ How much
 - Interactive feedback: 
 - Hierarchy and contrast
 - Size and scale
-
-
 
 Is it associated with a role or meaning? 
 - Color can be used to convey meaning (e.g. success, warning, error) or mood (e.g. dark mode, light mode, etc.) or brand (e.g. primary color, secondary color, etc.)
