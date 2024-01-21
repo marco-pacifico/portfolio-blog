@@ -11,7 +11,7 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-In the last post I talked about when and why it makes sense to use theming. But what exactly is a theme made up of? How does theming work? And what does it take to implement it?
+In the last post I talked about when and why it makes sense to use theming. But what exactly is a theme made up of? How does it work? And what does it take to implement?
 
 ## Semantic Variables and Values
 The key to theming is styling UI components with semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`).
@@ -23,7 +23,7 @@ The key to theming is styling UI components with semantically named variables (e
 }
 ```
 
-Then, for each theme, you define values for the semantic variables.
+For each theme, you define values for the semantic variables.
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr style={{height: "var(--space-7)"}}>
         <th style={{textAlign: "left"}}>Semantic Variable</th>
@@ -37,163 +37,78 @@ Then, for each theme, you define values for the semantic variables.
     </tr>
 </table>
 
-Now when you switch themes, the semantic variables are assigned the values for that theme, and that causes the look and feel of the UI to change. All this happens without having to go through the code to manually change individual styles.
+So then when you switch themes, the semantic variables are assigned the values for that theme, and that causes the look and feel of the UI to change. And all this happens without having to go through the code to manually change individual styles.
 
 ## Implementing Theming
 
-So an individual theme is a set of semantic variables and their corresponding values. But ***theming*** is more than that. 
+So an individual *theme* is a table of semantic variables and their corresponding values. But implementing *theming* requires more than that. 
 
-Theming can be broken down into five main parts or steps:
+I think it can be broken down into five main parts or steps:
+1. Identify the visual properties that need to change from one theme to the next. 
+2. Come up with meaningful names for the properties defined in Step 1. These will be the *semantic variables*.
+3. Style UI components with the semantic variables. 
+4. Configure each theme by defining values for the semantic variables. (Like in the table shown above.)
+5. Apply the theme to the UI by assigning the defined values to the semantic variables.
 
-- Defining what needs to change from one theme to the next
-- Coming up with meaningful names for the properties that change
-- A way of assigning values to those properties for each theme
-- Styling UI components with the correct semantic variables
-- A way of applying those values to the UI
-
-## Process
-Implementing theming can be broken down into five steps:
-
-1. Identify visual properties that will change from one theme to the next. 
-2. Define meaningful names for the property values defined in Step 1. I'll call these *semantic variables*.
-3. Assign values to the semantic variables for each theme.
-4. Style UI components with the semantic variables. 
-5. Apply the theme to the UI.
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 1</span>
-## Identify Visual Properties
-You could go through every UI element and identify all the properties that might change from one theme to the next, with the intention of giving each style a unique name.
+## Identify Properties To Change
 
-```css
-.button-primary {
-  /* Property 1 */ background-color: #000; 
-  /* 2 */ color: #fff; 
-  /* 3 */ border-color: #000; 
-  /* 4 */ border-radius: 4px;
-  /* 5 */ box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+### What not to change
 
-  &:hover {
-    /* 6 */ background-color: #eee; 
-  }
-}
-.button-secondary {
-  /* 7 */ background-color: #eee; 
-  /* 8 */ color: #fff; 
-  ...
-}
-.heading-1 {
-  /* 9 */ color: #000; 
-  ...
-}
-```
+Let's start by eliminating the things that shouldn't change from one theme to the next.
 
-But this approach isn't very practical or scalable because the number of properties would grow with the number UI elements in an application. As soon as you add a new element, you'd have to add all its properties to the theme.
+Themes shouldn't change the layout, relative hierarchy, or behavior of elements. So any properties that change those things should live with the component itself, not in the theme. 
 
-You want the list of properties to be short, so you can name them and remember them. And so it's not too complicated and tedius to configure and work with a theme.
+For example, button sizes are controled by the button component, not by the theme. Same with the relative hierarchy of elements. Headings are always going to be bigger than paragraph text. That's not something that should change from theme to theme.
 
-{/* Naive way would be to have a unique name for every property on every element. This would work but it would be really difficult to manage and remember. Too many variables, names way too long and specific.  */}
+It's not a perfect analogy, but you can think of the components (and their props) as the blueprints for the structure of a building and the theme is the paint that you apply to the walls. The paint doesn't change the size or layout of the rooms. It just changes the color of the walls.
 
-### Exclude styles that change layout or relative hierarchy of elements
-Theming is about changing the look and feel of a UI. Things like layout, hierarchy, and behavior of individual components shouldn't change from theme to theme. 
+### Factor out common properties
+If you laid out every UI component and all their states and variants, plus all the different layouts and pages in an application, it might seem like there's an impossibly large number of properties that could change from one theme to the next. 
 
-Any styles that fundamentally change the layout, hierarchy, or behavior should live with the component itself, not in the theme. For example, the button sizes aren't controlled by the theme. They're controlled by the button component itself. Same with the relative hierarchy of elements. The heading is always going to be bigger than paragraph text. That's not something that should change from theme to theme.
+You can't just list them all because you need the list of properties to be short and manageable, so that you can name them and remember them. And so it's not too complicated and tedius to configure the theme and style with semantic variables.
 
-Think of the components as the building blocks of the UI. The theme is the paint that you apply to the building blocks. The paint doesn't change the shape of the building blocks. It just changes the color.
+To get to a manageable number of properties, you need to factor out common properties that are applied to multiple elements. 
 
-### Generalize and factor out common visual changes
-Rather than zooming into each component and thinking about the specific properties that might change, a better approach is to zoom out and think about styling more generally.
+For example, the same text color is applied in many places, so you'd factor it out into a common property that you can name and create a variable for. 
 
-{/* A top-down approach where you consider changes going from from the general to the specific.  */}
+But how do you factor out common properties? It seems like a daunting task.
 
-Start with the most general question: ***what types of visual changes are possible in an interface?*** (The purely visual changes that won't affect the layout or structure of the UI.)
+### Go from general to specific
+Rather than take a bottom up approach, going through every UI element and listing all the properties that might change, a better approach is to zoom out and think about styling more generally.
 
-- **Font** or typography
+***What categories of visual properties change the look and feel*** without changing layout, hierarchy or behavior?
+- **Font** family or typeface
 - **Color**
 - **Shadow** or elevation
 - **Corner Radius**
 - **Border** (style, thickness) 
 
-Then, going one level deeper in specificity, think about ***where*** these changes can be applied. Again, it's useful to deconstruct and generalize. Rather than apply style changes to a button, a button is actually made up of text, a background, a border, and an icon. 
+Next consider, ***where can these changes be applied?***
+- **Color** can be applied to Text, Backgrounds, Borders, Icons/SVGs, and Shadows
+- **Font** can be applied to Text only
+- **Shadows**, **Borders**, and **Corner Radius** can be applied to Interactive Elements or Containers
 
-- Color can be applied to Text, Backgrounds, Borders, Icons/SVGs, and Shadows.
-- Typography can be applied to text only.
-- Shadows, Borders, and Corner Radius can be applied to interactive elements or containers.
+Finally, consider ***why are these changes applied?*** What role or purpose are they serving?
+- Conveys meaning (e.g. brand, success, warning, error)
+- Creates levels of hierarchy by varying contrast (e.g. primary, secondary, tertiary)
+- Provides feedback on interactivity (e.g. hover, focus, active)
 
-Once you know what is changing and where that change is applied, you can think about ***why*** you're changing the style. 
+With this combination of what, where, and why, you can start to see patterns and similarities between different elements. 
 
-- Role or meaning: 
-
-How much
-- Interactive feedback: 
-- Hierarchy and contrast
-- Size and scale
-
-Is it associated with a role or meaning? 
-- Color can be used to convey meaning (e.g. success, warning, error) or mood (e.g. dark mode, light mode, etc.) or brand (e.g. primary color, secondary color, etc.)
-
-Finally, you can think about ***how much*** you're changing the style. What are the levels of emphasis or contrast possible? 
-- Color can be used to create contrast to create hierarchy and draw attention.
-- Typography can be used to create contrast to create hierarchy and draw attention.
-
-
-
-What kind of visual changes are possible in an interface?
-Where can they be applied?
-Why are they applied? i.e. what purpose do they serve?
-How Much? To what degree are they applied?
-
-
-
-
-Finally you can get into why you're changing these properties. What is the purpose of changing them? What is the role they play in the ui?
-
-One is creating contrast to create hierarchy and draw attention. The other might be to provide feedback on interactivity. The other might be to convey meaning. Meaning could be semantic (e.g. success, warning, error) or it could be to convey a mood or feeling (e.g. dark mode, light mode, etc. or it could be to convey a brand (e.g. primary color, secondary color, etc.
-
-Then you can go one level deeper and think about where these properties are applied. For someo of them, it's obvious, like typography is applied to text. For things like color, though, you have to specific where it's applied.
-
-The other thing to consider is the role of the property. What is it used for? What does it do? What does it mean?
-
-Role = hierarchy (level of contrast), 
-
-Then fur
-
-For some of these, like color, you might need to specific where it's applied. 
-
-Kind = Color, Font, Space, Shadow, Radius, Border 
-One level deepr is where it's applied = Text, Background, Border, Icon. Again these are the most generalized parts of a ui. 
-
-So you could have a `color-text` property, a `color-bg` property, a `color-border` property, and a `color-icon` property. 
-
-For example, the `color` property is used on almost all elemnts to style the text color. So you can factor it out into a common type of property called `color-text`. 
-
-Since the text color of a button is different from the text color of a heading, you'll need a way to distinguish between the two. The way to do that is to come up with a name for each property that has meaning. 
-
-That's where role comes in.
-
-```css
-.button-primary {
-  /* 1 - text */ color: #fff; 
-}
-.button-secondary {
-  /* 1 - text */ color: #fff; 
-  ...
-}
-.heading-1 {
-  /* 1 - text */ color: #000; 
-  ...
-}
-```
-
-In addition to `text`, common types of properties include `background`, `border`, `shadow`, and `radius`.
-
-
-A more practical approach is to think about the different parts of each element that you want to style.
-Eg. text, borders, backgrounds, icons, etc.
-
+For example, you can factor out a property for all instances where you:
+- Apply `color` 
+- To `text` 
+- To convey `brand` 
+- And where it has to be the most prominet or `priamry` element in the view
 
 ## Define Semantic Variables
 
-You'll might notice that the value of the text property isn't the same for every element. The text color of a button is different from the text color of a heading. So you'll need a way to distinguish between the two.
+{/* Naive way would be to have a unique name for every property on every element. This would work but it would be really difficult to manage and remember. Too many variables, names way too long and specific.  */}
+
+
+You'll notice that the value of the text property isn't the same for every element. The text color of a button is different from the text color of a heading. So you'll need a way to distinguish between the two.
 
 The way to do that is to come up with a name for each property that has meaning. 
 
@@ -322,3 +237,159 @@ The theme provider component will make the theme available to all the components
     <td>What are the levels of emphasis or contrast possible?</td>
   </tr>
 </table>
+
+Theming is about the look and feel of a UI. Things like layout, hierarchy, and behavior of individual components shouldn't change from theme to theme. 
+
+So a
+
+### How to identify visual properties that change
+You could go through every UI element and list all the properties that might change from one theme to the next, with the intention of giving each style a unique name.
+
+```css
+.button-primary {
+  /* Property 1 */ background-color: #000; 
+  /* 2 */ color: #fff; 
+  /* 3 */ border-color: #000; 
+  /* 4 */ border-radius: 4px;
+  /* 5 */ box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+  &:hover {
+    /* 6 */ background-color: #eee; 
+  }
+}
+.button-secondary {
+  /* 7 */ background-color: #eee; 
+  /* 8 */ color: #fff; 
+  ...
+}
+.heading-1 {
+  /* 9 */ color: #000; 
+  ...
+}
+```
+
+But this approach isn't very practical or scalable because the number of properties would grow with the number UI elements in an application. As soon as you add a new element, you'd have to add all its properties to the theme.
+
+You want the list of properties to be short, so you can name them and remember them. And so it's not too complicated and tedius to configure and work with a theme.
+
+---
+
+
+
+Rather than than list every single property on every single component that might change from one theme to the next, it's better to think about the different types or categories of properties that can change.
+
+
+
+One approach 
+
+For example, the `color` property is used on almost all elemnts to style the text color. So you can factor it out into a common type of property called `color-text`. 
+
+```css
+.button-primary {
+  /* 1 - text */ color: #fff; 
+}
+.button-secondary {
+  /* 1 - text */ color: #fff; 
+  ...
+}
+.heading-1 {
+  /* 1 - text */ color: #000; 
+  ...
+}
+```
+Sure, these elements might have different text colors (and I'll get to that in the next section) but they all use the same property to style the text color. So you can factor it out into a common type of property called `color-text`. 
+
+{/* Rather than zooming into each component and listing specific properties that might change, a better approach is to zoom out and think about styling more generally. */}
+
+How is this done?
+
+
+To do this, it's useful to start with the most general question: ***what categories of visual changes*** change the look and feel without changing layout, hierarchy or behavior? In general, you can change...
+
+The what:
+- **Font** family or typeface
+- **Color**
+- **Shadow** or elevation
+- **Corner Radius**
+- **Border** (style, thickness) 
+
+Ok, but where do you apply these changes?
+
+Then, going one level deeper in specificity, think about ***where*** these changes can be applied. Again, it's useful to deconstruct and generalize. Rather than apply style changes to a button, a button is actually made up of text, a background, a border, and an icon. 
+
+The where:
+- **Color** can be applied to
+  - Text, Backgrounds, Borders, Icons/SVGs, and Shadows
+- **Font** can be applied to
+  - Text only
+- Shadows, Borders, and Corner Radius can be applied to 
+  - Interactive Elements or Containers
+
+So now you have a list of properties that can be applied to different parts of the UI.
+
+e.g. `color-text`, `color-bg`, `color-border`, `color-icon`, `color-shadow`, `font`, `shadow`, `radius`, `border`
+
+
+Once you know what is changing and where that change is applied, you can get even more specific by considering ***why*** behind these changes. What is the purpose of changing these properties? What is the role they play in the UI? 
+
+The why:
+- Conveys a meaning (e.g. brand, success, warning, error)
+- Creates levels of hierarchy by varying contrast (e.g. primary, secondary, tertiary)
+- Provides feedback on interactivity (e.g. hover, focus, active)
+
+With this information, you can start to see patterns and similarities between different elements. For example, the text color of a button is the same as the text color of a heading. So you can factor it out into a common type of property called `color-text`.
+
+How much
+- Interactive feedback: 
+- Hierarchy and contrast
+- Size and scale
+
+Is it associated with a role or meaning? 
+- Color can be used to convey meaning (e.g. success, warning, error) or mood (e.g. dark mode, light mode, etc.) or brand (e.g. primary color, secondary color, etc.)
+
+Finally, you can think about ***how much*** you're changing the style. What are the levels of emphasis or contrast possible? 
+- Color can be used to create contrast to create hierarchy and draw attention.
+- Typography can be used to create contrast to create hierarchy and draw attention.
+
+
+
+What kind of visual changes are possible in an interface?
+Where can they be applied?
+Why are they applied? i.e. what purpose do they serve?
+How Much? To what degree are they applied?
+
+
+
+
+Finally you can get into why you're changing these properties. What is the purpose of changing them? What is the role they play in the ui?
+
+One is creating contrast to create hierarchy and draw attention. The other might be to provide feedback on interactivity. The other might be to convey meaning. Meaning could be semantic (e.g. success, warning, error) or it could be to convey a mood or feeling (e.g. dark mode, light mode, etc. or it could be to convey a brand (e.g. primary color, secondary color, etc.
+
+Then you can go one level deeper and think about where these properties are applied. For someo of them, it's obvious, like typography is applied to text. For things like color, though, you have to specific where it's applied.
+
+The other thing to consider is the role of the property. What is it used for? What does it do? What does it mean?
+
+Role = hierarchy (level of contrast), 
+
+Then fur
+
+For some of these, like color, you might need to specific where it's applied. 
+
+Kind = Color, Font, Space, Shadow, Radius, Border 
+One level deepr is where it's applied = Text, Background, Border, Icon. Again these are the most generalized parts of a ui. 
+
+So you could have a `color-text` property, a `color-bg` property, a `color-border` property, and a `color-icon` property. 
+
+
+
+Since the text color of a button is different from the text color of a heading, you'll need a way to distinguish between the two. The way to do that is to come up with a name for each property that has meaning. 
+
+That's where role comes in.
+
+
+
+In addition to `text`, common types of properties include `background`, `border`, `shadow`, and `radius`.
+
+
+A more practical approach is to think about the different parts of each element that you want to style.
+Eg. text, borders, backgrounds, icons, etc.
