@@ -1,8 +1,8 @@
 ---
-title: Theme Structure
+title: Theme Structure and Implemenation
 date: "2023-03-10"
 category: Draft
-description: What exactly is a theme?
+description: What it takes to implement theming
 slug: theme-structure
 ---
 
@@ -13,17 +13,18 @@ export default ({ children }) => (
 
 In the last post I talked about when and why it makes sense to use theming. But what exactly is a theme? What is it made up of? How does it work? And what does it take to implement?
 
-## Semantic Variables
+### Style with semantic variables
 The key to theming is styling UI components with semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`).
 
 ```css
 .button-primary {
-  /* color: black;  */
+  /* color: black; */
   color: var(--color-text); 
 }
 ```
 
-Then for each theme you define values for the semantic variables.
+### Choose values per theme
+For each theme values are chosen for each of the semantic variables.
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr style={{height: "var(--space-7)"}}>
         <th style={{textAlign: "left"}}>Semantic Variable</th>
@@ -37,18 +38,31 @@ Then for each theme you define values for the semantic variables.
     </tr>
 </table>
 
-So when you switch themes, the semantic variables are assigned the values for that theme, and that causes the look and feel of the UI to change. And all this happens without having to go through the code to manually change individual styles.
+{/* ```css
+html {
+  & [data-theme="theme-a"] {--color-text: #000000;}
+  & [data-theme="theme-b"] {--color-text: #FFFFFF;}
+}
+``` */}
 
-## Implementing Theming
+### Assign values to variables
+When a theme is applied, the semantic variables are assigned the values for that theme, and that causes the look and feel of the UI to change. And all this happens without having to go through the code to manually change individual styles.
+{/* ```html
+<html data-theme="theme-a">
+  <button class="button-primary">Button</button>
+</html>
+``` */}
 
-So an individual *theme* is a table of semantic variables and their corresponding values. But to implement *theming* requires more than that. 
+## Implementation
+
+So an individual *theme* is a set of semantic variables and their corresponding values. But to implement *theming* requires more than that. 
 
 I think it can be broken down into five main parts or steps:
 1. Identify the visual properties that need to change from one theme to the next. 
 2. Come up with meaningful names for the properties defined in Step 1. These will be the *semantic variables*.
-3. Configure each theme by defining values for the semantic variables. (Like in the table shown above.)
+3. Configure each theme by choosing values for the semantic variables. (Like in the table shown above.)
 4. Style UI components with the semantic variables. 
-5. Apply the theme to the UI by assigning the defined values to the semantic variables.
+5. Apply the theme to the UI, assigning the values to the semantic variables.
 
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 1</span>
@@ -56,55 +70,56 @@ I think it can be broken down into five main parts or steps:
 
 ### What not to change
 
-Let's start by eliminating the things that shouldn't change from one theme to the next.
+Start by eliminating the things that shouldn't change from one theme to the next.
 
 Themes shouldn't change the layout, relative hierarchy, or behavior of elements. So any properties that change those things should live with the component itself, not the theme. 
 
-For example, button sizes are controled by the button component, not by the theme. Same with the relative hierarchy of elements. Headings are always going to be bigger than paragraph text. That's not something that should change from theme to theme.
+For example, button sizes are controlled by the button component, not by the theme. Same with the relative hierarchy of elements. Headings are always going to be bigger than paragraph text. 
 
 It's not a perfect analogy, but you can think of the components (and their props) as the blueprints for the structure of a building and the theme is the paint that you apply to the walls. The paint doesn't change the size or layout of the rooms. It just changes the color of the walls.
 
 ### Factor out common properties
-If you laid out every UI component and all their states and variants, plus all the different layouts and pages in an application, it might seem like there's an impossibly large number of properties that could change from one theme to the next. 
+If you lay out every UI component and all their states and variants, plus all the different layouts and pages in an application, it might seem like there's an impossibly large number of properties that could change from one theme to the next. 
 
-You can't just list them all because you need the list of properties to be short and manageable, so that you can name them and remember them. And so it's not too complicated and tedius to configure the theme and style with semantic variables.
+You can't just list them all because you need the list of properties to be short and manageable, so that you can name them and remember them. And so that it's not too complicated and tedius to configure the theme and style with the semantic variables.
 
 To get to a manageable number of properties, you need to factor out common properties that are applied to multiple elements. For example, the same text color is applied in many places, so you'd factor it out into a common property that you can name and create a variable for. 
 
-But how do you factor out common properties?
+But how do you identify common properties?
 
 ### Go from general to specific
 Rather than take a bottom up approach, going through every UI element and listing all the properties that might change, a better approach is to zoom out and think about styling more generally.
 
-***What categories of visual properties change the look and feel*** without changing layout, hierarchy or behavior?
-- **Font** family or typeface
-- **Color**
-- **Shadow** or elevation
-- **Corner Radius**
-- **Border** (style, thickness) 
+***What categories of visual properties change the look and feel*** without changing layout, hierarchy or behavior? You can change:
+- Font family or typeface
+- Color
+- Shadow or elevation
+- Corner Radius
+- Border (style, thickness) 
 
 Next consider, ***where can these changes be applied?***
-- **Color** can be applied to Text, Backgrounds, Borders, Icons/SVGs, and Shadows
-- **Font** can be applied to Text only
-- **Shadows**, **Borders**, and **Corner Radius** can be applied to Interactive Elements or Containers
+- Color can be applied to Text, Backgrounds, Borders, Icons/SVGs, and Shadows
+- Font family can be applied to Text only
+- Shadows, Borders, and Corner Radius can be applied to Interactive Elements or Containers
 
-Finally, consider ***why are these changes applied?*** What role or purpose are they serving?
+Finally, consider ***why are these changes applied and to what degree?***
 - Conveys meaning (e.g. brand, success, warning, error)
-- Creates levels of hierarchy by varying contrast (e.g. primary, secondary, tertiary)
 - Provides feedback on interactivity (e.g. hover, focus, active)
+- Creates levels of hierarchy by varying contrast (e.g. primary, secondary, tertiary)
 
-With this combination of what, where, and why, you can start to see patterns and similarities between different elements. 
+By combining the what, where, and why of styling you can start to identify styles by use case. 
 
 For example, you can factor out a property for all instances where you:
-- Apply `color` to `text` 
+- Apply `color` 
+- To `text` 
 - To convey `brand` 
-- And where it has to be the `most prominent` element in the view
+- At a `most prominent` level of contrast
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 2</span>
 ## Define Semantic Variables
 Variable names need to imply what they're used for, hence semantic. They also need to be consistent and predictable. 
 
-Imagine you're the person using the variables to style a UI component. You want to be able to look at the property being styled and be able to intuitively know what the corresponding variable name is. 
+Imagine you're the person using the variables to style a UI component. You want to be able to look at the property being styled and intuitively know what the corresponding variable name is. 
 
 ```css
 .button-primary {
@@ -146,7 +161,7 @@ Again, an approach that works well is to start with the most general part of the
         <td>Text</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Color</td>
+        <td>Bg</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>Shadow</td>
@@ -205,12 +220,11 @@ Again, an approach that works well is to start with the most general part of the
 </table>
 </div>
 
-Here the "why" from the previous step is broken down further to specify "how much," meaning the level of contrast or size of the style.
-
+{/* Here the "why" from the previous step is broken down further to specify "how much," meaning the level of contrast or size of the style. */}
 
 ### Chain together what + where + why + how much
 
-For example, you'll definitely have a variable for the most prominent text color. So chaining together what + where + why + how much, you'd get something like this:
+To name a property, chain together modifiers from each column, what + where + why + how much. For example, the variable name for the most prominent text color would be:
 
 `--color-text-neutral-primary`
 
@@ -244,7 +258,7 @@ For example, you'll definitely have a variable for the most prominent text color
         <td style={{fontWeight:"600"}}>Text</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Color</td>
+        <td>Bg</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>Shadow</td>
@@ -304,11 +318,17 @@ For example, you'll definitely have a variable for the most prominent text color
 </div>
 
 ### Cross out default variants
-You can simplify names by dropping the any default values from the chain. 
+Now simplify the name by dropping any default values from the chain of modifiers. 
 
-For example, in `--color-text-neutral-primary`, `neutral` and `primary` are the most common and most used variants. Only variants that differ from the defaults need to be specified.
+The modifiers `neutral` and `primary` represent the most common, most used variants of the style. Only variants that differ from the defaults need to be specified.
 
-So the name can be simplified from `--color-text-neutral-primary` to `--color-text`.
+So the variable name can be simplified from: 
+
+`--color-text-neutral-primary` 
+
+To just: 
+
+`--color-text`
 
 <div style={{display: "flex", justifyContent: "space-between"}}>
 <table style={{marginBlock: "var(--space-6)"}}>
@@ -340,7 +360,7 @@ So the name can be simplified from `--color-text-neutral-primary` to `--color-te
         <td style={{fontWeight:"600"}}>Text</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Color</td>
+        <td>Bg</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>Shadow</td>
@@ -402,11 +422,11 @@ So the name can be simplified from `--color-text-neutral-primary` to `--color-te
 ### Cross out redundant parts
 Sometimes it's redundant to add specificity because all the information is already implied by the more general part of the name.
 
-For example, you might have a variable for an expressive typeface that's used for headings. So chaining together what + where + why + how much, you'd get something like this:
+For example, consider a variable for an expressive typeface used for headings. Chaining together modifiers from the what + where + why + how much columns, you'd get:
 
 `--font-text-brand-primary`
 
-But the `font-family`property can only be applied to text and nothing in the "how much" column applies either. So you can drop those parts of the name, leaving you with:
+But the `font-family`property can only be used on text. And the "how much" modifiers don't apply here either. So you can drop those parts of the name, leaving you with:
 
 `--font-brand` 
 
@@ -440,7 +460,7 @@ But the `font-family`property can only be applied to text and nothing in the "ho
         <td style={{fontWeight:"600", textDecoration: "line-through"}}>Text</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Color</td>
+        <td>Bg</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>Shadow</td>
@@ -500,25 +520,135 @@ But the `font-family`property can only be applied to text and nothing in the "ho
 </div>
 
 ### Specialty names for specific elements
-You can try to style as many elements as possible with the general names defined above. They can often cover the majority of cases. 
+Style as many elements as possible with the general names defined above. They can usually cover the majority of cases. But sometimes certain UI elements are unique enough that they need variable names with even more specificity. 
 
-But sometimes certain UI elements might be unique enough that they need variable names with even more specificy. 
+In these cases, you can add another modifier.  
 
-The best way to do this is to add another modifier to the chain, where the modifier is the name of the component or element. 
+<div style={{display: "flex", justifyContent: "space-between"}}>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>What</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Font</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Color</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Shadow</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Radius</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Border</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Where</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Text</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Bg</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Shadow</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Radius</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Border</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)", border:"1px dashed", paddingInline: "16px" }}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Element</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Link</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Nav Bar</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Backdrop</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Toolbar</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Menu</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Why</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Neutral</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Brand</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Success</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Caution</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Error</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Inverse</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>How Much</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Primary</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Secondary</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Hover</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>High</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Large</td>
+    </tr>
+</table>
+</div>
 
-Again, you can start with the most general part of the name and work your way down to the most specific part. Then cross out any redundant parts.
+For example, the backdrop behind modals might have a unique background color used nowhere else in the UI.
 
-For example, the backdrop behind modals might need a variable for its color. Chaining modifiers together, you'd get:
+Chaining modifiers together to come up with a variable name, you'd get:
 
 `--color-bg-backdrop-neutral-primary`
 
-Can just be:
+Which simplifies to:
 
 `--color-bg-backdrop`
 
-Or even just, since it's implied that the only color on a backdrop is the background color:
+Or even just...
   
 `--color-backdrop`
+
+...since it's implied that the only color on a backdrop is the background color.
 
 <div style={{display: "flex", justifyContent: "space-between"}}>
 <table style={{marginBlock: "var(--space-6)"}}>
@@ -563,7 +693,7 @@ Or even just, since it's implied that the only color on a backdrop is the backgr
     </tr>
 </table>
 <span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
-<table style={{marginBlock: "var(--space-6)"}}>
+<table style={{marginBlock: "var(--space-6)", border:"1px dashed", paddingInline: "16px" }}>
     <tr style={{height: "var(--space-7)"}}>
         <th style={{textAlign: "left"}}>Element</th>
     </tr>
@@ -630,13 +760,13 @@ Or even just, since it's implied that the only color on a backdrop is the backgr
 </table>
 </div>
 
-The reason you want to keep color in there is because you might have other properties that apply to the backdrop, like `--blur-backdrop` or `--opacity-backdrop`. It's best to keep the naming consistent, going from general to specific.
+The reason to keep `color` in there is because there might be other properties that apply to the backdrop, like `--blur-backdrop` or `--opacity-backdrop`. It's best to keep the naming consistent, going from general to specific.
 
 ### Create as few specialty variables as possible
-One last callout here is to only create specialty names when the more general names don't work. The fewer variable names the beter. 
+One last callout here is to only create specialty names when the more general names don't work. The fewer variable names the better. 
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 3</span>
-## Assign Values to Semantic Variables
+## Choose Values for Semantic Variables
 `--color-bg-brand: #ff0000;`
 
 Data structure that maps semantic names to values.
