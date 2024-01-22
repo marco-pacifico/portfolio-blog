@@ -102,7 +102,9 @@ For example, you can factor out a property for all instances where you:
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 2</span>
 ## Define Semantic Variables
-Imagine you're the person using the variables to style a UI component. You want to be able to look at the property being styled and be able to intuitively know what the variable name is. 
+Variable names need to imply what they're used for, hence semantic. They also need to be consistent and predictable. 
+
+Imagine you're the person using the variables to style a UI component. You want to be able to look at the property being styled and be able to intuitively know what the corresponding variable name is. 
 
 ```css
 .button-primary {
@@ -111,9 +113,8 @@ Imagine you're the person using the variables to style a UI component. You want 
   border-color: var(--???);
 }
 ```
-Not only do the names need to be meaningful, they also need to be consistent and predictable. 
 
-Again, an approach that works well is to start with the most general part of the property and work your way down to the most specific part.
+Again, an approach that works well is to start with the most general part of the property and work your way down to the most specific part. 
 
 <div style={{display: "flex", justifyContent: "space-between"}}>
 <table style={{marginBlock: "var(--space-6)"}}>
@@ -196,7 +197,7 @@ Again, an approach that works well is to start with the most general part of the
         <td>Hover</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Active</td>
+        <td>High</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>Large</td>
@@ -204,9 +205,12 @@ Again, an approach that works well is to start with the most general part of the
 </table>
 </div>
 
-### Chain together what + where + why + contrast
+Here the "why" from the previous step is broken down further to specify "how much," meaning the level of contrast or size of the style.
 
-For example, you'll definitely have a variable for the most prominent text color. So chaining together what + where + why + contrast, you'd get something like this:
+
+### Chain together what + where + why + how much
+
+For example, you'll definitely have a variable for the most prominent text color. So chaining together what + where + why + how much, you'd get something like this:
 
 `--color-text-neutral-primary`
 
@@ -279,7 +283,7 @@ For example, you'll definitely have a variable for the most prominent text color
 <span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr style={{height: "var(--space-7)"}}>
-        <th style={{textAlign: "left"}}>Contrast</th>
+        <th style={{textAlign: "left"}}>How Much</th>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td style={{fontWeight:"600"}}>Primary</td>
@@ -291,10 +295,10 @@ For example, you'll definitely have a variable for the most prominent text color
         <td>Hover</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Active</td>
+        <td>High</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Accent</td>
+        <td>Large</td>
     </tr>
 </table>
 </div>
@@ -375,7 +379,7 @@ So the name can be simplified from `--color-text-neutral-primary` to `--color-te
 <span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr style={{height: "var(--space-7)"}}>
-        <th style={{textAlign: "left"}}>Contrast</th>
+        <th style={{textAlign: "left"}}>How Much</th>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td style={{fontWeight:"600", textDecoration: "line-through"}}>Primary</td>
@@ -387,24 +391,24 @@ So the name can be simplified from `--color-text-neutral-primary` to `--color-te
         <td>Hover</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Active</td>
+        <td>High</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Accent</td>
+        <td>Large</td>
     </tr>
 </table>
 </div>
 
-### Cross out redundant links in the chain
-Sometimes adding a more specific part to the chain is redundant because it's already implied by the more general part.
+### Cross out redundant parts
+Sometimes it's redundant to add specificity because all the information is already implied by the more general part of the name.
 
-For example, you might have a variable for an expressive typeface that's used for headings. So chaining together what + where + why + contrast, you'd get something like this:
+For example, you might have a variable for an expressive typeface that's used for headings. So chaining together what + where + why + how much, you'd get something like this:
 
 `--font-text-brand-primary`
 
-But the `font-family`property can only be applied to text. And `primary` doesn't make sense, since the it doesn't have varying degrees of contrast either. 
+But the `font-family`property can only be applied to text and nothing in the "how much" column applies either. So you can drop those parts of the name, leaving you with:
 
-Therefore you can simplify its name to `--font-brand`.
+`--font-brand` 
 
 <div style={{display: "flex", justifyContent: "space-between"}}>
 <table style={{marginBlock: "var(--space-6)"}}>
@@ -475,7 +479,7 @@ Therefore you can simplify its name to `--font-brand`.
 <span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr style={{height: "var(--space-7)"}}>
-        <th style={{textAlign: "left"}}>Contrast</th>
+        <th style={{textAlign: "left"}}>How Much</th>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td style={{fontWeight:"600", textDecoration: "line-through"}}>Primary</td>
@@ -487,18 +491,149 @@ Therefore you can simplify its name to `--font-brand`.
         <td>Hover</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Active</td>
+        <td>High</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
-        <td>Accent</td>
+        <td>Large</td>
     </tr>
 </table>
 </div>
 
-### Specialty names for specific use cases
-Start there and see how far it gets you. Add more specific names as needed.
-E.g. you might need a variable specifically for links. 
-E.g. you might need a variable specifically for modal backdrops. 
+### Specialty names for specific elements
+You can try to style as many elements as possible with the general names defined above. They can often cover the majority of cases. 
+
+But sometimes certain UI elements might be unique enough that they need variable names with even more specificy. 
+
+The best way to do this is to add another modifier to the chain, where the modifier is the name of the component or element. 
+
+Again, you can start with the most general part of the name and work your way down to the most specific part. Then cross out any redundant parts.
+
+For example, the backdrop behind modals might need a variable for its color. Chaining modifiers together, you'd get:
+
+`--color-bg-backdrop-neutral-primary`
+
+Can just be:
+
+`--color-bg-backdrop`
+
+Or even just, since it's implied that the only color on a backdrop is the background color:
+  
+`--color-backdrop`
+
+<div style={{display: "flex", justifyContent: "space-between"}}>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>What</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Font</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td style={{fontWeight:"600"}}>Color</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Shadow</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Radius</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Border</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Where</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Text</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td style={{fontWeight:"600", textDecoration: "line-through"}}>Bg</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Shadow</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Radius</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Border</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Element</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Link</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Nav Bar</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td style={{fontWeight:"600"}}>Backdrop</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Toolbar</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Menu</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Why</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td style={{fontWeight:"600", textDecoration: "line-through"}}>Neutral</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Brand</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Success</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Caution</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Error</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Inverse</td>
+    </tr>
+</table>
+<span style={{fontSize: "40px", margin: "auto 0"}}>⤏</span>
+<table style={{marginBlock: "var(--space-6)"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>How Much</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td style={{fontWeight:"600", textDecoration: "line-through"}}>Primary</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Secondary</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Hover</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>High</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>Large</td>
+    </tr>
+</table>
+</div>
+
+The reason you want to keep color in there is because you might have other properties that apply to the backdrop, like `--blur-backdrop` or `--opacity-backdrop`. It's best to keep the naming consistent, going from general to specific.
+
+### Create as few specialty variables as possible
+One last callout here is to only create specialty names when the more general names don't work. The fewer variable names the beter. 
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 3</span>
 ## Assign Values to Semantic Variables
@@ -522,7 +657,7 @@ Can be done one at a time or programmatically based on a few key values. Eg. pri
 /* Style UI components with the semantic variables */
 .button-primary {
   background-color: var(--color-bg-brand); 
-  color: var(--color-text-brand); 
+  color: var(--color-text-onbrand); 
   border-color: var(--color-border-brand); 
 }
 ```
