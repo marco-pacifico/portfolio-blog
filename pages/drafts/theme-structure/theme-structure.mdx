@@ -83,7 +83,7 @@ If you lay out every UI component and all their states and variants, plus all th
 
 You can't just list them all because you need the list of properties to be short and manageable, so that you can name them and remember them. And so that it's not too complicated and tedius to configure the theme and style with the semantic variables.
 
-To get to a manageable number of properties, you need to factor out common properties that are applied to multiple elements. For example, the same text color is applied in many places, so you'd factor it out into a common property that you can name and create a variable for. 
+To get to a manageable number of properties, factor out common properties that are applied to multiple elements. For example, the same text color is applied in many places, so you'd factor it out into a common property that you can name and create a variable for. 
 
 But how do you identify common properties?
 
@@ -113,10 +113,10 @@ For example, you can factor out a property for all instances where you:
 - Apply `color` 
 - To `text` 
 - To convey `brand` 
-- At a `most prominent` level of contrast
+- Using the `most prominent` level of contrast
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 2</span>
-## Define Semantic Variables
+## Name Semantic Variables
 Variable names need to imply what they're used for, hence semantic. They also need to be consistent and predictable. 
 
 Imagine you're the person using the variables to style a UI component. You want to be able to look at the property being styled and intuitively know what the corresponding variable name is. 
@@ -220,8 +220,6 @@ Again, an approach that works well is to start with the most general part of the
 </table>
 </div>
 
-{/* Here the "why" from the previous step is broken down further to specify "how much," meaning the level of contrast or size of the style. */}
-
 ### Chain together what + where + why + how much
 
 To name a property, chain together modifiers from each column, what + where + why + how much. For example, the variable name for the most prominent text color would be:
@@ -320,7 +318,7 @@ To name a property, chain together modifiers from each column, what + where + wh
 ### Cross out default variants
 Now simplify the name by dropping any default values from the chain of modifiers. 
 
-The modifiers `neutral` and `primary` represent the most common, most used variants of the style. Only variants that differ from the defaults need to be specified.
+The modifiers `neutral` and `primary` represent the most common, most used variant of the style. Only variants that differ from the defaults need to be explicitly specified.
 
 So the variable name can be simplified from: 
 
@@ -418,6 +416,10 @@ To just:
     </tr>
 </table>
 </div>
+
+Whereas text with a brand color applied at the second most prominent level of contrast would be named:
+
+`--color-text-brand-secondary`
 
 ### Cross out redundant parts
 Sometimes it's redundant to add specificity because all the information is already implied by the more general part of the name.
@@ -763,26 +765,104 @@ Or even just...
 The reason to keep `color` in there is because there might be other properties that apply to the backdrop, like `--blur-backdrop` or `--opacity-backdrop`. It's best to keep the naming consistent, going from general to specific.
 
 ### Create as few specialty variables as possible
-One last callout here is to only create specialty names when the more general names don't work. The fewer variable names the better. 
+One last callout here is to only create specialty names when the more general names don't work. The fewer variable names the easier it will be to choose values for and style with semantic variables. Try to strike a balance between the granularity of variation between themes and the ergonomics of the naming system.
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 3</span>
 ## Choose Values for Semantic Variables
-`--color-bg-brand: #ff0000;`
+In a table or similar data structure, choose values for each semantic variable for each theme. These values determine the look and feel of each theme, so they should come from a design spec, where all values have been chosen for specific reasons and because they work well together.
 
-Data structure that maps semantic names to values.
-Figma modes table
-json file or js file with object
+<table style={{marginBlock: "var(--space-6)", position: "relative"}}>
+    <div style={{
+      position: "absolute",
+      inset: "0",
+      maskImage: "linear-gradient(to top, black -10%, transparent 100%)",
+      background: "var(--color-background)",
+    }}></div>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Semantic Variable</th>
+        <th style={{textAlign: "left"}}>Value (Theme A)</th>
+        <th style={{textAlign: "left"}}>Value (Theme B)</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text</td>
+        <td>#000000</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text-secondary</td>
+        <td>#000000</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text-tertiary</td>
+        <td>#000000</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text-brand</td>
+        <td>#000000</td>
+        <td>#FFFFFF</td>
+    </tr>
+</table>
 
-### Constants vs Variables
-You can set raw values (hex codes) but usually you want to choose values from a predefined scale of values. (e.g. color-bg-brand: color-brand-500 that comes from a design system.()
+### Use constants or design tokens representing literal values
+You can set raw values (hex codes) but usually you want to choose values from a predefined scale of values. (e.g. color-bg-brand: color-brand-500 that comes from a design system.
+
+<table style={{marginBlock: "var(--space-6)", position: "relative"}}>
+    <div style={{
+      position: "absolute",
+      inset: "0",
+      maskImage: "linear-gradient(to top, black -10%, transparent 100%)",
+      background: "var(--color-background)",
+    }}></div>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Semantic Variable</th>
+        <th style={{textAlign: "left"}}>Value (Theme A)</th>
+        <th style={{textAlign: "left"}}>Value (Theme B)</th>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text</td>
+        <td>gray-800</td>
+        <td>sage-800</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text-secondary</td>
+        <td>gray-600</td>
+        <td>sage-600</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text-tertiary</td>
+        <td>gray-400</td>
+        <td>sage-400</td>
+    </tr>
+    <tr style={{height: "var(--space-7)"}}>
+        <td>color-text-brand</td>
+        <td>purple-700</td>
+        <td>blue-900</td>
+    </tr>
+</table>
+
+### Scales and ramps
+Scales are a set of values that are designed to work together. They're usually designed to create relative hierarchy between eleemnts (via size and contrast), harmony, and consistency, while ensuring accessibility.
+
 Outside of the scope of theming but related to design systems is that ideally the values you're choosing come from a design system, so that you're not just making up values as you go along. A predefined scale of values that you can choose from, that are all designed to work together, and that were chosen because they serve a specific purpose, usually to do with how they create contrast (for hierarchy and accessibility), how they work together (for harmony and consistency), and the meaning they convey.
 
-### Programatically generating themes
+### Rules for programatically choosing values
+Rules that connect semantic names to values by mapping them to a scale of values. (e.g. color-bg-brand: color-brand-500 that comes from a design system.
 
 Can be done one at a time or programmatically based on a few key values. Eg. primary color, secondary color, etc.
 
+### One source of truth
+To map semantic names to values, you need a data structure that can hold this information. 
+
+Figma makes it easy to create tables of semantic names and values. But this is not the best place to store this information because it's easily accessible to developers. It's also pretty tedius and time consuming to do all this data entry in Figma. 
+
+Another option is to create a JSON file or a JS file with an object that maps semantic names to values. This file can be used to generate the CSS variables as well as the variables in Figma, using scripts and Figma plugins. 
+
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 4</span>
 ## Style with Semantic Variables
+Now it's a matter of styling the UI with the semantic variables. Use semantic variables for all the properties that change from one theme to the next. 
+
 ```css
 /* Style UI components with the semantic variables */
 .button-primary {
@@ -791,6 +871,12 @@ Can be done one at a time or programmatically based on a few key values. Eg. pri
   border-color: var(--color-border-brand); 
 }
 ```
+Of course this only works if you use the semantic variable that corresponds to the property being styled.
+
+### Design with semantic variables
+Style with semantic variables in Figma to make sure you're using the right values. 
+
+
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 5</span>
 ## Apply the Theme
 
@@ -801,8 +887,18 @@ React context API
 creating a theme file that exports an object containing the semantic names and their values. The theme file is then imported into the theme provider component.
 The theme provider component will make the theme available to all the components in your application via React's context API.
 
+---
+## Up Next
+In the rest of this series I'll be covering how to create a theme provider component, how to create a theme file, and how to create a theme switcher component.
 
 ---
+## Resources
+- Figma
+- Shopify Polaris
+- Radix
+- Tailwind CSS
+- Refactoring UI
+
 ### Example theme structure
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr>
