@@ -769,9 +769,16 @@ One last callout here is to only create specialty names when the more general na
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 3</span>
 ## Choose Values for Semantic Variables
-In a table or similar data structure, choose values for each semantic variable for each theme. These values determine the look and feel of each theme, so they should come from a design spec, where all values have been chosen for specific reasons and because they work well together.
+The values chosen here determine the look and feel of each theme. They should come from a design spec where all values have been chosen to acheive the desired appearance, and also because they work well together and serve specific purposes in the UI.
 
-<table style={{marginBlock: "var(--space-6)", position: "relative"}}>
+### Use constants instead of raw values
+Instead of mapping semantic variables directly to raw values, like hex codes, it's better to choose from a predefined set of literal values that come from a design system. 
+
+These predefined literal values are called *Constants* or *Design Tokens*, and they're also just variables. But unlike semantic variables, constants are named in a way that literally describes the raw value they hold. Their names don't directly imply where or when they're meant to be used.
+
+For example, the raw value `#1E1E1E` might be named `gray-950` since it's the darkest gray. 
+
+<table style={{marginTop: "var(--space-6)", position: "relative"}}>
     <div style={{
       position: "absolute",
       inset: "0",
@@ -805,10 +812,7 @@ In a table or similar data structure, choose values for each semantic variable f
     </tr>
 </table>
 
-### Use constants or design tokens representing literal values
-You can set raw values (hex codes) but usually you want to choose values from a predefined scale of values. (e.g. color-bg-brand: color-brand-500 that comes from a design system.
-
-<table style={{marginBlock: "var(--space-6)", position: "relative"}}>
+<table style={{marginBottom: "var(--space-6)", position: "relative"}}>
     <div style={{
       position: "absolute",
       inset: "0",
@@ -843,9 +847,13 @@ You can set raw values (hex codes) but usually you want to choose values from a 
 </table>
 
 ### Scales and ramps
+This ensures that the values are serving specific purposes, like creating hierarchy and providing interactive feedback, while also being cohesive and accessible.
 Scales are a set of values that are designed to work together. They're usually designed to create relative hierarchy between eleemnts (via size and contrast), harmony, and consistency, while ensuring accessibility.
+They're chosen specifically to work well together, to create relative hierarchy between elements (via size and contrast), harmony, and consistency, while ensuring accessibility.
 
-Outside of the scope of theming but related to design systems is that ideally the values you're choosing come from a design system, so that you're not just making up values as you go along. A predefined scale of values that you can choose from, that are all designed to work together, and that were chosen because they serve a specific purpose, usually to do with how they create contrast (for hierarchy and accessibility), how they work together (for harmony and consistency), and the meaning they convey.
+Constants, as I'll call them, are another name for design tokens. They're a set of literal values that come from a design system. They're usually designed to work together, to create relative hierarchy between elements (via size and contrast), harmony, and consistency, while ensuring accessibility.
+
+so that you're not just making up values as you go along. A predefined scale of values that you can choose from, that are all designed to work together, and that were chosen because they serve a specific purpose, usually to do with how they create contrast (for hierarchy and accessibility), how they work together (for harmony and consistency), and the meaning they convey.
 
 ### Rules for programatically choosing values
 Rules that connect semantic names to values by mapping them to a scale of values. (e.g. color-bg-brand: color-brand-500 that comes from a design system.
@@ -853,6 +861,7 @@ Rules that connect semantic names to values by mapping them to a scale of values
 Can be done one at a time or programmatically based on a few key values. Eg. primary color, secondary color, etc.
 
 ### One source of truth
+In a table or similar data structure, choose values for each semantic variable for each theme. This is the one source of truth for the values of the semantic variables.
 To map semantic names to values, you need a data structure that can hold this information. 
 
 Figma makes it easy to create tables of semantic names and values. But this is not the best place to store this information because it's easily accessible to developers. It's also pretty tedius and time consuming to do all this data entry in Figma. 
