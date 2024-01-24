@@ -85,7 +85,7 @@ export const BlogMarkdownStyles = css`
     height: 1px;
     background-color: var(--color-text-tertiary);
     border: none;
-    width: 90%;
+    width: 100%;
     transition: background-color 300ms ease-in;
   }
   /* Images will span full width of page layout */

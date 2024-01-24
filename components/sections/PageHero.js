@@ -23,7 +23,6 @@ const SectionWrapper = styled.section`
 
 const Category = styled(Overline)`
   --title-margin: var(--space-4);
-  margin-left: var(--space-2);
   margin-bottom: var(--title-margin);
 `;
 const Title = styled(H1)`
