@@ -11,7 +11,7 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-In the last post I talked about when and why it makes sense to use theming. But what exactly is a theme? What is it made up of? How does it work? And what does it take to implement?
+In the last post I talked about when and why it makes sense to use theming. But what exactly is a theme? How does it work? And what does it take to implement?
 
 ### Style with semantic variables
 The key to theming is styling UI components with semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`).
@@ -23,7 +23,7 @@ The key to theming is styling UI components with semantically named variables (e
 }
 ```
 
-### Choose values per theme
+### Choose values for each theme
 For each theme values are chosen for each of the semantic variables.
 <table style={{marginBlock: "var(--space-6)"}}>
     <tr style={{height: "var(--space-7)"}}>
@@ -46,7 +46,7 @@ html {
 ``` */}
 
 ### Assign values to variables
-When a theme is applied, the semantic variables are assigned the values for that theme, and that causes the look and feel of the UI to change. And all this happens without having to go through the code to manually change individual styles.
+When a theme is applied, the semantic variables are assigned the values for that theme, and that causes the look and feel of the UI to change. All this happens without having to go through the code to manually change individual styles.
 {/* ```html
 <html data-theme="theme-a">
   <button class="button-primary">Button</button>
@@ -59,10 +59,10 @@ So an individual *theme* is a set of semantic variables and their corresponding 
 
 I think it can be broken down into five main parts or steps:
 1. Identify the visual properties that need to change from one theme to the next. 
-2. Come up with meaningful names for the properties defined in Step 1. These will be the *semantic variables*.
+2. Come up with meaningful names for the properties defined in Step 1. These will be the *Semantic Variables*.
 3. Configure each theme by choosing values for the semantic variables. (Like in the table shown above.)
 4. Style UI components with the semantic variables. 
-5. Apply the theme to the UI, assigning the values to the semantic variables.
+5. Apply the theme to the UI, which assigns the values to the semantic variables.
 
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 1</span>
@@ -76,7 +76,7 @@ Themes shouldn't change the layout, relative hierarchy, or behavior of elements.
 
 For example, button sizes are controlled by the button component, not by the theme. Same with the relative hierarchy of elements. Headings are always going to be bigger than paragraph text. 
 
-It's not a perfect analogy, but you can think of the components (and their props) as the blueprints for the structure of a building and the theme is the paint that you apply to the walls. The paint doesn't change the size or layout of the rooms. It just changes the color of the walls.
+It's not a perfect analogy, but you can think of the components (and their props) as the blueprints for the structure of a building and the theme is the paint that you apply to the walls. The paint doesn't change the size or layout of the rooms.
 
 ### Factor out common properties
 If you lay out every UI component and all their states and variants, plus all the different layouts and pages in an application, it might seem like there's an impossibly large number of properties that could change from one theme to the next. 
@@ -117,9 +117,9 @@ For example, you can factor out a property for all instances where you:
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 2</span>
 ## Name Semantic Variables
-Variable names need to imply what they're used for, hence semantic. They also need to be consistent and predictable. 
+The names need to describe what the variables are used for, hence *semantic*. They also need to be consistent and predictable. 
 
-Imagine you're the person using the variables to style a UI component. You want to be able to look at the property being styled and intuitively know what the corresponding variable name is. 
+Imagine you're the person styling a UI component. You want to be able to look at the property being styled and intuitively know what the corresponding variable name is. 
 
 ```css
 .button-primary {
@@ -129,7 +129,7 @@ Imagine you're the person using the variables to style a UI component. You want 
 }
 ```
 
-Again, an approach that works well is to start with the most general part of the property and work your way down to the most specific part. 
+Again, an approach that works well for naming variables is to start with the most general part of the property and work your way down to the most specific part. 
 
 <div style={{display: "flex", justifyContent: "space-between"}}>
 <table style={{marginBlock: "var(--space-6)"}}>
@@ -521,7 +521,7 @@ But the `font-family`property can only be used on text. And the "how much" modif
 </table>
 </div>
 
-### Specialty names for specific elements
+### Specialty names for unique elements
 Style as many elements as possible with the general names defined above. They can usually cover the majority of cases. But sometimes certain UI elements are unique enough that they need variable names with even more specificity. 
 
 In these cases, you can add another modifier.  
@@ -636,9 +636,7 @@ In these cases, you can add another modifier.
 </table>
 </div>
 
-For example, the backdrop behind modals might have a unique background color used nowhere else in the UI.
-
-Chaining modifiers together to come up with a variable name, you'd get:
+For example, the backdrop behind modals might have a unique background color used nowhere else in the UI. Chaining modifiers together to come up with a variable name, you'd get:
 
 `--color-bg-backdrop-neutral-primary`
 
@@ -769,50 +767,16 @@ One last callout here is to only create specialty names when the more general na
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 3</span>
 ## Choose Values for Semantic Variables
-The values chosen here determine the look and feel of each theme. They should come from a design spec where all values have been chosen to acheive the desired appearance, and also because they work well together and serve specific purposes in the UI.
+The values you choose determine the look and feel of each theme. The goal is to achieve the desired appearance while also ensuring the values work well together and serve specific purposes in the UI.
 
-### Use constants instead of raw values
-Instead of mapping semantic variables directly to raw values, like hex codes, it's better to choose from a predefined set of literal values that come from a design system. 
+### Constants instead of raw values
+Instead of mapping semantic variables directly to raw values, like hex codes, it's better to choose from a predefined set of literal values that come from a design system.
 
-These predefined literal values are called *Constants* or *Design Tokens*, and they're also just variables. But unlike semantic variables, constants are named in a way that literally describes the raw value they hold. Their names don't directly imply where or when they're meant to be used.
+These literal values are called *Constants*, and they're also just variables. But unlike semantic variables, constants are named in a way that literally describes the raw value they hold. Their names don't directly say where or when they're meant to be used.
 
 For example, the raw value `#1E1E1E` might be named `gray-950` since it's the darkest gray. 
 
-<table style={{marginTop: "var(--space-6)", position: "relative"}}>
-    <div style={{
-      position: "absolute",
-      inset: "0",
-      maskImage: "linear-gradient(to top, black -10%, transparent 100%)",
-      background: "var(--color-background)",
-    }}></div>
-    <tr style={{height: "var(--space-7)"}}>
-        <th style={{textAlign: "left"}}>Semantic Variable</th>
-        <th style={{textAlign: "left"}}>Value (Theme A)</th>
-        <th style={{textAlign: "left"}}>Value (Theme B)</th>
-    </tr>
-    <tr style={{height: "var(--space-7)"}}>
-        <td>color-text</td>
-        <td>#000000</td>
-        <td>#FFFFFF</td>
-    </tr>
-    <tr style={{height: "var(--space-7)"}}>
-        <td>color-text-secondary</td>
-        <td>#000000</td>
-        <td>#FFFFFF</td>
-    </tr>
-    <tr style={{height: "var(--space-7)"}}>
-        <td>color-text-tertiary</td>
-        <td>#000000</td>
-        <td>#FFFFFF</td>
-    </tr>
-    <tr style={{height: "var(--space-7)"}}>
-        <td>color-text-brand</td>
-        <td>#000000</td>
-        <td>#FFFFFF</td>
-    </tr>
-</table>
-
-<table style={{marginBottom: "var(--space-6)", position: "relative"}}>
+<table style={{marginBlock: "var(--space-6)", position: "relative"}}>
     <div style={{
       position: "absolute",
       inset: "0",
@@ -827,17 +791,17 @@ For example, the raw value `#1E1E1E` might be named `gray-950` since it's the da
     <tr style={{height: "var(--space-7)"}}>
         <td>color-text</td>
         <td>gray-800</td>
-        <td>sage-800</td>
+        <td>slate-800</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>color-text-secondary</td>
         <td>gray-600</td>
-        <td>sage-600</td>
+        <td>slate-600</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>color-text-tertiary</td>
         <td>gray-400</td>
-        <td>sage-400</td>
+        <td>slate-400</td>
     </tr>
     <tr style={{height: "var(--space-7)"}}>
         <td>color-text-brand</td>
@@ -847,26 +811,33 @@ For example, the raw value `#1E1E1E` might be named `gray-950` since it's the da
 </table>
 
 ### Scales and ramps
-This ensures that the values are serving specific purposes, like creating hierarchy and providing interactive feedback, while also being cohesive and accessible.
-Scales are a set of values that are designed to work together. They're usually designed to create relative hierarchy between eleemnts (via size and contrast), harmony, and consistency, while ensuring accessibility.
-They're chosen specifically to work well together, to create relative hierarchy between elements (via size and contrast), harmony, and consistency, while ensuring accessibility.
+In a design system, constants are organized into scales or ramps, meaning values go from light to dark or small to large, in specific increments. The `950` in `gray-950` indicates where it falls on the scale, and thefore how much of a specific attribute it has. In this case, darkness.
 
-Constants, as I'll call them, are another name for design tokens. They're a set of literal values that come from a design system. They're usually designed to work together, to create relative hierarchy between elements (via size and contrast), harmony, and consistency, while ensuring accessibility.
+### Every value on a scale has a job
+The ends of a scale and the increments between values are purposefully chosen to work well together and serve specific purposes in the UI. Every value in a scale has at least one job its best suited for.
 
-so that you're not just making up values as you go along. A predefined scale of values that you can choose from, that are all designed to work together, and that were chosen because they serve a specific purpose, usually to do with how they create contrast (for hierarchy and accessibility), how they work together (for harmony and consistency), and the meaning they convey.
+By choosing the right values for the job, you can:
+- Create relative hierarchy between elements (via size and contrast)
+- Create the contrast needed for accessibility
+- Make the UI feel cohesive and consistent
+- Provide feedback on interactive elements
 
-### Rules for programatically choosing values
-Rules that connect semantic names to values by mapping them to a scale of values. (e.g. color-bg-brand: color-brand-500 that comes from a design system.
+### Programatically choosing values
+Since every value in a scale was chosen because its attributes make it well suited for a specific purpose, you can define rules for what scale-values map to which semantic variables.
 
-Can be done one at a time or programmatically based on a few key values. Eg. primary color, secondary color, etc.
+For example, based on the attributes of contrast and darkness, `color-text` might always be the `800` value in a gray scale and `color-border` might always be the `200` value.
 
-### One source of truth
-In a table or similar data structure, choose values for each semantic variable for each theme. This is the one source of truth for the values of the semantic variables.
-To map semantic names to values, you need a data structure that can hold this information. 
+One optimization here is to write a script that automatically maps constants to semantic variables based on these rules. Not every semantic variable can be defined this way, but many can. 
 
-Figma makes it easy to create tables of semantic names and values. But this is not the best place to store this information because it's easily accessible to developers. It's also pretty tedius and time consuming to do all this data entry in Figma. 
+### Creating one source of truth
+When mapping constants to semantic variables, you need a data structure (e.g. a table) that can hold this information and a place to store it.
 
-Another option is to create a JSON file or a JS file with an object that maps semantic names to values. This file can be used to generate the CSS variables as well as the variables in Figma, using scripts and Figma plugins. 
+Figma makes it easy to create tables of semantic variables and their corresponsing values. This is great for use in design files, but it's not ideal for use in code for a few reasons:
+- It's not easy for developers to access Figma variables to use in their code
+- Manually creating variables in Figma can be tedious and time consuming
+- Variable definitions can easily get out of sync between the design file and the code
+
+Another option is to create a JSON file or a JS file with an object that maps semantic variables to values for each theme. This file can then be used to generate the variables used in code and in Figma, using scripts and Figma plugins. 
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 4</span>
 ## Style with Semantic Variables
