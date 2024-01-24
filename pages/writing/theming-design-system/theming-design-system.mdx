@@ -22,8 +22,8 @@ One way to make the second website would be to duplicate the code from the first
 To use one set components for both websites you could add props to the components that let you change the styles. For example, you could have a color prop on the button.
 
 ```jsx
-<Button color="purple">Click me</Button>
-<Button color="blue">Click me</Button>
+<Button color="purple" />
+<Button color="blue" />
 ```
 
 Again, this appraoch works but it also has its downsides: 
@@ -40,9 +40,7 @@ Again, this appraoch works but it also has its downsides:
   corners="full"
   shadow="full" 
   // So many styling props to remember and choose from!
->
-  Click me
-</Button>
+/>
 ```
 
 And while these downsides might be manageable for a couple websites with a few styling options, what if you need to support 10 or 100 websites, each with many different styling options?
