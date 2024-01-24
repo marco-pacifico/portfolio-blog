@@ -1,8 +1,8 @@
 ---
-title: Theme Structure and Implemenation
-date: "2023-03-10"
+title: Theme Design and Implemenation
+date: "2024-01-24"
 category: Draft
-description: What it takes to implement theming
+description: What it takes to design and implement theming
 slug: theme-structure
 ---
 
@@ -10,8 +10,9 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+import Link from "next/link";
 
-In the last post I talked about when and why it makes sense to use theming. But what exactly is a theme? How does it work? And what does it take to implement?
+In the <Link href="/writing/theming-design-system">last post</Link> I talked about when and why it makes sense to use theming. But what exactly is a theme? How does it work? And what does it take to implement?
 
 ### Style with semantic variables
 The key to theming is styling UI components with semantically named variables (e.g. `--color-text`) rather than literal values (e.g. `black`).
@@ -38,20 +39,10 @@ For each theme values are chosen for each of the semantic variables.
     </tr>
 </table>
 
-{/* ```css
-html {
-  & [data-theme="theme-a"] {--color-text: #000000;}
-  & [data-theme="theme-b"] {--color-text: #FFFFFF;}
-}
-``` */}
+
 
 ### Assign values to variables
 When a theme is applied, the semantic variables are assigned the values for that theme, and that causes the look and feel of the UI to change. All this happens without having to go through the code to manually change individual styles.
-{/* ```html
-<html data-theme="theme-a">
-  <button class="button-primary">Button</button>
-</html>
-``` */}
 
 ## Implementation
 
@@ -782,6 +773,7 @@ For example, the raw value `#1E1E1E` might be named `gray-950` since it's the da
       inset: "0",
       maskImage: "linear-gradient(to top, black -10%, transparent 100%)",
       background: "var(--color-background)",
+      pointerEvents: "none",
     }}></div>
     <tr style={{height: "var(--space-7)"}}>
         <th style={{textAlign: "left"}}>Semantic Variable</th>
@@ -829,7 +821,7 @@ For example, based on the attributes of contrast and darkness, `color-text` migh
 
 One optimization here is to write a script that automatically maps constants to semantic variables based on these rules. Not every semantic variable can be defined this way, but many can. 
 
-### Creating one source of truth
+### Using one source of truth
 When mapping constants to semantic variables, you need a data structure (e.g. a table) that can hold this information and a place to store it.
 
 Figma makes it easy to create tables of semantic variables and their corresponsing values. This is great for use in design files, but it's not ideal for use in code for a few reasons:
@@ -841,7 +833,9 @@ Another option is to create a JSON file or a JS file with an object that maps se
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 4</span>
 ## Style with Semantic Variables
-Now it's a matter of styling the UI with the semantic variables. Use semantic variables for all the properties that change from one theme to the next. 
+Now it's a matter of styling the UI with the semantic variables. If a property is going to change from one theme to the next, it has to be styled with a semantic variable.
+
+Of course for this to work, developers have to use the correct semantic variable for each property.
 
 ```css
 /* Style UI components with the semantic variables */
@@ -851,264 +845,62 @@ Now it's a matter of styling the UI with the semantic variables. Use semantic va
   border-color: var(--color-border-brand); 
 }
 ```
-Of course this only works if you use the semantic variable that corresponds to the property being styled.
 
 ### Design with semantic variables
-Style with semantic variables in Figma to make sure you're using the right values. 
-
+If the same variables are used in both the design file and the code, then developers can reference the designs and grab the correct variable names from the design file. This is another reason why it's useful to have a single source of truth.
 
 <span style={{fontWeight: 600, marginTop: "var(--space-10)", marginBottom: "-32px"}}>Step 5</span>
 ## Apply the Theme
+Everything done up to now was design. This step is how the design actually gets applied to the UI. I'll briefly outline how to do this using CSS custom properties and HTML data attributes.
 
-CSS variables are scoped to the element they're defined on. So if you define a variable on the body element, it will be available to all the elements in the body. If you define a variable on a button, it will only be available to that button and its children.
+In the app's global css file, the Constants and Semantic Variables defined in the previous steps have to be declared and defined in a parent element that wraps all the child elments where the theme will be applied. The `root` or `html` element, for example. 
 
-Theme provider component
-React context API
-creating a theme file that exports an object containing the semantic names and their values. The theme file is then imported into the theme provider component.
-The theme provider component will make the theme available to all the components in your application via React's context API.
+Data attributes can be used to differente the variable definitions for each theme in the code.
 
----
+```css
+:root {
+  /* Constants */
+  --red-500: #FF0000;
+}
+html {
+  /* Semantic Variables for Theme A */
+  & [data-theme="theme-a"] {
+    --color-bg-brand: var(--purple-700);
+    --color-text-brand: var(--purple-700);
+    --color-border-brand: var(--purple-700);
+  }
+  /* Semantic Variables for Theme B */
+  & [data-theme="theme-b"] {
+    --color-bg-brand: var(--blue-500);
+    --color-text-brand: var(--blue-500);
+    --color-border-brand: var(--blue-500);
+  }
+}
+```
+
+Finally, the theme is applied by adding a data attribute to the parent element where the variables are defined.
+
+```html
+<html data-theme="theme-a">
+  <button class="button-primary">Button</button>
+</html>
+```
+
 ## Up Next
-In the rest of this series I'll be covering how to create a theme provider component, how to create a theme file, and how to create a theme switcher component.
+In the rest of this series, I'll go over how to design and implement theming in a design system. I plan to cover the following topics:
+- Palettes and Color Schemes
+- Typography
+- Other Styles (Shadows, Borders, Corner Radius, etc.)
+- Configuring and Generating Themes
+- Deciding What To Theme
 
----
+### Previous
+- <Link href="/writing/theming-design-system">When and Why To Use Theming</Link>
+
+
 ## Resources
+A lot of the ideas and concepts in this post are based on what I learned from these resources:
 - Figma
 - Shopify Polaris
 - Radix
 - Tailwind CSS
-- Refactoring UI
-
-### Example theme structure
-<table style={{marginBlock: "var(--space-6)"}}>
-    <tr>
-        <th style={{textAlign: "left"}}>Property</th>
-        <th style={{textAlign: "left"}}>Semantic Variable</th>
-        <th style={{textAlign: "left"}}>Value (Theme A)</th>
-        <th style={{textAlign: "left"}}>Value (Theme B)</th>
-    </tr>
-    <tr>
-        <td>background-color</td>
-        <td>color-bg-brand</td>
-        <td>#FF0000</td>
-        <td>#0000FF</td>
-    </tr>
-    <tr>
-        <td>color</td>
-        <td>color-text-brand</td>
-        <td>#FFFFFF</td>
-        <td>#000000</td>
-    </tr>
-    <tr>
-        <td>border-color</td>
-        <td>color-border-brand</td>
-        <td>#000000</td>
-        <td>#FFFFFF</td>
-    </tr>
-</table>
-
-```css
-/* Style UI components with the semantic variables */
-.button-primary {
-  background-color: var(--color-bg-brand); 
-  color: var(--color-text-brand); 
-  border-color: var(--color-border-brand); 
-}
-
-/* Assign Values to Semantic Variables for Each Theme */
-.root {
-  [data-theme="theme-a"] {
-    --color-bg-brand: #FF0000;
-    --color-text-brand: #FFFFFF;
-    --color-border-brand: #000000;
-  }
-  [data-theme="theme-b"] {
-    --color-bg-brand: #0000FF;
-    --color-text-brand: #000000;
-    --color-border-brand: #FFFFFF;
-  }
-}
-
-/* Apply the theme to the UI */
-<button 
-  class="button-primary" 
-  data-theme="theme-a">
-  Click Me
-</button>
-```
----
-
-<table>
-  <tr style={{height: "var(--space-7)"}}>
-    <th style={{textAlign: "left"}}>What</th>
-    <td>What types of visual changes are possible?</td>
-  </tr>
-  <tr style={{height: "var(--space-7)"}}>
-    <th style={{textAlign: "left"}}>Where</th>
-    <td>Where can these changes be applied? </td>
-  </tr>
-  <tr style={{height: "var(--space-7)"}}>
-    <th style={{textAlign: "left"}}>Why</th>
-    <td>What are the different purposes or roles of style changes?</td>
-  </tr>
-  <tr style={{height: "var(--space-7)"}}>
-    <th style={{textAlign: "left"}}>How Much</th>
-    <td>What are the levels of emphasis or contrast possible?</td>
-  </tr>
-</table>
-
-Theming is about the look and feel of a UI. Things like layout, hierarchy, and behavior of individual components shouldn't change from theme to theme. 
-
-So a
-
-### How to identify visual properties that change
-You could go through every UI element and list all the properties that might change from one theme to the next, with the intention of giving each style a unique name.
-
-```css
-.button-primary {
-  /* Property 1 */ background-color: #000; 
-  /* 2 */ color: #fff; 
-  /* 3 */ border-color: #000; 
-  /* 4 */ border-radius: 4px;
-  /* 5 */ box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-
-  &:hover {
-    /* 6 */ background-color: #eee; 
-  }
-}
-.button-secondary {
-  /* 7 */ background-color: #eee; 
-  /* 8 */ color: #fff; 
-  ...
-}
-.heading-1 {
-  /* 9 */ color: #000; 
-  ...
-}
-```
-
-But this approach isn't very practical or scalable because the number of properties would grow with the number UI elements in an application. As soon as you add a new element, you'd have to add all its properties to the theme.
-
-You want the list of properties to be short, so you can name them and remember them. And so it's not too complicated and tedius to configure and work with a theme.
-
----
-
-
-
-Rather than than list every single property on every single component that might change from one theme to the next, it's better to think about the different types or categories of properties that can change.
-
-
-
-One approach 
-
-For example, the `color` property is used on almost all elemnts to style the text color. So you can factor it out into a common type of property called `color-text`. 
-
-```css
-.button-primary {
-  /* 1 - text */ color: #fff; 
-}
-.button-secondary {
-  /* 1 - text */ color: #fff; 
-  ...
-}
-.heading-1 {
-  /* 1 - text */ color: #000; 
-  ...
-}
-```
-Sure, these elements might have different text colors (and I'll get to that in the next section) but they all use the same property to style the text color. So you can factor it out into a common type of property called `color-text`. 
-
-{/* Rather than zooming into each component and listing specific properties that might change, a better approach is to zoom out and think about styling more generally. */}
-
-How is this done?
-
-
-To do this, it's useful to start with the most general question: ***what categories of visual changes*** change the look and feel without changing layout, hierarchy or behavior? In general, you can change...
-
-The what:
-- **Font** family or typeface
-- **Color**
-- **Shadow** or elevation
-- **Corner Radius**
-- **Border** (style, thickness) 
-
-Ok, but where do you apply these changes?
-
-Then, going one level deeper in specificity, think about ***where*** these changes can be applied. Again, it's useful to deconstruct and generalize. Rather than apply style changes to a button, a button is actually made up of text, a background, a border, and an icon. 
-
-The where:
-- **Color** can be applied to
-  - Text, Backgrounds, Borders, Icons/SVGs, and Shadows
-- **Font** can be applied to
-  - Text only
-- Shadows, Borders, and Corner Radius can be applied to 
-  - Interactive Elements or Containers
-
-So now you have a list of properties that can be applied to different parts of the UI.
-
-e.g. `color-text`, `color-bg`, `color-border`, `color-icon`, `color-shadow`, `font`, `shadow`, `radius`, `border`
-
-
-Once you know what is changing and where that change is applied, you can get even more specific by considering ***why*** behind these changes. What is the purpose of changing these properties? What is the role they play in the UI? 
-
-The why:
-- Conveys a meaning (e.g. brand, success, warning, error)
-- Creates levels of hierarchy by varying contrast (e.g. primary, secondary, tertiary)
-- Provides feedback on interactivity (e.g. hover, focus, active)
-
-With this information, you can start to see patterns and similarities between different elements. For example, the text color of a button is the same as the text color of a heading. So you can factor it out into a common type of property called `color-text`.
-
-How much
-- Interactive feedback: 
-- Hierarchy and contrast
-- Size and scale
-
-Is it associated with a role or meaning? 
-- Color can be used to convey meaning (e.g. success, warning, error) or mood (e.g. dark mode, light mode, etc.) or brand (e.g. primary color, secondary color, etc.)
-
-Finally, you can think about ***how much*** you're changing the style. What are the levels of emphasis or contrast possible? 
-- Color can be used to create contrast to create hierarchy and draw attention.
-- Typography can be used to create contrast to create hierarchy and draw attention.
-
-
-
-What kind of visual changes are possible in an interface?
-Where can they be applied?
-Why are they applied? i.e. what purpose do they serve?
-How Much? To what degree are they applied?
-
-
-
-
-Finally you can get into why you're changing these properties. What is the purpose of changing them? What is the role they play in the ui?
-
-One is creating contrast to create hierarchy and draw attention. The other might be to provide feedback on interactivity. The other might be to convey meaning. Meaning could be semantic (e.g. success, warning, error) or it could be to convey a mood or feeling (e.g. dark mode, light mode, etc. or it could be to convey a brand (e.g. primary color, secondary color, etc.
-
-Then you can go one level deeper and think about where these properties are applied. For someo of them, it's obvious, like typography is applied to text. For things like color, though, you have to specific where it's applied.
-
-The other thing to consider is the role of the property. What is it used for? What does it do? What does it mean?
-
-Role = hierarchy (level of contrast), 
-
-Then fur
-
-For some of these, like color, you might need to specific where it's applied. 
-
-Kind = Color, Font, Space, Shadow, Radius, Border 
-One level deepr is where it's applied = Text, Background, Border, Icon. Again these are the most generalized parts of a ui. 
-
-So you could have a `color-text` property, a `color-bg` property, a `color-border` property, and a `color-icon` property. 
-
-
-
-Since the text color of a button is different from the text color of a heading, you'll need a way to distinguish between the two. The way to do that is to come up with a name for each property that has meaning. 
-
-That's where role comes in.
-
-
-
-In addition to `text`, common types of properties include `background`, `border`, `shadow`, and `radius`.
-
-
-A more practical approach is to think about the different parts of each element that you want to style.
-Eg. text, borders, backgrounds, icons, etc.

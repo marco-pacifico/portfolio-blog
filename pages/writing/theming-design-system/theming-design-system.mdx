@@ -1,7 +1,7 @@
 ---
-title: Theming in Design Systems
+title: When and Why To Use Theming
 category: Design
-description: When and why to use theming
+description: Theming in Design Systems
 date: "2024-01-10"
 slug: theming-design-system
 featured: false
@@ -11,6 +11,7 @@ import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
 export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
+import Link from "next/link";
 
 Let's say you have a set of UI components you've been using to make a website. Then at some point you need to make a second website that has the same functionality, but it's for a different product with its own visual identity.
 
@@ -114,11 +115,10 @@ This isn't ideal because the library becomes harder to learn, use, and maintain 
 ## Design and Implementation
 
 In the rest of this series, I'll go over how to design and implement theming in a design system. I plan to cover the following topics:
-- Structure (Constants, Semantic Tokens, and Variants)
-- Naming and Using Semantic Variables 
+- <Link href="/writing/theme-structure">Theme Design and Implemenation</Link>
 - Palettes and Color Schemes
 - Typography
-- Other Styles (shadows, borders, corner radius, etc.)
+- Other Styles (Shadows, Borders, Corner Radius, etc.)
 - Configuring and Generating Themes
 - Deciding What To Theme
 
