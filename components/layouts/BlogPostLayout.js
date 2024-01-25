@@ -43,8 +43,9 @@ export default function BlogPostLayout({ children, meta }) {
     <>
       <Head>
         <title>{`${meta.title} | Marco Pacifico`}</title>
-        <meta property="og:title" content={meta.title} key="title" />
         <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} key="title" />
+        <meta property="og:description" content={meta.description} />
       </Head>
       <PageHero
         category={meta.category}
