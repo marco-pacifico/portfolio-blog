@@ -1,0 +1,1 @@
+export { default } from "./theming-color-schemes.mdx";

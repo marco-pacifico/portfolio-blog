@@ -1,0 +1,125 @@
+---
+title: Palettes and Color Schemes
+date: "2024-01-25"
+category: Draft
+description: Part of a series on theming
+slug: theming-color-schemes
+---
+
+import BlogPostLayout from "../../../components/layouts/BlogPostLayout";
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);
+
+## Introduciton
+
+- Most visible part of themeing
+- Also most complex
+
+## Color Jobs
+- visual identity and brand differentiation
+- Functional jobs, related to:
+  - Contrast 
+  - Meaning
+
+## Meaning and Palettes
+- What's in a palette and why is it there
+- brand colors
+ - primary and supporting accent colors 
+- semantic colors (info, success, warning, error, etc..)
+- neutral (grays)
+  - pairs well with brand color
+- Hues support different roles in the UI
+- Communicate feedback (warning, error, etc..)
+- Differentiate and categorize content (e.g. badges, and labels) 
+- Support user preferences (light vs. dark mode)
+
+- All need to work well together 
+
+## Contrast and Color Scales
+- Each hue chosen in the color palette has its own scale
+- Every scale-value has a job its best suited for
+- Let's imagine a UI in grayscale, devoid of any color saturation at all. 
+- Reason to have a scale is to support contrast needed to create hierarchy in the UI
+
+Fucntional purpose of any visual treatment in an interface is to guide attention in a way that facilitates the completion of a task or flow in the product. Color is one important tool for doing this.
+
+Contrast needed to create hierarchy and guide attention.
+- Text
+- Surfaces and Background
+- Borders
+- Icons
+- Interactive Elements
+
+- Contrast needed for accessibility (legibility of text)
+- Contrast needed to communicate interactive states: Active, Hover, Focus,
+- Color scale needed to support these functional job
+
+```css
+.blackA {
+  --black-a1: rgba(0, 0, 0, 0.05);
+  --black-a2: rgba(0, 0, 0, 0.1);
+  --black-a3: rgba(0, 0, 0, 0.15);
+  --black-a4: rgba(0, 0, 0, 0.2);
+  --black-a5: rgba(0, 0, 0, 0.3);
+  --black-a6: rgba(0, 0, 0, 0.4);
+  --black-a7: rgba(0, 0, 0, 0.5);
+  --black-a8: rgba(0, 0, 0, 0.6);
+  --black-a9: rgba(0, 0, 0, 0.7);
+  --black-a10: rgba(0, 0, 0, 0.8);
+  --black-a11: rgba(0, 0, 0, 0.9);
+  --black-a12: rgba(0, 0, 0, 0.95);
+}
+```
+```css
+.sky {
+  --sky-1: #f9feff;
+  --sky-2: #f1fafd;
+  --sky-3: #e1f6fd;
+  --sky-4: #d1f0fa;
+  --sky-5: #bee7f5;
+  --sky-6: #a9daed;
+  --sky-7: #8dcae3;
+  --sky-8: #60b3d7;
+  --sky-9: #7ce2fe;
+  --sky-10: #74daf8;
+  --sky-11: #00749e;
+  --sky-12: #1d3e56;
+}
+.skyA {
+  --sky-a1: #00d5ff06;
+  --sky-a2: #00a4db0e;
+  --sky-a3: #00b3ee1e;
+  --sky-a4: #00ace42e;
+  --sky-a5: #00a1d841;
+  --sky-a6: #0092ca56;
+  --sky-a7: #0089c172;
+  --sky-a8: #0085bf9f;
+  --sky-a9: #00c7fe83;
+  --sky-a10: #00bcf38b;
+  --sky-a11: #00749e;
+  --sky-a12: #002540e2;
+}
+```
+
+## Color Contrast and Accessibility
+- Combine scale values that meet WCAG AA and AAA contrast ratios
+- Background and Foreground/Text combination
+
+
+## Mapping Colors to UI Elements via Semantic Variables
+- List of semantic Variables
+- Used to style ui Elements
+- Name implies what, where, and why it's used
+- Map that to color scale values that perform that job the best
+- e.g. `--color-text-info` maps to `--sky-11` (dark blue)
+
+
+## Steps
+- Choose a primary brand color (hue and scale value)
+- Choose an onbrand color (e.g. button text)
+- Choose a neutral hue
+- Choose semantic hueus 
+- Optional: Choose accent brand color and onbrand color (used in other sections)
+- Inverse? 
+
