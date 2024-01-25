@@ -34,6 +34,7 @@ export default function AppLayout({ children }) {
     <>
       <Head>
         <title>Marco Pacifico | Portfolio and Blog</title>
+        <meta name="description" content="Design Portfolio and Blog" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
