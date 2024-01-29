@@ -1,5 +1,5 @@
 ---
-title: Palettes and Color Schemes
+title: Color Palettes and Scales
 date: "2024-01-25"
 category: Draft
 description: Part of a series on theming
@@ -11,18 +11,38 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-## Introduciton
+Color is the most noticeable part of a theme. It's also the most complex. In this post I want to do a deep dive on color by exploring the following topics:
+- Why do we even need color? What jobs does it perform in a interface?
+- How are palettes and scales used to support these jobs?
+- How do these jobs map to semantic variables?
 
-- Most visible part of themeing
-- Also most complex
+## Colors Perform Many Jobs
+Colors have emotional and functional jobs to do in an interface. Broadly, they communicate meaning and guide a person's attention in a way that makes it easier for them to do what they came to do. 
 
-## Color Jobs
-- visual identity and brand differentiation
-- Functional jobs, related to:
-  - Contrast 
-  - Meaning
+It's because of these jobs that color is the most complex part of a theme and makes up the majority of semantic variables. 
 
-## Meaning and Palettes
+To get a sense of the specific jobs colors perform, it's useful to look at each part of the naming convention for semantic variables and see how color fits in.
+
+Looking back at the naming convention for semantic variables, color is the only type of property that can pick up a modifier from every column. Color is also the only type of visual property that can be broken down into two components: hue and shade. Where hue is the color itself, and shade is the amount of lightness or darkness of that color.
+
+### Where color is used
+Color can be applied to every part of a UI element. It's background, text, borders, icons, and shadows.
+### Why color is used
+Different hues are used for different purposes, usually to communicate some type of meaning:
+- Brand identity
+- Semantic meaning (e.g. success, warning, error, etc.) 
+- Differentiate between types of content (e.g. statuses, categories, promotional vs. informational, etc.)
+- And also to support user preferences, like with light and dark mode. 
+
+### To what degree (how much) color is used
+If each hue represents the "why" of color, then each shade of that hue represents the "how much" of color. Different shades are used to vary contrast in an interface, which creates hierarchy: And hierarchy is does the following:
+- Guides attention to parts of the interface that are more important than others
+- Maks text and other elements legible and accessible
+- Signifies interactivity and changes in state (e.g. hover, focus, active)
+
+It's because of all these jobs (the permutations across where, why, and how much) that color will produce the most semantic variables, and therefore represents the most complex part of theming.
+
+## Hues = Meaning = Palettes 
 - What's in a palette and why is it there
 - brand colors
  - primary and supporting accent colors 
@@ -36,7 +56,7 @@ export default ({ children }) => (
 
 - All need to work well together 
 
-## Contrast and Color Scales
+## Shades = Contrast = Color Scales
 - Each hue chosen in the color palette has its own scale
 - Every scale-value has a job its best suited for
 - Let's imagine a UI in grayscale, devoid of any color saturation at all. 
@@ -123,3 +143,65 @@ Contrast needed to create hierarchy and guide attention.
 - Optional: Choose accent brand color and onbrand color (used in other sections)
 - Inverse? 
 
+## Neutral Scale
+- 50
+- 100
+- 200
+- 300
+...
+
+$$
+
+
+---
+## Why Color is Complex
+Most of the semantic variables in a theme are color variables. Why is that? Looking back at the naming convention for semantic variables, color is the only type of property that picks up a modifier from every column.
+
+Color is also the only type of visual property that can be broken down into two parts: hue and shade. Where hue is the color itself, and shade is the amount of lightness or darkness of that color.
+
+Because of all these permutations, color will produce the most semantic variables, and therefore represents the most complex part of theming.
+
+Because colors perform many jobs, they represent the most complex part of a theme and make up the majority of the semantic variables in a theme. 
+
+It's the number of jobs that make color the most complex part of a theme and their why color makes up the majority of the semantic variables in a theme. 
+
+## The Jobs Colors Perform in a UI
+Brand
+- visual identity and brand differentiation
+
+Functional
+- Functional jobs, related to:
+  - Contrast 
+  - Meaning
+
+Colors also have funcitonal jobs to do in the interface. They help guide someone's attention to make it easier for them to do what they came to do. This is done in two ways:
+
+1. Creating hierarchy
+
+2. Communicating meaning
+
+
+Color is one of the most important tools we have to guide someone's attention. This is done in two main ways:
+
+1. Hierarchy
+
+2. Meaning
+
+The theme needs to support these jobs as well as the brand identities.
+
+Colors are there for a reason. They have jobs to do.
+
+- Create the contrast needed to create hierarchy in the interface.
+
+- Create the contrast needed to make text readable and accessible.
+
+- Give feedback to users by communicating interactivity and state. (e.g. hover, focus, active, success, error, warning, etc.)
+
+ - Affordance, signifiers, semantic meaning
+
+- Support user preferences like mode of the interface. (e.g. light, dark, etc.)
+
+- Ensure accessibility by meeting contrast requirements. (e.g. WCAG AA, WCAG AAA, etc.)
+
+
+Given these various jobs, it's important to have a color palette that supports these jobs.
