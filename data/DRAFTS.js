@@ -1,1 +1,1 @@
-const DRAFTS = [{"title":"Figma Plugins Variables API","date":"2023-12-2","category":"Draft Blog Post","description":"Description","slug":"figma-plugins-variables-api"}]; export default DRAFTS;
+const DRAFTS = [{"title":"Color Palettes and Scales","date":"2024-01-25","category":"Draft","description":"Part of a series on theming","slug":"theming-color-schemes"},{"title":"Figma Plugins Variables API","date":"2023-12-2","category":"Draft Blog Post","description":"Description","slug":"figma-plugins-variables-api"}]; export default DRAFTS;
