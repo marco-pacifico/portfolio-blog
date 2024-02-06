@@ -11,13 +11,25 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-Color is the most noticeable part of a theme. It's also the most complex. In this post I want to do a deep dive on color by exploring the following topics:
+
+
+The majority of theme variables will be for colors. Shopify Polaris has x, Adobe's Spectrum has y. Figma's has z. 
+
+[Graphic: Theme variables -- percentatge color, typography, other styles]
+
+Why so many? Wouldn't just a handful of color variables work? 
+
+In this post I'll explore why color turns out to be the most complex part of theming (i.e. why the majority of theme variables are for colors) and how to define the colors in a theme. 
+
+Along the way I'll answer the following questions:
 - Why do we even need color? What jobs does it perform in a interface?
 - How are palettes and color ramps used to support these jobs?
 - How do these jobs map to semantic variables?
 
-## Colors Perform Many Jobs
-Colors serve both emotional and functional purposes in an interface. They convey meaning and help guide a person's attention. From these two high level jobs, a variety of other jobs emerge at more granular levels of detail. And it's this variety of jobs that makes color the most complex part of a theme. 
+## Colors Have Jobs
+{/* Colors serve both emotional and functional purposes in an interface.  */}
+Broadly speaking, color has two main jobs: convey meaning and help guide a person's attention. From these two high level jobs, a variety of other jobs emerge at more granular levels of detail in the interface. And it's this variety of jobs that makes color the most complex part of a theme.
+
 
 ## Every Color Variable Represents a Job
 Most of the variables in a theme are colors. So it's useful to look at each part of the naming convention for semantic variables to see how color fits in.
