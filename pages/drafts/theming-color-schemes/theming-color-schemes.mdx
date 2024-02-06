@@ -11,31 +11,52 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-
-
-The majority of theme variables will be for colors. Shopify Polaris has x, Adobe's Spectrum has y. Figma's has z. 
+Color is the deepest, most complex part of theming. If you look at Shopify's Polaris or Adobe's Spectrum or Figma's design system, and count their theme variables, most of the variables are for colors. 
 
 [Graphic: Theme variables -- percentatge color, typography, other styles]
 
-Why so many? Wouldn't just a handful of color variables work? 
+Color is obviously important. It's a highly noticeable part of brand's visual identity. But so is typography. What is it about color that requires so many theme variables? 
 
-In this post I'll explore why color turns out to be the most complex part of theming (i.e. why the majority of theme variables are for colors) and how to define the colors in a theme. 
+It turns out that color does a lot of work in an interface. 
 
-Along the way I'll answer the following questions:
+{/* And to have a theme that supports color in a robust way, you have to know exactly what color is doing and where.   */}
+
+
+{/* Does a lot of work in a lot of places  */}
+
+{/* In this post I'll explore why color turns out to be the deepest part of theming (i.e. why the majority of theme variables are for colors) and how to define the colors in a theme.  */}
+
+{/* Along the way I'll answer the following questions:
 - Why do we even need color? What jobs does it perform in a interface?
 - How are palettes and color ramps used to support these jobs?
-- How do these jobs map to semantic variables?
+- How do these jobs map to semantic variables? */}
 
-## Colors Have Jobs
+{/* ## Brand and Visual Identity
+As with all visual properties in a theme, color is used to express a brand's visual identity. Unlike changing the border radius */}
+
+## Many Jobs
 {/* Colors serve both emotional and functional purposes in an interface.  */}
-Broadly speaking, color has two main jobs: convey meaning and help guide a person's attention. From these two high level jobs, a variety of other jobs emerge at more granular levels of detail in the interface. And it's this variety of jobs that makes color the most complex part of a theme.
+Broadly speaking, color has two main jobs: convey meaning and help guide a person's attention. 
+
+From these two high level jobs, a variety of other jobs emerge at more granular levels of detail in the interface. And it's this variety of jobs that makes color the most complex part of a theme.
+
+## Hue, Saturation, Lightness
+Hue, saturation, lightnes
 
 
-## Every Color Variable Represents a Job
-Most of the variables in a theme are colors. So it's useful to look at each part of the naming convention for semantic variables to see how color fits in.
+## Hue Conveys Meaning
+Brand identiy. Semantic. Neutral elements. 
+ 
+
+## Contrast Guides Attention
+Contrast, change lightness or darknes
+
+## Every Variable Represents a Job
+So it's useful to look at each part of the naming convention for semantic variables to see how color fits in.
 
 ### Where color is used
 Color can be applied to every part of a UI element. It's background, text, borders, icons, and shadows.
+
 ### Why color is used
 Different hues are used for different purposes, usually to communicate some type of meaning:
 - Brand identity
