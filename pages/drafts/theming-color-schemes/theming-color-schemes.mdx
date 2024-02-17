@@ -11,15 +11,20 @@ export default ({ children }) => (
   <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
 );
 
-Color is the deepest, most complex part of theming. If you look at Shopify's Polaris or Adobe's Spectrum or Figma's design system, and count their theme variables, most of the variables are for colors. 
+{/* Color is the deepest part of theming. If you look at Shopify's Polaris or Adobe's Spectrum or Figma's design system, and count their theme variables, most of the variables are for colors. 
 
 [Graphic: Theme variables -- percentatge color, typography, other styles]
 
-Color is obviously important. It's a highly noticeable part of brand's visual identity. But so is typography. What is it about color that requires so many theme variables? 
+Color is obviously important. But why exactly does a theme require so many color variables? It's because colors are doing a lot of work in an interface, and there's essentially a variable for each job performed. */}
 
-It turns out that color does a lot of work in an interface. 
 
-{/* And to have a theme that supports color in a robust way, you have to know exactly what color is doing and where.   */}
+{/* Color is obviously important.It's a highly noticeable part of brand's visual identity. But that's not why themes have so many color variables.
+
+It turns out that color does a lot of work in an interface.  */}
+
+{/* But the fact that's color noticeable and important isn't why so many v so is typography. What is it about color that requires so many theme variables?  */}
+
+{/* And to have a theme that supports color in a robust way, you have to know exactly what color is doing and where.*/}
 
 
 {/* Does a lot of work in a lot of places  */}
@@ -34,19 +39,48 @@ It turns out that color does a lot of work in an interface.
 {/* ## Brand and Visual Identity
 As with all visual properties in a theme, color is used to express a brand's visual identity. Unlike changing the border radius */}
 
-## Many Jobs
+{/* ## Many Jobs */}
 {/* Colors serve both emotional and functional purposes in an interface.  */}
-Broadly speaking, color has two main jobs: convey meaning and help guide a person's attention. 
+Broadly speaking, color has two main jobs in an interface: 
+- Convey meaning 
+- Guide attention 
 
-From these two high level jobs, a variety of other jobs emerge at more granular levels of detail in the interface. And it's this variety of jobs that makes color the most complex part of a theme.
+At more granular levels of detail in the UI, each high level job breaks down into a variety of more specific jobs, and each maps to a semantic variable. 
 
-## Hue, Saturation, Lightness
-Hue, saturation, lightnes
+<table style={{marginBlock: "var(--space-6)", maxWidth: "400px"}}>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Convey Meaning</th>
+        <td>Level 1</td>
+    </tr>
+    <span style={{fontSize: "30px", margin: "16px"}}>⇣</span>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Brand</th>
+        <td>Level 2</td>
+    </tr>
+    <span style={{fontSize: "30px", margin: "16px"}}>⇣</span>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Primary Button Background</th>
+        <td>Level 3</td>
+    </tr>
+    <span style={{fontSize: "30px", margin: "16px"}}>⇣</span>
+    <tr style={{height: "var(--space-7)"}}>
+        <th style={{textAlign: "left"}}>Semantic Variable `color-bg-brand`</th>
+        <td>Level 4</td>
+    </tr>
+</table>
 
 
-## Hue Conveys Meaning
+
+{/* From these two high level jobs, a variety of other jobs emerge at more granular levels of detail in the interface. And it's this variety of jobs that makes color the most complex part of a theme. */}
+
+{/* ## Hue, Saturation, Lightness 
+Hue, saturation, lightnes */}
+
+## Hues Convey Meaning
 Brand identiy. Semantic. Neutral elements. 
- 
+
+Palette of hues, where each hue has a role to play in how it communicates meaning in the interface.
+
 
 ## Contrast Guides Attention
 Contrast, change lightness or darknes
